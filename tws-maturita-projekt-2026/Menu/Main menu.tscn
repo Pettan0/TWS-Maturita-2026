@@ -138,7 +138,6 @@ vertical_alignment = 1
 position = Vector2(-92.6, 18.075)
 
 [node name="ButtonNewStart" type="Button" parent="Buttons" unique_id=866935258]
-visible = false
 offset_left = -460.0
 offset_top = -185.0
 offset_right = -100.0
@@ -158,6 +157,7 @@ text = "Začit novou hru
 script = ExtResource("3_xuoke")
 
 [node name="ButtonContinue" type="Button" parent="Buttons" unique_id=65752028]
+visible = false
 offset_left = -460.0
 offset_top = -185.0
 offset_right = -284.4
@@ -176,6 +176,7 @@ text = "Pokračovat"
 script = ExtResource("3_xuoke")
 
 [node name="ButtonRestart" type="Button" parent="Buttons" unique_id=963933716]
+visible = false
 offset_left = -265.4
 offset_top = -185.0
 offset_right = -100.399994

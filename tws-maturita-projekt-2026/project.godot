@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="TWS Maturita Projekt 2026"
-run/main_scene="uid://dhvtxvfoyc0r0"
+run/main_scene="res://Menu/Main menu.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [audio]
 
-buses/default_bus_layout="uid://dddvrscq2mogb"
+buses/default_bus_layout="res://default_bus_layout.tres"
 
 [display]
 
