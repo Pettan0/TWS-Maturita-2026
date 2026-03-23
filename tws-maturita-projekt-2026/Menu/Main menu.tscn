@@ -1,0 +1,424 @@
+[gd_scene format=3 uid="uid://dhvtxvfoyc0r0"]
+
+[ext_resource type="Script" uid="uid://dbqe3xnw4vjmt" path="res://Scripts/Menu scripts/main_menu.gd" id="1_25ygp"]
+[ext_resource type="AudioStream" uid="uid://ca24focno0c2r" path="res://Assets/Sounds/Music/Main menu Loop.wav" id="2_cxvf8"]
+[ext_resource type="Texture2D" uid="uid://dpe1d8nct0xjv" path="res://Assets/2D/Png/art01.png" id="2_xuoke"]
+[ext_resource type="Script" uid="uid://d1gfh7u42mtws" path="res://Scripts/Menu scripts/button_animation1.gd" id="3_xuoke"]
+[ext_resource type="PackedScene" uid="uid://ce40thh88laj0" path="res://Menu/Settings menu.tscn" id="4_0uh4n"]
+[ext_resource type="PackedScene" uid="uid://16lkm0h56q2n" path="res://Menu/Debug Menu.tscn" id="7_0uh4n"]
+[ext_resource type="PackedScene" uid="uid://biycn7hdoemmx" path="res://Menu/transition.tscn" id="8_804u5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xuoke"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbtgn"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jlr6"]
+bg_color = Color(0.542318, 0.542318, 0.542318, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enwfr"]
+bg_color = Color(0.6941206, 0.6941206, 0.6941205, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbtgn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uh4n"]
+bg_color = Color(0, 0, 0, 0.5882353)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_804u5"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5nbr"]
+bg_color = Color(0.542318, 0.542318, 0.542318, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8dls"]
+bg_color = Color(0.6941206, 0.6941206, 0.6941205, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x5pm2"]
+
+[node name="Control" type="Control" unique_id=2045105416]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_25ygp")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1316840568]
+layout_mode = 0
+offset_left = -592.0
+offset_top = -332.0
+offset_right = 602.6666
+offset_bottom = 340.0
+texture = ExtResource("2_xuoke")
+expand_mode = 1
+
+[node name="MainMenuLoop" type="AudioStreamPlayer" parent="." unique_id=1519952112]
+stream = ExtResource("2_cxvf8")
+autoplay = true
+bus = &"Music"
+
+[node name="Label2" type="Label" parent="." unique_id=81057637]
+layout_mode = 0
+offset_left = -582.0
+offset_top = -309.0
+offset_right = 84.0
+offset_bottom = -213.0
+scale = Vector2(0.59, 0.59)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xuoke")
+text = "Vykoupení rytíře "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=1526234739]
+layout_mode = 0
+offset_left = -557.0
+offset_top = -261.0
+offset_right = 109.0
+offset_bottom = -165.0
+scale = Vector2(0.805, 0.805)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xuoke")
+text = "Hynka z Kohoutovic"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="Node2D" parent="." unique_id=2119668891]
+position = Vector2(-92.6, 18.075)
+
+[node name="ButtonStart" type="Button" parent="Buttons" unique_id=866935258]
+offset_left = -460.0
+offset_top = -185.0
+offset_right = -173.0
+offset_bottom = -118.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Zapnout hru"
+script = ExtResource("3_xuoke")
+
+[node name="ButtonExit" type="Button" parent="Buttons" unique_id=382090916]
+offset_left = -460.0
+offset_top = 63.0
+offset_right = -173.0
+offset_bottom = 130.00009
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Vypnout hru"
+script = ExtResource("3_xuoke")
+
+[node name="ButtonSettings" type="Button" parent="Buttons" unique_id=1575624148]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -460.0
+offset_top = -102.0
+offset_right = -173.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Nastavení
+"
+script = ExtResource("3_xuoke")
+
+[node name="ButtonCredits" type="Button" parent="Buttons" unique_id=441087071]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -460.0
+offset_top = -20.0
+offset_right = -173.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Závěrečné titulky"
+script = ExtResource("3_xuoke")
+
+[node name="Settings" parent="." unique_id=580065717 instance=ExtResource("4_0uh4n")]
+visible = false
+layout_mode = 1
+
+[node name="ButtonDebug" type="Button" parent="." unique_id=1532246261]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 432.0
+offset_top = -308.0
+offset_right = 562.0
+offset_bottom = -240.0
+grow_horizontal = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Debug"
+
+[node name="DebugMenu" parent="." unique_id=1062857306 instance=ExtResource("7_0uh4n")]
+visible = false
+layout_mode = 1
+
+[node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("8_804u5")]
+visible = false
+layout_mode = 1
+
+[node name="Credits" type="Panel" parent="." unique_id=353508816]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -389.0
+offset_top = -245.0
+offset_right = 357.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0uh4n")
+
+[node name="Label" type="Label" parent="Credits" unique_id=1604001416]
+layout_mode = 1
+offset_left = 12.0
+offset_top = 1.0
+offset_right = 149.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 40
+text = "Závěrečné titulky"
+vertical_alignment = 1
+
+[node name="ButtonBack" type="Button" parent="Credits" unique_id=181172301]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = 163.0
+offset_right = 132.0
+offset_bottom = 228.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_804u5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g5nbr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_v8dls")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x5pm2")
+text = "Zpět"
+script = ExtResource("3_xuoke")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Credits" unique_id=1252414297]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.0
+offset_top = -170.0
+offset_right = 217.0
+offset_bottom = 148.5
+grow_horizontal = 2
+grow_vertical = 2
+scroll_vertical_custom_step = 0.0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/ScrollContainer" unique_id=1349778178]
+layout_mode = 2
+
+[node name="TitlePrg" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1183561458]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Programování"
+vertical_alignment = 1
+
+[node name="Names" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=852191668]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Ovládání - Petr Klimt
+Combat systém - Petr Klimt
+Ui systém - Petr Klimt
+Ukládání - Petr Klimt"
+vertical_alignment = 1
+
+[node name="TitleArt" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=344703006]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Grafika a Assety"
+vertical_alignment = 1
+
+[node name="Names2" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=969316563]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Grafika - Jan Martínek
+Zbraně - Jan Martínek
+Nepřátelé - Jan Martínek
+Prostředí - Daniel Ročekl, Jan Martínek
+UI desing - ???
+Vizualní efekty - Daniel Roček"
+vertical_alignment = 1
+
+[node name="TitleAnim" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1138633936]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Animace"
+vertical_alignment = 1
+
+[node name="Names3" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1213967822]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Animace hráče - Jan Martínek, Petr Klimt
+Animace nepřátel - Jan Martínek
+Přechody - Petr Klimt"
+vertical_alignment = 1
+
+[node name="TitleSound" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1667057225]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Hudba a Sound efekty"
+vertical_alignment = 1
+
+[node name="Names4" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=222079049]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Hudba - Daniel Roček
+Sound efekty - Daniel Roček
+Dubing - ???"
+vertical_alignment = 1
+
+[node name="TitleLvl" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1592075359]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Desing levelů"
+vertical_alignment = 1
+
+[node name="Names5" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=595636107]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Layout levlů - Jan Martínek"
+vertical_alignment = 1
+
+[node name="TitleTest" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1509191404]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Testeři"
+vertical_alignment = 1
+
+[node name="Names6" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=313271481]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Davvid Chalupka
+Oňa Karlíček
+Milan Vodička
+Tomáš Balaš"
+vertical_alignment = 1
+
+[connection signal="pressed" from="Buttons/ButtonStart" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Buttons/ButtonExit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Buttons/ButtonSettings" to="." method="_settings_show"]
+[connection signal="pressed" from="Buttons/ButtonCredits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="ButtonDebug" to="." method="_on_button_debug_pressed"]
+[connection signal="pressed" from="Credits/ButtonBack" to="." method="_on_credits_button_pressed"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cl3sl4aakflej"
+path="res://.godot/imported/Bes - attack 1.wav-850e18993cb1d04eddeb6cca76854f51.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Enemies/bes/Bes - attack 1.wav"
+dest_files=["res://.godot/imported/Bes - attack 1.wav-850e18993cb1d04eddeb6cca76854f51.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

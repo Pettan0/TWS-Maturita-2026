@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://buo2tbk2x55lb"]
+
+[ext_resource type="Texture2D" uid="uid://0g8r27lmxc3o" path="res://Assets/VFX/Impact_Blood/T_Imp_Blood1.png" id="1_aybxq"]
+[ext_resource type="Script" uid="uid://d0leh3htse0il" path="res://Assets/VFX/Impact_Blood/BloodParticles.gd" id="2_m7bd2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dp63u"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_aybxq")
+billboard_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_6euip"]
+offsets = PackedFloat32Array(0, 0.6077348, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.35531366, 0.35531354, 0.3553135, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dp63u"]
+gradient = SubResource("Gradient_6euip")
+
+[sub_resource type="Curve" id="Curve_6euip"]
+_data = [Vector2(0, 1), 0.0, -0.2759768, 0, 0, Vector2(0.378866, 0.70837486), -0.68576103, -0.68576103, 0, 0, Vector2(1, 0), -2.0209017, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dp63u"]
+curve = SubResource("Curve_6euip")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qlwny"]
+lifetime_randomness = 0.33
+emission_shape_scale = Vector3(0.5, 0.5, 0.5)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -69.99999
+angle_max = 101.20001
+direction = Vector3(0, 0, -1)
+spread = 49.245
+initial_velocity_min = 6.0
+initial_velocity_max = 12.0
+gravity = Vector3(0, -9.875, -13.01)
+scale_curve = SubResource("CurveTexture_dp63u")
+color = Color(1.1291975, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_dp63u")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6euip"]
+size = Vector2(0.545, 0.64)
+
+[node name="Impact_Blood" type="Node3D" unique_id=462139974]
+
+[node name="BloodParticles" type="GPUParticles3D" parent="." unique_id=1361881853]
+material_override = SubResource("StandardMaterial3D_dp63u")
+emitting = false
+amount = 6
+lifetime = 0.65
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_qlwny")
+draw_pass_1 = SubResource("QuadMesh_6euip")
+script = ExtResource("2_m7bd2")

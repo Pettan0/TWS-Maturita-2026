@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d3c8wf7hs0aa1"
+path="res://.godot/imported/Bes - death 2.wav-ba8788392cb7f525aab753d0aa9c1c62.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Enemies/bes/Bes - death 2.wav"
+dest_files=["res://.godot/imported/Bes - death 2.wav-ba8788392cb7f525aab753d0aa9c1c62.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

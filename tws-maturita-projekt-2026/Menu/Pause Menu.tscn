@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://co4givesqwyy5"]
+
+[ext_resource type="Script" uid="uid://bjdyqrsyqvnje" path="res://Scripts/Menu scripts/pause_menu.gd" id="1_uh3q3"]
+[ext_resource type="Script" uid="uid://cv22gx0jbq68o" path="res://Scripts/Menu scripts/button_animation2.gd" id="2_f4htx"]
+[ext_resource type="PackedScene" uid="uid://ce40thh88laj0" path="res://Menu/Settings menu.tscn" id="3_x4nas"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbtgn"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jlr6"]
+bg_color = Color(0.542318, 0.542318, 0.542318, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enwfr"]
+bg_color = Color(0.6941206, 0.6941206, 0.6941205, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbtgn"]
+
+[node name="pause Menu" type="Control" unique_id=841548941]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -575.0
+offset_top = -321.0
+offset_right = 576.0
+offset_bottom = 326.81415
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uh3q3")
+
+[node name="Panel" type="Panel" parent="." unique_id=1944352933]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -604.5
+offset_top = -349.5
+offset_right = 604.5
+offset_bottom = 349.50003
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=2004617681]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.0
+offset_top = -19.0
+offset_right = 214.0
+offset_bottom = 77.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 70
+text = "pozastaveno"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonUnpuase" type="Button" parent="." unique_id=586142598]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.351
+anchor_bottom = 0.351
+offset_left = -9.0
+offset_top = -35.382767
+offset_right = 231.0
+offset_bottom = 35.617233
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "       Zpět do hry
+"
+alignment = 0
+script = ExtResource("2_f4htx")
+
+[node name="ButtonSettings" type="Button" parent="." unique_id=2079616674]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.499
+anchor_bottom = 0.499
+offset_left = -9.0
+offset_top = -35.259277
+offset_right = 231.0
+offset_bottom = 35.740723
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "       Nastavení"
+alignment = 0
+script = ExtResource("2_f4htx")
+
+[node name="ButtonMenu" type="Button" parent="." unique_id=979836175]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.648
+anchor_bottom = 0.648
+offset_left = -9.0
+offset_top = -35.78357
+offset_right = 231.0
+offset_bottom = 36.21643
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "       Vrátit se do menu"
+alignment = 0
+script = ExtResource("2_f4htx")
+
+[node name="Settings" parent="." unique_id=652143609 instance=ExtResource("3_x4nas")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="ButtonUnpuase" to="." method="_on_unpuase_pressed"]
+[connection signal="pressed" from="ButtonSettings" to="." method="_settings_show"]
+[connection signal="pressed" from="ButtonMenu" to="." method="_on_menu_pressed"]
