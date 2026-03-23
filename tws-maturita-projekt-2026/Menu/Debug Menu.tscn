@@ -148,6 +148,29 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
 text = "Level04"
 
+[node name="ButtonLevel5" type="Button" parent="." unique_id=607210695]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 174.0
+offset_top = -43.0
+offset_right = 302.0
+offset_bottom = 11.0
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+text = "Level05
+"
+
 [node name="ButtonLevelTest" type="Button" parent="." unique_id=1948317952]
 layout_mode = 1
 anchors_preset = 4
@@ -199,5 +222,7 @@ text = "Zpět
 [connection signal="pressed" from="ButtonLevel1" to="." method="_on_button_level_1_pressed"]
 [connection signal="pressed" from="ButtonLevel2" to="." method="_on_button_level_2_pressed"]
 [connection signal="pressed" from="ButtonLevel3" to="." method="_on_button_level_3_pressed"]
+[connection signal="pressed" from="ButtonLevel4" to="." method="_on_button_level_4_pressed"]
+[connection signal="pressed" from="ButtonLevel5" to="." method="_on_button_level_5_pressed"]
 [connection signal="pressed" from="ButtonLevelTest" to="." method="_on_button_level_test_pressed"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

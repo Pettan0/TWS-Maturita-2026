@@ -12,6 +12,12 @@ func _on_button_level_2_pressed() -> void:
 
 func _on_button_level_3_pressed() -> void:
 	get_tree().change_scene_to_file("res://Levels/Level03.scn")
+	
+func _on_button_level_4_pressed() -> void:
+	get_tree().change_scene_to_file("res://Levels/Level04.scn")
+
+func _on_button_level_5_pressed() -> void:
+	get_tree().change_scene_to_file("res://Levels/Level05.scn")
 
 func _on_button_back_pressed() -> void:
 	hide()

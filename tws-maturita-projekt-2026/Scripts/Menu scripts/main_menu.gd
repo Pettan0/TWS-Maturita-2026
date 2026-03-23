@@ -27,7 +27,7 @@ func load_data():
 
 	if player_data == null:
 		player_data = PlayerData.new()
-		button_continue.hidee()
+		button_continue.hide()
 		button_restart.hide()
 		button_new_start.show()
 		save_data()

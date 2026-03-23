@@ -15,10 +15,6 @@ run/main_scene="res://Menu/Main menu.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
-[audio]
-
-buses/default_bus_layout="res://default_bus_layout.tres"
-
 [display]
 
 window/stretch/mode="canvas_items"
