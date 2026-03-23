@@ -1,7 +1,6 @@
 extends Button
 
 @export var hover_scale: Vector2 = Vector2(1.1, 1.1)
-@export var pressed_scale: Vector2 = Vector2(0.9, 0.9)
 
 func _ready() -> void:
 	mouse_entered.connect(_button_enter)
