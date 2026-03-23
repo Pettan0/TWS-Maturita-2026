@@ -1,5 +1,5 @@
 extends Node3D
-@onready var interact:= $Player/Head/Camera3D/Interact
+@onready var interact: Label = $Player/Head/Camera3D/Interact
 @onready var area: Area3D = $Area
 @onready var npc: AnimationTree = $Npc/AnimationTree
 @onready var player: CharacterBody3D = $Player
@@ -45,18 +45,18 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func _on_exit_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
-		interact.visible = true
+		interact.show_with("OpenDoor","")
 		player_data.update_level_stats(1,2)
 
 func _on_exit_door_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
-		interact.visible = false
+		interact.hide()
 
 func _on_lvl_3_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
-		interact.visible = true
+		interact.show_with("OpenDoor","")
 		player_data.update_level_stats(3,1)
 
 func _on_lvl_3_door_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
-		interact.visible = false
+		interact.hide()

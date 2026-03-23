@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://biskonugwqlv5"]
 
-[ext_resource type="PackedScene" uid="uid://2wop0rp4y218" path="res://Assets/Modely/Player/shortsword.glb" id="1_s2ngi"]
+[ext_resource type="PackedScene" uid="uid://b76um3muuxpxr" path="res://Assets/Modely/Player/shortsword.glb" id="1_s2ngi"]
 [ext_resource type="Script" uid="uid://d2bqcagqdh4vu" path="res://Scripts/Player scripts/Weapon.gd" id="2_vfbvu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_skd4g"]
@@ -1940,7 +1940,7 @@ _data = {
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("2_vfbvu")
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1876443748) index="0" unique_id=833264192]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1523766634) index="0" unique_id=659694576]
 bones/0/position = Vector3(0, -0.39882767, 1.6394613)
 bones/0/rotation = Quaternion(-0.70663184, 0, 0, 0.70758146)
 bones/1/position = Vector3(-1.2289166, -0.20503634, 0.25963372)
@@ -1995,6 +1995,9 @@ bones/35/rotation = Quaternion(-0.5689416, -0.047985554, -0.12929098, 0.81073225
 bones/36/rotation = Quaternion(-0.49423894, -0.015591559, 0.020029943, 0.86895543)
 bones/36/scale = Vector3(1.0661606, 1.0661603, 1.0661603)
 
+[node name="arms" parent="Armature/Skeleton3D" index="0" unique_id=1634431329]
+cast_shadow = 0
+
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1" unique_id=129187496]
 transform = Transform3D(0.80187094, 0.20828798, 0.56001693, -0.5422748, -0.13984856, 0.8284807, 0.25088015, -0.9680177, 0.0008087158, 1.0030719, -0.49116305, -0.34964502)
 bone_name = "hand_R"
@@ -2007,7 +2010,7 @@ transform = Transform3D(-0.1673063, 0.98589844, -0.0024229307, -0.98448575, -0.1
 shape = SubResource("CapsuleShape3D_skd4g")
 disabled = true
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=1907480031]
+[node name="AnimationPlayer" parent="." index="1" unique_id=1791672202]
 libraries/ = SubResource("AnimationLibrary_l3sg0")
 
 [connection signal="body_entered" from="Armature/Skeleton3D/BoneAttachment3D/Hitbox" to="." method="_on_hitbox_body_entered"]
