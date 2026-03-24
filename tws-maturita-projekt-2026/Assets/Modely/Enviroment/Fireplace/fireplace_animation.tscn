@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bmnn3d43sfhet"]
 
-[ext_resource type="Texture2D" uid="uid://bv6ma6wic2fyb" path="res://Assets/Modely/Enviroment/Fireplace/T_Flame3.png" id="1_oledh"]
-[ext_resource type="Texture2D" uid="uid://hkses5ko72wy" path="res://Assets/Modely/Enviroment/Fireplace/T_Particle2.PNG" id="2_e1yob"]
-[ext_resource type="PackedScene" uid="uid://cxnrwegb5arc3" path="res://Assets/Modely/Enviroment/Fireplace/Fireplace.glb" id="3_hmmft"]
-[ext_resource type="AudioStream" uid="uid://vxcjch2ctvk6" path="res://Assets/Modely/Enviroment/Fireplace/Fireplace.wav" id="4_np6g7"]
+[ext_resource type="Texture2D" uid="uid://dg7t56slrcbcf" path="res://Assets/Modely/Enviroment/Fireplace/T_Flame3.png" id="1_oledh"]
+[ext_resource type="Texture2D" uid="uid://bunuynyn86mov" path="res://Assets/Modely/Enviroment/Fireplace/T_Particle2.PNG" id="2_e1yob"]
+[ext_resource type="PackedScene" uid="uid://csuahqtewg832" path="res://Assets/Modely/Enviroment/Fireplace/Fireplace.glb" id="3_hmmft"]
+[ext_resource type="AudioStream" uid="uid://bqopkkedehros" path="res://Assets/Modely/Enviroment/Fireplace/Fireplace.wav" id="4_np6g7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xtwl8"]
 transparency = 1
@@ -81,7 +81,7 @@ tracks/0/path = NodePath("OmniLight3D:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.53333336, 1.1, 1.7, 2.2),
+"times": PackedFloat32Array(0, 0.56666666, 1.1333333, 1.7, 2.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [1.508, 5.007, 1.499, 5.2620000000000005, 1.499]

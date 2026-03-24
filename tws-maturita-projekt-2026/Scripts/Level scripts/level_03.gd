@@ -45,18 +45,18 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func _on_exit_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
-		interact.visible = true
+		interact.show_with("OpenDoor","")
 		player_data.update_level_stats(2,2)
 
 func _on_exit_door_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
-		interact.visible = false
+		interact.hide()
 
 func _on_lvl_4_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
-		interact.visible = true
+		interact.show_with("OpenDoor","")
 		player_data.update_level_stats(4,1)
 
 func _on_lvl_4_door_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
-		interact.visible = false
+		interact.hide()

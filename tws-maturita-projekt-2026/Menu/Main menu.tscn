@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dpe1d8nct0xjv" path="res://Assets/2D/Png/art01.png" id="2_xuoke"]
 [ext_resource type="Script" uid="uid://d1gfh7u42mtws" path="res://Scripts/Menu scripts/button_animation1.gd" id="3_xuoke"]
 [ext_resource type="PackedScene" uid="uid://ce40thh88laj0" path="res://Menu/Settings menu.tscn" id="4_0uh4n"]
-[ext_resource type="PackedScene" uid="uid://16lkm0h56q2n" path="res://Menu/Debug Menu.tscn" id="7_0uh4n"]
+[ext_resource type="FontFile" uid="uid://e01tyk5jn3jc" path="res://Assets/Font/Cinzel-VariableFont_wght.ttf" id="4_804u5"]
 [ext_resource type="PackedScene" uid="uid://biycn7hdoemmx" path="res://Menu/transition.tscn" id="8_804u5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xuoke"]
@@ -40,6 +40,37 @@ shadow_size = 2
 shadow_offset = Vector2(3, 3)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbtgn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuoke"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5pm2"]
+bg_color = Color(0.542318, 0.542318, 0.542318, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjk5d"]
+bg_color = Color(0.6941206, 0.6941206, 0.6941205, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_igkek"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uh4n"]
 bg_color = Color(0, 0, 0, 0.5882353)
@@ -108,12 +139,13 @@ bus = &"Music"
 
 [node name="Label2" type="Label" parent="." unique_id=81057637]
 layout_mode = 0
-offset_left = -557.0
-offset_top = -324.0
-offset_right = 109.02899
-offset_bottom = -228.0
-scale = Vector2(0.654, 0.654)
+offset_left = -568.0
+offset_top = -309.0
+offset_right = 91.0
+offset_bottom = -213.0
+scale = Vector2(0.59, 0.59)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xuoke")
 text = "Vykoupení"
@@ -121,21 +153,23 @@ vertical_alignment = 1
 
 [node name="Label" type="Label" parent="." unique_id=1526234739]
 layout_mode = 0
-offset_left = -558.00006
-offset_top = -273.00003
-offset_right = 107.99994
-offset_bottom = -177.00003
-scale = Vector2(0.949, 0.949)
+offset_left = -568.0
+offset_top = -261.0
+offset_right = 215.0
+offset_bottom = -165.0
+scale = Vector2(0.805, 0.805)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xuoke")
-text = "Rytíře Hynka"
+text = "rytíře  Hynka "
 vertical_alignment = 1
 
 [node name="Buttons" type="Node2D" parent="." unique_id=2119668891]
 position = Vector2(-92.6, 18.075)
 
 [node name="ButtonNewStart" type="Button" parent="Buttons" unique_id=866935258]
+visible = false
 offset_left = -460.0
 offset_top = -185.0
 offset_right = -100.0
@@ -145,7 +179,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
@@ -155,7 +190,6 @@ text = "Začit novou hru
 script = ExtResource("3_xuoke")
 
 [node name="ButtonContinue" type="Button" parent="Buttons" unique_id=65752028]
-visible = false
 offset_left = -460.0
 offset_top = -185.0
 offset_right = -284.4
@@ -165,7 +199,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
@@ -174,7 +209,6 @@ text = "Pokračovat"
 script = ExtResource("3_xuoke")
 
 [node name="ButtonRestart" type="Button" parent="Buttons" unique_id=963933716]
-visible = false
 offset_left = -265.4
 offset_top = -185.0
 offset_right = -100.399994
@@ -184,6 +218,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
@@ -209,7 +244,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
@@ -235,7 +271,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
@@ -253,7 +290,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
@@ -287,9 +325,169 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
 text = "Debug"
 
-[node name="DebugMenu" parent="." unique_id=1062857306 instance=ExtResource("7_0uh4n")]
+[node name="Debug" type="Panel" parent="." unique_id=982245950]
 visible = false
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -196.0
+offset_right = 465.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Debug" unique_id=245737083]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -122.0
+offset_top = 8.0
+offset_right = 122.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "Debug menu"
+
+[node name="ButtonLevel1" type="Button" parent="Debug" unique_id=284245948]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -116.0
+offset_right = 152.0
+offset_bottom = -62.0
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_xuoke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x5pm2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pjk5d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_igkek")
+text = "Level01"
+
+[node name="ButtonLevel2" type="Button" parent="Debug" unique_id=2075916937]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 175.0
+offset_top = -115.0
+offset_right = 303.0
+offset_bottom = -61.0
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_xuoke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x5pm2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pjk5d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_igkek")
+text = "Level02"
+
+[node name="ButtonLevel3" type="Button" parent="Debug" unique_id=827694370]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 323.0
+offset_top = -116.0
+offset_right = 451.0
+offset_bottom = -62.0
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_xuoke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x5pm2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pjk5d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_igkek")
+text = "Level03"
+
+[node name="ButtonLevel4" type="Button" parent="Debug" unique_id=514719443]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -46.0
+offset_right = 152.0
+offset_bottom = 8.0
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_xuoke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x5pm2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pjk5d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_igkek")
+text = "Level04"
+
+[node name="ButtonLevelTest" type="Button" parent="Debug" unique_id=1432409967]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 175.0
+offset_top = 60.0
+offset_right = 303.0
+offset_bottom = 114.0
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_xuoke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x5pm2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pjk5d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_igkek")
+text = "Level Test"
+
+[node name="ButtonBack" type="Button" parent="Debug" unique_id=1754054905]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -72.0
+offset_right = 64.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_xuoke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x5pm2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pjk5d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_igkek")
+text = "Zpět
+"
 
 [node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("8_804u5")]
 visible = false
@@ -447,7 +645,7 @@ vertical_alignment = 1
 [node name="Names6" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=313271481]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Davvid Chalupka
+text = "David Chalupka
 Oňa Karlíček
 Milan Vodička
 Tomáš Balaš"
@@ -460,4 +658,10 @@ vertical_alignment = 1
 [connection signal="pressed" from="Buttons/ButtonCredits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Buttons/ButtonExit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="ButtonDebug" to="." method="_on_button_debug_pressed"]
+[connection signal="pressed" from="Debug/ButtonLevel1" to="." method="_on_button_level_1_pressed"]
+[connection signal="pressed" from="Debug/ButtonLevel2" to="." method="_on_button_level_2_pressed"]
+[connection signal="pressed" from="Debug/ButtonLevel3" to="." method="_on_button_level_3_pressed"]
+[connection signal="pressed" from="Debug/ButtonLevel4" to="." method="_on_button_level_4_pressed"]
+[connection signal="pressed" from="Debug/ButtonLevelTest" to="." method="_on_button_level_test_pressed"]
+[connection signal="pressed" from="Debug/ButtonBack" to="." method="_on_button_debug_pressed"]
 [connection signal="pressed" from="Credits/ButtonBack" to="." method="_on_credits_button_pressed"]

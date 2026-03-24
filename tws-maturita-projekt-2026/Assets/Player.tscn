@@ -3,17 +3,19 @@
 [ext_resource type="Script" uid="uid://s87k2qfp0jqw" path="res://Scripts/Player scripts/Player.gd" id="1_kpjcp"]
 [ext_resource type="PackedScene" uid="uid://co4givesqwyy5" path="res://Menu/Pause Menu.tscn" id="2_kne1u"]
 [ext_resource type="PackedScene" uid="uid://djd58goybvr3b" path="res://Menu/Skilltree.tscn" id="3_j0vyv"]
+[ext_resource type="FontFile" uid="uid://e01tyk5jn3jc" path="res://Assets/Font/Cinzel-VariableFont_wght.ttf" id="4_ed6nx"]
 [ext_resource type="PackedScene" uid="uid://04vpnjjcp1fm" path="res://Assets/Modely/Player/unarmed.tscn" id="4_j65wn"]
 [ext_resource type="PackedScene" uid="uid://bn20wed58gots" path="res://Assets/Modely/Player/mace.tscn" id="5_y0rfj"]
+[ext_resource type="Script" uid="uid://bel8q1h3pllrw" path="res://Scripts/Menu scripts/interact.gd" id="5_yengi"]
 [ext_resource type="PackedScene" uid="uid://biskonugwqlv5" path="res://Assets/Modely/Player/shortsword.tscn" id="6_2syo8"]
 [ext_resource type="PackedScene" uid="uid://bu0ikpag18fi2" path="res://Assets/Modely/Player/dagger.tscn" id="6_05608"]
 [ext_resource type="PackedScene" uid="uid://wwa5rmnw87ac" path="res://Assets/Modely/Player/longsword.tscn" id="7_05608"]
-[ext_resource type="AudioStream" uid="uid://cldl7utyvsbeg" path="res://Assets/Sounds/SFX/Player/Attack1.wav" id="10_uqnxr"]
-[ext_resource type="AudioStream" uid="uid://dunntq0lbq777" path="res://Assets/Sounds/SFX/Player/Footstep1.wav" id="11_ed6nx"]
+[ext_resource type="AudioStream" uid="uid://camgera07b6x3" path="res://Assets/Sounds/SFX/Player/Attack1.wav" id="10_uqnxr"]
+[ext_resource type="AudioStream" uid="uid://c85kk8phg0pmy" path="res://Assets/Sounds/SFX/Player/Footstep1.wav" id="11_ed6nx"]
 [ext_resource type="PackedScene" uid="uid://biycn7hdoemmx" path="res://Menu/transition.tscn" id="11_y0rfj"]
-[ext_resource type="AudioStream" uid="uid://dorqat83anwqv" path="res://Assets/Sounds/SFX/Player/DamageTaken1.wav" id="12_yengi"]
-[ext_resource type="AudioStream" uid="uid://bf55vtu6qntod" path="res://Assets/Sounds/SFX/Player/Hit1.wav" id="13_awmxi"]
-[ext_resource type="AudioStream" uid="uid://8n6owwp7kne2" path="res://Assets/Sounds/SFX/Player/SwordSwing1.wav" id="14_j6nj3"]
+[ext_resource type="AudioStream" uid="uid://b5re4704c653c" path="res://Assets/Sounds/SFX/Player/DamageTaken1.wav" id="12_yengi"]
+[ext_resource type="AudioStream" uid="uid://dxxaga4alx3l8" path="res://Assets/Sounds/SFX/Player/Hit1.wav" id="13_awmxi"]
+[ext_resource type="AudioStream" uid="uid://u0g5agdayd2h" path="res://Assets/Sounds/SFX/Player/SwordSwing1.wav" id="14_j6nj3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0rfj"]
 bg_color = Color(1, 0.35732567, 0.29020837, 1)
@@ -197,6 +199,9 @@ offset_right = 191.5
 offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ed6nx")
+theme_override_font_sizes/font_size = 18
 text = "Hp / MaxHp"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -208,15 +213,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -224.5
-offset_top = -126.0
-offset_right = 224.5
-offset_bottom = -64.0
+offset_left = -280.25
+offset_top = -127.0
+offset_right = 280.25
+offset_bottom = -86.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ed6nx")
 theme_override_font_sizes/font_size = 25
-text = "Zmačkní ( E ) pro otevření dveří"
+text = "Zmačkní ( E ) pro (interakce)"
 horizontal_alignment = 1
+script = ExtResource("5_yengi")
 
 [node name="Stamina" type="ProgressBar" parent="Head/Camera3D" unique_id=1598281620]
 anchors_preset = 7

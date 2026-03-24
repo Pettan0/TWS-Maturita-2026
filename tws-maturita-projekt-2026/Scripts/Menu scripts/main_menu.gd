@@ -2,10 +2,11 @@ extends Control
 
 @onready var settings:= $Settings
 @onready var credits: Panel = $Credits
-@onready var debug_menu: Panel = $DebugMenu
+
 @onready var button_new_start: Button = $Buttons/ButtonNewStart
 @onready var button_continue: Button = $Buttons/ButtonContinue
 @onready var button_restart: Button = $Buttons/ButtonRestart
+@onready var debug: Panel = $Debug
 
 var menu_show = false
 
@@ -68,22 +69,50 @@ func _on_exit_pressed() -> void:
 	get_tree().quit()
 
 func _settings_show() -> void:
-	if !settings.visible and !credits.visible and !debug_menu.visible:
+	if !settings.visible and !credits.visible and !debug.visible:
 		settings.show()
 	else:
 		settings.hide()
 
 func _on_credits_pressed() -> void:
-	if !settings.visible and !credits.visible and !debug_menu.visible:
+	if !settings.visible and !credits.visible and !debug.visible:
 		credits.show()
 	else:
 		credits.hide()
 
 func _on_button_debug_pressed() -> void:
-	if !settings.visible and !credits.visible and !debug_menu.visible:
-		debug_menu.show()
+	if !settings.visible and !credits.visible and !debug.visible:
+		debug.show()
 	else:
-		debug_menu.hide()
+		debug.hide()
 
 func _on_credits_button_pressed() -> void:
 	credits.hide()
+
+
+func _on_button_level_1_pressed() -> void:
+	player_data.update_level_stats(1,1)
+	save_data()
+	get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
+
+
+func _on_button_level_2_pressed() -> void:
+	player_data.update_level_stats(2,1)
+	save_data()
+	get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
+
+
+func _on_button_level_3_pressed() -> void:
+	player_data.update_level_stats(3,1)
+	save_data()
+	get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
+
+
+func _on_button_level_4_pressed() -> void:
+	player_data.update_level_stats(4,1)
+	save_data()
+	get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
+
+
+func _on_button_level_test_pressed() -> void:
+	get_tree().change_scene_to_file("res://Levels/LevelTest.tscn")
