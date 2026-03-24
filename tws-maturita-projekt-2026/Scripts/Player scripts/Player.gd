@@ -27,7 +27,7 @@ extends CharacterBody3D
 @onready var dagger:= $Head/dagger
 @onready var short_sword: Node3D = $Head/shortsword
 @onready var mace: Node3D = $Head/mace
-@onready var long_sword: Node3D = $Head/longSword
+@onready var long_sword: Node3D = $Head/longsword
 
 @onready var headbob: AnimationPlayer = $Head/Headbob
 @onready var fov_animation: AnimationPlayer = $Head/FovAnimation
@@ -38,7 +38,12 @@ extends CharacterBody3D
 @onready var dagger_animations:AnimationPlayer = $Head/dagger/AnimationPlayer
 @onready var short_sword_animations: AnimationPlayer = $Head/shortsword/AnimationPlayer
 @onready var mace_animations: AnimationPlayer = $Head/mace/AnimationPlayer
-@onready var long_sword_animations: AnimationPlayer = $Head/longSword/AnimationPlayer
+@onready var long_sword_animations: AnimationPlayer = $Head/longsword/AnimationPlayer
+
+var save_file_path = "user://save/"
+var save_file_name = "PlayerData.tres"
+
+var player_data : PlayerData
 
 
 var is_in_area = false
@@ -47,8 +52,8 @@ var paused = false
 var current_weapon = "unarmed"
 var blocking = false
 
-var max_hp = 30.0
-var hp = max_hp
+var max_hp : int
+var hp : int
 var speed = 4.4
 var jump_velocity = 3.1
 
@@ -58,7 +63,10 @@ var time_to_wait = 1.8
 var stimer = 0
 var can_start_stimer = true
 
+
 func _ready():
+	load_data()
+	long_sword.position = Vector3(0, -0.414, -0.621)
 	fov_animation.speed_scale = 3
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	headbob.play("Headbob")
@@ -67,11 +75,24 @@ func _ready():
 	transition_anim.play("Fade_out")
 	await  get_tree().create_timer(1.0).timeout
 	transition.visible = false 
-	hp_bar.max_value = max_hp
-	hp_bar.value = max_hp
+	hp_bar.max_value = player_data.max_hp
+	hp_bar.value = player_data.hp
 	hp_label.text = str(hp)+" / "+ str(max_hp)
 	stamina.value = stamina.max_value
 
+func load_data():
+	if not DirAccess.dir_exists_absolute(save_file_path):
+		DirAccess.make_dir_recursive_absolute(save_file_path)
+
+	if FileAccess.file_exists(save_file_path + save_file_name):
+		player_data = ResourceLoader.load(save_file_path + save_file_name)
+
+	if player_data == null:
+		player_data = PlayerData.new()
+		save_data()
+
+func save_data():
+	ResourceSaver.save(player_data, save_file_path + save_file_name)
 func _process(delta: float) -> void:
 	hp_bar.value = hp
 	hp_label.text = str(hp)+" / "+ str(max_hp)
@@ -132,38 +153,22 @@ func _play_swing_sound():
 	sword_swing.play()
 
 func _weapon_out(type:String):
+	unarmed.hide()
+	dagger.hide()
+	short_sword.hide()
+	mace.hide()
+	long_sword.hide()
 	match type:
 		"unarmed":
-			unarmed.visible = true
-			dagger.visible = false
-			short_sword.visible = false
-			mace.visible = false
-			long_sword.visible = false
+			unarmed.show()
 		"dagger":
-			unarmed.visible = false
-			dagger.visible = true
-			short_sword.visible = false
-			mace.visible = false
-			long_sword.visible = false
+			dagger.show()
 		"shortSword":
-			unarmed.visible = false
-			dagger.visible = false
-			short_sword.visible = true
-			mace.visible = false
-			long_sword.visible = false
+			short_sword.show()
 		"mace":
-			unarmed.visible = false
-			dagger.visible = false
-			short_sword.visible = false
-			mace.visible = true
-			long_sword.visible = false
+			mace.show()
 		"longSword":
-			unarmed.visible = false
-			dagger.visible = false
-			short_sword.visible = false
-			mace.visible = false
-			long_sword.visible = true
-
+			long_sword.show()
 func _unhandled_input(event: InputEvent) -> void:
 	if !paused:
 		if Input.is_action_just_pressed("wp1"):
@@ -241,6 +246,7 @@ func _hit(damage : float):
 	if !blocking:
 		_play_damage_sound()
 		hp -= damage
+		save_data()
 		if hp <= 0:
 			pass
 	else:

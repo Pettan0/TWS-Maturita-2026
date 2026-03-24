@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://llvjahvkn5tq"]
 
+[ext_resource type="FontFile" uid="uid://e01tyk5jn3jc" path="res://Assets/Font/Cinzel-VariableFont_wght.ttf" id="1_baxly"]
 [ext_resource type="Script" uid="uid://cferuagd0cxdb" path="res://Scripts/Menu scripts/HpBar.gd" id="1_cv08h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m50jb"]
@@ -37,8 +38,33 @@ offset_bottom = 24.5625
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_baxly")
+theme_override_font_sizes/font_size = 30
 theme_override_styles/background = SubResource("StyleBoxFlat_m50jb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_cv08h")
 step = 0.1
 value = 50.0
+show_percentage = false
 script = ExtResource("1_cv08h")
+
+[node name="Label" type="Label" parent="." unique_id=1804381475]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.47073
+offset_top = -18.78125
+offset_right = 202.47073
+offset_bottom = 18.78125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_baxly")
+theme_override_font_sizes/font_size = 25
+text = "(Hp) / (maxHp)"
+horizontal_alignment = 1
+vertical_alignment = 1

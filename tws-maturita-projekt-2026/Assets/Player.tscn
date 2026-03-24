@@ -272,9 +272,8 @@ visible = false
 damage = 10.0
 weapon_type = "mace"
 
-[node name="longSword" parent="Head" unique_id=1615498181 instance=ExtResource("7_05608")]
+[node name="longsword" parent="Head" unique_id=1615498181 instance=ExtResource("7_05608")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-visible = false
 damage = 15.0
 weapon_type = "longSword"
 

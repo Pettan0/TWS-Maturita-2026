@@ -125,9 +125,9 @@ script = ExtResource("1_25ygp")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1316840568]
 layout_mode = 0
-offset_left = -592.0
+offset_left = -603.0
 offset_top = -332.0
-offset_right = 602.6666
+offset_right = 591.6666
 offset_bottom = 340.0
 texture = ExtResource("2_xuoke")
 expand_mode = 1
@@ -333,9 +333,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -15.0
+offset_left = -187.0
 offset_top = -196.0
-offset_right = 465.0
+offset_right = 293.0
 offset_bottom = 196.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -381,9 +381,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 175.0
-offset_top = -115.0
+offset_top = -116.0
 offset_right = 303.0
-offset_bottom = -61.0
+offset_bottom = -62.0
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -402,9 +402,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 323.0
+offset_left = 319.0
 offset_top = -116.0
-offset_right = 451.0
+offset_right = 447.0
 offset_bottom = -62.0
 grow_vertical = 2
 size_flags_vertical = 3
@@ -440,6 +440,28 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_x5pm2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pjk5d")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_igkek")
 text = "Level04"
+
+[node name="ButtonLevel5" type="Button" parent="Debug" unique_id=1280865162]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 175.0
+offset_top = -46.0
+offset_right = 303.0
+offset_bottom = 8.0
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_xuoke")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x5pm2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pjk5d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_igkek")
+text = "Level05"
 
 [node name="ButtonLevelTest" type="Button" parent="Debug" unique_id=1432409967]
 layout_mode = 1
@@ -501,10 +523,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -389.0
-offset_top = -245.0
-offset_right = 357.0
-offset_bottom = 225.0
+offset_left = -343.0
+offset_top = -217.0
+offset_right = 403.0
+offset_bottom = 253.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0uh4n")
@@ -515,6 +537,8 @@ offset_left = 12.0
 offset_top = 1.0
 offset_right = 149.0
 offset_bottom = 56.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 40
 text = "Závěrečné titulky"
 vertical_alignment = 1
@@ -537,7 +561,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_804u5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_g5nbr")
 theme_override_styles/hover = SubResource("StyleBoxFlat_v8dls")
@@ -566,13 +591,15 @@ layout_mode = 2
 
 [node name="TitlePrg" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1183561458]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 33
 text = "Programování"
 vertical_alignment = 1
 
 [node name="Names" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=852191668]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 17
 text = "Ovládání - Petr Klimt
 Combat systém - Petr Klimt
 Ui systém - Petr Klimt
@@ -581,30 +608,34 @@ vertical_alignment = 1
 
 [node name="TitleArt" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=344703006]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 33
 text = "Grafika a Assety"
 vertical_alignment = 1
 
 [node name="Names2" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=969316563]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 17
 text = "Grafika - Jan Martínek
 Zbraně - Jan Martínek
 Nepřátelé - Jan Martínek
-Prostředí - Daniel Ročekl, Jan Martínek
+Prostředí - Daniel Roček, Jan Martínek
 UI desing - ???
 Vizualní efekty - Daniel Roček"
 vertical_alignment = 1
 
 [node name="TitleAnim" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1138633936]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 33
 text = "Animace"
 vertical_alignment = 1
 
 [node name="Names3" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1213967822]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 17
 text = "Animace hráče - Jan Martínek, Petr Klimt
 Animace nepřátel - Jan Martínek
 Přechody - Petr Klimt"
@@ -612,13 +643,15 @@ vertical_alignment = 1
 
 [node name="TitleSound" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1667057225]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 33
 text = "Hudba a Sound efekty"
 vertical_alignment = 1
 
 [node name="Names4" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=222079049]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 17
 text = "Hudba - Daniel Roček
 Sound efekty - Daniel Roček
 Dubing - ???"
@@ -626,25 +659,29 @@ vertical_alignment = 1
 
 [node name="TitleLvl" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1592075359]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 33
 text = "Desing levelů"
 vertical_alignment = 1
 
 [node name="Names5" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=595636107]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 17
 text = "Layout levlů - Jan Martínek"
 vertical_alignment = 1
 
 [node name="TitleTest" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1509191404]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 33
 text = "Testeři"
 vertical_alignment = 1
 
 [node name="Names6" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=313271481]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 17
 text = "David Chalupka
 Oňa Karlíček
 Milan Vodička
@@ -662,6 +699,7 @@ vertical_alignment = 1
 [connection signal="pressed" from="Debug/ButtonLevel2" to="." method="_on_button_level_2_pressed"]
 [connection signal="pressed" from="Debug/ButtonLevel3" to="." method="_on_button_level_3_pressed"]
 [connection signal="pressed" from="Debug/ButtonLevel4" to="." method="_on_button_level_4_pressed"]
+[connection signal="pressed" from="Debug/ButtonLevel5" to="." method="_on_button_level_5_pressed"]
 [connection signal="pressed" from="Debug/ButtonLevelTest" to="." method="_on_button_level_test_pressed"]
 [connection signal="pressed" from="Debug/ButtonBack" to="." method="_on_button_debug_pressed"]
 [connection signal="pressed" from="Credits/ButtonBack" to="." method="_on_credits_button_pressed"]

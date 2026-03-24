@@ -37,6 +37,9 @@ func save_data():
 
 func _ready() -> void:
 	load_data()
+	settings.hide()
+	credits.hide()
+	debug.hide()
 	$Transition.visible = true
 	$Transition/AnimationPlayer.play("Fade_out")
 	await  get_tree().create_timer(1.0).timeout
@@ -89,30 +92,30 @@ func _on_button_debug_pressed() -> void:
 func _on_credits_button_pressed() -> void:
 	credits.hide()
 
-
 func _on_button_level_1_pressed() -> void:
 	player_data.update_level_stats(1,1)
 	save_data()
 	get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
-
 
 func _on_button_level_2_pressed() -> void:
 	player_data.update_level_stats(2,1)
 	save_data()
 	get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
 
-
 func _on_button_level_3_pressed() -> void:
 	player_data.update_level_stats(3,1)
 	save_data()
 	get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
-
 
 func _on_button_level_4_pressed() -> void:
 	player_data.update_level_stats(4,1)
 	save_data()
 	get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
 
+func _on_button_level_5_pressed() -> void:
+	player_data.update_level_stats(5,1)
+	save_data()
+	get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
 
 func _on_button_level_test_pressed() -> void:
 	get_tree().change_scene_to_file("res://Levels/LevelTest.tscn")
