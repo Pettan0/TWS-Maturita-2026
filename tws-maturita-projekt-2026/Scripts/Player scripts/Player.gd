@@ -52,14 +52,12 @@ var paused = false
 var current_weapon = "unarmed"
 var blocking = false
 
-var max_hp : int
-var hp : int
 var speed = 4.4
 var jump_velocity = 3.1
 
 var stamina_regen = 0.38 #/mil s?
-var can_regen = false
-var time_to_wait = 1.8
+var can_s_regen = false
+var stime_to_wait = 1.8
 var stimer = 0
 var can_start_stimer = true
 
@@ -77,7 +75,7 @@ func _ready():
 	transition.visible = false 
 	hp_bar.max_value = player_data.max_hp
 	hp_bar.value = player_data.hp
-	hp_label.text = str(hp)+" / "+ str(max_hp)
+	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
 	stamina.value = stamina.max_value
 
 func load_data():
@@ -94,19 +92,19 @@ func load_data():
 func save_data():
 	ResourceSaver.save(player_data, save_file_path + save_file_name)
 func _process(delta: float) -> void:
-	hp_bar.value = hp
-	hp_label.text = str(hp)+" / "+ str(max_hp)
-	if !can_regen and stamina.value != 100 or stamina.value == 0:
+	hp_bar.value = player_data.hp
+	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
+	if !can_s_regen and stamina.value != 100 or stamina.value == 0:
 		can_start_stimer = true
 		if can_start_stimer:
 			stimer += delta
-			if stimer >= time_to_wait:
-				can_regen = true
+			if stimer >= stime_to_wait:
+				can_s_regen = true
 				can_start_stimer = false
 				stimer = 0
 	if stamina.value == 100:
-		can_regen = false
-	if can_regen:
+		can_s_regen = false
+	if can_s_regen:
 		stamina.value += stamina_regen
 		can_start_stimer = true
 		stimer = 0
@@ -190,7 +188,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if !attacking and stamina.value > 10:
 				attacking = true
 				stamina.value -= 10
-				can_regen = false
+				can_s_regen = false
 				stimer = 0
 				match current_weapon:
 					"unarmed":
@@ -245,9 +243,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func _hit(damage : float):
 	if !blocking:
 		_play_damage_sound()
-		hp -= damage
+		player_data.hp -= damage
 		save_data()
-		if hp <= 0:
+		if player_data.hp <= 0:
 			pass
 	else:
 		_play_hit_sound()
@@ -258,7 +256,7 @@ func _physics_process(delta: float) -> void:
 	if !paused:
 		if Input.is_action_just_pressed("jump") and is_on_floor() and stamina.value > 15:
 			stamina.value -= 15.0
-			can_regen = false
+			can_s_regen = false
 			stimer = 0
 			velocity.y = jump_velocity
 			jump.play()
@@ -268,7 +266,7 @@ func _physics_process(delta: float) -> void:
 		if direction:
 			if Input.is_action_pressed("sprint") and stamina.value > 0:
 				stamina.value -= 0.5
-				can_regen = false
+				can_s_regen = false
 				stimer = 0
 				if !attacking and !blocking:
 					match current_weapon:
