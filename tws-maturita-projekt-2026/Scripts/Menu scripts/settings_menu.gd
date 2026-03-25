@@ -16,21 +16,30 @@ func load_data():
 	
 	if FileAccess.file_exists(save_file_path + save_file_name):
 		settingsData = ResourceLoader.load(save_file_path + save_file_name)
-		$Options/HBoxContainer/PanelZvuk/MasterVolume.value = settingsData.master_volume
-		$Options/HBoxContainer/PanelZvuk/Music.value = settingsData.music_volume
-		$Options/HBoxContainer/PanelZvuk/SFX.value = settingsData.sfx_volume
-		$Options/HBoxContainer/PanelZvuk/Dub.value = settingsData.dub_volume
-		windowed_mode(settingsData.windowed_mode_id)
-		$Options/HBoxContainer/PanelOstatni/WindowedMode.select(settingsData.windowed_mode_id)
-		render_scale(settingsData.render_scale_id)
-		$Options/HBoxContainer/PanelOstatni/RenderScale.select(settingsData.render_scale_id)
-		render_scale(settingsData.aa_id)
-		$Options/HBoxContainer/PanelOstatni/AntiAliasing.select(settingsData.aa_id)
 	
 	if settingsData == null:
 		settingsData = SettingsData.new()
 		save_data()
+		
+	if settingsData.first_load:
+		windowed_mode(settingsData.windowed_mode_id)
 
+		settingsData.first_load = false
+		save_data()
+	else:
+		windowed_mode(settingsData.windowed_mode_id)
+		aa(settingsData.aa_id)
+	
+	$Options/HBoxContainer/PanelZvuk/MasterVolume.value = settingsData.master_volume
+	$Options/HBoxContainer/PanelZvuk/Music.value = settingsData.music_volume
+	$Options/HBoxContainer/PanelZvuk/SFX.value = settingsData.sfx_volume
+	$Options/HBoxContainer/PanelZvuk/Dub.value = settingsData.dub_volume
+	windowed_mode(settingsData.windowed_mode_id)
+	$Options/HBoxContainer/PanelOstatni/WindowedMode.select(settingsData.windowed_mode_id)
+	render_scale(settingsData.render_scale_id)
+	$Options/HBoxContainer/PanelOstatni/RenderScale.select(settingsData.render_scale_id)
+	render_scale(settingsData.aa_id)
+	$Options/HBoxContainer/PanelOstatni/AntiAliasing.select(settingsData.aa_id)
 
 func save_data():
 	ResourceSaver.save(settingsData, save_file_path + save_file_name)
@@ -58,9 +67,9 @@ func windowed_mode(index: int):
 		0:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		1:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 		2:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 func render_scale(index: int):
 	settingsData.render_scale_id = index

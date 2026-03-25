@@ -55,6 +55,14 @@ var blocking = false
 var speed = 4.4
 var jump_velocity = 3.1
 
+#hp regen?
+var hp_regen = 0.5 #/mil s?
+var can_hp_regen = false
+var time_to_wait = 5.0
+var timer_to_regen = 0
+var can_start_timer = true
+
+#Stamina veci
 var stamina_regen = 0.38 #/mil s?
 var can_s_regen = false
 var stime_to_wait = 1.8

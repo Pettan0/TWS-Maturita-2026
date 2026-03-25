@@ -372,9 +372,9 @@ selected = 0
 item_count = 3
 popup/item_0/text = "Windowed"
 popup/item_0/id = 0
-popup/item_1/text = "Fullscreen"
+popup/item_1/text = "Maximized"
 popup/item_1/id = 1
-popup/item_2/text = "Exclusive Fullscreen"
+popup/item_2/text = "Fullscreen"
 popup/item_2/id = 2
 
 [node name="Label2" type="Label" parent="Options/HBoxContainer/PanelOstatni" unique_id=1702987025]

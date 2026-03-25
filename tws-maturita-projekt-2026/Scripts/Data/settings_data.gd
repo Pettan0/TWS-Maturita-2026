@@ -8,3 +8,5 @@ class_name SettingsData
 @export var windowed_mode_id = 0
 @export var render_scale_id = 0
 @export var aa_id = 0
+
+@export var first_load = true

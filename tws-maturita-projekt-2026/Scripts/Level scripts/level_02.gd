@@ -1,7 +1,5 @@
 extends Node3D
 @onready var interact: Label = $Player/Head/Camera3D/Interact
-@onready var area: Area3D = $Area
-@onready var npc: AnimationTree = $Npc/AnimationTree
 @onready var player: CharacterBody3D = $Player
 
 
