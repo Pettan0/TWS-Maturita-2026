@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://qk3cvvortyh1"
-path="res://.godot/imported/Door4.wav-e5b77af2667d68a1da7d5a1bf936eef3.sample"
+uid="uid://c55wp0x1linof"
+path="res://.godot/imported/Door1.wav-eec9de36366e7c90a2d6f10f57d45063.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/SFX/Door4.wav"
-dest_files=["res://.godot/imported/Door4.wav-e5b77af2667d68a1da7d5a1bf936eef3.sample"]
+source_file="res://Assets/Sounds/SFX/Ostatní/Door1.wav"
+dest_files=["res://.godot/imported/Door1.wav-eec9de36366e7c90a2d6f10f57d45063.sample"]
 
 [params]
 

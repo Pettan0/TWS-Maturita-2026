@@ -38,6 +38,7 @@ func save_data():
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and interact.visible:
 		save_data()
+		SoundManager.play_door_sfx()
 		$Player/Transition.visible = true
 		$Player/Transition/AnimationPlayer.play("Fade_in")
 		await  get_tree().create_timer(1.0).timeout

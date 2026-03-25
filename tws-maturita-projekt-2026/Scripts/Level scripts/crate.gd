@@ -1,0 +1,16 @@
+extends Node3D
+@onready var sfx: AudioStreamPlayer3D = $SFX
+@onready var crate: Node3D = $".."
+
+var hp = 10
+
+func hit(damage, _a, _b):
+	print("hit")
+	hp -= damage
+	if hp > 0:
+		sfx.stream = load("res://Assets/Sounds/SFX/Ostatní/CrateHit"+str(randi_range(1,3))+".wav")
+		sfx.pitch_scale = randf_range(.8, 1.2)
+		sfx.play()
+	else :
+		SoundManager.play_crate_sfx()
+		crate.queue_free()

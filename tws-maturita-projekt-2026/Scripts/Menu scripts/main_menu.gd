@@ -52,7 +52,7 @@ func _on_button_continue_pressed() -> void:
 	get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
 
 func _on_button_restart_pressed() -> void:
-	player_data.update_level_stats(1, 1)
+	player_data = PlayerData.new()
 	save_data()
 	$Transition.visible = true
 	$Transition/AnimationPlayer.play("Fade_in")
@@ -61,7 +61,7 @@ func _on_button_restart_pressed() -> void:
 
 
 func _on_button_new_start_pressed() -> void:
-	player_data.update_level_stats(1,1)
+	player_data = PlayerData.new()
 	save_data()
 	$Transition.visible = true
 	$Transition/AnimationPlayer.play("Fade_in")

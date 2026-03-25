@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://d4g1cicnu0ujk"]
+
+[ext_resource type="Script" uid="uid://dam3se7kebmsh" path="res://sound_manager.gd" id="1_22ksp"]
+[ext_resource type="AudioStream" uid="uid://doaahp7kuyqwd" path="res://Assets/Sounds/SFX/Ostatní/CrateBreak1.wav" id="2_ndygv"]
+[ext_resource type="AudioStream" uid="uid://c55wp0x1linof" path="res://Assets/Sounds/SFX/Ostatní/Door1.wav" id="3_h8btt"]
+
+[node name="SoundManager" type="Control" unique_id=400160604]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_22ksp")
+
+[node name="CrateSFX" type="AudioStreamPlayer" parent="." unique_id=325003160]
+stream = ExtResource("2_ndygv")
+bus = &"SFX"
+
+[node name="DoorSXF" type="AudioStreamPlayer" parent="." unique_id=362051654]
+stream = ExtResource("3_h8btt")
+bus = &"SFX"

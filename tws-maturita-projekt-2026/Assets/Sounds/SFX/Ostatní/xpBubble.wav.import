@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c3do60t1sdwp5"
-path="res://.godot/imported/xpBubble.wav-6e9a8fbcfc7289046409ec1331ff6b88.sample"
+path="res://.godot/imported/xpBubble.wav-6bf447220e900efb4dca1598e574a001.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/SFX/xpBubble.wav"
-dest_files=["res://.godot/imported/xpBubble.wav-6e9a8fbcfc7289046409ec1331ff6b88.sample"]
+source_file="res://Assets/Sounds/SFX/Ostatní/xpBubble.wav"
+dest_files=["res://.godot/imported/xpBubble.wav-6bf447220e900efb4dca1598e574a001.sample"]
 
 [params]
 

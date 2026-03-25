@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bxvf2u60qrfq6"
-path="res://.godot/imported/lvlUp.wav-674c98198632165f4e25c69c9c754c07.sample"
+path="res://.godot/imported/lvlUp.wav-f5f805ad0ce575347121f79d5d006880.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/SFX/lvlUp.wav"
-dest_files=["res://.godot/imported/lvlUp.wav-674c98198632165f4e25c69c9c754c07.sample"]
+source_file="res://Assets/Sounds/SFX/Ostatní/lvlUp.wav"
+dest_files=["res://.godot/imported/lvlUp.wav-f5f805ad0ce575347121f79d5d006880.sample"]
 
 [params]
 
