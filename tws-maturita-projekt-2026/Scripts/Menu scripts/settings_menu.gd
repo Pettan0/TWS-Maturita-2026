@@ -2,6 +2,15 @@ extends Node
 
 @onready var menu:= $".."
 
+@onready var master: HSlider = $TabContainer/Nastavení/Options/MasterVolume
+@onready var music: HSlider = $TabContainer/Nastavení/Options/Music
+@onready var sfx: HSlider = $TabContainer/Nastavení/Options/SFX
+@onready var dub: HSlider = $TabContainer/Nastavení/Options/Dub
+
+@onready var windowed_mode: OptionButton = $TabContainer/Nastavení/Options/WindowedMode
+@onready var render_scale: OptionButton = $TabContainer/Nastavení/Options/RenderScale
+@onready var anti_aliasing: OptionButton = $TabContainer/Nastavení/Options/AntiAliasing
+
 var save_file_path = "user://save/"
 var save_file_name = "SettingsData.tres"
 
@@ -22,46 +31,46 @@ func load_data():
 		save_data()
 		
 	if settingsData.first_load:
-		windowed_mode(settingsData.windowed_mode_id)
+		_windowed_mode(settingsData.windowed_mode_id)
 
 		settingsData.first_load = false
 		save_data()
 	else:
-		windowed_mode(settingsData.windowed_mode_id)
-		aa(settingsData.aa_id)
+		_windowed_mode(settingsData.windowed_mode_id)
+		_aa(settingsData.aa_id)
 	
-	$Options/HBoxContainer/PanelZvuk/MasterVolume.value = settingsData.master_volume
-	$Options/HBoxContainer/PanelZvuk/Music.value = settingsData.music_volume
-	$Options/HBoxContainer/PanelZvuk/SFX.value = settingsData.sfx_volume
-	$Options/HBoxContainer/PanelZvuk/Dub.value = settingsData.dub_volume
-	windowed_mode(settingsData.windowed_mode_id)
-	$Options/HBoxContainer/PanelOstatni/WindowedMode.select(settingsData.windowed_mode_id)
-	render_scale(settingsData.render_scale_id)
-	$Options/HBoxContainer/PanelOstatni/RenderScale.select(settingsData.render_scale_id)
-	render_scale(settingsData.aa_id)
-	$Options/HBoxContainer/PanelOstatni/AntiAliasing.select(settingsData.aa_id)
+	master.value = settingsData.master_volume
+	music.value = settingsData.music_volume
+	sfx.value = settingsData.sfx_volume
+	dub.value = settingsData.dub_volume
+	_windowed_mode(settingsData.windowed_mode_id)
+	windowed_mode.select(settingsData.windowed_mode_id)
+	_render_scale(settingsData.render_scale_id)
+	render_scale.select(settingsData.render_scale_id)
+	_render_scale(settingsData.aa_id)
+	anti_aliasing.select(settingsData.aa_id)
 
 func save_data():
 	ResourceSaver.save(settingsData, save_file_path + save_file_name)
 
-func master_volume(value: float):
+func _master_volume(value: float):
 	settingsData.master_volume = value
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(settingsData.master_volume))
 
-func music_volume(value: float):
+func _music_volume(value: float):
 	settingsData.music_volume = value
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(settingsData.music_volume))
 
-func sfx_volume(value: float):
+func _sfx_volume(value: float):
 	settingsData.sfx_volume = value
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(settingsData.sfx_volume))
 
-func dub_volume(value: float):
+func _dub_volume(value: float):
 	settingsData.dub_volume = value
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Dub"), linear_to_db(settingsData.sfx_volume))
 
 
-func windowed_mode(index: int):
+func _windowed_mode(index: int):
 	settingsData.windowed_mode_id = index
 	match index:
 		0:
@@ -71,7 +80,7 @@ func windowed_mode(index: int):
 		2:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
-func render_scale(index: int):
+func _render_scale(index: int):
 	settingsData.render_scale_id = index
 	match index:
 		0:
@@ -83,7 +92,7 @@ func render_scale(index: int):
 		3:
 			get_tree().root.scaling_3d_scale = 0.25
 
-func aa(index: int):
+func _aa(index: int):
 	settingsData.aa_id = index
 	match index:
 		0:
@@ -107,6 +116,10 @@ func aa(index: int):
 			get_viewport().use_taa = false
 			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 
-func back() -> void:
+func _on_button_back_pressed() -> void:
 	save_data()
 	$".".hide()
+
+
+func _anti_aliasing(index: int) -> void:
+	pass # Replace with function body.

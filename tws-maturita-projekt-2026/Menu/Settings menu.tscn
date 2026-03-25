@@ -4,6 +4,21 @@
 [ext_resource type="FontFile" uid="uid://e01tyk5jn3jc" path="res://Assets/Font/Cinzel-VariableFont_wght.ttf" id="2_2ei4k"]
 [ext_resource type="Script" uid="uid://d1gfh7u42mtws" path="res://Scripts/Menu scripts/button_animation1.gd" id="2_paf8r"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gang"]
+bg_color = Color(0, 0, 0, 0.19607843)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_r8nd2"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8awf2"]
+color = Color(0.35714206, 0.55610263, 1, 1)
+thickness = 6
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_paf8r"]
 bg_color = Color(0, 0, 0, 0.29411766)
 corner_radius_top_left = 15
@@ -42,58 +57,42 @@ shadow_offset = Vector2(3, 3)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tfpea"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gang"]
-bg_color = Color(0, 0, 0, 0.19607843)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_r8nd2"]
-color = Color(1, 1, 1, 1)
-thickness = 6
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_8awf2"]
-color = Color(0.35714206, 0.55610263, 1, 1)
-thickness = 6
-
 [node name="Control" type="Control" unique_id=689441041]
 layout_mode = 3
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 576.0
+offset_top = 324.0
+offset_right = -576.0
+offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8tqco")
 
-[node name="Options" type="Panel" parent="." unique_id=751067328]
+[node name="TabContainer" type="TabContainer" parent="." unique_id=1052638141]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -479.0
-offset_top = -238.0
-offset_right = 528.3562
-offset_bottom = 249.0
+offset_left = -313.0
+offset_top = -286.0
+offset_right = 313.0
+offset_bottom = 286.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_paf8r")
+current_tab = 1
 
-[node name="Label" type="Label" parent="Options" unique_id=1122607883]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -501.5
-offset_top = -241.5
-offset_right = -269.9032
-offset_bottom = -186.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Nastavení" type="Control" parent="TabContainer" unique_id=894766518]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Label" type="Label" parent="TabContainer/Nastavení" unique_id=131763403]
+layout_mode = 0
+offset_right = 231.5968
+offset_bottom = 55.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("2_2ei4k")
@@ -101,81 +100,27 @@ theme_override_font_sizes/font_size = 40
 text = "Nastavení"
 horizontal_alignment = 1
 
-[node name="ButtonBack" type="Button" parent="Options" unique_id=444153796]
+[node name="Options" type="Panel" parent="TabContainer/Nastavení" unique_id=824428604]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -132.0
-offset_top = 167.5
-offset_right = 132.0
-offset_bottom = 232.5
+offset_left = -240.33044
+offset_top = -226.5
+offset_right = 240.33044
+offset_bottom = 189.5
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_2ei4k")
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_3hjuq")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3dkdp")
-theme_override_styles/hover = SubResource("StyleBoxFlat_508j2")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_tfpea")
-text = "Zpět"
-script = ExtResource("2_paf8r")
-
-[node name="PanelZvuk" type="Panel" parent="Options" unique_id=1004872478]
-layout_mode = 0
-offset_left = 11.678101
-offset_top = 58.5
-offset_right = 472.0
-offset_bottom = 398.5
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_6gang")
 
-[node name="MasterVolume" type="HSlider" parent="Options/PanelZvuk" unique_id=1649851060]
+[node name="Title" type="Label" parent="TabContainer/Nastavení/Options" unique_id=482310618]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -225.0
-offset_top = 48.5
-offset_right = 225.0
-offset_bottom = 89.5
-grow_horizontal = 2
-theme_override_styles/slider = SubResource("StyleBoxLine_r8nd2")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_8awf2")
-max_value = 1.0
-step = 0.05
-value = 1.0
-
-[node name="Label1" type="Label" parent="Options/PanelZvuk" unique_id=1242767526]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -81.83905
-offset_top = 37.5
-offset_right = 81.16095
-offset_bottom = 72.5
-grow_horizontal = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/font = ExtResource("2_2ei4k")
-theme_override_font_sizes/font_size = 25
-text = "Hlavní zvuk"
-horizontal_alignment = 1
-
-[node name="Title" type="Label" parent="Options/PanelZvuk" unique_id=172694396]
-layout_mode = 1
-offset_left = 5.3218994
-offset_top = 6.5
-offset_right = 102.3219
-offset_bottom = 48.5
+offset_left = 17.5
+offset_right = 114.5
+offset_bottom = 42.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("2_2ei4k")
@@ -183,32 +128,73 @@ theme_override_font_sizes/font_size = 30
 text = "Audio"
 horizontal_alignment = 1
 
-[node name="Music" type="HSlider" parent="Options/PanelZvuk" unique_id=2004761096]
+[node name="MasterVolume" type="HSlider" parent="TabContainer/Nastavení/Options" unique_id=1953373675]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -225.0
-offset_top = 78.5
-offset_right = 225.0
-offset_bottom = 119.5
-grow_horizontal = 2
+offset_left = 17.3219
+offset_top = 151.5
+offset_right = 468.48288
+offset_bottom = 192.5
 theme_override_styles/slider = SubResource("StyleBoxLine_r8nd2")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_8awf2")
 max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="Label2" type="Label" parent="Options/PanelZvuk" unique_id=2140094938]
+[node name="Music" type="HSlider" parent="TabContainer/Nastavení/Options" unique_id=856214273]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -81.3992
-offset_top = 66.5
-offset_right = 81.3992
-offset_bottom = 101.5
-grow_horizontal = 2
+offset_left = 17.3219
+offset_top = 80.5
+offset_right = 468.48285
+offset_bottom = 121.5
+theme_override_styles/slider = SubResource("StyleBoxLine_r8nd2")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_8awf2")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SFX" type="HSlider" parent="TabContainer/Nastavení/Options" unique_id=1961464608]
+layout_mode = 1
+offset_left = 17.3219
+offset_top = 115.5
+offset_right = 468.48285
+offset_bottom = 156.5
+theme_override_styles/slider = SubResource("StyleBoxLine_r8nd2")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_8awf2")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Dub" type="HSlider" parent="TabContainer/Nastavení/Options" unique_id=1277867188]
+layout_mode = 1
+offset_left = 17.3219
+offset_top = 47.5
+offset_right = 468.48285
+offset_bottom = 88.5
+theme_override_styles/slider = SubResource("StyleBoxLine_r8nd2")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_8awf2")
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label1" type="Label" parent="TabContainer/Nastavení/Options" unique_id=474578162]
+layout_mode = 1
+offset_left = 137.3219
+offset_top = 32.5
+offset_right = 300.3219
+offset_bottom = 67.5
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("2_2ei4k")
+theme_override_font_sizes/font_size = 25
+text = "Hlavní zvuk"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/Nastavení/Options" unique_id=816835615]
+layout_mode = 1
+offset_left = 137.3219
+offset_top = 67.5
+offset_right = 300.1203
+offset_bottom = 102.5
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("2_2ei4k")
@@ -216,32 +202,12 @@ theme_override_font_sizes/font_size = 25
 text = "Hudba"
 horizontal_alignment = 1
 
-[node name="SFX" type="HSlider" parent="Options/PanelZvuk" unique_id=123810731]
+[node name="Label3" type="Label" parent="TabContainer/Nastavení/Options" unique_id=2053093362]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -225.0
-offset_top = 108.5
-offset_right = 225.0
-offset_bottom = 149.5
-grow_horizontal = 2
-theme_override_styles/slider = SubResource("StyleBoxLine_r8nd2")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_8awf2")
-max_value = 1.0
-step = 0.05
-value = 1.0
-
-[node name="Label3" type="Label" parent="Options/PanelZvuk" unique_id=829484074]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -81.3992
-offset_top = 96.5
-offset_right = 81.3992
-offset_bottom = 131.5
-grow_horizontal = 2
+offset_left = 137.3219
+offset_top = 102.5
+offset_right = 300.1203
+offset_bottom = 137.5
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("2_2ei4k")
@@ -249,32 +215,12 @@ theme_override_font_sizes/font_size = 25
 text = "SFX"
 horizontal_alignment = 1
 
-[node name="Dub" type="HSlider" parent="Options/PanelZvuk" unique_id=1443155858]
+[node name="Label4" type="Label" parent="TabContainer/Nastavení/Options" unique_id=22284982]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -225.0
-offset_top = 138.5
-offset_right = 225.0
-offset_bottom = 179.5
-grow_horizontal = 2
-theme_override_styles/slider = SubResource("StyleBoxLine_r8nd2")
-theme_override_styles/grabber_area = SubResource("StyleBoxLine_8awf2")
-max_value = 1.0
-step = 0.05
-value = 1.0
-
-[node name="Label4" type="Label" parent="Options/PanelZvuk" unique_id=1959609939]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -81.3992
-offset_top = 126.5
-offset_right = 81.3992
-offset_bottom = 161.5
-grow_horizontal = 2
+offset_left = 137.3219
+offset_top = 137.5
+offset_right = 300.1203
+offset_bottom = 172.5
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("2_2ei4k")
@@ -282,21 +228,12 @@ theme_override_font_sizes/font_size = 25
 text = "Dabing ???"
 horizontal_alignment = 1
 
-[node name="PanelOstatni" type="Panel" parent="Options" unique_id=864294992]
-layout_mode = 0
-offset_left = 512.6781
-offset_top = 58.5
-offset_right = 994.6781
-offset_bottom = 398.5
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_6gang")
-
-[node name="Title" type="Label" parent="Options/PanelOstatni" unique_id=1136169841]
+[node name="Title2" type="Label" parent="TabContainer/Nastavení/Options" unique_id=1587753272]
 layout_mode = 1
-offset_left = 8.321899
-offset_top = 1.5
-offset_right = 101.3219
-offset_bottom = 43.5
+offset_left = 17.5
+offset_top = 182.0
+offset_right = 110.5
+offset_bottom = 224.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("2_2ei4k")
@@ -304,28 +241,24 @@ theme_override_font_sizes/font_size = 30
 text = "Video"
 horizontal_alignment = 1
 
-[node name="Label1" type="Label" parent="Options/PanelOstatni" unique_id=566712160]
+[node name="Label5" type="Label" parent="TabContainer/Nastavení/Options" unique_id=1801600544]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
 offset_left = 18.3219
-offset_top = -126.5
-offset_right = 220.3219
-offset_bottom = -91.5
-grow_vertical = 2
+offset_top = 222.5
+offset_right = 171.3219
+offset_bottom = 257.5
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 25
 text = "Režim Okna"
 
-[node name="WindowedMode" type="OptionButton" parent="Options/PanelOstatni" unique_id=1812345081]
+[node name="WindowedMode" type="OptionButton" parent="TabContainer/Nastavení/Options" unique_id=2122337214]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 83.81415
-offset_right = 204.0
-offset_bottom = 114.81415
+offset_left = 17.3219
+offset_top = 257.5
+offset_right = 144.3219
+offset_bottom = 288.5
 theme_override_fonts/font = ExtResource("2_2ei4k")
 selected = 0
 item_count = 3
@@ -336,28 +269,24 @@ popup/item_1/id = 1
 popup/item_2/text = "Fullscreen"
 popup/item_2/id = 2
 
-[node name="Label2" type="Label" parent="Options/PanelOstatni" unique_id=190036321]
+[node name="Label6" type="Label" parent="TabContainer/Nastavení/Options" unique_id=87089303]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 18.3219
-offset_top = -12.5
-offset_right = 224.3219
-offset_bottom = 22.5
-grow_vertical = 2
+offset_left = 18.66095
+offset_top = 299.0
+offset_right = 224.66095
+offset_bottom = 334.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 25
 text = "Kvalita objektů"
 
-[node name="RenderScale" type="OptionButton" parent="Options/PanelOstatni" unique_id=2064942367]
+[node name="RenderScale" type="OptionButton" parent="TabContainer/Nastavení/Options" unique_id=1836816134]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 193.81415
-offset_right = 208.0
-offset_bottom = 224.81415
+offset_left = 19.66095
+offset_top = 334.0
+offset_right = 205.66095
+offset_bottom = 365.0
 theme_override_fonts/font = ExtResource("2_2ei4k")
 selected = 0
 item_count = 4
@@ -370,28 +299,24 @@ popup/item_2/id = 2
 popup/item_3/text = "Brambora"
 popup/item_3/id = 3
 
-[node name="Label3" type="Label" parent="Options/PanelOstatni" unique_id=83307716]
+[node name="Label7" type="Label" parent="TabContainer/Nastavení/Options" unique_id=933360226]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 19.3219
-offset_top = 54.5
-offset_right = 221.3219
-offset_bottom = 89.5
-grow_vertical = 2
+offset_left = 229.66095
+offset_top = 223.0
+offset_right = 431.66095
+offset_bottom = 258.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 25
 text = "Anti Aliasing"
 
-[node name="AntiAliasing" type="OptionButton" parent="Options/PanelOstatni" unique_id=1919753716]
+[node name="AntiAliasing" type="OptionButton" parent="TabContainer/Nastavení/Options" unique_id=1530819212]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 264.81415
-offset_right = 208.0
-offset_bottom = 295.81415
+offset_left = 229.66095
+offset_top = 258.0
+offset_right = 415.66095
+offset_bottom = 289.0
 theme_override_fonts/font = ExtResource("2_2ei4k")
 selected = 0
 item_count = 5
@@ -406,44 +331,12 @@ popup/item_3/id = 3
 popup/item_4/text = "MSAA 4X"
 popup/item_4/id = 4
 
-[node name="Note" type="Label" parent="Options/PanelOstatni" unique_id=1635350000]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -222.0
-offset_top = -49.592926
-offset_right = -55.0
-offset_bottom = -18.592926
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 1
-theme_override_fonts/font = ExtResource("2_2ei4k")
-theme_override_font_sizes/font_size = 10
-text = "(pokud ve Fullcreenu je vidět lišta, použijte 2 krát Alt + Tab)"
-autowrap_mode = 3
+[node name="Ovládání" type="Control" parent="TabContainer" unique_id=1882011872]
+layout_mode = 2
+metadata/_tab_index = 1
 
-[node name="Controls" type="Panel" parent="." unique_id=287561490]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -230.25
-offset_top = -244.0
-offset_right = 230.25
-offset_bottom = 244.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_paf8r")
-
-[node name="Label" type="Label" parent="Controls" unique_id=998200343]
-layout_mode = 1
+[node name="Label" type="Label" parent="TabContainer/Ovládání" unique_id=133626595]
+layout_mode = 0
 offset_left = 6.5
 offset_right = 238.0968
 offset_bottom = 55.0
@@ -453,30 +346,35 @@ theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 40
 text = "Ovládání"
 
-[node name="Scroll" type="Panel" parent="Controls" unique_id=1119979034]
+[node name="Scroll" type="Panel" parent="TabContainer/Ovládání" unique_id=547564371]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -211.0
-offset_top = -197.0
-offset_right = 211.0
-offset_bottom = 219.0
+offset_left = -240.0
+offset_top = -226.5
+offset_right = 240.0
+offset_bottom = 189.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_paf8r")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Controls/Scroll" unique_id=1044631671]
-layout_mode = 0
-offset_right = 421.0
-offset_bottom = 406.0
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Ovládání/Scroll" unique_id=2116768941]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_right = 240.0
+offset_bottom = 416.0
+grow_horizontal = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Controls/Scroll/ScrollContainer" unique_id=2144537834]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Ovládání/Scroll/ScrollContainer" unique_id=585558893]
 layout_mode = 2
 
-[node name="Movement" type="Label" parent="Controls/Scroll/ScrollContainer/VBoxContainer" unique_id=39540740]
+[node name="Movement" type="Label" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer" unique_id=1891802629]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
@@ -484,11 +382,11 @@ theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 30
 text = "Pohyb"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Controls/Scroll/ScrollContainer/VBoxContainer" unique_id=995561237]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer" unique_id=1194085150]
 layout_mode = 2
 theme_override_constants/separation = 100
 
-[node name="Text" type="Label" parent="Controls/Scroll/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=286163156]
+[node name="Text" type="Label" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=358414172]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -5
@@ -502,7 +400,7 @@ Doprava
 Skok
 Běh"
 
-[node name="Keys" type="Label" parent="Controls/Scroll/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1936104958]
+[node name="Keys" type="Label" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1330739452]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -5
@@ -517,7 +415,7 @@ text = "( W )
 ( Shift )"
 horizontal_alignment = 1
 
-[node name="Fight" type="Label" parent="Controls/Scroll/ScrollContainer/VBoxContainer" unique_id=1940029946]
+[node name="Fight" type="Label" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer" unique_id=760791277]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
@@ -525,11 +423,11 @@ theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 30
 text = "Boj"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Controls/Scroll/ScrollContainer/VBoxContainer" unique_id=1189249371]
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer" unique_id=1146468902]
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="Text" type="Label" parent="Controls/Scroll/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=2068750976]
+[node name="Text" type="Label" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=371536839]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -5
@@ -539,7 +437,7 @@ theme_override_font_sizes/font_size = 25
 text = "Útok
 Blokování"
 
-[node name="Keys" type="Label" parent="Controls/Scroll/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1531942007]
+[node name="Keys" type="Label" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1378076606]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -5
@@ -550,7 +448,7 @@ text = "( Levé tlačítko )
 ( Pravé tlačítko )"
 horizontal_alignment = 1
 
-[node name="Weapons" type="Label" parent="Controls/Scroll/ScrollContainer/VBoxContainer" unique_id=1970554149]
+[node name="Weapons" type="Label" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer" unique_id=1431914256]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
@@ -558,11 +456,11 @@ theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 30
 text = "Zbraně"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Controls/Scroll/ScrollContainer/VBoxContainer" unique_id=444892417]
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer" unique_id=60039309]
 layout_mode = 2
 theme_override_constants/separation = 120
 
-[node name="Text" type="Label" parent="Controls/Scroll/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1138008642]
+[node name="Text" type="Label" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1394193430]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -5
@@ -576,7 +474,7 @@ Palcát
 Dlohý meč
 Kladivo"
 
-[node name="Keys" type="Label" parent="Controls/Scroll/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1507688619]
+[node name="Keys" type="Label" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1350034060]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -5
@@ -591,7 +489,7 @@ text = "( + )
 ( ž )"
 horizontal_alignment = 1
 
-[node name="Other" type="Label" parent="Controls/Scroll/ScrollContainer/VBoxContainer" unique_id=1669676433]
+[node name="Other" type="Label" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer" unique_id=991698738]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 1
@@ -599,11 +497,11 @@ theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 30
 text = "Jiné"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Controls/Scroll/ScrollContainer/VBoxContainer" unique_id=584820067]
+[node name="HBoxContainer4" type="HBoxContainer" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer" unique_id=55830744]
 layout_mode = 2
 theme_override_constants/separation = 145
 
-[node name="Text" type="Label" parent="Controls/Scroll/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=497043648]
+[node name="Text" type="Label" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=2143882628]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -5
@@ -612,7 +510,7 @@ theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 25
 text = "Skill tree"
 
-[node name="Keys" type="Label" parent="Controls/Scroll/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1658381289]
+[node name="Keys" type="Label" parent="TabContainer/Ovládání/Scroll/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1881305906]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -5
@@ -622,4 +520,38 @@ theme_override_font_sizes/font_size = 25
 text = "( k )"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="Options/ButtonBack" to="." method="back"]
+[node name="ButtonBack" type="Button" parent="." unique_id=764194297]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = 215.0
+offset_right = 132.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_2ei4k")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_3hjuq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3dkdp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_508j2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tfpea")
+text = "Zpět"
+script = ExtResource("2_paf8r")
+
+[connection signal="changed" from="TabContainer/Nastavení/Options/MasterVolume" to="." method="_master_volume"]
+[connection signal="changed" from="TabContainer/Nastavení/Options/Music" to="." method="_music_volume"]
+[connection signal="changed" from="TabContainer/Nastavení/Options/SFX" to="." method="_sfx_volume"]
+[connection signal="changed" from="TabContainer/Nastavení/Options/Dub" to="." method="_dub_volume"]
+[connection signal="item_selected" from="TabContainer/Nastavení/Options/WindowedMode" to="." method="_windowed_mode"]
+[connection signal="item_selected" from="TabContainer/Nastavení/Options/RenderScale" to="." method="_render_scale"]
+[connection signal="item_selected" from="TabContainer/Nastavení/Options/AntiAliasing" to="." method="_anti_aliasing"]
+[connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

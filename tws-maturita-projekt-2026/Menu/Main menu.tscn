@@ -302,6 +302,15 @@ script = ExtResource("3_xuoke")
 [node name="Settings" parent="." unique_id=580065717 instance=ExtResource("4_0uh4n")]
 visible = false
 layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 212.0
+offset_top = 0.0
+offset_right = 212.0
+offset_bottom = 0.0
+grow_horizontal = 0
 
 [node name="ButtonDebug" type="Button" parent="." unique_id=1532246261]
 layout_mode = 1
@@ -333,9 +342,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -187.0
+offset_left = -77.0
 offset_top = -196.0
-offset_right = 293.0
+offset_right = 403.0
 offset_bottom = 196.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -516,18 +525,17 @@ visible = false
 layout_mode = 1
 
 [node name="Credits" type="Panel" parent="." unique_id=353508816]
-visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -343.0
-offset_top = -217.0
-offset_right = 403.0
-offset_bottom = 253.0
-grow_horizontal = 2
+offset_left = -56.0
+offset_top = -235.0
+offset_right = 452.0
+offset_bottom = 235.0
+grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0uh4n")
 
@@ -545,17 +553,17 @@ vertical_alignment = 1
 
 [node name="ButtonBack" type="Button" parent="Credits" unique_id=181172301]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -132.0
-offset_top = 163.0
+offset_top = -70.0
 offset_right = 132.0
-offset_bottom = 228.0
+offset_bottom = -10.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
