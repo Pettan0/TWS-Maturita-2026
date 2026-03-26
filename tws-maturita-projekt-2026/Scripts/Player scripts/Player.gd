@@ -75,298 +75,298 @@ var can_start_stimer = true
 
 
 func _ready():
-    load_data()
-    long_sword.position = Vector3(0, -0.414, -0.621)
-    fov_animation.speed_scale = 3
-    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-    headbob.play("Headbob")
-    _weapon_out("unarmed")
-    transition.visible = true
-    transition_anim.play("Fade_out")
-    await  get_tree().create_timer(1.0).timeout
-    transition.visible = false 
-    hp_bar.max_value = player_data.max_hp
-    hp_bar.value = player_data.hp
-    hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
-    stamina.value = stamina.max_value
+	load_data()
+	long_sword.position = Vector3(0, -0.414, -0.621)
+	fov_animation.speed_scale = 3
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	headbob.play("Headbob")
+	_weapon_out("unarmed")
+	transition.visible = true
+	transition_anim.play("Fade_out")
+	await  get_tree().create_timer(1.0).timeout
+	transition.visible = false 
+	hp_bar.max_value = player_data.max_hp
+	hp_bar.value = player_data.hp
+	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
+	stamina.value = stamina.max_value
 
 func load_data():
-    if not DirAccess.dir_exists_absolute(save_file_path):
-        DirAccess.make_dir_recursive_absolute(save_file_path)
+	if not DirAccess.dir_exists_absolute(save_file_path):
+		DirAccess.make_dir_recursive_absolute(save_file_path)
 
-    if FileAccess.file_exists(save_file_path + save_file_name):
-        player_data = ResourceLoader.load(save_file_path + save_file_name)
+	if FileAccess.file_exists(save_file_path + save_file_name):
+		player_data = ResourceLoader.load(save_file_path + save_file_name)
 
-    if player_data == null:
-        player_data = PlayerData.new()
-        save_data()
+	if player_data == null:
+		player_data = PlayerData.new()
+		save_data()
 
 func save_data():
-    ResourceSaver.save(player_data, save_file_path + save_file_name)
+	ResourceSaver.save(player_data, save_file_path + save_file_name)
 func _process(delta: float) -> void:
-    hp_bar.value = player_data.hp
-    hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
-    if !can_s_regen and stamina.value != 100 or stamina.value == 0:
-        can_start_stimer = true
-        if can_start_stimer:
-            stimer += delta
-            if stimer >= stime_to_wait:
-                can_s_regen = true
-                can_start_stimer = false
-                stimer = 0
-    if stamina.value == 100:
-        can_s_regen = false
-    if can_s_regen:
-        stamina.value += stamina_regen
-        can_start_stimer = true
-        stimer = 0
+	hp_bar.value = player_data.hp
+	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
+	if !can_s_regen and stamina.value != 100 or stamina.value == 0:
+		can_start_stimer = true
+		if can_start_stimer:
+			stimer += delta
+			if stimer >= stime_to_wait:
+				can_s_regen = true
+				can_start_stimer = false
+				stimer = 0
+	if stamina.value == 100:
+		can_s_regen = false
+	if can_s_regen:
+		stamina.value += stamina_regen
+		can_start_stimer = true
+		stimer = 0
 
 func _pauseMenu():
-    if paused:
-        pause_menu.hide()
-        Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-    else:
-        pause_menu.show()
-        settings_menu.hide()
-        Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-    paused = !paused
+	if paused:
+		pause_menu.hide()
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else:
+		pause_menu.show()
+		settings_menu.hide()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	paused = !paused
 
 func _skill_tree():
-    if paused:
-        skill_tree.hide()
-        Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-    else:
-        skill_tree.show()
-        Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-    paused = !paused
+	if paused:
+		skill_tree.hide()
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else:
+		skill_tree.show()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	paused = !paused
 func _play_attack_sound():
-    attack.stream = load("res://Assets/Sounds/SFX/Player/Attack"+str(randi_range(1,3))+".wav")
-    attack.play()
+	attack.stream = load("res://Assets/Sounds/SFX/Player/Attack"+str(randi_range(1,3))+".wav")
+	attack.play()
 func _play_damage_sound():
-    damaga_taken.stream = load("res://Assets/Sounds/SFX/Player/DamageTaken"+str(randi_range(1,4))+".wav")
-    damaga_taken.play()
+	damaga_taken.stream = load("res://Assets/Sounds/SFX/Player/DamageTaken"+str(randi_range(1,4))+".wav")
+	damaga_taken.play()
 func _play_footstep_sound():
-    footstep.stream = load("res://Assets/Sounds/SFX/Player/Footstep"+str(randi_range(1,3))+".wav")
-    footstep.pitch_scale = randf_range(.8, 1.2)
-    footstep.play()
+	footstep.stream = load("res://Assets/Sounds/SFX/Player/Footstep"+str(randi_range(1,3))+".wav")
+	footstep.pitch_scale = randf_range(.8, 1.2)
+	footstep.play()
 func _play_hit_sound():
-    hit.stream = load("res://Assets/Sounds/SFX/Player/Hit"+str(randi_range(1,5))+".wav")
-    hit.pitch_scale = randf_range(.8, 1.2)
-    hit.play()
+	hit.stream = load("res://Assets/Sounds/SFX/Player/Hit"+str(randi_range(1,5))+".wav")
+	hit.pitch_scale = randf_range(.8, 1.2)
+	hit.play()
 func _play_swing_sound():
-    sword_swing.stream = load("res://Assets/Sounds/SFX/Player/SwordSwing"+str(randi_range(1,5))+".wav")
-    sword_swing.play()
+	sword_swing.stream = load("res://Assets/Sounds/SFX/Player/SwordSwing"+str(randi_range(1,5))+".wav")
+	sword_swing.play()
 
 func _weapon_out(type:String):
-    unarmed.hide()
-    dagger.hide()
-    short_sword.hide()
-    mace.hide()
-    long_sword.hide()
-    pole_hammer.hide()
-    match type:
-        "unarmed":
-            unarmed.show()
-        "dagger":
-            dagger.show()
-        "shortSword":
-            short_sword.show()
-        "mace":
-            mace.show()
-        "longSword":
-            long_sword.show()
-        "poleHammer":
-            pole_hammer.show()
+	unarmed.hide()
+	dagger.hide()
+	short_sword.hide()
+	mace.hide()
+	long_sword.hide()
+	pole_hammer.hide()
+	match type:
+		"unarmed":
+			unarmed.show()
+		"dagger":
+			dagger.show()
+		"shortSword":
+			short_sword.show()
+		"mace":
+			mace.show()
+		"longSword":
+			long_sword.show()
+		"poleHammer":
+			pole_hammer.show()
 func _unhandled_input(event: InputEvent) -> void:
-    if !paused:
-        if Input.is_action_just_pressed("wp1"):
-            _weapon_out("unarmed")
-            current_weapon = "unarmed"
-        if Input.is_action_just_pressed("wp2"):
-            if player_data.u_dagger:
-                _weapon_out("dagger")
-                current_weapon = "dagger"
-            else:
-                popup.show_with("lockedWeapon")
-        if Input.is_action_just_pressed("wp3"):
-            if player_data.u_short_swort:
-                _weapon_out("shortSword")
-                current_weapon = "shortSword"
-            else:
-                popup.show_with("lockedWeapon")
-        if Input.is_action_just_pressed("wp4"):
-            if player_data.u_mace:
-                _weapon_out("mace")
-                current_weapon = "mace"
-            else:
-                popup.show_with("lockedWeapon")
-        if Input.is_action_just_pressed("wp5"):
-            if player_data.u_long_sword:
-                _weapon_out("longSword")
-                current_weapon = "longSword"
-            else:
-                popup.show_with("lockedWeapon")
-        if Input.is_action_just_pressed("wp6"):
-            if player_data.u_pole_hammer:
-                _weapon_out("poleHammer")
-                current_weapon = "poleHammer"
-        if Input.is_action_just_pressed("attack"):
-            if !attacking and stamina.value > 10:
-                attacking = true
-                stamina.value -= 10
-                can_s_regen = false
-                stimer = 0
-                match current_weapon:
-                    "unarmed":
-                        unarmed_animations.play("Attack")
-                        await  get_tree().create_timer(1.0).timeout
-                    "dagger":
-                        dagger_animations.play("Attack")
-                        await  get_tree().create_timer(1.0).timeout
-                    "shortSword":
-                        short_sword_animations.play("Attack")
-                        await  get_tree().create_timer(1.75).timeout
-                    "mace":
-                        mace_animations.play("Attack")
-                        await  get_tree().create_timer(1.4).timeout
-                    "longSword":
-                        long_sword_animations.play("Attack")
-                        await  get_tree().create_timer(1.5).timeout
-                    "poleHammer":
-                        pole_hammer_animations.play("Attack")
-                        await  get_tree().create_timer(2.2).timeout
-                attacking = false
-        if Input.is_action_just_pressed("block"):
-            if !blocking and !attacking:
-                blocking = true
-                match current_weapon:
-                    "unarmed":
-                        unarmed_animations.play("Block")
-                    "dagger":
-                        dagger_animations.play("Block")
-                    "shortSword":
-                        short_sword_animations.play("Block")
-                    "mace":
-                        mace_animations.play("Block")
-                    "longSword":
-                        long_sword_animations.play("Block")
-                    "poleHammer":
-                        pole_hammer_animations.play("Block")
-                await  get_tree().create_timer(1.5).timeout
-                blocking = false
-        if Input.is_action_just_pressed("skillTree"):
-            _skill_tree()
-        if Input.is_action_just_pressed("pause"):
-            _pauseMenu()
-        if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-            if event is InputEventMouseMotion:
-                rotate_y(-event.relative.x * 0.002)
-                head.rotate_x(-event.relative.y * 0.002)
-                head.rotation.x = clamp(head.rotation.x, deg_to_rad(-60), deg_to_rad(60))
-    else:
-        if Input.is_action_just_pressed("pause"):
-            if pause_menu.visible:
-                pause_menu.hide()
-            elif skill_tree.visible:
-                skill_tree.hide()
-            Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-            paused = !paused
-    if Input.is_action_just_pressed("f1"):
-        if hp_bar.visible and stamina.visible:
-            hp_bar.hide()
-            stamina.hide()
-        else:
-            hp_bar.show()
-            stamina.show()
+	if !paused:
+		if Input.is_action_just_pressed("wp1"):
+			_weapon_out("unarmed")
+			current_weapon = "unarmed"
+		if Input.is_action_just_pressed("wp2"):
+			if player_data.u_dagger:
+				_weapon_out("dagger")
+				current_weapon = "dagger"
+			else:
+				popup.show_with("lockedWeapon")
+		if Input.is_action_just_pressed("wp3"):
+			if player_data.u_short_swort:
+				_weapon_out("shortSword")
+				current_weapon = "shortSword"
+			else:
+				popup.show_with("lockedWeapon")
+		if Input.is_action_just_pressed("wp4"):
+			if player_data.u_mace:
+				_weapon_out("mace")
+				current_weapon = "mace"
+			else:
+				popup.show_with("lockedWeapon")
+		if Input.is_action_just_pressed("wp5"):
+			if player_data.u_long_sword:
+				_weapon_out("longSword")
+				current_weapon = "longSword"
+			else:
+				popup.show_with("lockedWeapon")
+		if Input.is_action_just_pressed("wp6"):
+			if player_data.u_pole_hammer:
+				_weapon_out("poleHammer")
+				current_weapon = "poleHammer"
+		if Input.is_action_just_pressed("attack"):
+			if !attacking and stamina.value > 10:
+				attacking = true
+				stamina.value -= 10
+				can_s_regen = false
+				stimer = 0
+				match current_weapon:
+					"unarmed":
+						unarmed_animations.play("Attack")
+						await  get_tree().create_timer(1.0).timeout
+					"dagger":
+						dagger_animations.play("Attack")
+						await  get_tree().create_timer(1.0).timeout
+					"shortSword":
+						short_sword_animations.play("Attack")
+						await  get_tree().create_timer(1.75).timeout
+					"mace":
+						mace_animations.play("Attack")
+						await  get_tree().create_timer(1.4).timeout
+					"longSword":
+						long_sword_animations.play("Attack")
+						await  get_tree().create_timer(1.5).timeout
+					"poleHammer":
+						pole_hammer_animations.play("Attack")
+						await  get_tree().create_timer(2.2).timeout
+				attacking = false
+		if Input.is_action_just_pressed("block"):
+			if !blocking and !attacking:
+				blocking = true
+				match current_weapon:
+					"unarmed":
+						unarmed_animations.play("Block")
+					"dagger":
+						dagger_animations.play("Block")
+					"shortSword":
+						short_sword_animations.play("Block")
+					"mace":
+						mace_animations.play("Block")
+					"longSword":
+						long_sword_animations.play("Block")
+					"poleHammer":
+						pole_hammer_animations.play("Block")
+				await  get_tree().create_timer(1.5).timeout
+				blocking = false
+		if Input.is_action_just_pressed("skillTree"):
+			_skill_tree()
+		if Input.is_action_just_pressed("pause"):
+			_pauseMenu()
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			if event is InputEventMouseMotion:
+				rotate_y(-event.relative.x * 0.002)
+				head.rotate_x(-event.relative.y * 0.002)
+				head.rotation.x = clamp(head.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+	else:
+		if Input.is_action_just_pressed("pause"):
+			if pause_menu.visible:
+				pause_menu.hide()
+			elif skill_tree.visible:
+				skill_tree.hide()
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			paused = !paused
+	if Input.is_action_just_pressed("f1"):
+		if hp_bar.visible and stamina.visible:
+			hp_bar.hide()
+			stamina.hide()
+		else:
+			hp_bar.show()
+			stamina.show()
 func _hit(damage : float):
-    if !blocking:
-        _play_damage_sound()
-        player_data.hp -= damage
-        save_data()
-        if player_data.hp <= 0:
-            pass
-    else:
-        _play_hit_sound()
+	if !blocking:
+		_play_damage_sound()
+		player_data.hp -= damage
+		save_data()
+		if player_data.hp <= 0:
+			pass
+	else:
+		_play_hit_sound()
 
 func _physics_process(delta: float) -> void:
-    if not is_on_floor():
-        velocity += get_gravity() * delta
-    if !paused:
-        if Input.is_action_just_pressed("jump") and is_on_floor() and stamina.value > 15:
-            stamina.value -= 15.0
-            can_s_regen = false
-            stimer = 0
-            velocity.y = jump_velocity
-            jump.play()
-    
-        var input_dir := Input.get_vector("a", "d", "w", "s")
-        var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-        if direction:
-            if Input.is_action_pressed("sprint") and stamina.value > 0:
-                stamina.value -= 0.5
-                can_s_regen = false
-                stimer = 0
-                if !attacking and !blocking:
-                    match current_weapon:
-                        "unarmed":
-                            unarmed_animations.play("Run")
-                        "dagger":
-                            dagger_animations.play("Run")
-                        "shortSword":
-                            short_sword_animations.play("Run")
-                        "mace":
-                            mace_animations.play("Run")
-                        "longSword":
-                            long_sword_animations.play("Run")
-                        "poleHammer":
-                            pole_hammer_animations.play("Run")
-                if camera.fov == 75:
-                    fov_animation.play("FovOut")
-                if headbob.speed_scale != 3.0:
-                    headbob.speed_scale = 3.0
-                velocity.x = direction.x * 1.2 * speed
-                velocity.z = direction.z * 1.2 * speed
-            else: 
-                if !attacking and !blocking:
-                    match current_weapon:
-                        "unarmed":
-                            unarmed_animations.play("Idle")
-                        "dagger":
-                            dagger_animations.play("Idle")
-                        "shortSword":
-                            short_sword_animations.play("Idle")
-                        "mace":
-                            mace_animations.play("Idle")
-                        "longSword":
-                            long_sword_animations.play("Idle")
-                        "poleHammer":
-                            pole_hammer_animations.play("Idle")
-                if camera.fov == 85: 
-                    fov_animation.play("FovIn")
-                if headbob.speed_scale != 1.5:
-                    headbob.speed_scale = 1.5
-                velocity.x = direction.x * speed
-                velocity.z = direction.z * speed
-            
-        else:
-            if !attacking and !blocking:
-                match current_weapon:
-                    "unarmed":
-                        unarmed_animations.play("Idle")
-                    "dagger":
-                        dagger_animations.play("Idle")
-                    "shortSword":
-                            short_sword_animations.play("Idle")
-                    "mace":
-                        mace_animations.play("Idle")
-                    "longSword":
-                        long_sword_animations.play("Idle")
-                    "poleHammer":
-                            pole_hammer_animations.play("Idle")
-            if camera.fov == 85: 
-                fov_animation.play("FovIn")
-            if headbob.speed_scale != 0.0:
-                headbob.speed_scale = 0.0
-            velocity.x = move_toward(velocity.x, 0, speed)
-            velocity.z = move_toward(velocity.z, 0, speed)
-    move_and_slide()
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	if !paused:
+		if Input.is_action_just_pressed("jump") and is_on_floor() and stamina.value > 15:
+			stamina.value -= 15.0
+			can_s_regen = false
+			stimer = 0
+			velocity.y = jump_velocity
+			jump.play()
+	
+		var input_dir := Input.get_vector("a", "d", "w", "s")
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			if Input.is_action_pressed("sprint") and stamina.value > 0:
+				stamina.value -= 0.5
+				can_s_regen = false
+				stimer = 0
+				if !attacking and !blocking:
+					match current_weapon:
+						"unarmed":
+							unarmed_animations.play("Run")
+						"dagger":
+							dagger_animations.play("Run")
+						"shortSword":
+							short_sword_animations.play("Run")
+						"mace":
+							mace_animations.play("Run")
+						"longSword":
+							long_sword_animations.play("Run")
+						"poleHammer":
+							pole_hammer_animations.play("Run")
+				if camera.fov == 75:
+					fov_animation.play("FovOut")
+				if headbob.speed_scale != 3.0:
+					headbob.speed_scale = 3.0
+				velocity.x = direction.x * 1.2 * speed
+				velocity.z = direction.z * 1.2 * speed
+			else: 
+				if !attacking and !blocking:
+					match current_weapon:
+						"unarmed":
+							unarmed_animations.play("Idle")
+						"dagger":
+							dagger_animations.play("Idle")
+						"shortSword":
+							short_sword_animations.play("Idle")
+						"mace":
+							mace_animations.play("Idle")
+						"longSword":
+							long_sword_animations.play("Idle")
+						"poleHammer":
+							pole_hammer_animations.play("Idle")
+				if camera.fov == 85: 
+					fov_animation.play("FovIn")
+				if headbob.speed_scale != 1.5:
+					headbob.speed_scale = 1.5
+				velocity.x = direction.x * speed
+				velocity.z = direction.z * speed
+			
+		else:
+			if !attacking and !blocking:
+				match current_weapon:
+					"unarmed":
+						unarmed_animations.play("Idle")
+					"dagger":
+						dagger_animations.play("Idle")
+					"shortSword":
+							short_sword_animations.play("Idle")
+					"mace":
+						mace_animations.play("Idle")
+					"longSword":
+						long_sword_animations.play("Idle")
+					"poleHammer":
+							pole_hammer_animations.play("Idle")
+			if camera.fov == 85: 
+				fov_animation.play("FovIn")
+			if headbob.speed_scale != 0.0:
+				headbob.speed_scale = 0.0
+			velocity.x = move_toward(velocity.x, 0, speed)
+			velocity.z = move_toward(velocity.z, 0, speed)
+	move_and_slide()

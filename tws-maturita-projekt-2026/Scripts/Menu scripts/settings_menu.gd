@@ -2,7 +2,7 @@ extends Node
 
 @onready var menu:= $".."
 
-@onready var master: HSlider = $TabContainer/Nastavení/Options/MasterVolume
+@onready var master: HSlider = $"TabContainer/Nastavení/Options/MasterVolume2"
 @onready var music: HSlider = $TabContainer/Nastavení/Options/Music
 @onready var sfx: HSlider = $TabContainer/Nastavení/Options/SFX
 @onready var dub: HSlider = $TabContainer/Nastavení/Options/Dub
@@ -54,6 +54,7 @@ func save_data():
 	ResourceSaver.save(settingsData, save_file_path + save_file_name)
 
 func _master_volume(value: float):
+	print("MASTER CHANGED:", value)
 	settingsData.master_volume = value
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(settingsData.master_volume))
 func _music_volume(value: float):
@@ -64,7 +65,7 @@ func _sfx_volume(value: float):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(settingsData.sfx_volume))
 func _dub_volume(value: float):
 	settingsData.dub_volume = value
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Dub"), linear_to_db(settingsData.sfx_volume))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Dub"), linear_to_db(settingsData.dub_volume))
 func _windowed_mode(index: int):
 	settingsData.windowed_mode_id = index
 	match index:

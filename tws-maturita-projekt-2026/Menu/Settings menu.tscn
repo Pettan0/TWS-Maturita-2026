@@ -128,7 +128,7 @@ theme_override_font_sizes/font_size = 30
 text = "Audio"
 horizontal_alignment = 1
 
-[node name="MasterVolume" type="HSlider" parent="TabContainer/Nastavení/Options" unique_id=1953373675]
+[node name="MasterVolume" type="HSlider" parent="TabContainer/Nastavení/Options" unique_id=920213799]
 layout_mode = 1
 offset_left = 17.3219
 offset_top = 151.5
@@ -548,10 +548,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_tfpea")
 text = "Zpět"
 script = ExtResource("2_paf8r")
 
-[connection signal="changed" from="TabContainer/Nastavení/Options/MasterVolume" to="." method="_master_volume"]
-[connection signal="changed" from="TabContainer/Nastavení/Options/Music" to="." method="_music_volume"]
-[connection signal="changed" from="TabContainer/Nastavení/Options/SFX" to="." method="_sfx_volume"]
-[connection signal="changed" from="TabContainer/Nastavení/Options/Dub" to="." method="_dub_volume"]
+[connection signal="value_changed" from="TabContainer/Nastavení/Options/MasterVolume" to="." method="_master_volume"]
+[connection signal="value_changed" from="TabContainer/Nastavení/Options/Music" to="." method="_music_volume"]
+[connection signal="value_changed" from="TabContainer/Nastavení/Options/SFX" to="." method="_sfx_volume"]
+[connection signal="value_changed" from="TabContainer/Nastavení/Options/Dub" to="." method="_dub_volume"]
 [connection signal="item_selected" from="TabContainer/Nastavení/Options/WindowedMode" to="." method="_windowed_mode"]
 [connection signal="item_selected" from="TabContainer/Nastavení/Options/RenderScale" to="." method="_render_scale"]
 [connection signal="item_selected" from="TabContainer/Nastavení/Options/AntiAliasing" to="." method="_anti_aliasing"]
