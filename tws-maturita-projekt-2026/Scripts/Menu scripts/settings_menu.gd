@@ -37,7 +37,7 @@ func load_data():
 		save_data()
 	else:
 		_windowed_mode(settingsData.windowed_mode_id)
-		_aa(settingsData.aa_id)
+		_anti_aliasing(settingsData.aa_id)
 	
 	master.value = settingsData.master_volume
 	music.value = settingsData.music_volume
@@ -56,20 +56,15 @@ func save_data():
 func _master_volume(value: float):
 	settingsData.master_volume = value
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(settingsData.master_volume))
-
 func _music_volume(value: float):
 	settingsData.music_volume = value
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(settingsData.music_volume))
-
 func _sfx_volume(value: float):
 	settingsData.sfx_volume = value
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear_to_db(settingsData.sfx_volume))
-
 func _dub_volume(value: float):
 	settingsData.dub_volume = value
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Dub"), linear_to_db(settingsData.sfx_volume))
-
-
 func _windowed_mode(index: int):
 	settingsData.windowed_mode_id = index
 	match index:
@@ -92,7 +87,10 @@ func _render_scale(index: int):
 		3:
 			get_tree().root.scaling_3d_scale = 0.25
 
-func _aa(index: int):
+func _on_button_back_pressed() -> void:
+	save_data()
+	$".".hide()
+func _anti_aliasing(index: int) -> void:
 	settingsData.aa_id = index
 	match index:
 		0:
@@ -115,11 +113,3 @@ func _aa(index: int):
 			get_viewport().msaa_3d = Viewport.MSAA_4X
 			get_viewport().use_taa = false
 			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
-
-func _on_button_back_pressed() -> void:
-	save_data()
-	$".".hide()
-
-
-func _anti_aliasing(index: int) -> void:
-	pass # Replace with function body.

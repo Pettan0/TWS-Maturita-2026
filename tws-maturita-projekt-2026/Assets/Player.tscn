@@ -9,8 +9,10 @@
 [ext_resource type="Script" uid="uid://bel8q1h3pllrw" path="res://Scripts/Menu scripts/interact.gd" id="5_yengi"]
 [ext_resource type="PackedScene" uid="uid://biskonugwqlv5" path="res://Assets/Modely/Player/shortsword.tscn" id="6_2syo8"]
 [ext_resource type="PackedScene" uid="uid://bu0ikpag18fi2" path="res://Assets/Modely/Player/dagger.tscn" id="6_05608"]
+[ext_resource type="Script" uid="uid://c84lcydaje2do" path="res://Scripts/Menu scripts/popup.gd" id="6_j6nj3"]
 [ext_resource type="PackedScene" uid="uid://wwa5rmnw87ac" path="res://Assets/Modely/Player/longsword.tscn" id="7_05608"]
 [ext_resource type="AudioStream" uid="uid://camgera07b6x3" path="res://Assets/Sounds/SFX/Player/Attack1.wav" id="10_uqnxr"]
+[ext_resource type="PackedScene" uid="uid://ijvw7h6weq43" path="res://Assets/Modely/Player/pole_hammer.tscn" id="11_awmxi"]
 [ext_resource type="AudioStream" uid="uid://c85kk8phg0pmy" path="res://Assets/Sounds/SFX/Player/Footstep1.wav" id="11_ed6nx"]
 [ext_resource type="PackedScene" uid="uid://biycn7hdoemmx" path="res://Menu/transition.tscn" id="11_y0rfj"]
 [ext_resource type="AudioStream" uid="uid://b5re4704c653c" path="res://Assets/Sounds/SFX/Player/DamageTaken1.wav" id="12_yengi"]
@@ -242,6 +244,26 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_uqnxr")
 value = 100.0
 show_percentage = false
 
+[node name="Popup" type="Label" parent="Head/Camera3D" unique_id=1791822652]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -280.25
+offset_top = -127.0
+offset_right = 280.25
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ed6nx")
+theme_override_font_sizes/font_size = 25
+text = "Zmačkní ( E ) pro (interakce)"
+horizontal_alignment = 1
+script = ExtResource("6_j6nj3")
+
 [node name="Headbob" type="AnimationPlayer" parent="Head" unique_id=1162221473]
 libraries/ = SubResource("AnimationLibrary_41hay")
 
@@ -273,9 +295,16 @@ damage = 10.0
 weapon_type = "mace"
 
 [node name="longsword" parent="Head" unique_id=1615498181 instance=ExtResource("7_05608")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+transform = Transform3D(0.29999998, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 0, 0, 0)
+visible = false
 damage = 15.0
 weapon_type = "longSword"
+
+[node name="poleHammer" parent="Head" unique_id=2058561798 instance=ExtResource("11_awmxi")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.195, -0.36)
+visible = false
+damage = 20.0
+weapon_type = "poleHammer"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=365385100]
 visible = false

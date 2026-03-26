@@ -299,19 +299,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
 text = "Vypnout hru"
 script = ExtResource("3_xuoke")
 
-[node name="Settings" parent="." unique_id=580065717 instance=ExtResource("4_0uh4n")]
-visible = false
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 212.0
-offset_top = 0.0
-offset_right = 212.0
-offset_bottom = 0.0
-grow_horizontal = 0
-
 [node name="ButtonDebug" type="Button" parent="." unique_id=1532246261]
 layout_mode = 1
 anchors_preset = 1
@@ -333,6 +320,19 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
 text = "Debug"
+
+[node name="Settings" parent="." unique_id=580065717 instance=ExtResource("4_0uh4n")]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 212.0
+offset_top = 0.0
+offset_right = 212.0
+offset_bottom = 0.0
+grow_horizontal = 0
 
 [node name="Debug" type="Panel" parent="." unique_id=982245950]
 visible = false
@@ -520,11 +520,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_igkek")
 text = "Zpět
 "
 
-[node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("8_804u5")]
-visible = false
-layout_mode = 1
-
 [node name="Credits" type="Panel" parent="." unique_id=353508816]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -695,6 +692,10 @@ Oňa Karlíček
 Milan Vodička
 Tomáš Balaš"
 vertical_alignment = 1
+
+[node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("8_804u5")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="Buttons/ButtonNewStart" to="." method="_on_button_new_start_pressed"]
 [connection signal="pressed" from="Buttons/ButtonContinue" to="." method="_on_button_continue_pressed"]

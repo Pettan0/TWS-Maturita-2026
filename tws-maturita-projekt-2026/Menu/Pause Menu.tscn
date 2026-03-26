@@ -156,8 +156,17 @@ alignment = 0
 script = ExtResource("2_f4htx")
 
 [node name="Settings" parent="." unique_id=652143609 instance=ExtResource("3_x4nas")]
-visible = false
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = -10.907074
+offset_right = 0.0
+offset_bottom = -10.907074
+scale = Vector2(0.9, 0.9)
 
 [connection signal="pressed" from="ButtonUnpuase" to="." method="_on_unpuase_pressed"]
 [connection signal="pressed" from="ButtonSettings" to="." method="_settings_show"]

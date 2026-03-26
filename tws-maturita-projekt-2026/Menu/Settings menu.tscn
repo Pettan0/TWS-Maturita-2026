@@ -59,6 +59,7 @@ shadow_offset = Vector2(3, 3)
 
 [node name="Control" type="Control" unique_id=689441041]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 576.0
@@ -82,10 +83,9 @@ offset_right = 313.0
 offset_bottom = 286.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 
 [node name="Nastavení" type="Control" parent="TabContainer" unique_id=894766518]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -332,6 +332,7 @@ popup/item_4/text = "MSAA 4X"
 popup/item_4/id = 4
 
 [node name="Ovládání" type="Control" parent="TabContainer" unique_id=1882011872]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

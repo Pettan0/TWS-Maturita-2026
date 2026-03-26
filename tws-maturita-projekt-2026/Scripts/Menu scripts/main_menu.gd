@@ -27,11 +27,9 @@ func load_data():
 		button_new_start.hide()
 
 	if player_data == null:
-		player_data = PlayerData.new()
 		button_continue.hide()
 		button_restart.hide()
 		button_new_start.show()
-		save_data()
 func save_data():
 	ResourceSaver.save(player_data, save_file_path + save_file_name)
 
@@ -46,27 +44,30 @@ func _ready() -> void:
 	$Transition.visible = false
 
 func _on_button_continue_pressed() -> void:
-	$Transition.visible = true
-	$Transition/AnimationPlayer.play("Fade_in")
-	await  get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
+	if !settings.visible and !credits.visible and !debug.visible:
+		$Transition.visible = true
+		$Transition/AnimationPlayer.play("Fade_in")
+		await  get_tree().create_timer(1.0).timeout
+		get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
 
 func _on_button_restart_pressed() -> void:
-	player_data = PlayerData.new()
-	save_data()
-	$Transition.visible = true
-	$Transition/AnimationPlayer.play("Fade_in")
-	await  get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
+	if !settings.visible and !credits.visible and !debug.visible:
+		player_data = PlayerData.new()
+		save_data()
+		$Transition.visible = true
+		$Transition/AnimationPlayer.play("Fade_in")
+		await  get_tree().create_timer(1.0).timeout
+		get_tree().change_scene_to_file("res://Levels/Level01.scn")
 
 
 func _on_button_new_start_pressed() -> void:
-	player_data = PlayerData.new()
-	save_data()
-	$Transition.visible = true
-	$Transition/AnimationPlayer.play("Fade_in")
-	await  get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://Levels/Level01.scn")
+	if !settings.visible and !credits.visible and !debug.visible:
+		player_data = PlayerData.new()
+		save_data()
+		$Transition.visible = true
+		$Transition/AnimationPlayer.play("Fade_in")
+		await  get_tree().create_timer(1.0).timeout
+		get_tree().change_scene_to_file("res://Levels/Level01.scn")
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()

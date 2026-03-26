@@ -8,14 +8,15 @@ class_name PlayerData
 @export var starter_point : int = 1
 
 #player hp stats
-@export var max_hp : int = 30
-@export var hp : int = max_hp
+@export var max_hp : float = 30
+@export var hp : float = max_hp
 
 #weapons
 @export var u_dagger : bool = true
 @export var u_short_swort : bool = true
 @export var u_mace : bool = true
 @export var u_long_sword : bool = true
+@export var u_pole_hammer : bool = true
 
 func update_level_stats(lvl:int, point:int):
 	level = lvl
