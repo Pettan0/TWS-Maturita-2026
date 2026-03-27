@@ -10,15 +10,15 @@ extends CharacterBody3D
 
 var state_machine
 
-const max_hp = 10.0
+const max_hp = 150.0
 var HP = max_hp
 var ATTACK_RANGE = 1.5
-var DMG = 2.0
+var DMG = 15.0
 const SPEED = 1.0
 
 
 func hit (damage_taken:float, weapon_type:String, _dir:Vector3):
-	if weapon_type == "mace":
+	if weapon_type == "mace" or weapon_type == "poleHammer":
 		HP -= damage_taken
 	else:
 		HP -= damage_taken/2

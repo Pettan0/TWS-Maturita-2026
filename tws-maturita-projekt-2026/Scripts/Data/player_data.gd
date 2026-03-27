@@ -8,7 +8,7 @@ class_name PlayerData
 @export var starter_point : int = 1
 
 #player hp stats
-@export var max_hp : float = 30
+@export var max_hp : float = 100
 @export var hp : float = max_hp
 
 #weapons

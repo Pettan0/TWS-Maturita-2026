@@ -35,6 +35,7 @@ func save_data():
 
 func _ready() -> void:
 	load_data()
+	$Credits/ScrollContainer/VBoxContainer/Names7.text = OS.get_environment("USERNAME") + " - za hraní této hry :D"
 	settings.hide()
 	credits.hide()
 	debug.hide()

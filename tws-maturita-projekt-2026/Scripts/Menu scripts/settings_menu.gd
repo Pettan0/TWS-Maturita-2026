@@ -2,7 +2,7 @@ extends Node
 
 @onready var menu:= $".."
 
-@onready var master: HSlider = $"TabContainer/Nastavení/Options/MasterVolume2"
+@onready var master: HSlider = $"TabContainer/Nastavení/Options/MasterVolume"
 @onready var music: HSlider = $TabContainer/Nastavení/Options/Music
 @onready var sfx: HSlider = $TabContainer/Nastavení/Options/SFX
 @onready var dub: HSlider = $TabContainer/Nastavení/Options/Dub

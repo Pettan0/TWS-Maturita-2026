@@ -688,9 +688,23 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 17
 text = "David Chalupka
-Oňa Karlíček
+Ondra Karlíček
 Milan Vodička
 Tomáš Balaš"
+vertical_alignment = 1
+
+[node name="TitleSpecial" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1290675881]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 33
+text = "Speciální poděkování"
+vertical_alignment = 1
+
+[node name="Names7" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=109387888]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 17
+text = "(user) - za hraní této hry :D"
 vertical_alignment = 1
 
 [node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("8_804u5")]

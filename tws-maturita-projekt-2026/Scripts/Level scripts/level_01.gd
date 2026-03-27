@@ -13,7 +13,7 @@ var player_data : PlayerData
 
 func _ready():
 	load_data()
-	print(player_data.starter_position)
+	$Funny/Label.text = "Ahoj\n"+OS.get_environment("USERNAME")+" :)"
 
 
 func load_data():

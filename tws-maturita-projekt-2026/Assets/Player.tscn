@@ -273,37 +273,37 @@ libraries/ = SubResource("AnimationLibrary_41hay")
 [node name="unarmed" parent="Head" unique_id=1134288564 instance=ExtResource("4_j65wn")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.0099466145, -0.29752287, -0.4434041)
 visible = false
-damage = 1.0
+damage = 5.0
 weapon_type = "unarmed"
 
 [node name="dagger" parent="Head" unique_id=1448139071 instance=ExtResource("6_05608")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.0128815025, -0.36826503, -0.5115524)
 visible = false
-damage = 3.0
+damage = 15.0
 weapon_type = "dagger"
 
 [node name="shortsword" parent="Head" unique_id=1452539071 instance=ExtResource("6_2syo8")]
 transform = Transform3D(0.29999998, 0, 0, 0, 0.2986774, -0.028138662, 0, 0.028138662, 0.2986774, 0, -0.25439763, -0.24315926)
 visible = false
-damage = 5.0
+damage = 25.0
 weapon_type = "shortSword"
 
 [node name="mace" parent="Head" unique_id=1898199321 instance=ExtResource("5_y0rfj")]
 transform = Transform3D(0.3, 0, 0, 0, 0.29905248, -0.023824813, 0, 0.023824813, 0.29905248, 0, -0.15602988, -0.5)
 visible = false
-damage = 10.0
+damage = 25.0
 weapon_type = "mace"
 
 [node name="longsword" parent="Head" unique_id=1615498181 instance=ExtResource("7_05608")]
 transform = Transform3D(0.29999998, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 0, 0, 0)
 visible = false
-damage = 15.0
+damage = 50.0
 weapon_type = "longSword"
 
 [node name="poleHammer" parent="Head" unique_id=2058561798 instance=ExtResource("11_awmxi")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.195, -0.36)
 visible = false
-damage = 20.0
+damage = 50.0
 weapon_type = "poleHammer"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=365385100]
