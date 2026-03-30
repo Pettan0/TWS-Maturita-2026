@@ -12,6 +12,7 @@ class_name PlayerData
 @export var hp : float = max_hp
 
 #weapons
+@export var current_weapon : String = "unarmed"
 @export var u_dagger : bool = true
 @export var u_short_swort : bool = false
 @export var u_mace : bool = false

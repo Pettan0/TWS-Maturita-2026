@@ -60,11 +60,11 @@ var speed = 4.4
 var jump_velocity = 3.1
 
 #hp regen?
-var hp_regen = 0.5 #/mil s?
+var hp_regen = 0.5 # HP per second
 var can_hp_regen = false
-var time_to_wait = 5.0
-var timer_to_regen = 0
-var can_start_timer = true
+var rtime_to_wait = 1.0
+var rtimer = 0.0
+var can_start_rtimer = false
 
 #Stamina veci
 var stamina_regen = 0.38 #/mil s?
@@ -77,18 +77,20 @@ var can_start_stimer = true
 func _ready():
 	load_data()
 	long_sword.position = Vector3(0, -0.414, -0.621)
-	fov_animation.speed_scale = 3
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	headbob.play("Headbob")
-	_weapon_out("unarmed")
-	transition.visible = true
-	transition_anim.play("Fade_out")
-	await  get_tree().create_timer(1.0).timeout
-	transition.visible = false 
 	hp_bar.max_value = player_data.max_hp
 	hp_bar.value = player_data.hp
 	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
 	stamina.value = stamina.max_value
+	fov_animation.speed_scale = 3
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	headbob.play("Headbob")
+	_weapon_out(player_data.current_weapon)
+	
+	transition.visible = true
+	transition_anim.play("Fade_out")
+	await  get_tree().create_timer(1.0).timeout
+	transition.visible = false 
+
 
 func load_data():
 	if not DirAccess.dir_exists_absolute(save_file_path):
@@ -106,7 +108,9 @@ func save_data():
 func _process(delta: float) -> void:
 	hp_bar.value = player_data.hp
 	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
-	if !can_s_regen and stamina.value != 100 or stamina.value == 0:
+	
+	#Stamina veci
+	if !can_s_regen and stamina.value != stamina.max_value or stamina.value == 0:
 		can_start_stimer = true
 		if can_start_stimer:
 			stimer += delta
@@ -114,12 +118,28 @@ func _process(delta: float) -> void:
 				can_s_regen = true
 				can_start_stimer = false
 				stimer = 0
-	if stamina.value == 100:
+	if stamina.value == stamina.max_value:
 		can_s_regen = false
 	if can_s_regen:
 		stamina.value += stamina_regen
 		can_start_stimer = true
 		stimer = 0
+	
+	#hp regen
+	if hp_bar.value > 0 and hp_bar.value < hp_bar.max_value:
+		can_start_rtimer =  true
+		if can_start_rtimer:
+			rtimer += delta
+			if rtimer >= rtime_to_wait:
+				can_hp_regen = true
+				can_start_rtimer = false
+				rtimer = 0
+
+	if hp_bar.value == hp_bar.max_value:
+		can_hp_regen = false
+	# Regenerate HP
+	if can_hp_regen:
+		hp_bar.value += hp_regen
 
 func _pauseMenu():
 	if paused:
@@ -146,9 +166,10 @@ func _play_damage_sound():
 	damaga_taken.stream = load("res://Assets/Sounds/SFX/Player/DamageTaken"+str(randi_range(1,4))+".wav")
 	damaga_taken.play()
 func _play_footstep_sound():
-	footstep.stream = load("res://Assets/Sounds/SFX/Player/Footstep"+str(randi_range(1,3))+".wav")
-	footstep.pitch_scale = randf_range(.8, 1.2)
-	footstep.play()
+	if is_on_floor():
+		footstep.stream = load("res://Assets/Sounds/SFX/Player/Footstep"+str(randi_range(1,3))+".wav")
+		footstep.pitch_scale = randf_range(.8, 1.2)
+		footstep.play()
 func _play_hit_sound():
 	hit.stream = load("res://Assets/Sounds/SFX/Player/Hit"+str(randi_range(1,5))+".wav")
 	hit.pitch_scale = randf_range(.8, 1.2)
@@ -167,64 +188,56 @@ func _weapon_out(type:String):
 	match type:
 		"unarmed":
 			unarmed.show()
+			current_weapon = "unarmed"
 		"dagger":
 			if player_data.u_dagger:
 				dagger.show()
+				current_weapon = "dagger"
+				player_data.current_weapon = current_weapon
 			else :
 				popup.show_with("lockedWeapon")
 		"shortSword":
 			if player_data.u_short_swort:
 				short_sword.show()
+				current_weapon = "shortSword"
+				player_data.current_weapon = current_weapon
 			else :
 				popup.show_with("lockedWeapon")
 		"mace":
 			if player_data.u_mace:
 				mace.show()
+				current_weapon = "mace"
+				player_data.current_weapon = current_weapon
 			else :
 				popup.show_with("lockedWeapon")
 		"longSword":
 			if player_data.u_long_sword:
 				long_sword.show()
+				current_weapon = "longSword"
+				player_data.current_weapon = current_weapon
 			else :
 				popup.show_with("lockedWeapon")
 		"poleHammer":
 			if player_data.u_pole_hammer:
 				pole_hammer.show()
+				current_weapon = "poleHammer"
+				player_data.current_weapon = current_weapon
 			else :
 				popup.show_with("lockedWeapon")
 func _unhandled_input(event: InputEvent) -> void:
 	if !paused:
 		if Input.is_action_just_pressed("wp1"):
 			_weapon_out("unarmed")
-			current_weapon = "unarmed"
 		if Input.is_action_just_pressed("wp2"):
-			if player_data.u_dagger:
-				_weapon_out("dagger")
-				current_weapon = "dagger"
-			else:
-				popup.show_with("lockedWeapon")
+			_weapon_out("dagger")
 		if Input.is_action_just_pressed("wp3"):
-			if player_data.u_short_swort:
-				_weapon_out("shortSword")
-				current_weapon = "shortSword"
-			else:
-				popup.show_with("lockedWeapon")
+			_weapon_out("shortSword")
 		if Input.is_action_just_pressed("wp4"):
-			if player_data.u_mace:
-				_weapon_out("mace")
-				current_weapon = "mace"
-			else:
-				popup.show_with("lockedWeapon")
+			_weapon_out("mace")
 		if Input.is_action_just_pressed("wp5"):
-			if player_data.u_long_sword:
-				_weapon_out("longSword")
-				current_weapon = "longSword"
-			else:
-				popup.show_with("lockedWeapon")
+			_weapon_out("longSword")
 		if Input.is_action_just_pressed("wp6"):
-			if player_data.u_pole_hammer:
-				_weapon_out("poleHammer")
-				current_weapon = "poleHammer"
+			_weapon_out("poleHammer")
 		if Input.is_action_just_pressed("attack"):
 			if !attacking and stamina.value > 10:
 				attacking = true
