@@ -1,4 +1,5 @@
 extends CharacterBody3D
+signal died
 
 @onready var player: CharacterBody3D = $"../Player"
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
@@ -6,7 +7,9 @@ extends CharacterBody3D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @export var area : Area3D
 @onready var progress_bar: ProgressBar = $SubViewport/ProgressBar
-@onready var blood_particles: GPUParticles3D = $Impact_Blood/BloodParticles
+@onready var level: Node3D = $".."
+@onready var sfx: AudioStreamPlayer3D = $SFX
+@onready var hit_sfx: AudioStreamPlayer3D = $HitSFX
 
 var state_machine
 
@@ -15,6 +18,8 @@ var HP = max_hp
 var ATTACK_RANGE = 1.5
 var DMG = 15.0
 const SPEED = 1.0
+
+var is_dead = false
 
 
 func hit (damage_taken:float, weapon_type:String, _dir:Vector3):
@@ -48,32 +53,38 @@ func _physics_process(_delta):
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 			animation_tree.set("parameters/conditions/Idle",!_target_in_range())
 		"Death01":
-			$CollisionShape3D.disabled = true
-			await get_tree().create_timer(3.0).timeout
-			self.free()
+			if !is_dead:
+				is_dead = true
+				die(3.0)
 		"Death02":
-			$CollisionShape3D.disabled = true
-			await get_tree().create_timer(4.0).timeout
-			self.free()
+			if !is_dead:
+				is_dead = true
+				die(4.0)
 		"Death03":
-			$CollisionShape3D.disabled = true
-			await get_tree().create_timer(2.0).timeout
-			self.free()
+			if !is_dead:
+				is_dead = true
+				die(2.0)
+
+func die(delay: float):
+	$CollisionShape3D.disabled = true
+	await get_tree().create_timer(delay).timeout
+	died.emit()
+	queue_free()
 
 func play_attack_sound():
-	$SFX.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - attack "+str(randi_range(1,4))+".wav")
-	$SFX.pitch_scale = randf_range(.8, 1.2)
-	$SFX.play()
+	sfx.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - attack "+str(randi_range(1,4))+".wav")
+	sfx.pitch_scale = randf_range(.8, 1.2)
+	sfx.play()
 
 func play_hit_sound():
-	$SFX.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - damaged "+str(randi_range(1,4))+".wav")
-	$SFX.pitch_scale = randf_range(.8, 1.2)
-	$SFX.play()
+	hit_sfx.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - damaged "+str(randi_range(1,4))+".wav")
+	hit_sfx.pitch_scale = randf_range(.8, 1.2)
+	hit_sfx.play()
 
 func play_death_sound():
-	$SFX.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - death "+str(randi_range(1,4))+".wav")
-	$SFX.pitch_scale = randf_range(.8, 1.2)
-	$SFX.play()
+	sfx.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - death "+str(randi_range(1,4))+".wav")
+	sfx.pitch_scale = randf_range(.8, 1.2)
+	sfx.play()
 
 func _hit_player():
 	if _target_in_range():
