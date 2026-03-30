@@ -10,13 +10,17 @@ class_name PlayerData
 #player hp stats
 @export var max_hp : float = 100
 @export var hp : float = max_hp
+#hp regen veci
+@export var u_hp_regen : bool = true
+@export var rtimer_to_wait : float = 10.0
+@export var regen_per_time  : float = 0.5
 
 #weapons
 @export var current_weapon : String = "unarmed"
 @export var u_dagger : bool = true
-@export var u_short_swort : bool = false
-@export var u_mace : bool = false
-@export var u_long_sword : bool = false
+@export var u_short_swort : bool = true
+@export var u_mace : bool = true
+@export var u_long_sword : bool = true
 @export var u_pole_hammer : bool = true
 
 func update_level_stats(lvl:int, point:int):

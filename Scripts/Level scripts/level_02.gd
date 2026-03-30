@@ -73,3 +73,8 @@ func _on_lvl_3_door_body_entered(body: Node3D) -> void:
 func _on_lvl_3_door_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.hide()
+
+
+func _on_locked_door_body_entered(body: Node3D) -> void:
+	if body.name == "Player":
+		popup.show_with("lockedDoor")

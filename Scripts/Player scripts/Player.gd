@@ -60,9 +60,7 @@ var speed = 4.4
 var jump_velocity = 3.1
 
 #hp regen?
-var hp_regen = 0.5 # HP per second
 var can_hp_regen = false
-var rtime_to_wait = 1.0
 var rtimer = 0.0
 var can_start_rtimer = false
 
@@ -126,20 +124,20 @@ func _process(delta: float) -> void:
 		stimer = 0
 	
 	#hp regen
-	if hp_bar.value > 0 and hp_bar.value < hp_bar.max_value:
+	if !can_hp_regen and player_data.hp != player_data.max_hp:
 		can_start_rtimer =  true
 		if can_start_rtimer:
 			rtimer += delta
-			if rtimer >= rtime_to_wait:
+			if rtimer >= player_data.rtimer_to_wait:
 				can_hp_regen = true
 				can_start_rtimer = false
 				rtimer = 0
 
-	if hp_bar.value == hp_bar.max_value:
-		can_hp_regen = false
-	# Regenerate HP
 	if can_hp_regen:
-		hp_bar.value += hp_regen
+		player_data.hp += player_data.regen_per_time
+		can_start_rtimer = true
+		can_hp_regen = false
+		rtimer = 0
 
 func _pauseMenu():
 	if paused:

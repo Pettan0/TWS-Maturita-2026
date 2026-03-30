@@ -7,6 +7,8 @@ func show_with(msg: String):
 			text = "Nevlastníš tuto zbraň."
 		"cantEnter":
 			text = "Nezabil jsi všechny nepřátelé."
+		"lockedDoor":
+			text = "Dveře jsou zamčené."
 	show()
 	await get_tree().create_timer(2.0).timeout
 	hide()
