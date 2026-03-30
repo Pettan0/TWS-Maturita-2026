@@ -169,6 +169,46 @@ offset_bottom = 323.90707
 [node name="SkillTree" parent="Head/Camera3D" unique_id=2029093670 instance=ExtResource("3_j0vyv")]
 visible = false
 
+[node name="Interact" type="Label" parent="Head/Camera3D" unique_id=470933215]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -280.25
+offset_top = -223.0
+offset_right = 280.25
+offset_bottom = -182.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ed6nx")
+theme_override_font_sizes/font_size = 25
+text = "Zmačkní ( E ) pro (interakce)"
+horizontal_alignment = 1
+script = ExtResource("5_yengi")
+
+[node name="Popup" type="Label" parent="Head/Camera3D" unique_id=1791822652]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -328.125
+offset_top = -111.0
+offset_right = 328.125
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ed6nx")
+theme_override_font_sizes/font_size = 25
+text = "ahoj :)"
+horizontal_alignment = 1
+script = ExtResource("6_j6nj3")
+
 [node name="HpBar" type="ProgressBar" parent="Head/Camera3D" unique_id=25985971]
 anchors_preset = 7
 anchor_left = 0.5
@@ -208,26 +248,6 @@ text = "Hp / MaxHp"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Interact" type="Label" parent="Head/Camera3D" unique_id=470933215]
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -280.25
-offset_top = -127.0
-offset_right = 280.25
-offset_bottom = -86.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_ed6nx")
-theme_override_font_sizes/font_size = 25
-text = "Zmačkní ( E ) pro (interakce)"
-horizontal_alignment = 1
-script = ExtResource("5_yengi")
-
 [node name="Stamina" type="ProgressBar" parent="Head/Camera3D" unique_id=1598281620]
 anchors_preset = 7
 anchor_left = 0.5
@@ -243,26 +263,6 @@ grow_vertical = 0
 theme_override_styles/fill = SubResource("StyleBoxFlat_uqnxr")
 value = 100.0
 show_percentage = false
-
-[node name="Popup" type="Label" parent="Head/Camera3D" unique_id=1791822652]
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -280.25
-offset_top = -127.0
-offset_right = 280.25
-offset_bottom = -86.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_ed6nx")
-theme_override_font_sizes/font_size = 25
-text = "Zmačkní ( E ) pro (interakce)"
-horizontal_alignment = 1
-script = ExtResource("6_j6nj3")
 
 [node name="Headbob" type="AnimationPlayer" parent="Head" unique_id=1162221473]
 libraries/ = SubResource("AnimationLibrary_41hay")

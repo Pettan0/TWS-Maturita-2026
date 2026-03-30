@@ -168,15 +168,30 @@ func _weapon_out(type:String):
 		"unarmed":
 			unarmed.show()
 		"dagger":
-			dagger.show()
+			if player_data.u_dagger:
+				dagger.show()
+			else :
+				popup.show_with("lockedWeapon")
 		"shortSword":
-			short_sword.show()
+			if player_data.u_short_swort:
+				short_sword.show()
+			else :
+				popup.show_with("lockedWeapon")
 		"mace":
-			mace.show()
+			if player_data.u_mace:
+				mace.show()
+			else :
+				popup.show_with("lockedWeapon")
 		"longSword":
-			long_sword.show()
+			if player_data.u_long_sword:
+				long_sword.show()
+			else :
+				popup.show_with("lockedWeapon")
 		"poleHammer":
-			pole_hammer.show()
+			if player_data.u_pole_hammer:
+				pole_hammer.show()
+			else :
+				popup.show_with("lockedWeapon")
 func _unhandled_input(event: InputEvent) -> void:
 	if !paused:
 		if Input.is_action_just_pressed("wp1"):

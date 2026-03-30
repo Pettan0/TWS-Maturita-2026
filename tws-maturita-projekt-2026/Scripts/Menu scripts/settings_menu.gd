@@ -47,7 +47,7 @@ func load_data():
 	windowed_mode.select(settingsData.windowed_mode_id)
 	_render_scale(settingsData.render_scale_id)
 	render_scale.select(settingsData.render_scale_id)
-	_render_scale(settingsData.aa_id)
+	_anti_aliasing(settingsData.aa_id)
 	anti_aliasing.select(settingsData.aa_id)
 
 func save_data():

@@ -88,7 +88,7 @@ func _on_credits_pressed() -> void:
 func _on_button_debug_pressed() -> void:
 	if !settings.visible and !credits.visible and !debug.visible:
 		debug.show()
-	else:
+	else: 
 		debug.hide()
 
 func _on_credits_button_pressed() -> void:

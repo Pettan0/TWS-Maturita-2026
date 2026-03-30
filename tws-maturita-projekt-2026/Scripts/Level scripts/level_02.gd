@@ -1,6 +1,7 @@
 extends Node3D
 @onready var interact: Label = $Player/Head/Camera3D/Interact
 @onready var player: CharacterBody3D = $Player
+@onready var popup: Label = $Player/Head/Camera3D/Popup
 
 
 var save_file_path = "user://save/"
@@ -44,8 +45,12 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func _on_exit_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
-		interact.show_with("OpenDoor","")
-		player_data.update_level_stats(1,2)
+		if get_tree().get_nodes_in_group("enemies").size() == 0:
+			interact.show_with("OpenDoor","")
+			player_data.update_level_stats(1,2)
+		else:
+			popup.show_with("cantEnter")
+			
 
 func _on_exit_door_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
@@ -53,8 +58,11 @@ func _on_exit_door_body_exited(body: Node3D) -> void:
 
 func _on_lvl_3_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
-		interact.show_with("OpenDoor","")
-		player_data.update_level_stats(3,1)
+		if get_tree().get_nodes_in_group("enemies").size() == 0:
+			interact.show_with("OpenDoor","")
+			player_data.update_level_stats(3,1)
+		else:
+			popup.show_with("cantEnter")
 
 func _on_lvl_3_door_body_exited(body: Node3D) -> void:
 	if body.name == "Player":

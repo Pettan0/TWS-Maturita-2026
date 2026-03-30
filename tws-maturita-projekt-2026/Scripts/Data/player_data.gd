@@ -13,9 +13,9 @@ class_name PlayerData
 
 #weapons
 @export var u_dagger : bool = true
-@export var u_short_swort : bool = true
-@export var u_mace : bool = true
-@export var u_long_sword : bool = true
+@export var u_short_swort : bool = false
+@export var u_mace : bool = false
+@export var u_long_sword : bool = false
 @export var u_pole_hammer : bool = true
 
 func update_level_stats(lvl:int, point:int):
