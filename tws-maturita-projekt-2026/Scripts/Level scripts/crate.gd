@@ -2,7 +2,7 @@ extends Node3D
 @onready var sfx: AudioStreamPlayer3D = $SFX
 @onready var crate: Node3D = $".."
 
-var hp = 10
+@export var hp : float
 
 func hit(damage, _a, _b):
 	print("hit")

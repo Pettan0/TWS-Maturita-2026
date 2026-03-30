@@ -1,0 +1,305 @@
+[gd_scene format=4 uid="uid://btqemfn0kg4i2"]
+
+[ext_resource type="Script" uid="uid://s87k2qfp0jqw" path="res://Scripts/Player scripts/Player.gd" id="1_kpjcp"]
+[ext_resource type="PackedScene" uid="uid://co4givesqwyy5" path="res://Menu/Pause Menu.tscn" id="2_kne1u"]
+[ext_resource type="PackedScene" uid="uid://djd58goybvr3b" path="res://Menu/Skilltree.tscn" id="3_j0vyv"]
+[ext_resource type="PackedScene" uid="uid://04vpnjjcp1fm" path="res://Assets/Modely/Player/unarmed.tscn" id="4_j65wn"]
+[ext_resource type="PackedScene" uid="uid://bn20wed58gots" path="res://Assets/Modely/Player/mace.tscn" id="5_y0rfj"]
+[ext_resource type="PackedScene" uid="uid://biskonugwqlv5" path="res://Assets/Modely/Player/shortsword.tscn" id="6_2syo8"]
+[ext_resource type="PackedScene" uid="uid://bu0ikpag18fi2" path="res://Assets/Modely/Player/dagger.tscn" id="6_05608"]
+[ext_resource type="PackedScene" uid="uid://wwa5rmnw87ac" path="res://Assets/Modely/Player/longsword.tscn" id="7_05608"]
+[ext_resource type="AudioStream" uid="uid://cldl7utyvsbeg" path="res://Assets/Sounds/SFX/Player/Attack1.wav" id="10_uqnxr"]
+[ext_resource type="AudioStream" uid="uid://dunntq0lbq777" path="res://Assets/Sounds/SFX/Player/Footstep1.wav" id="11_ed6nx"]
+[ext_resource type="PackedScene" uid="uid://biycn7hdoemmx" path="res://Menu/transition.tscn" id="11_y0rfj"]
+[ext_resource type="AudioStream" uid="uid://dorqat83anwqv" path="res://Assets/Sounds/SFX/Player/DamageTaken1.wav" id="12_yengi"]
+[ext_resource type="AudioStream" uid="uid://bf55vtu6qntod" path="res://Assets/Sounds/SFX/Player/Hit1.wav" id="13_awmxi"]
+[ext_resource type="AudioStream" uid="uid://8n6owwp7kne2" path="res://Assets/Sounds/SFX/Player/SwordSwing1.wav" id="14_j6nj3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0rfj"]
+bg_color = Color(1, 0.35732567, 0.29020837, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05608"]
+bg_color = Color(0.35686275, 0.78431374, 0.32941177, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqnxr"]
+bg_color = Color(5.1018596e-06, 0.68008393, 0.77347547, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="Animation" id="Animation_tir5b"]
+resource_name = "FovIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:fov")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [85.0, 75.0]
+}
+
+[sub_resource type="Animation" id="Animation_41hay"]
+resource_name = "FovOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:fov")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [75.0, 85.0]
+}
+
+[sub_resource type="Animation" id="Animation_egxsg"]
+resource_name = "Headbob"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.1, 0, 0), Vector3(0, -0.1, 0), Vector3(0.1, 0, 0), Vector3(0, -0.1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_play_footstep_sound"
+}, {
+"args": [],
+"method": &"_play_footstep_sound"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_oy8aj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.1, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [85.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_41hay"]
+_data = {
+&"FovIn": SubResource("Animation_tir5b"),
+&"FovOut": SubResource("Animation_41hay"),
+&"Headbob": SubResource("Animation_egxsg"),
+&"RESET": SubResource("Animation_oy8aj")
+}
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e80uo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jqnu1"]
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_pvkfu"]
+data = PackedByteArray("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")
+format = 3
+
+[node name="player" type="CharacterBody3D" unique_id=1891402900]
+script = ExtResource("1_kpjcp")
+
+[node name="Head" type="Node3D" parent="." unique_id=622232755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5490103, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=106524551]
+transform = Transform3D(0.9999975, 0.0019280832, 0.0011723057, -0.0019270884, 0.9999978, -0.0008433486, -0.0011739404, 0.00084107165, 0.9999989, -0.1, 0, 0)
+fov = 85.0
+
+[node name="PauseMenu" parent="Head/Camera3D" unique_id=148763623 instance=ExtResource("2_kne1u")]
+visible = false
+offset_left = -575.5
+offset_top = -323.90707
+offset_right = 575.5
+offset_bottom = 323.90707
+
+[node name="SkillTree" parent="Head/Camera3D" unique_id=2029093670 instance=ExtResource("3_j0vyv")]
+visible = false
+
+[node name="HpBar" type="ProgressBar" parent="Head/Camera3D" unique_id=25985971]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -199.0
+offset_top = -71.0
+offset_right = 199.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1, 0.92)
+theme_override_styles/background = SubResource("StyleBoxFlat_y0rfj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_05608")
+max_value = 30.0
+value = 30.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Head/Camera3D/HpBar" unique_id=489184461]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.5
+offset_top = -15.0
+offset_right = 191.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hp / MaxHp"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interact" type="Label" parent="Head/Camera3D" unique_id=470933215]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -224.5
+offset_top = -126.0
+offset_right = 224.5
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "Zmačkní ( E ) pro otevření dveří"
+horizontal_alignment = 1
+
+[node name="Stamina" type="ProgressBar" parent="Head/Camera3D" unique_id=1598281620]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -33.0
+offset_right = 192.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_uqnxr")
+value = 100.0
+show_percentage = false
+
+[node name="Headbob" type="AnimationPlayer" parent="Head" unique_id=1162221473]
+libraries/ = SubResource("AnimationLibrary_41hay")
+
+[node name="FovAnimation" type="AnimationPlayer" parent="Head" unique_id=2037645596]
+libraries/ = SubResource("AnimationLibrary_41hay")
+
+[node name="unarmed" parent="Head" unique_id=1134288564 instance=ExtResource("4_j65wn")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.0099466145, -0.29752287, -0.4434041)
+visible = false
+damage = 1.0
+weapon_type = "unarmed"
+
+[node name="dagger" parent="Head" unique_id=1448139071 instance=ExtResource("6_05608")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.0128815025, -0.36826503, -0.5115524)
+visible = false
+damage = 3.0
+weapon_type = "dagger"
+
+[node name="shortsword" parent="Head" unique_id=1452539071 instance=ExtResource("6_2syo8")]
+transform = Transform3D(0.29999998, 0, 0, 0, 0.2986774, -0.028138662, 0, 0.028138662, 0.2986774, 0, -0.25439763, -0.24315926)
+visible = false
+damage = 5.0
+weapon_type = "shortSword"
+
+[node name="mace" parent="Head" unique_id=1898199321 instance=ExtResource("5_y0rfj")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29905248, -0.023824813, 0, 0.023824813, 0.29905248, 0, -0.15602988, -0.5)
+visible = false
+damage = 10.0
+weapon_type = "mace"
+
+[node name="longSword" parent="Head" unique_id=1615498181 instance=ExtResource("7_05608")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+visible = false
+damage = 15.0
+weapon_type = "longSword"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=365385100]
+visible = false
+mesh = SubResource("CapsuleMesh_e80uo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=380355213]
+shape = SubResource("CapsuleShape3D_jqnu1")
+
+[node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("11_y0rfj")]
+visible = false
+
+[node name="Jump" type="AudioStreamPlayer" parent="." unique_id=803344209]
+stream = SubResource("AudioStreamWAV_pvkfu")
+bus = &"SFX"
+
+[node name="Attack" type="AudioStreamPlayer" parent="." unique_id=524303106]
+stream = ExtResource("10_uqnxr")
+bus = &"SFX"
+
+[node name="Footstep" type="AudioStreamPlayer" parent="." unique_id=1279123620]
+stream = ExtResource("11_ed6nx")
+bus = &"SFX"
+
+[node name="DamagaTaken" type="AudioStreamPlayer" parent="." unique_id=1815303464]
+stream = ExtResource("12_yengi")
+bus = &"SFX"
+
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=301682755]
+stream = ExtResource("13_awmxi")
+bus = &"SFX"
+
+[node name="SwordSwing" type="AudioStreamPlayer" parent="." unique_id=948973023]
+stream = ExtResource("14_j6nj3")
+bus = &"SFX"
