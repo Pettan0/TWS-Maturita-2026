@@ -13,7 +13,7 @@ config_version=5
 config/name="TWS Maturita Projekt 2026"
 run/main_scene="res://Menu/Main menu.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://c12e5u2ml7wiy"
 
 [autoload]
 

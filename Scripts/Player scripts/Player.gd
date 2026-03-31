@@ -313,7 +313,9 @@ func _hit(damage : float):
 		player_data.hp -= damage
 		save_data()
 		if player_data.hp <= 0:
-			pass
+			player_data = PlayerData.new()
+			save_data()
+			get_tree().change_scene_to_file("res://Levels/Level01.scn")
 	else:
 		_play_hit_sound()
 
