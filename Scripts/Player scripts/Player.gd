@@ -56,7 +56,7 @@ var paused = false
 var current_weapon = "unarmed"
 var blocking = false
 
-var speed = 4.4
+var speed = 3.0
 var jump_velocity = 3.1
 
 #hp regen?
@@ -263,8 +263,11 @@ func _unhandled_input(event: InputEvent) -> void:
 						await  get_tree().create_timer(2.2).timeout
 				attacking = false
 		if Input.is_action_just_pressed("block"):
-			if !blocking and !attacking:
+			if !blocking and !attacking and stamina.value > 15:
 				blocking = true
+				stamina.value -= 15
+				can_s_regen = false
+				stimer = 0
 				match current_weapon:
 					"unarmed":
 						unarmed_animations.play("Block")
@@ -348,8 +351,8 @@ func _physics_process(delta: float) -> void:
 							pole_hammer_animations.play("Run")
 				if camera.fov == 75:
 					fov_animation.play("FovOut")
-				if headbob.speed_scale != 3.0:
-					headbob.speed_scale = 3.0
+				if headbob.speed_scale != 2.0:
+					headbob.speed_scale = 2.0
 				velocity.x = direction.x * 1.2 * speed
 				velocity.z = direction.z * 1.2 * speed
 			else: 
@@ -369,8 +372,8 @@ func _physics_process(delta: float) -> void:
 							pole_hammer_animations.play("Idle")
 				if camera.fov == 85: 
 					fov_animation.play("FovIn")
-				if headbob.speed_scale != 1.5:
-					headbob.speed_scale = 1.5
+				if headbob.speed_scale != 1.0:
+					headbob.speed_scale = 1.0
 				velocity.x = direction.x * speed
 				velocity.z = direction.z * speed
 			

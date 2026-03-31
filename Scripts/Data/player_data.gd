@@ -53,6 +53,14 @@ func find_starter_position():
 				2:
 					starter_position = Vector3(-1.798, 1.069, -0.148)
 					starter_rotation = Vector3(0, -57.0, 0)
+		4:
+			match starter_point:
+				1:
+					starter_position = Vector3(13.57, 1.742, -4.638)
+					starter_rotation = Vector3(0, 96.6, 0)
+				2:
+					starter_position = Vector3(-1.798, 1.069, -0.148)
+					starter_rotation = Vector3(0, -57.0, 0)
 
 func update_hp(dmg:int):
 	hp -= dmg

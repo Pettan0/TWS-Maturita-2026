@@ -13,7 +13,7 @@ signal died
 
 var state_machine
 
-const max_hp = 150.0
+const max_hp = 100.0
 var HP = max_hp
 var ATTACK_RANGE = 1.5
 var DMG = 15.0
@@ -45,13 +45,13 @@ func _physics_process(_delta):
 			var next_nav_point = nav_agent.get_next_path_position()
 			velocity = (next_nav_point - global_position).normalized() * SPEED
 			look_at(Vector3(next_nav_point.x, global_position.y, next_nav_point.z), Vector3.UP)
-			animation_tree.set("parameters/conditions/Attack",_target_in_range())
+			animation_tree.set("parameters/conditions/Attack",_target_in_range(0.0))
 			
 			move_and_slide()
 			animation_tree.set("parameters/conditions/Idle",!area._is_player_in_area())
 		"Attack":
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
-			animation_tree.set("parameters/conditions/Idle",!_target_in_range())
+			animation_tree.set("parameters/conditions/Idle",!_target_in_range(0.0))
 		"Death01":
 			if !is_dead:
 				is_dead = true
@@ -72,22 +72,22 @@ func die(delay: float):
 	queue_free()
 
 func play_attack_sound():
-	sfx.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - attack "+str(randi_range(1,4))+".wav")
+	sfx.stream = load("res://Assets/Sounds/SFX/Enemies/Knight/RytirAttack"+str(randi_range(1,4))+".wav")
 	sfx.pitch_scale = randf_range(.8, 1.2)
 	sfx.play()
 
 func play_hit_sound():
-	hit_sfx.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - damaged "+str(randi_range(1,4))+".wav")
+	hit_sfx.stream = load("res://Assets/Sounds/SFX/Enemies/Knight/RytirDamaged"+str(randi_range(1,4))+".wav")
 	hit_sfx.pitch_scale = randf_range(.8, 1.2)
 	hit_sfx.play()
 
 func play_death_sound():
-	sfx.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - death "+str(randi_range(1,4))+".wav")
+	sfx.stream = load("res://Assets/Sounds/SFX/Enemies/Knight/RytirDeath"+str(randi_range(1,3))+".wav")
 	sfx.pitch_scale = randf_range(.8, 1.2)
 	sfx.play()
 
 func _hit_player():
-	if _target_in_range():
+	if _target_in_range(1.0):
 		player._hit(DMG)
-func _target_in_range() -> bool:
-	return global_position.distance_to(player.global_position) <= ATTACK_RANGE
+func _target_in_range(add : float) -> bool:
+	return global_position.distance_to(player.global_position) <= ATTACK_RANGE + add
