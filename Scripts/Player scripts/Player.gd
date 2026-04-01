@@ -14,6 +14,7 @@ extends CharacterBody3D
 @onready var settings_menu:= $Head/Camera3D/PauseMenu/Settings
 @onready var skill_tree:= $Head/Camera3D/SkillTree
 @onready var transition: Control = $Transition
+@onready var xp_bar: ProgressBar = $Head/Camera3D/xp_bar
 
 #sxf
 @onready var jump: AudioStreamPlayer = $Jump
@@ -74,7 +75,10 @@ var can_start_stimer = true
 
 func _ready():
 	load_data()
-	long_sword.position = Vector3(0, -0.414, -0.621)
+	long_sword.position = Vector3(0, -0.414, -0.621) #forced value bcs its broken
+	
+	xp_bar.value = player_data.xp
+	xp_bar.max_value = player_data.xp_to_next
 	hp_bar.max_value = player_data.max_hp
 	hp_bar.value = player_data.hp
 	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
@@ -222,6 +226,17 @@ func _weapon_out(type:String):
 				player_data.current_weapon = current_weapon
 			else :
 				popup.show_with("lockedWeapon")
+func add_xp(amount:float):
+	
+	if amount + player_data.xp < player_data.xp_to_next:
+		player_data.xp += amount
+		
+	else:
+		player_data.new_xp_to_next(amount)
+	
+	xp_bar.value = player_data.xp
+	xp_bar.max_value = player_data.xp_to_next
+	save_data()
 func _unhandled_input(event: InputEvent) -> void:
 	if !paused:
 		if Input.is_action_just_pressed("wp1"):

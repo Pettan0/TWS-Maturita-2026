@@ -18,6 +18,8 @@
 [ext_resource type="AudioStream" uid="uid://b5re4704c653c" path="res://Assets/Sounds/SFX/Player/DamageTaken1.wav" id="12_yengi"]
 [ext_resource type="AudioStream" uid="uid://dxxaga4alx3l8" path="res://Assets/Sounds/SFX/Player/Hit1.wav" id="13_awmxi"]
 [ext_resource type="AudioStream" uid="uid://u0g5agdayd2h" path="res://Assets/Sounds/SFX/Player/SwordSwing1.wav" id="14_j6nj3"]
+[ext_resource type="AudioStream" uid="uid://c3do60t1sdwp5" path="res://Assets/Sounds/SFX/Ostatní/xpBubble.wav" id="19_8p2vv"]
+[ext_resource type="AudioStream" uid="uid://bxvf2u60qrfq6" path="res://Assets/Sounds/SFX/Ostatní/lvlUp.wav" id="20_a8px6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0rfj"]
 bg_color = Color(1, 0.35732567, 0.29020837, 1)
@@ -35,6 +37,20 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqnxr"]
 bg_color = Color(5.1018596e-06, 0.68008393, 0.77347547, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6nj3"]
+bg_color = Color(0.6, 0.6, 0.6, 0.39215687)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvkfu"]
+bg_color = Color(0.6734902, 0.4929396, 0.94815654, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -264,6 +280,19 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_uqnxr")
 value = 100.0
 show_percentage = false
 
+[node name="xp_bar" type="ProgressBar" parent="Head/Camera3D" unique_id=670203798]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -553.0
+offset_top = 8.0
+offset_right = 553.0
+offset_bottom = 19.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_j6nj3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pvkfu")
+show_percentage = false
+
 [node name="Headbob" type="AnimationPlayer" parent="Head" unique_id=1162221473]
 libraries/ = SubResource("AnimationLibrary_41hay")
 
@@ -338,4 +367,12 @@ bus = &"SFX"
 
 [node name="SwordSwing" type="AudioStreamPlayer" parent="." unique_id=948973023]
 stream = ExtResource("14_j6nj3")
+bus = &"SFX"
+
+[node name="XpBubble" type="AudioStreamPlayer" parent="." unique_id=2028816443]
+stream = ExtResource("19_8p2vv")
+bus = &"SFX"
+
+[node name="LvlUp" type="AudioStreamPlayer" parent="." unique_id=10229193]
+stream = ExtResource("20_a8px6")
 bus = &"SFX"

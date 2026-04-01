@@ -2,14 +2,20 @@ extends Resource
 class_name PlayerData
 
 #levels stats
-@export var level : int = 1
+@export var level : int
 @export var starter_position : Vector3
 @export var starter_rotation : Vector3
-@export var starter_point : int = 1
+@export var starter_point : int
+
+#level a xp veci
+@export var player_level : int = 1
+@export var xp :float = 0
+@export var xp_to_next : float = 120
 
 #player hp stats
 @export var max_hp : float = 100
 @export var hp : float = max_hp
+
 #hp regen veci
 @export var u_hp_regen : bool = true
 @export var rtimer_to_wait : float = 10.0
@@ -17,6 +23,7 @@ class_name PlayerData
 
 #weapons
 @export var current_weapon : String = "unarmed"
+
 @export var u_dagger : bool = true
 @export var u_short_swort : bool = true
 @export var u_mace : bool = true
@@ -64,3 +71,9 @@ func find_starter_position():
 
 func update_hp(dmg:int):
 	hp -= dmg
+
+func new_xp_to_next(amount:float):
+	var saved_value = amount + xp - xp_to_next
+	xp_to_next = 120 * pow(1.25, player_level - 1)
+	xp = saved_value
+	level + 1

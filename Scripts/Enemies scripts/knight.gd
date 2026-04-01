@@ -13,8 +13,9 @@ signal died
 
 var state_machine
 
-const max_hp = 100.0
+@export var max_hp : float = 100.0
 var HP = max_hp
+var xp = max_hp
 var ATTACK_RANGE = 1.5
 var DMG = 15.0
 const SPEED = 1.0
@@ -69,6 +70,7 @@ func die(delay: float):
 	$CollisionShape3D.disabled = true
 	await get_tree().create_timer(delay).timeout
 	died.emit()
+	player.add_xp(xp)
 	queue_free()
 
 func play_attack_sound():
