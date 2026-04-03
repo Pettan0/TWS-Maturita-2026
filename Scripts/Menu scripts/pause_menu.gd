@@ -10,7 +10,9 @@ func _ready() -> void:
 	settings.hide()
 	
 func _on_unpuase_pressed() -> void:
+	settings.save_data()
 	player._pauseMenu()
+	
 	
 func _settings_show() -> void:
 	settings.show()

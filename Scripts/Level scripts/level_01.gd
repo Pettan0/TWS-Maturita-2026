@@ -9,13 +9,20 @@ var save_file_path = "user://save/"
 var save_file_name = "PlayerData.tres"
 
 var player_data : PlayerData
+var fire_tick = 1.0
+var on_fire = false
 
 
 func _ready():
 	load_data()
 	$Funny/Label.text = "Ahoj\n"+OS.get_environment("USERNAME")+" :)"
 
-
+func _process(delta: float) -> void:
+	if on_fire and fire_tick >= 1.0:
+		fire_tick = 0.0
+		player._hit(10)
+	else:
+		fire_tick += delta
 func load_data():
 	if not DirAccess.dir_exists_absolute(save_file_path):
 		DirAccess.make_dir_recursive_absolute(save_file_path)
@@ -38,6 +45,7 @@ func save_data():
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and interact.visible:
 		save_data()
+		player.save_data()
 		SoundManager.play_door_sfx()
 		$Player/Transition.visible = true
 		$Player/Transition/AnimationPlayer.play("Fade_in")
@@ -57,3 +65,14 @@ func _on_door_body_exited(body: Node3D) -> void:
 func _on_area_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		npc.set("parameters/conditions/Hello",true)
+
+
+
+func _on_fire_hitbox_body_entered(body: Node3D) -> void:
+	if body.name == "Player":
+		on_fire = true
+
+
+func _on_fire_hitbox_body_exited(body: Node3D) -> void:
+	if body.name == "Player":
+		on_fire = false

@@ -1,30 +1,16 @@
-enum SkillID {
-	TEST,
-	DMG1,
-	AGI1,
-	URUN,
-	GOLD1
-}
+extends Resource
+class_name SkillTreeData
 
-@export var skills := {
-	SkillID.TEST:  
-		{"id": "test",
-		"lvl": 0,
-		"max_lvl": 0},
-	SkillID.DMG1:
-		{"id": "dmg1",
-		"lvl": 0,
-		"max_lvl": 5},
-	SkillID.AGI1:
-		{"id": "agi1",
-		"lvl": 0,
-		"max_lvl": 2},
-	SkillID.URUN:
-		{"id": "uRun",
-		"lvl": 0,
-		"max_lvl": 1},
-	SkillID.GOLD1: 
-		{"id": "gold1",
-		"lvl": 0,
-		"max_lvl": 4}
-}
+var player_data : PlayerData
+
+@export var skill_points : int = 0
+
+func lvl_up():
+	skill_points += 3
+
+func upgrade(id:String):
+	match id:
+		"dmgB":
+			player_data.add_base_dmg(1.0)
+		"dmgA":
+			player_data.add_base_dmg(5.0)
