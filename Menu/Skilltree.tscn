@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c350m4w7rdc00" path="res://Scripts/Menu scripts/skill_tree.gd" id="1_e261c"]
 [ext_resource type="Script" uid="uid://d1gfh7u42mtws" path="res://Scripts/Menu scripts/button_animation1.gd" id="1_k8lfr"]
-[ext_resource type="PackedScene" uid="uid://cxgd12oc2roep" path="res://Menu/skill.tscn" id="3_4q2vm"]
+[ext_resource type="Script" uid="uid://d0cxpgj6omgo2" path="res://Scripts/Menu scripts/skills.gd" id="3_4q2vm"]
+[ext_resource type="Script" uid="uid://bvebkp1magtw0" path="res://Scripts/Menu scripts/upgrade_btn.gd" id="4_g6sfg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8id78"]
 bg_color = Color(0, 0, 0, 0.29411766)
@@ -42,7 +43,10 @@ shadow_offset = Vector2(3, 3)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhtiu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4q2vm"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e261c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jv7i"]
+bg_color = Color(0.40392157, 0.40392157, 0.40392157, 1)
 
 [node name="SkillTree" type="Panel" unique_id=1776935584]
 process_mode = 3
@@ -51,35 +55,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -285.33905
+offset_left = -503.6781
 offset_top = -273.04645
-offset_right = 285.33905
+offset_right = 503.6781
 offset_bottom = 273.04645
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8id78")
 script = ExtResource("1_e261c")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1471366561]
+[node name="Label" type="Label" parent="." unique_id=1484377236]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.00009
-offset_top = -215.90045
-offset_right = 199.99927
-offset_bottom = 184.09955
+offset_left = -490.0
+offset_top = -274.0
+offset_right = -303.0
+offset_bottom = -219.0
 grow_horizontal = 2
 grow_vertical = 2
-scroll_deadzone = 1
-
-[node name="Label" type="Label" parent="." unique_id=1484377236]
-visible = false
-layout_mode = 1
-offset_right = 187.0
-offset_bottom = 55.0
 theme_override_font_sizes/font_size = 40
 text = "Skill Tree"
 
@@ -109,324 +106,316 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_bhtiu")
 text = "Zpět"
 script = ExtResource("1_k8lfr")
 
-[node name="Skills" type="Panel" parent="." unique_id=1944203054]
-custom_minimum_size = Vector2(1500, 1500)
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1383998150]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -301.0
+offset_top = 9.046448
+offset_right = 301.0
+offset_bottom = 53.046448
+grow_horizontal = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="ButtonBasic" type="Button" parent="HBoxContainer" unique_id=1638624357]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_v3qtl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8wnh8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n70ox")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e261c")
+text = "Základní"
+
+[node name="ButtonAnvanced" type="Button" parent="HBoxContainer" unique_id=2045574373]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_v3qtl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8wnh8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n70ox")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e261c")
+text = "Pokročilé"
+
+[node name="ButtonUltimate" type="Button" parent="HBoxContainer" unique_id=1913737520]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_v3qtl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8wnh8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n70ox")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e261c")
+text = "Ultimátní"
+
+[node name="Basic" type="Panel" parent="." unique_id=1398507821]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -369.0
+offset_top = -170.5
+offset_right = -28.0
+offset_bottom = 170.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8id78")
+
+[node name="Skill1_1" type="Button" parent="Basic" unique_id=1598394391]
+auto_translate_mode = 2
+layout_mode = 1
+offset_left = 57.0
+offset_top = 42.5
+offset_right = 157.0
+offset_bottom = 142.5
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = -1
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_v3qtl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8wnh8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n70ox")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2jv7i")
+text = "test
+"
+script = ExtResource("3_4q2vm")
+skill_name = "Železné Pěsti"
+skill_desc = "+0.5 poškození za koždou úroneň"
+skill_id = "dmg1"
+
+[node name="Skill1_2" type="Button" parent="Basic" unique_id=375950319]
+auto_translate_mode = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -156.0
+offset_top = 42.5
+offset_right = -56.0
+offset_bottom = 142.5
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = -1
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_v3qtl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8wnh8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n70ox")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2jv7i")
+text = "test
+"
+script = ExtResource("3_4q2vm")
+skill_name = "Predátorův Instinkt"
+skill_desc = "Budeš o tochu rychlejší za každou úroveň"
+skill_id = "mov1"
+
+[node name="Skill1_3" type="Button" parent="Basic" unique_id=999046285]
+auto_translate_mode = 2
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -169.5
+offset_right = -56.0
+offset_bottom = -69.5
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = -1
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_v3qtl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8wnh8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n70ox")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2jv7i")
+text = "test
+"
+script = ExtResource("3_4q2vm")
+skill_name = "Rychlý Ústup"
+skill_desc = "Odemkne se ti funkce běhu ( SHIFT )"
+skill_id = "uRun"
+
+[node name="Skill1_4" type="Button" parent="Basic" unique_id=145525808]
+auto_translate_mode = 2
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 57.0
+offset_top = -169.5
+offset_right = 157.0
+offset_bottom = -69.5
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = -1
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_v3qtl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8wnh8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n70ox")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2jv7i")
+text = "test
+"
+script = ExtResource("3_4q2vm")
+skill_name = "Kořist Vítěze"
+skill_desc = "dostaneš o 0,5 více peněz za zabití nepřítele"
+skill_id = "gold1"
+
+[node name="Advanced" type="Panel" parent="." unique_id=478252828]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -369.0
+offset_top = -170.5
+offset_right = -28.0
+offset_bottom = 170.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8id78")
+
+[node name="Ultimate" type="Panel" parent="." unique_id=189749407]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -369.0
+offset_top = -170.5
+offset_right = -28.0
+offset_bottom = 170.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8id78")
+
+[node name="Description" type="Panel" parent="." unique_id=516364584]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -460.6781
+offset_top = -170.5
+offset_right = -119.6781
+offset_bottom = 170.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8id78")
+
+[node name="Name" type="Label" parent="Description" unique_id=1652549096]
 layout_mode = 0
-offset_left = -525.6609
-offset_top = -204.95355
-offset_right = 974.3391
-offset_bottom = 1295.0464
-theme_override_styles/panel = SubResource("StyleBoxFlat_4q2vm")
+offset_left = 15.0
+offset_top = 0.5
+offset_right = 326.0
+offset_bottom = 42.5
+theme_override_font_sizes/font_size = 30
+text = "(Jméno)"
 
-[node name="SkillO" parent="Skills" unique_id=1456845156 instance=ExtResource("3_4q2vm")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 720.0
-offset_top = 620.0
-offset_right = 780.0
-offset_bottom = 680.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="SkillO" parent="Skills/SkillO" unique_id=1297690696 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_top = -130.0
-offset_bottom = -70.0
-
-[node name="SkillO1" parent="Skills/SkillO/SkillO" unique_id=1519704840 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = -120.00006
-offset_top = -124.0
-offset_right = -60.00006
-offset_bottom = -64.0
-
-[node name="SkillO" parent="Skills/SkillO/SkillO/SkillO1" unique_id=808288735 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = -120.0
-offset_top = -120.0
-offset_right = -60.0
-offset_bottom = -60.0
-
-[node name="SkillO1" parent="Skills/SkillO/SkillO/SkillO1/SkillO" unique_id=604431996 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = -129.66095
-offset_top = 0.046447754
-offset_right = -69.66095
-offset_bottom = 60.046448
-
-[node name="SkillO2" parent="Skills/SkillO/SkillO/SkillO1/SkillO" unique_id=1444160079 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = 0.3390503
-offset_top = -129.95355
-offset_right = 60.33905
-offset_bottom = -69.95355
-
-[node name="SkillO2" parent="Skills/SkillO/SkillO" unique_id=1711433738 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_top = -130.0
-offset_bottom = -70.0
-
-[node name="SkillO" parent="Skills/SkillO/SkillO/SkillO2" unique_id=430549765 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_top = -130.0
-offset_bottom = -70.0
-
-[node name="SkillO" parent="Skills/SkillO/SkillO/SkillO2/SkillO" unique_id=627646908 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_top = -130.0
-offset_bottom = -70.0
-
-[node name="SkillO3" parent="Skills/SkillO/SkillO" unique_id=1377979932 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = 59.99994
-offset_top = -120.0
-offset_right = 119.99994
-offset_bottom = -60.0
-
-[node name="SkillO" parent="Skills/SkillO/SkillO/SkillO3" unique_id=337154892 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = 60.0
-offset_top = -120.0
-offset_right = 120.0
-offset_bottom = -60.0
-
-[node name="SkillO1" parent="Skills/SkillO/SkillO/SkillO3/SkillO" unique_id=1279788716 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = -60.00006
-offset_top = -130.0
-offset_right = -6.1035156e-05
-offset_bottom = -70.0
-
-[node name="SkillO2" parent="Skills/SkillO/SkillO/SkillO3/SkillO" unique_id=55496324 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = 69.99994
-offset_top = 0.0
-offset_right = 129.99994
-offset_bottom = 60.0
-
-[node name="SkillD1" type="Button" parent="Skills" unique_id=1097147418]
+[node name="About" type="Label" parent="Description" unique_id=402496273]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -30.0
-offset_right = -70.0
-offset_bottom = 30.0
+offset_left = -155.5
+offset_top = -114.0
+offset_right = 155.5
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "(popisek)"
+autowrap_mode = 2
+clip_text = true
 
-[node name="SkillM1" type="Button" parent="Skills" unique_id=94179154]
-visible = false
+[node name="Stats" type="Label" parent="Description" unique_id=1029328471]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 70.0
-offset_top = -30.0
-offset_right = 130.0
-offset_bottom = 30.0
+offset_left = -155.5
+offset_top = 27.0
+offset_right = 155.5
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Vylepšeno 0/5"
 
-[node name="SkillOStarter" type="Button" parent="Skills" unique_id=937426369]
-visible = false
+[node name="UpgradeBtn" type="Button" parent="Description" unique_id=1202980056]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -130.0
-offset_right = 30.0
-offset_bottom = -70.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO1" type="Button" parent="Skills/SkillOStarter" unique_id=552059700]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -130.0
-offset_right = 30.0
-offset_bottom = -69.99996
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO21" type="Button" parent="Skills/SkillOStarter/SkillO1" unique_id=1113743897]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -120.00006
-offset_top = -124.000015
-offset_right = -59.999893
-offset_bottom = -63.999985
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO31" type="Button" parent="Skills/SkillOStarter/SkillO1/SkillO21" unique_id=1144730361]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -120.000015
-offset_right = -60.0
-offset_bottom = -59.999985
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO41" type="Button" parent="Skills/SkillOStarter/SkillO1/SkillO21/SkillO31" unique_id=1732373631]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -1.5258789e-05
-offset_right = -70.0
-offset_bottom = 60.00003
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO42" type="Button" parent="Skills/SkillOStarter/SkillO1/SkillO21/SkillO31" unique_id=1266538127]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -130.00002
-offset_right = 60.0
-offset_bottom = -69.999985
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO22" type="Button" parent="Skills/SkillOStarter/SkillO1" unique_id=1965060749]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -130.0
-offset_right = 30.0
-offset_bottom = -69.99996
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO32" type="Button" parent="Skills/SkillOStarter/SkillO1/SkillO22" unique_id=606068341]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -130.0
-offset_right = 30.0
-offset_bottom = -69.99996
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO43" type="Button" parent="Skills/SkillOStarter/SkillO1/SkillO22/SkillO32" unique_id=1442843168]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -130.0
-offset_right = 30.0
-offset_bottom = -69.99996
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO23" type="Button" parent="Skills/SkillOStarter/SkillO1" unique_id=455765818]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 60.0
-offset_top = -120.000015
-offset_right = 120.00017
-offset_bottom = -59.999985
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO33" type="Button" parent="Skills/SkillOStarter/SkillO1/SkillO23" unique_id=1545464048]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 59.999916
-offset_top = -120.000015
-offset_right = 119.999916
-offset_bottom = -59.999985
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Skill" parent="Skills/SkillOStarter/SkillO1/SkillO23/SkillO33" unique_id=349689746 instance=ExtResource("3_4q2vm")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = -100.0
-offset_bottom = -39.99997
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="Skill2" parent="Skills/SkillOStarter/SkillO1/SkillO23/SkillO33" unique_id=797858786 instance=ExtResource("3_4q2vm")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 99.99994
-offset_top = 30.0
-offset_right = 159.99994
-offset_bottom = 90.00003
-grow_horizontal = 1
-grow_vertical = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = -55.5
+offset_right = -11.0
+offset_bottom = -14.5
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_v3qtl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8wnh8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_n70ox")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2jv7i")
+text = "Vylepšít"
+script = ExtResource("4_g6sfg")
 
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="HBoxContainer/ButtonBasic" to="." method="_on_button_basic_pressed"]
+[connection signal="pressed" from="HBoxContainer/ButtonAnvanced" to="." method="_on_button_anvanced_pressed"]
+[connection signal="pressed" from="HBoxContainer/ButtonUltimate" to="." method="_on_button_ultimate_pressed"]

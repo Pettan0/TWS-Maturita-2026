@@ -20,7 +20,4 @@ bus = &"SFX"
 
 [node name="DoorSXF" type="AudioStreamPlayer" parent="." unique_id=362051654]
 stream = ExtResource("3_h8btt")
-volume_db = -10.0
 bus = &"SFX"
-
-[node name="PlayerDeathSFX" type="AudioStreamPlayer" parent="." unique_id=1235243159]

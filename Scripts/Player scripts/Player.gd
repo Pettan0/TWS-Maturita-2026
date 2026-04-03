@@ -2,6 +2,12 @@ extends CharacterBody3D
 
 @onready var head:= $Head
 @onready var camera:= $Head/Camera3D
+@onready var hp_bar: ProgressBar = $Head/Camera3D/HpBar
+@onready var hp_label: Label = $Head/Camera3D/HpBar/Label
+@onready var stamina: ProgressBar = $Head/Camera3D/Stamina
+@onready var popup: Label = $Head/Camera3D/Popup
+
+
 
 #menus
 @onready var pause_menu:= $Head/Camera3D/PauseMenu
@@ -9,12 +15,6 @@ extends CharacterBody3D
 @onready var skill_tree:= $Head/Camera3D/SkillTree
 @onready var transition: Control = $Transition
 @onready var xp_bar: ProgressBar = $Head/Camera3D/xp_bar
-@onready var hp_bar: ProgressBar = $Head/Camera3D/HpBar
-@onready var hp_label: Label = $Head/Camera3D/HpBar/Label
-@onready var stamina: ProgressBar = $Head/Camera3D/Stamina
-@onready var popup: Label = $Head/Camera3D/Popup
-@onready var player_level_label: Label = $Head/Camera3D/Label
-
 
 #sxf
 @onready var jump: AudioStreamPlayer = $Jump
@@ -23,8 +23,6 @@ extends CharacterBody3D
 @onready var damaga_taken: AudioStreamPlayer = $DamagaTaken
 @onready var hit: AudioStreamPlayer = $Hit
 @onready var sword_swing: AudioStreamPlayer = $SwordSwing
-@onready var lvl_up: AudioStreamPlayer = $LvlUp
-@onready var xp_bubble: AudioStreamPlayer = $XpBubble
 
 
 #weapons
@@ -53,10 +51,6 @@ var save_file_name = "PlayerData.tres"
 var player_data : PlayerData
 
 
-var code_time = 0
-var code_progres = 0
-var super_secred = false
-
 var is_in_area = false
 var attacking = false
 var paused = false
@@ -65,7 +59,6 @@ var blocking = false
 
 var speed = 3.0
 var jump_velocity = 3.1
-var dead = false
 
 #hp regen?
 var can_hp_regen = false
@@ -73,17 +66,17 @@ var rtimer = 0.0
 var can_start_rtimer = false
 
 #Stamina veci
+var stamina_regen = 0.38 #/mil s?
 var can_s_regen = false
+var stime_to_wait = 1.8
 var stimer = 0
 var can_start_stimer = true
-
 
 
 func _ready():
 	load_data()
 	long_sword.position = Vector3(0, -0.414, -0.621) #forced value bcs its broken
 	
-	player_level_label.text = "Lvl: "+str(player_data.player_level)
 	xp_bar.value = player_data.xp
 	xp_bar.max_value = player_data.xp_to_next
 	hp_bar.max_value = player_data.max_hp
@@ -115,29 +108,22 @@ func load_data():
 func save_data():
 	ResourceSaver.save(player_data, save_file_path + save_file_name)
 func _process(delta: float) -> void:
-	if code_time > 0:
-		code_time  -=  delta
-		if code_time < 0:
-			print("Proggress lost :(")
-			code_progres = 0
-	
-		
 	hp_bar.value = player_data.hp
 	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
 	
 	#Stamina veci
-	if !can_s_regen and stamina.value != player_data.max_stamina or stamina.value == 0:
+	if !can_s_regen and stamina.value != stamina.max_value or stamina.value == 0:
 		can_start_stimer = true
 		if can_start_stimer:
 			stimer += delta
-			if stimer >= player_data.stime_to_wait:
+			if stimer >= stime_to_wait:
 				can_s_regen = true
 				can_start_stimer = false
 				stimer = 0
-	if stamina.value == player_data.max_stamina:
+	if stamina.value == stamina.max_value:
 		can_s_regen = false
 	if can_s_regen:
-		stamina.value += player_data.sregen
+		stamina.value += stamina_regen
 		can_start_stimer = true
 		stimer = 0
 	
@@ -150,8 +136,9 @@ func _process(delta: float) -> void:
 				can_hp_regen = true
 				can_start_rtimer = false
 				rtimer = 0
+
 	if can_hp_regen:
-		player_data.hp += player_data.r_per_time
+		player_data.hp += player_data.regen_per_time
 		can_start_rtimer = true
 		can_hp_regen = false
 		rtimer = 0
@@ -240,66 +227,18 @@ func _weapon_out(type:String):
 			else :
 				popup.show_with("lockedWeapon")
 func add_xp(amount:float):
+	
 	if amount + player_data.xp < player_data.xp_to_next:
 		player_data.xp += amount
-		xp_bubble.play()
+		
 	else:
 		player_data.new_xp_to_next(amount)
-		lvl_up.play()
-		player_level_label.text = "Lvl: "+str(player_data.player_level)
-	print("current xp: "+ str(player_data.xp))
+	
 	xp_bar.value = player_data.xp
 	xp_bar.max_value = player_data.xp_to_next
 	save_data()
 func _unhandled_input(event: InputEvent) -> void:
-	if super_secred:
-		if Input.is_action_pressed("w") and code_progres == 0:
-			code_time = 2.5
-			code_progres += 1
-			print("Proggress...")
-		if Input.is_action_pressed("s") and code_progres == 1:
-			code_time = 2.5
-			code_progres += 1
-			print("Proggress...")
-		if Input.is_action_pressed("w") and code_progres == 2:
-			code_time = 2.5
-			code_progres += 1
-			print("Proggress...")
-		if Input.is_action_pressed("s") and code_progres == 3:
-			code_time = 2.5
-			code_progres += 1
-			print("Proggress...")
-		if Input.is_action_pressed("a") and code_progres == 4:
-			code_time = 2.5
-			code_progres += 1
-			print("Proggress...")
-		if Input.is_action_pressed("d") and code_progres == 5:
-			code_time = 2.5
-			code_progres += 1
-			print("Proggress...")
-		if Input.is_action_pressed("a") and code_progres == 6:
-			code_time = 2.5
-			code_progres += 1
-			print("Proggress...")
-		if Input.is_action_pressed("d") and code_progres == 7:
-			code_time = 2.5
-			code_progres += 1
-			print("Proggress...")
-		if Input.is_action_pressed("b") and code_progres == 8:
-			code_time = 2.5
-			code_progres += 1
-			print("Proggress...")
-		if Input.is_action_pressed("a") and code_progres == 9:
-			code_time = 2.5
-			code_progres += 1
-			print("Proggress...")
-		if Input.is_action_pressed("pause") and code_progres == 10:
-			print("You did it :D")
-			_hit(1000)
-	if !paused :
-		if Input.is_action_just_pressed("secred"):
-			super_secred = !super_secred
-			print("Super secret is "+str(super_secred))
+	if !paused:
 		if Input.is_action_just_pressed("wp1"):
 			_weapon_out("unarmed")
 		if Input.is_action_just_pressed("wp2"):
@@ -320,29 +259,23 @@ func _unhandled_input(event: InputEvent) -> void:
 				stimer = 0
 				match current_weapon:
 					"unarmed":
-						unarmed_animations.speed_scale = 1.0 * player_data.attack_speed
 						unarmed_animations.play("Attack")
-						await  get_tree().create_timer(1.0 / player_data.attack_speed).timeout
+						await  get_tree().create_timer(1.0).timeout
 					"dagger":
-						dagger_animations.speed_scale = 1.0 * player_data.attack_speed
 						dagger_animations.play("Attack")
-						await  get_tree().create_timer(1.0 / player_data.attack_speed).timeout
+						await  get_tree().create_timer(1.0).timeout
 					"shortSword":
-						short_sword_animations.speed_scale = 1.0 * player_data.attack_speed
 						short_sword_animations.play("Attack")
-						await  get_tree().create_timer(1.75 / player_data.attack_speed).timeout
+						await  get_tree().create_timer(1.75).timeout
 					"mace":
-						mace_animations.speed_scale = 1.0 * player_data.attack_speed
 						mace_animations.play("Attack")
-						await  get_tree().create_timer(1.4 / player_data.attack_speed).timeout
+						await  get_tree().create_timer(1.4).timeout
 					"longSword":
-						long_sword_animations.speed_scale = 1.0 * player_data.attack_speed
 						long_sword_animations.play("Attack")
-						await  get_tree().create_timer(1.5 / player_data.attack_speed).timeout
+						await  get_tree().create_timer(1.5).timeout
 					"poleHammer":
-						pole_hammer_animations.speed_scale = 1.0 * player_data.attack_speed
 						pole_hammer_animations.play("Attack")
-						await  get_tree().create_timer(2.2 / player_data.attack_speed).timeout
+						await  get_tree().create_timer(2.2).timeout
 				attacking = false
 		if Input.is_action_just_pressed("block"):
 			if !blocking and !attacking and stamina.value > 15:
@@ -389,89 +322,57 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			hp_bar.show()
 			stamina.show()
-	if Input.is_action_just_pressed("debug"):
-		player_data.attack_speed += .2
 func _hit(damage : float):
 	if !blocking:
-		if !dead:
-			_play_damage_sound()
-			player_data.hp -= damage
-			$Head/HitAnimation.play("Hit")
+		_play_damage_sound()
+		player_data.hp -= damage
+		save_data()
+		if player_data.hp <= 0:
+			player_data = PlayerData.new()
 			save_data()
-			if player_data.hp <= 0:
-				dead = true
-				headbob.stop()
-				fov_animation.stop()
-				$Head/HitAnimation.play("Death")
-				await get_tree().create_timer(2.3).timeout
-				player_data.hp = player_data.max_hp
-				player_data.update_level_stats(1,1)
-				save_data()
-				get_tree().change_scene_to_file("res://Levels/Level01.scn")
+			get_tree().change_scene_to_file("res://Levels/Level01.scn")
 	else:
 		_play_hit_sound()
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
-			velocity += get_gravity() * delta
-	if !paused and !dead:
-			if Input.is_action_just_pressed("jump") and is_on_floor() and stamina.value > 15:
-				stamina.value -= 15.0
+		velocity += get_gravity() * delta
+	if !paused:
+		if Input.is_action_just_pressed("jump") and is_on_floor() and stamina.value > 15:
+			stamina.value -= 15.0
+			can_s_regen = false
+			stimer = 0
+			velocity.y = jump_velocity
+			jump.play()
+	
+		var input_dir := Input.get_vector("a", "d", "w", "s")
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			if Input.is_action_pressed("sprint") and stamina.value > 0:
+				stamina.value -= 0.5
 				can_s_regen = false
 				stimer = 0
-				velocity.y = jump_velocity
-				jump.play()
-		
-			var input_dir := Input.get_vector("a", "d", "w", "s")
-			var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-			if direction:
-				if Input.is_action_pressed("sprint") and stamina.value > 0:
-					stamina.value -= 0.5
-					can_s_regen = false
-					stimer = 0
-					if !attacking and !blocking:
-						match current_weapon:
-							"unarmed":
-								unarmed_animations.play("Run")
-							"dagger":
-								dagger_animations.play("Run")
-							"shortSword":
-								short_sword_animations.play("Run")
-							"mace":
-								mace_animations.play("Run")
-							"longSword":
-								long_sword_animations.play("Run")
-							"poleHammer":
-								pole_hammer_animations.play("Run")
-					if camera.fov == 75:
-						fov_animation.play("FovOut")
-					if headbob.speed_scale != 2.0:
-						headbob.speed_scale = 2.0
-					velocity.x = direction.x * 1.2 * speed
-					velocity.z = direction.z * 1.2 * speed
-				else: 
-					if !attacking and !blocking:
-						match current_weapon:
-							"unarmed":
-								unarmed_animations.play("Idle")
-							"dagger":
-								dagger_animations.play("Idle")
-							"shortSword":
-								short_sword_animations.play("Idle")
-							"mace":
-								mace_animations.play("Idle")
-							"longSword":
-								long_sword_animations.play("Idle")
-							"poleHammer":
-								pole_hammer_animations.play("Idle")
-					if camera.fov == 85: 
-						fov_animation.play("FovIn")
-					if headbob.speed_scale != 1.0:
-						headbob.speed_scale = 1.0
-					velocity.x = direction.x * speed
-					velocity.z = direction.z * speed
-				
-			else:
+				if !attacking and !blocking:
+					match current_weapon:
+						"unarmed":
+							unarmed_animations.play("Run")
+						"dagger":
+							dagger_animations.play("Run")
+						"shortSword":
+							short_sword_animations.play("Run")
+						"mace":
+							mace_animations.play("Run")
+						"longSword":
+							long_sword_animations.play("Run")
+						"poleHammer":
+							pole_hammer_animations.play("Run")
+				if camera.fov == 75:
+					fov_animation.play("FovOut")
+				if headbob.speed_scale != 2.0:
+					headbob.speed_scale = 2.0
+				velocity.x = direction.x * 1.2 * speed
+				velocity.z = direction.z * 1.2 * speed
+			else: 
 				if !attacking and !blocking:
 					match current_weapon:
 						"unarmed":
@@ -479,17 +380,39 @@ func _physics_process(delta: float) -> void:
 						"dagger":
 							dagger_animations.play("Idle")
 						"shortSword":
-								short_sword_animations.play("Idle")
+							short_sword_animations.play("Idle")
 						"mace":
 							mace_animations.play("Idle")
 						"longSword":
 							long_sword_animations.play("Idle")
 						"poleHammer":
-								pole_hammer_animations.play("Idle")
+							pole_hammer_animations.play("Idle")
 				if camera.fov == 85: 
 					fov_animation.play("FovIn")
-				if headbob.speed_scale != 0.0:
-					headbob.speed_scale = 0.0
-				velocity.x = move_toward(velocity.x, 0, speed)
-				velocity.z = move_toward(velocity.z, 0, speed)
+				if headbob.speed_scale != 1.0:
+					headbob.speed_scale = 1.0
+				velocity.x = direction.x * speed
+				velocity.z = direction.z * speed
+			
+		else:
+			if !attacking and !blocking:
+				match current_weapon:
+					"unarmed":
+						unarmed_animations.play("Idle")
+					"dagger":
+						dagger_animations.play("Idle")
+					"shortSword":
+							short_sword_animations.play("Idle")
+					"mace":
+						mace_animations.play("Idle")
+					"longSword":
+						long_sword_animations.play("Idle")
+					"poleHammer":
+							pole_hammer_animations.play("Idle")
+			if camera.fov == 85: 
+				fov_animation.play("FovIn")
+			if headbob.speed_scale != 0.0:
+				headbob.speed_scale = 0.0
+			velocity.x = move_toward(velocity.x, 0, speed)
+			velocity.z = move_toward(velocity.z, 0, speed)
 	move_and_slide()

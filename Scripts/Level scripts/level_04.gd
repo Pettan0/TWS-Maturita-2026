@@ -1,4 +1,5 @@
 extends Node3D
+
 @onready var interact: Label = $Player/Head/Camera3D/Interact
 @onready var player: CharacterBody3D = $Player
 @onready var popup: Label = $Player/Head/Camera3D/Popup
@@ -48,7 +49,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and interact.visible:
 		if enemies_left == 0:
 			save_data()
-			player.save_data()
 			SoundManager.play_door_sfx()
 			$Player/Transition.visible = true
 			$Player/Transition/AnimationPlayer.play("Fade_in")
@@ -56,23 +56,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 			get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
 		else:
 			popup.show_with("cantEnter")
-func _on_exit_door_body_entered(body: Node3D) -> void:
-	if body.name == "Player":
-		interact.show_with("OpenDoor","")
-		player_data.update_level_stats(3,2)
-
-func _on_exit_door_body_exited(body: Node3D) -> void:
-	if body.name == "Player":
-		interact.hide()
-
-func _on_lvl_5_door_body_entered(body: Node3D) -> void:
-	if body.name == "Player":
-		interact.show_with("OpenDoor","")
-		player_data.update_level_stats(5,1)
-
-func _on_lvl_5_door_body_exited(body: Node3D) -> void:
-	if body.name == "Player":
-		interact.hide()
 
 func _locked_door_entered(body: Node3D) -> void:
 	if body.name == "Player":
