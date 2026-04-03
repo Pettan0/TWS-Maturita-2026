@@ -13,10 +13,10 @@ signal died
 
 var state_machine
 
-@export var max_hp : float = 100.0
+var max_hp : float = 100.0
 var HP = max_hp
-var xp = max_hp
-var ATTACK_RANGE = 1.5
+var xp = max_hp / 4 * 3
+var ATTACK_RANGE = 2.0
 var DMG = 15.0
 const SPEED = 1.0
 
@@ -67,25 +67,22 @@ func _physics_process(_delta):
 				die(2.0)
 
 func die(delay: float):
+	player.add_xp(xp)
+	died.emit()
 	$CollisionShape3D.disabled = true
 	await get_tree().create_timer(delay).timeout
-	died.emit()
-	player.add_xp(xp)
 	queue_free()
 
 func play_attack_sound():
 	sfx.stream = load("res://Assets/Sounds/SFX/Enemies/Knight/RytirAttack"+str(randi_range(1,4))+".wav")
-	sfx.pitch_scale = randf_range(.8, 1.2)
 	sfx.play()
 
 func play_hit_sound():
 	hit_sfx.stream = load("res://Assets/Sounds/SFX/Enemies/Knight/RytirDamaged"+str(randi_range(1,4))+".wav")
-	hit_sfx.pitch_scale = randf_range(.8, 1.2)
 	hit_sfx.play()
 
 func play_death_sound():
 	sfx.stream = load("res://Assets/Sounds/SFX/Enemies/Knight/RytirDeath"+str(randi_range(1,3))+".wav")
-	sfx.pitch_scale = randf_range(.8, 1.2)
 	sfx.play()
 
 func _hit_player():
