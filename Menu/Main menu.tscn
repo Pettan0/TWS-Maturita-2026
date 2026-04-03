@@ -521,6 +521,7 @@ text = "Zpět
 "
 
 [node name="Credits" type="Panel" parent="." unique_id=353508816]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -584,7 +585,7 @@ anchor_bottom = 0.5
 offset_left = -217.0
 offset_top = -170.0
 offset_right = 217.0
-offset_bottom = 151.0
+offset_bottom = 148.5
 grow_horizontal = 2
 grow_vertical = 2
 scroll_vertical_custom_step = 0.0
@@ -704,23 +705,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 17
 text = "(user) - za hraní této hry :D"
-vertical_alignment = 1
-
-[node name="TitleSpecial2" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1500507602]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_804u5")
-theme_override_font_sizes/font_size = 33
-text = "Externí assety"
-vertical_alignment = 1
-
-[node name="Names8" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=98681109]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_804u5")
-theme_override_font_sizes/font_size = 17
-text = "Obloha - Copyright (c) 2007-2021 Juan Linietsky, 
-Ariel Manzur. 
-Copyright (c) 2014-2021 Godot 
-Engine contributors."
 vertical_alignment = 1
 
 [node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("8_804u5")]
