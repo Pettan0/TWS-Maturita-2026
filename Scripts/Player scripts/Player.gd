@@ -352,16 +352,22 @@ func _unhandled_input(event: InputEvent) -> void:
 				stimer = 0
 				match current_weapon:
 					"unarmed":
+						unarmed_animations.speed_scale = 1.0
 						unarmed_animations.play("Block")
 					"dagger":
+						dagger_animations.speed_scale = 1.0
 						dagger_animations.play("Block")
 					"shortSword":
+						short_sword_animations.speed_scale = 1.0
 						short_sword_animations.play("Block")
 					"mace":
+						mace_animations.speed_scale = 1.0
 						mace_animations.play("Block")
 					"longSword":
+						long_sword_animations.speed_scale = 1.0
 						long_sword_animations.play("Block")
 					"poleHammer":
+						pole_hammer_animations.speed_scale = 1.0
 						pole_hammer_animations.play("Block")
 				await  get_tree().create_timer(1.5).timeout
 				blocking = false
@@ -391,6 +397,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			stamina.show()
 	if Input.is_action_just_pressed("debug"):
 		player_data.attack_speed += .2
+		print("attack speed =" + str(player_data.attack_speed))
 func _hit(damage : float):
 	if !blocking:
 		if !dead:
@@ -432,16 +439,22 @@ func _physics_process(delta: float) -> void:
 					if !attacking and !blocking:
 						match current_weapon:
 							"unarmed":
+								unarmed_animations.speed_scale = 1.0
 								unarmed_animations.play("Run")
 							"dagger":
+								dagger_animations.speed_scale = 1.0
 								dagger_animations.play("Run")
 							"shortSword":
+								short_sword_animations.speed_scale = 1.0
 								short_sword_animations.play("Run")
 							"mace":
+								mace_animations.speed_scale = 1.0
 								mace_animations.play("Run")
 							"longSword":
+								long_sword_animations.speed_scale = 1.0
 								long_sword_animations.play("Run")
 							"poleHammer":
+								pole_hammer_animations.speed_scale = 1.0
 								pole_hammer_animations.play("Run")
 					if camera.fov == 75:
 						fov_animation.play("FovOut")
@@ -453,16 +466,22 @@ func _physics_process(delta: float) -> void:
 					if !attacking and !blocking:
 						match current_weapon:
 							"unarmed":
+								pole_hammer_animations.speed_scale = 1.0
 								unarmed_animations.play("Idle")
 							"dagger":
+								dagger_animations.speed_scale = 1.0
 								dagger_animations.play("Idle")
 							"shortSword":
+								short_sword_animations.speed_scale = 1.0
 								short_sword_animations.play("Idle")
 							"mace":
+								mace_animations.speed_scale = 1.0
 								mace_animations.play("Idle")
 							"longSword":
+								long_sword_animations.speed_scale = 1.0
 								long_sword_animations.play("Idle")
 							"poleHammer":
+								pole_hammer_animations.speed_scale = 1.0
 								pole_hammer_animations.play("Idle")
 					if camera.fov == 85: 
 						fov_animation.play("FovIn")
@@ -475,17 +494,23 @@ func _physics_process(delta: float) -> void:
 				if !attacking and !blocking:
 					match current_weapon:
 						"unarmed":
+							pole_hammer_animations.speed_scale = 1.0
 							unarmed_animations.play("Idle")
 						"dagger":
+							dagger_animations.speed_scale = 1.0
 							dagger_animations.play("Idle")
 						"shortSword":
-								short_sword_animations.play("Idle")
+							short_sword_animations.speed_scale = 1.0
+							short_sword_animations.play("Idle")
 						"mace":
+							mace_animations.speed_scale = 1.0
 							mace_animations.play("Idle")
 						"longSword":
+							long_sword_animations.speed_scale = 1.0
 							long_sword_animations.play("Idle")
 						"poleHammer":
-								pole_hammer_animations.play("Idle")
+							pole_hammer_animations.speed_scale = 1.0
+							pole_hammer_animations.play("Idle")
 				if camera.fov == 85: 
 					fov_animation.play("FovIn")
 				if headbob.speed_scale != 0.0:

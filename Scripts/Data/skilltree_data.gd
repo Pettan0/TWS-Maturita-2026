@@ -3,7 +3,7 @@ class_name SkillTreeData
 
 var player_data : PlayerData
 
-@export var skill_points : int = 0
+@export var skill_points : int = 1
 
 func lvl_up():
 	skill_points += 3
