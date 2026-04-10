@@ -51,7 +51,8 @@ var save_file_path = "user://save/"
 var save_file_name = "PlayerData.tres"
 
 var player_data : PlayerData
-
+var skill_points = 0
+var base_dmg = 0.0
 
 var code_time = 0
 var code_progres = 0
@@ -81,6 +82,8 @@ var can_start_stimer = true
 
 func _ready():
 	load_data()
+	base_dmg = player_data.base_dmg
+	skill_points = player_data.skill_points
 	long_sword.position = Vector3(0, -0.414, -0.621) #forced value bcs its broken
 	
 	player_level_label.text = "Lvl: "+str(player_data.player_level)
@@ -121,9 +124,10 @@ func _process(delta: float) -> void:
 			print("Proggress lost :(")
 			code_progres = 0
 	
-		
 	hp_bar.value = player_data.hp
 	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
+	base_dmg = player_data.base_dmg
+	skill_points = player_data.skill_points
 	
 	#Stamina veci
 	if !can_s_regen and stamina.value != player_data.max_stamina or stamina.value == 0:
@@ -313,9 +317,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Input.is_action_just_pressed("wp6"):
 			_weapon_out("poleHammer")
 		if Input.is_action_just_pressed("attack"):
-			if !attacking and stamina.value > 10:
+			if !attacking and stamina.value > player_data.attack_stamina:
 				attacking = true
-				stamina.value -= 10
+				stamina.value -= player_data.attack_stamina
 				can_s_regen = false
 				stimer = 0
 				match current_weapon:
@@ -396,8 +400,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			hp_bar.show()
 			stamina.show()
 	if Input.is_action_just_pressed("debug"):
-		player_data.attack_speed += .2
-		print("attack speed =" + str(player_data.attack_speed))
+		player_data.skill_points += 1
 func _hit(damage : float):
 	if !blocking:
 		if !dead:

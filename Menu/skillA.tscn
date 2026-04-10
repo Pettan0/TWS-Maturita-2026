@@ -43,4 +43,38 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_6vqsi")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ck4ef")
 script = ExtResource("1_ck4ef")
 
+[node name="Panel" type="Panel" parent="." unique_id=1132610247]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 35.0
+offset_top = -4.0
+offset_right = 171.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel" unique_id=1430614529]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -25.5
+offset_right = 60.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "(desc)"
+autowrap_mode = 3
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

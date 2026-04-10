@@ -10,7 +10,7 @@ class_name PlayerData
 #level a xp veci
 @export var player_level : int = 1
 @export var xp :float = 0
-@export var xp_to_next : float = 100
+@export var xp_to_next : float = 75
 @export var skill_points : int = 0
 
 #player hp stats
@@ -58,8 +58,8 @@ func upgrade_skill(id:String):
 		"attackStaminaB":
 			attack_stamina -= 2
 		"attackStaminaA":
-			attack_speed -= 4
-
+			attack_stamina -= 4
+	print("base dmg: "+str(base_dmg)+"\nattack speed: "+str(attack_speed)+"\nattack stamina: "+str(attack_stamina))
 func update_level_stats(lvl:int, point:int):
 	level = lvl
 	starter_point = point

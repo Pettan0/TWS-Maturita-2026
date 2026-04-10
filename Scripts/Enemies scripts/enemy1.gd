@@ -11,7 +11,7 @@ extends CharacterBody3D
 
 var state_machine
 
-const max_hp = 10.0
+const max_hp = 100.0
 var HP = max_hp
 var ATTACK_RANGE = 1.5
 var DMG = 2.0
