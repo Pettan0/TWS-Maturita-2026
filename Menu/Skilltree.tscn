@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c350m4w7rdc00" path="res://Scripts/Menu scripts/skill_tree.gd" id="1_e261c"]
 [ext_resource type="Script" uid="uid://d1gfh7u42mtws" path="res://Scripts/Menu scripts/button_animation1.gd" id="1_k8lfr"]
 [ext_resource type="PackedScene" uid="uid://cxgd12oc2roep" path="res://Menu/skill.tscn" id="3_4q2vm"]
+[ext_resource type="PackedScene" uid="uid://crb3p6vydq3a3" path="res://Menu/skillA.tscn" id="4_g6sfg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8id78"]
 bg_color = Color(0, 0, 0, 0.29411766)
@@ -10,6 +11,176 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4q2vm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6sfg"]
+bg_color = Color(0.038397167, 0.038397167, 0.03839716, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lsyq"]
+bg_color = Color(0.11858138, 0.11858139, 0.11858136, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16lbv"]
+bg_color = Color(0.19793737, 0.19793719, 0.19793728, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x46ny"]
+bg_color = Color(0.038397167, 0.038397167, 0.03839716, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2q25n"]
+bg_color = Color(0.11858138, 0.11858139, 0.11858136, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e5ru6"]
+bg_color = Color(0.19793737, 0.19793719, 0.19793728, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yaw3s"]
+bg_color = Color(0.038397167, 0.038397167, 0.03839716, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs621"]
+bg_color = Color(0.11858138, 0.11858139, 0.11858136, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ud1i8"]
+bg_color = Color(0.19793737, 0.19793719, 0.19793728, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yw0w2"]
+bg_color = Color(0.038397167, 0.038397167, 0.03839716, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7owt"]
+bg_color = Color(0.11858138, 0.11858139, 0.11858136, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nhmm6"]
+bg_color = Color(0.19793737, 0.19793719, 0.19793728, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v144a"]
+bg_color = Color(0.038397167, 0.038397167, 0.03839716, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5oyx3"]
+bg_color = Color(0.11858138, 0.11858139, 0.11858136, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rt1ag"]
+bg_color = Color(0.19793737, 0.19793719, 0.19793728, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufk6f"]
+bg_color = Color(0.038397167, 0.038397167, 0.03839716, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vgtt"]
+bg_color = Color(0.11858138, 0.11858139, 0.11858136, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlumi"]
+bg_color = Color(0.19793737, 0.19793719, 0.19793728, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4m4o5"]
+bg_color = Color(0.038397167, 0.038397167, 0.03839716, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhnch"]
+bg_color = Color(0.11858138, 0.11858139, 0.11858136, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qqeq"]
+bg_color = Color(0.19793737, 0.19793719, 0.19793728, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6uo4b"]
+bg_color = Color(0.038397167, 0.038397167, 0.03839716, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p54ay"]
+bg_color = Color(0.11858138, 0.11858139, 0.11858136, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcoki"]
+bg_color = Color(0.19793737, 0.19793719, 0.19793728, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3qtl"]
 bg_color = Color(1, 1, 1, 1)
@@ -42,8 +213,6 @@ shadow_offset = Vector2(3, 3)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhtiu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4q2vm"]
-
 [node name="SkillTree" type="Panel" unique_id=1776935584]
 process_mode = 3
 anchors_preset = 8
@@ -60,7 +229,332 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8id78")
 script = ExtResource("1_e261c")
 
+[node name="Label" type="Label" parent="." unique_id=1484377236]
+layout_mode = 1
+offset_left = 0.3390503
+offset_top = 0.046447754
+offset_right = 187.33905
+offset_bottom = 55.046448
+theme_override_font_sizes/font_size = 40
+text = "Skill Tree"
+
+[node name="Skills" type="Panel" parent="." unique_id=1944203054]
+custom_minimum_size = Vector2(1250, 1000)
+layout_mode = 0
+offset_left = -352.66095
+offset_top = -64.95355
+offset_right = 897.33905
+offset_bottom = 935.04645
+theme_override_styles/panel = SubResource("StyleBoxFlat_4q2vm")
+
+[node name="SkillO" parent="Skills" unique_id=1456845156 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = -31.0
+offset_top = -10.0
+offset_right = 29.0
+offset_bottom = 50.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_g6sfg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3lsyq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_16lbv")
+skill_id = "dmgB"
+node_id = NodePath(".")
+
+[node name="SkillO" parent="Skills/SkillO" unique_id=1297690696 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_top = -130.0
+offset_bottom = -70.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_x46ny")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2q25n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e5ru6")
+skill_id = "dmgB"
+node_id = NodePath(".")
+
+[node name="SkillO1" parent="Skills/SkillO/SkillO" unique_id=1519704840 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = -120.0
+offset_top = -120.0
+offset_right = -60.0
+offset_bottom = -60.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_yaw3s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xs621")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ud1i8")
+skill_id = "attackSpeedB"
+node_id = NodePath(".")
+
+[node name="SkillO" parent="Skills/SkillO/SkillO/SkillO1" unique_id=808288735 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = -120.0
+offset_top = -120.0
+offset_right = -60.0
+offset_bottom = -60.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_yw0w2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_i7owt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nhmm6")
+skill_id = "attackSpeedB"
+node_id = NodePath(".")
+
+[node name="SkillA" parent="Skills/SkillO/SkillO/SkillO1/SkillO" unique_id=349689746 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = -130.00006
+offset_top = 0.0
+offset_right = -70.00006
+offset_bottom = 60.00003
+skill_id = "attackSpeedA"
+node_id = NodePath(".")
+
+[node name="SkillA2" parent="Skills/SkillO/SkillO/SkillO1/SkillO" unique_id=2145747958 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = -6.1035156e-05
+offset_top = -130.0
+offset_right = 59.99994
+offset_bottom = -69.99997
+skill_id = "attackSpeedA"
+node_id = NodePath(".")
+
+[node name="SkillO2" parent="Skills/SkillO/SkillO" unique_id=1711433738 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_top = -130.0
+offset_bottom = -70.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_v144a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5oyx3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rt1ag")
+skill_id = "dmgB"
+node_id = NodePath(".")
+
+[node name="SkillO" parent="Skills/SkillO/SkillO/SkillO2" unique_id=430549765 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_top = -130.0
+offset_bottom = -70.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ufk6f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7vgtt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rlumi")
+skill_id = "dmgB"
+node_id = NodePath(".")
+
+[node name="SkillA" parent="Skills/SkillO/SkillO/SkillO2/SkillO" unique_id=2058842444 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_top = -130.0
+offset_bottom = -69.99997
+skill_id = "dmgA"
+node_id = NodePath(".")
+
+[node name="SkillO3" parent="Skills/SkillO/SkillO" unique_id=1377979932 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 59.99994
+offset_top = -120.0
+offset_right = 119.99994
+offset_bottom = -60.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_4m4o5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rhnch")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6qqeq")
+skill_id = "attackStaminaB"
+node_id = NodePath(".")
+
+[node name="SkillO" parent="Skills/SkillO/SkillO/SkillO3" unique_id=337154892 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 60.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = -60.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_6uo4b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p54ay")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wcoki")
+skill_id = "attackStaminaB"
+node_id = NodePath(".")
+
+[node name="SkillA" parent="Skills/SkillO/SkillO/SkillO3/SkillO" unique_id=1409385975 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = -60.0
+offset_top = -130.0
+offset_right = 0.0
+offset_bottom = -69.99997
+skill_id = "attackStaminaA"
+node_id = NodePath(".")
+
+[node name="SkillA2" parent="Skills/SkillO/SkillO/SkillO3/SkillO" unique_id=198205176 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = 70.0
+offset_top = 0.0
+offset_right = 130.0
+offset_bottom = 60.00003
+skill_id = "attackStaminaA"
+node_id = NodePath(".")
+
+[node name="SkillD" parent="Skills" unique_id=798147783 instance=ExtResource("3_4q2vm")]
+visible = false
+layout_mode = 1
+offset_left = -121.0
+offset_top = 80.0
+offset_right = -61.0
+offset_bottom = 140.0
+
+[node name="SkillD" parent="Skills/SkillD" unique_id=868067350 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = -130.0
+offset_right = -70.0
+
+[node name="SkillD" parent="Skills/SkillD/SkillD" unique_id=1158753768 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = -120.00006
+offset_top = 60.0
+offset_right = -60.00006
+offset_bottom = 120.0
+
+[node name="SkillD" parent="Skills/SkillD/SkillD/SkillD" unique_id=3987076 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = -120.0
+offset_top = 60.0
+offset_right = -60.0
+offset_bottom = 120.0
+
+[node name="SkillA" parent="Skills/SkillD/SkillD/SkillD/SkillD" unique_id=2056953573 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 69.999985
+offset_right = 60.0
+offset_bottom = 130.00002
+
+[node name="SkillA2" parent="Skills/SkillD/SkillD/SkillD/SkillD" unique_id=1905126385 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = -130.0
+offset_top = -60.000015
+offset_right = -70.0
+offset_bottom = 1.5258789e-05
+
+[node name="SkillD2" parent="Skills/SkillD/SkillD" unique_id=286500777 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = -130.0
+offset_right = -70.0
+
+[node name="SkillD" parent="Skills/SkillD/SkillD/SkillD2" unique_id=1562640922 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = -130.0
+offset_right = -70.0
+
+[node name="SkillA" parent="Skills/SkillD/SkillD/SkillD2/SkillD" unique_id=1758240980 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = -130.00006
+offset_right = -70.00006
+
+[node name="SkillD3" parent="Skills/SkillD/SkillD" unique_id=1945919436 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = -120.00006
+offset_top = -120.0
+offset_right = -60.00006
+offset_bottom = -60.0
+
+[node name="SkillD" parent="Skills/SkillD/SkillD/SkillD3" unique_id=1369739503 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = -120.0
+offset_top = -120.0
+offset_right = -60.0
+offset_bottom = -60.0
+
+[node name="SkillA" parent="Skills/SkillD/SkillD/SkillD3/SkillD" unique_id=1133589 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = -130.0
+offset_top = -1.5258789e-05
+offset_right = -70.0
+offset_bottom = 60.000015
+
+[node name="SkillA2" parent="Skills/SkillD/SkillD/SkillD3/SkillD" unique_id=951770543 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = -130.0
+offset_right = 60.0
+offset_bottom = -69.99997
+
+[node name="SkillM" parent="Skills" unique_id=2120750755 instance=ExtResource("3_4q2vm")]
+visible = false
+layout_mode = 1
+offset_left = 59.0
+offset_top = 80.0
+offset_right = 119.0
+offset_bottom = 140.0
+
+[node name="SkillM" parent="Skills/SkillM" unique_id=500817959 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 70.0
+offset_right = 130.0
+
+[node name="SkillM1" parent="Skills/SkillM/SkillM" unique_id=1516301568 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 60.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = -60.0
+
+[node name="SkillM2" parent="Skills/SkillM/SkillM/SkillM1" unique_id=327308221 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 60.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = -60.0
+
+[node name="SkillA" parent="Skills/SkillM/SkillM/SkillM1/SkillM2" unique_id=1446281610 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = -60.00006
+offset_top = -130.00002
+offset_right = -6.1035156e-05
+offset_bottom = -69.999985
+
+[node name="SkillA2" parent="Skills/SkillM/SkillM/SkillM1/SkillM2" unique_id=1319572542 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = 69.99994
+offset_top = 0.0
+offset_right = 129.99994
+offset_bottom = 60.00003
+
+[node name="SkillM2" parent="Skills/SkillM/SkillM" unique_id=2010372471 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 70.0
+offset_right = 130.0
+
+[node name="SkillM" parent="Skills/SkillM/SkillM/SkillM2" unique_id=801992245 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 70.0
+offset_right = 130.0
+
+[node name="SkillA" parent="Skills/SkillM/SkillM/SkillM2/SkillM" unique_id=1167228400 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.517
+offset_left = 69.99994
+offset_right = 129.99994
+offset_bottom = 28.980015
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="SkillM3" parent="Skills/SkillM/SkillM" unique_id=1556500520 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 59.99994
+offset_top = 60.0
+offset_right = 119.99994
+offset_bottom = 120.0
+
+[node name="SkillM2" parent="Skills/SkillM/SkillM/SkillM3" unique_id=1670274823 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 120.0
+offset_bottom = 120.0
+
+[node name="SkillA" parent="Skills/SkillM/SkillM/SkillM3/SkillM2" unique_id=1635270720 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = 70.0
+offset_top = -60.000015
+offset_right = 130.0
+offset_bottom = 1.5258789e-05
+
+[node name="SkillA2" parent="Skills/SkillM/SkillM/SkillM3/SkillM2" unique_id=1867157142 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = -60.0
+offset_top = 69.999985
+offset_right = 0.0
+offset_bottom = 130.00002
+
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1471366561]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -74,14 +568,6 @@ offset_bottom = 184.09955
 grow_horizontal = 2
 grow_vertical = 2
 scroll_deadzone = 1
-
-[node name="Label" type="Label" parent="." unique_id=1484377236]
-visible = false
-layout_mode = 1
-offset_right = 187.0
-offset_bottom = 55.0
-theme_override_font_sizes/font_size = 40
-text = "Skill Tree"
 
 [node name="ButtonBack" type="Button" parent="." unique_id=2012031079]
 layout_mode = 1
@@ -108,327 +594,5 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_n70ox")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bhtiu")
 text = "Zpět"
 script = ExtResource("1_k8lfr")
-
-[node name="Skills" type="Panel" parent="." unique_id=1944203054]
-custom_minimum_size = Vector2(1500, 1500)
-layout_mode = 0
-offset_left = -525.6609
-offset_top = -204.95355
-offset_right = 974.3391
-offset_bottom = 1295.0464
-theme_override_styles/panel = SubResource("StyleBoxFlat_4q2vm")
-
-[node name="SkillO" parent="Skills" unique_id=1456845156 instance=ExtResource("3_4q2vm")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 720.0
-offset_top = 620.0
-offset_right = 780.0
-offset_bottom = 680.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="SkillO" parent="Skills/SkillO" unique_id=1297690696 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_top = -130.0
-offset_bottom = -70.0
-
-[node name="SkillO1" parent="Skills/SkillO/SkillO" unique_id=1519704840 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = -120.00006
-offset_top = -124.0
-offset_right = -60.00006
-offset_bottom = -64.0
-
-[node name="SkillO" parent="Skills/SkillO/SkillO/SkillO1" unique_id=808288735 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = -120.0
-offset_top = -120.0
-offset_right = -60.0
-offset_bottom = -60.0
-
-[node name="SkillO1" parent="Skills/SkillO/SkillO/SkillO1/SkillO" unique_id=604431996 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = -129.66095
-offset_top = 0.046447754
-offset_right = -69.66095
-offset_bottom = 60.046448
-
-[node name="SkillO2" parent="Skills/SkillO/SkillO/SkillO1/SkillO" unique_id=1444160079 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = 0.3390503
-offset_top = -129.95355
-offset_right = 60.33905
-offset_bottom = -69.95355
-
-[node name="SkillO2" parent="Skills/SkillO/SkillO" unique_id=1711433738 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_top = -130.0
-offset_bottom = -70.0
-
-[node name="SkillO" parent="Skills/SkillO/SkillO/SkillO2" unique_id=430549765 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_top = -130.0
-offset_bottom = -70.0
-
-[node name="SkillO" parent="Skills/SkillO/SkillO/SkillO2/SkillO" unique_id=627646908 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_top = -130.0
-offset_bottom = -70.0
-
-[node name="SkillO3" parent="Skills/SkillO/SkillO" unique_id=1377979932 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = 59.99994
-offset_top = -120.0
-offset_right = 119.99994
-offset_bottom = -60.0
-
-[node name="SkillO" parent="Skills/SkillO/SkillO/SkillO3" unique_id=337154892 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = 60.0
-offset_top = -120.0
-offset_right = 120.0
-offset_bottom = -60.0
-
-[node name="SkillO1" parent="Skills/SkillO/SkillO/SkillO3/SkillO" unique_id=1279788716 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = -60.00006
-offset_top = -130.0
-offset_right = -6.1035156e-05
-offset_bottom = -70.0
-
-[node name="SkillO2" parent="Skills/SkillO/SkillO/SkillO3/SkillO" unique_id=55496324 instance=ExtResource("3_4q2vm")]
-visible = false
-layout_mode = 1
-offset_left = 69.99994
-offset_top = 0.0
-offset_right = 129.99994
-offset_bottom = 60.0
-
-[node name="SkillD1" type="Button" parent="Skills" unique_id=1097147418]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -30.0
-offset_right = -70.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillM1" type="Button" parent="Skills" unique_id=94179154]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 70.0
-offset_top = -30.0
-offset_right = 130.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillOStarter" type="Button" parent="Skills" unique_id=937426369]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -130.0
-offset_right = 30.0
-offset_bottom = -70.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO1" type="Button" parent="Skills/SkillOStarter" unique_id=552059700]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -130.0
-offset_right = 30.0
-offset_bottom = -69.99996
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO21" type="Button" parent="Skills/SkillOStarter/SkillO1" unique_id=1113743897]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -120.00006
-offset_top = -124.000015
-offset_right = -59.999893
-offset_bottom = -63.999985
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO31" type="Button" parent="Skills/SkillOStarter/SkillO1/SkillO21" unique_id=1144730361]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -120.000015
-offset_right = -60.0
-offset_bottom = -59.999985
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO41" type="Button" parent="Skills/SkillOStarter/SkillO1/SkillO21/SkillO31" unique_id=1732373631]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -1.5258789e-05
-offset_right = -70.0
-offset_bottom = 60.00003
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO42" type="Button" parent="Skills/SkillOStarter/SkillO1/SkillO21/SkillO31" unique_id=1266538127]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -130.00002
-offset_right = 60.0
-offset_bottom = -69.999985
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO22" type="Button" parent="Skills/SkillOStarter/SkillO1" unique_id=1965060749]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -130.0
-offset_right = 30.0
-offset_bottom = -69.99996
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO32" type="Button" parent="Skills/SkillOStarter/SkillO1/SkillO22" unique_id=606068341]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -130.0
-offset_right = 30.0
-offset_bottom = -69.99996
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO43" type="Button" parent="Skills/SkillOStarter/SkillO1/SkillO22/SkillO32" unique_id=1442843168]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -130.0
-offset_right = 30.0
-offset_bottom = -69.99996
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO23" type="Button" parent="Skills/SkillOStarter/SkillO1" unique_id=455765818]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 60.0
-offset_top = -120.000015
-offset_right = 120.00017
-offset_bottom = -59.999985
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SkillO33" type="Button" parent="Skills/SkillOStarter/SkillO1/SkillO23" unique_id=1545464048]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 59.999916
-offset_top = -120.000015
-offset_right = 119.999916
-offset_bottom = -59.999985
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Skill" parent="Skills/SkillOStarter/SkillO1/SkillO23/SkillO33" unique_id=349689746 instance=ExtResource("3_4q2vm")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = -100.0
-offset_right = 60.0
-offset_bottom = -39.99997
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="Skill2" parent="Skills/SkillOStarter/SkillO1/SkillO23/SkillO33" unique_id=797858786 instance=ExtResource("3_4q2vm")]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 99.99994
-offset_top = 30.0
-offset_right = 159.99994
-offset_bottom = 90.00003
-grow_horizontal = 1
-grow_vertical = 1
 
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

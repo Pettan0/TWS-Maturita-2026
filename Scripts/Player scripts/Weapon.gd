@@ -4,6 +4,7 @@ extends Node3D
 
 @export var damage : float
 @export var weapon_type : String
+var player_data : PlayerData
 
 func _attack_sound():
 	player._play_attack_sound()
@@ -15,4 +16,4 @@ func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body.has_method("hit") and visible:
 		var hitbox_pos = $Armature/Skeleton3D/BoneAttachment3D/Hitbox.global_transform.origin
 		var dir = (body.global_transform.origin - hitbox_pos).normalized()
-		body.hit(damage, weapon_type, dir)
+		body.hit(damage+player_data.base_dmg, weapon_type, dir)

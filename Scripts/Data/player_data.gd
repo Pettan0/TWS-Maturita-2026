@@ -11,6 +11,7 @@ class_name PlayerData
 @export var player_level : int = 1
 @export var xp :float = 0
 @export var xp_to_next : float = 100
+@export var skill_points : int = 0
 
 #player hp stats
 @export var max_hp : float = 100
@@ -30,13 +31,34 @@ class_name PlayerData
 #weapons
 @export var current_weapon : String = "unarmed"
 
+@export var base_dmg : float = 0
+
 @export var attack_speed : float = 1.0
+@export var attack_stamina : int = 15
 
 @export var u_dagger : bool = true
 @export var u_short_swort : bool = true
 @export var u_mace : bool = true
 @export var u_long_sword : bool = true
 @export var u_pole_hammer : bool = true
+
+@export var unlocked_nodes : Array[String] = []
+
+func upgrade_skill(id:String):
+
+	match id:
+		"dmgB":
+			base_dmg += 1.0
+		"dmgA":
+			base_dmg += 5.0
+		"attackSpeedB":
+			attack_speed += 0.1
+		"attackSpeedA":
+			attack_speed += 0.3
+		"attackStaminaB":
+			attack_stamina -= 2
+		"attackStaminaA":
+			attack_speed -= 4
 
 func update_level_stats(lvl:int, point:int):
 	level = lvl
@@ -82,4 +104,5 @@ func new_xp_to_next(amount:float):
 	xp_to_next = round(100 * pow(1.25, player_level))
 	xp = saved_value
 	player_level += 1
+	skill_points += 3
 	print("new xp needed: "+str(xp_to_next)+"\nlevel: "+str(player_level))
