@@ -26,7 +26,7 @@ class_name PlayerData
 #stamina
 @export var max_stamina : float = 100
 @export var stime_to_wait : float = 1.8
-@export var sregen : float = 0.2
+@export var sregen : float = 0.3
 
 #weapons
 @export var current_weapon : String = "unarmed"
@@ -70,11 +70,11 @@ func find_starter_position():
 		1:
 			match starter_point:
 				1:
-					starter_position = Vector3(0.117, 0.765, 0.81)
+					starter_position = Vector3(4.719, 0.461, -0.666)
 					starter_rotation = Vector3(0, 0, 0)
 				2:
-					starter_position = Vector3(28.754, 1.197, -7.875)
-					starter_rotation = Vector3(0, 81.2, 0)
+					starter_position = Vector3(23.541, 0.81, -6.182)
+					starter_rotation = Vector3(0, 74.3, 0)
 		2:
 			match starter_point:
 				1:
@@ -86,10 +86,10 @@ func find_starter_position():
 		3:
 			match starter_point:
 				1:
-					starter_position = Vector3(58.147, 0.589, -51.7)
+					starter_position = Vector3(56.448, 0.672, -49.789)
 					starter_rotation = Vector3(0, 96.6, 0)
 				2:
-					starter_position = Vector3(16.975, -0.194, -24.469)
+					starter_position = Vector3(21.625, -0.011, -26.499)
 					starter_rotation = Vector3(0, -71.2, 0)
 		4:
 			match starter_point:

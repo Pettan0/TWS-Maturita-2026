@@ -195,7 +195,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.1, 0, 0), Vector3(0, -0.1, 0), Vector3(0.1, 0, 0), Vector3(0, -0.1, 0)]
+"values": [Vector3(-0.05, 0, 0), Vector3(0, -0.05, 0), Vector3(0.05, 0, 0), Vector3(0, -0.05, 0)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -271,6 +271,7 @@ data = PackedByteArray("cW9hZgAAMdoBAKxEFAAIGAAAAAAAAAAAAAAAAOAAQAAqk0UwQSCACBbA
 format = 3
 
 [node name="player" type="CharacterBody3D" unique_id=1891402900]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 script = ExtResource("1_kpjcp")
 
 [node name="Head" type="Node3D" parent="." unique_id=622232755]
