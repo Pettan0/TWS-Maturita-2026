@@ -2,6 +2,27 @@
 
 [ext_resource type="Script" uid="uid://d0cxpgj6omgo2" path="res://Scripts/Menu scripts/skill.gd" id="1_nris3"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nris3"]
+bg_color = Color(0.038397167, 0.038397167, 0.03839716, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bfpum"]
+bg_color = Color(0.11858138, 0.11858139, 0.11858136, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kd2d1"]
+bg_color = Color(0.19793737, 0.19793719, 0.19793728, 0.5882353)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
 [node name="Skill" type="Button" unique_id=349689746]
 anchors_preset = 8
 anchor_left = 0.5
@@ -14,6 +35,43 @@ offset_right = 30.0
 offset_bottom = 30.000015
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nris3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bfpum")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kd2d1")
 script = ExtResource("1_nris3")
 
+[node name="Panel" type="Panel" parent="." unique_id=1187955054]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 35.0
+offset_top = -4.0
+offset_right = 171.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel" unique_id=822354017]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -25.5
+offset_right = 60.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "(desc)"
+autowrap_mode = 3
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

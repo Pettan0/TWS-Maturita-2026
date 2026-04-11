@@ -13,9 +13,9 @@ signal died
 
 var state_machine
 
-var max_hp : float = 100.0
+var max_hp = 50.0
 var HP = max_hp
-var xp = max_hp / 4 * 3
+var xp = max_hp / 2
 var ATTACK_RANGE = 2.0
 var DMG = 15.0
 const SPEED = 1.0
