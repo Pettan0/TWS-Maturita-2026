@@ -276,9 +276,9 @@ node_id = NodePath(".")
 [node name="SkillO1" parent="ScrollContainer/Skills/SkillO/SkillO" unique_id=1519704840 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
 offset_left = -120.0
-offset_top = -120.0
+offset_top = -105.0
 offset_right = -60.0
-offset_bottom = -60.0
+offset_bottom = -45.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_yaw3s")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xs621")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ud1i8")
@@ -301,20 +301,20 @@ node_id = NodePath(".")
 
 [node name="SkillA" parent="ScrollContainer/Skills/SkillO/SkillO/SkillO1/SkillO" unique_id=349689746 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
-offset_left = -130.00006
-offset_top = 0.0
-offset_right = -70.00006
-offset_bottom = 60.00003
+offset_left = -130.0
+offset_top = -39.0
+offset_right = -70.0
+offset_bottom = 21.00003
 desc = "Zvíší rychlost útoku o 30%"
 skill_id = "attackSpeedA"
 node_id = NodePath(".")
 
 [node name="SkillA2" parent="ScrollContainer/Skills/SkillO/SkillO/SkillO1/SkillO" unique_id=2145747958 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
-offset_left = -6.1035156e-05
-offset_top = -130.0
-offset_right = 59.99994
-offset_bottom = -69.99997
+offset_left = 4.0
+offset_top = -131.0
+offset_right = 64.0
+offset_bottom = -70.99997
 desc = "Zvíší rychlost útoku o 30%"
 skill_id = "attackSpeedA"
 node_id = NodePath(".")
@@ -351,10 +351,10 @@ node_id = NodePath(".")
 
 [node name="SkillO3" parent="ScrollContainer/Skills/SkillO/SkillO" unique_id=1377979932 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = 59.99994
-offset_top = -120.0
-offset_right = 119.99994
-offset_bottom = -60.0
+offset_left = 60.0
+offset_top = -96.0
+offset_right = 120.0
+offset_bottom = -36.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_4m4o5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_rhnch")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6qqeq")
@@ -364,10 +364,10 @@ node_id = NodePath(".")
 
 [node name="SkillO" parent="ScrollContainer/Skills/SkillO/SkillO/SkillO3" unique_id=337154892 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = 60.0
-offset_top = -120.0
-offset_right = 120.0
-offset_bottom = -60.0
+offset_left = 43.00006
+offset_top = -114.0
+offset_right = 103.00006
+offset_bottom = -54.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_6uo4b")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_p54ay")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wcoki")
@@ -377,26 +377,13 @@ node_id = NodePath(".")
 
 [node name="SkillA" parent="ScrollContainer/Skills/SkillO/SkillO/SkillO3/SkillO" unique_id=1409385975 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
-offset_left = -60.0
-offset_top = -130.0
-offset_right = 0.0
-offset_bottom = -69.99997
-desc = "Sníží staminu za útok o 4"
-skill_id = "attackStaminaA"
-node_id = NodePath(".")
-
-[node name="SkillA2" parent="ScrollContainer/Skills/SkillO/SkillO/SkillO3/SkillO" unique_id=198205176 instance=ExtResource("4_g6sfg")]
-layout_mode = 1
-offset_left = 70.0
-offset_top = 0.0
-offset_right = 130.0
-offset_bottom = 60.00003
+offset_top = -124.0
+offset_bottom = -63.99997
 desc = "Sníží staminu za útok o 4"
 skill_id = "attackStaminaA"
 node_id = NodePath(".")
 
 [node name="SkillD" parent="ScrollContainer/Skills" unique_id=798147783 instance=ExtResource("3_4q2vm")]
-visible = false
 layout_mode = 1
 offset_left = -121.0
 offset_top = 80.0
@@ -408,48 +395,19 @@ layout_mode = 1
 offset_left = -130.0
 offset_right = -70.0
 
-[node name="SkillD" parent="ScrollContainer/Skills/SkillD/SkillD" unique_id=1158753768 instance=ExtResource("3_4q2vm")]
-layout_mode = 1
-offset_left = -120.00006
-offset_top = 60.0
-offset_right = -60.00006
-offset_bottom = 120.0
-
-[node name="SkillD" parent="ScrollContainer/Skills/SkillD/SkillD/SkillD" unique_id=3987076 instance=ExtResource("3_4q2vm")]
-layout_mode = 1
-offset_left = -120.0
-offset_top = 60.0
-offset_right = -60.0
-offset_bottom = 120.0
-
-[node name="SkillA" parent="ScrollContainer/Skills/SkillD/SkillD/SkillD/SkillD" unique_id=2056953573 instance=ExtResource("4_g6sfg")]
-layout_mode = 1
-offset_left = 0.0
-offset_top = 69.999985
-offset_right = 60.0
-offset_bottom = 130.00002
-
-[node name="SkillA2" parent="ScrollContainer/Skills/SkillD/SkillD/SkillD/SkillD" unique_id=1905126385 instance=ExtResource("4_g6sfg")]
-layout_mode = 1
-offset_left = -130.0
-offset_top = -60.000015
-offset_right = -70.0
-offset_bottom = 1.5258789e-05
-
 [node name="SkillD2" parent="ScrollContainer/Skills/SkillD/SkillD" unique_id=286500777 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = -130.0
-offset_right = -70.0
+offset_left = -120.0
+offset_top = 59.999985
+offset_right = -60.0
+offset_bottom = 120.000015
 
-[node name="SkillD" parent="ScrollContainer/Skills/SkillD/SkillD/SkillD2" unique_id=1562640922 instance=ExtResource("3_4q2vm")]
+[node name="SkillA" parent="ScrollContainer/Skills/SkillD/SkillD/SkillD2" unique_id=1758240980 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
-offset_left = -130.0
-offset_right = -70.0
-
-[node name="SkillA" parent="ScrollContainer/Skills/SkillD/SkillD/SkillD2/SkillD" unique_id=1758240980 instance=ExtResource("4_g6sfg")]
-layout_mode = 1
-offset_left = -130.00006
-offset_right = -70.00006
+offset_left = -120.0
+offset_top = 34.999985
+offset_right = -60.0
+offset_bottom = 95.000015
 
 [node name="SkillD3" parent="ScrollContainer/Skills/SkillD/SkillD" unique_id=1945919436 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -460,24 +418,22 @@ offset_bottom = -60.0
 
 [node name="SkillD" parent="ScrollContainer/Skills/SkillD/SkillD/SkillD3" unique_id=1369739503 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = -120.0
-offset_top = -120.0
-offset_right = -60.0
-offset_bottom = -60.0
+offset_left = -130.0
+offset_right = -70.0
 
 [node name="SkillA" parent="ScrollContainer/Skills/SkillD/SkillD/SkillD3/SkillD" unique_id=1133589 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
-offset_left = -130.0
-offset_top = -1.5258789e-05
-offset_right = -70.0
-offset_bottom = 60.000015
+offset_left = -89.99994
+offset_top = 54.999985
+offset_right = -29.999939
+offset_bottom = 115.000015
 
 [node name="SkillA2" parent="ScrollContainer/Skills/SkillD/SkillD/SkillD3/SkillD" unique_id=951770543 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
-offset_left = 0.0
-offset_top = -130.0
-offset_right = 60.0
-offset_bottom = -69.99997
+offset_left = -90.0
+offset_top = -115.0
+offset_right = -30.0
+offset_bottom = -54.99997
 
 [node name="SkillM" parent="ScrollContainer/Skills" unique_id=2120750755 instance=ExtResource("3_4q2vm")]
 visible = false

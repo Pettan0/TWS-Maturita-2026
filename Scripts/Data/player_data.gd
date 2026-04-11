@@ -42,7 +42,7 @@ class_name PlayerData
 @export var u_long_sword : bool = true
 @export var u_pole_hammer : bool = true
 
-@export var unlocked_nodes : Array[String] = []
+@export var unlocked_nodes : Array[Dictionary] = []
 
 func upgrade_skill(id:String):
 
@@ -59,6 +59,7 @@ func upgrade_skill(id:String):
 			attack_stamina -= 2
 		"attackStaminaA":
 			attack_stamina -= 4
+		
 	print("base dmg: "+str(base_dmg)+"\nattack speed: "+str(attack_speed)+"\nattack stamina: "+str(attack_stamina))
 func update_level_stats(lvl:int, point:int):
 	level = lvl

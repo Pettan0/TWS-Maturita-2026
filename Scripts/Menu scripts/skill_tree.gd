@@ -4,13 +4,10 @@ extends Panel
 @onready var skill_points_label: Label = $Label
 
 func _ready() -> void:
-	update_points()
+	skill_points_label.text = "sp: " + str(player.skill_points)
 
 func _on_button_back_pressed() -> void:
 	player._skill_tree()
 
 func _process(_delta: float) -> void:
-	update_points()
-
-func update_points():
 	skill_points_label.text = "sp: " + str(player.skill_points)
