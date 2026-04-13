@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://bil338hkicnwx"]
 
+[ext_resource type="PackedScene" uid="uid://bs6efw41sylvg" path="res://Assets/Modely/Enemies/lesij.tscn" id="1_7b0me"]
 [ext_resource type="PackedScene" uid="uid://btqemfn0kg4i2" path="res://Assets/Player.tscn" id="1_p2k11"]
 [ext_resource type="Script" uid="uid://bu6fvtjvmshtc" path="res://Scripts/Level scripts/Area.gd" id="3_sbrn2"]
-[ext_resource type="PackedScene" uid="uid://dwoc7s5b64tvf" path="res://Assets/Modely/Enemies/Bes.tscn" id="4_flbus"]
-[ext_resource type="PackedScene" uid="uid://l5m8h7hm10ci" path="res://Assets/Modely/Enemies/knight.tscn" id="4_p2k11"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kyxg0"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -72,6 +71,10 @@ environment = SubResource("Environment_cove1")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=624005736]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
+
+[node name="Lesij" parent="." unique_id=1018154036 node_paths=PackedStringArray("area") instance=ExtResource("1_7b0me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3619591, 0)
+area = NodePath("../Area3D")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1036790582]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114715576, 0, 0)
@@ -162,11 +165,3 @@ script = ExtResource("3_sbrn2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1759184315]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 shape = SubResource("BoxShape3D_iotdp")
-
-[node name="Knight" parent="." unique_id=1466304187 node_paths=PackedStringArray("area") instance=ExtResource("4_p2k11")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5584, 1.3619592, -12.193508)
-area = NodePath("../Area3D")
-
-[node name="enemy" parent="." unique_id=134604616 node_paths=PackedStringArray("area") instance=ExtResource("4_flbus")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.047966, 1.4587123, 0)
-area = NodePath("../Area3D")

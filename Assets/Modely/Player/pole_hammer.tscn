@@ -1764,7 +1764,7 @@ _data = {
 [node name="poleHammer" unique_id=2058561798 instance=ExtResource("1_hjp6f")]
 script = ExtResource("2_kgwp2")
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(381433380) index="0" unique_id=1395177040]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(566703134) index="0" unique_id=966882083]
 bones/0/position = Vector3(0, -0.48720407, 1.6394613)
 bones/0/rotation = Quaternion(-0.6472665, 0, 0, 0.7622638)
 bones/1/position = Vector3(-0.9055132, -0.7068654, 0.4257188)
@@ -1814,6 +1814,9 @@ bones/34/rotation = Quaternion(-0.6496514, -0.021150766, -0.03309287, 0.75921714
 bones/35/rotation = Quaternion(-0.49985895, -0.038237818, 0.007375307, 0.865231)
 bones/36/rotation = Quaternion(-0.6581641, -0.102382034, 0.011742682, 0.7457883)
 
+[node name="arms" parent="Armature/Skeleton3D" index="0" unique_id=667859716]
+cast_shadow = 0
+
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1" unique_id=862730139]
 transform = Transform3D(0.92425036, 0.025365591, 0.3809429, -0.38110706, 0.0017959345, 0.924529, 0.022767084, -0.9996766, 0.011326949, 1.6941086, -1.2364675, 0.28546262)
 bone_name = "hand_R"
@@ -1826,7 +1829,7 @@ transform = Transform3D(-0.094292805, 0.99464786, -0.042243004, -0.9239081, -0.1
 shape = SubResource("CapsuleShape3D_rjx6c")
 disabled = true
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=743535286]
+[node name="AnimationPlayer" parent="." index="1" unique_id=1234190684]
 libraries/ = SubResource("AnimationLibrary_238ie")
 
 [connection signal="body_entered" from="Armature/Skeleton3D/BoneAttachment3D/Hitbox" to="." method="_on_hitbox_body_entered"]
