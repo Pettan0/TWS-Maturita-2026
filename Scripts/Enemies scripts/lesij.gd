@@ -16,9 +16,9 @@ var state_machine
 var max_hp = 150.0
 var HP = max_hp
 var xp = max_hp / 2
-var ATTACK_RANGE = 1.0
+var ATTACK_RANGE = 1.5
 var DMG = 15.0
-const SPEED = 2.5
+const SPEED = 3.5
 
 var is_dead = false
 
@@ -51,10 +51,18 @@ func _physics_process(_delta):
 			move_and_slide()
 			animation_tree.set("parameters/conditions/Idle",!area._is_player_in_area())
 		"Attack1":
-			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
-			animation_tree.set("parameters/conditions/Idle",!_target_in_range(0.0))
+			nav_agent.set_target_position(player.global_position)
+			var next_nav_point = nav_agent.get_next_path_position()
+			velocity = (next_nav_point - global_position).normalized() * SPEED
+			look_at(Vector3(next_nav_point.x, global_position.y, next_nav_point.z), Vector3.UP)
+			move_and_slide()
+			animation_tree.set("parameters/conditions/Idle", !_target_in_range(0.0))
 		"Attack2":
-			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+			nav_agent.set_target_position(player.global_position)
+			var next_nav_point = nav_agent.get_next_path_position()
+			velocity = (next_nav_point - global_position).normalized() * SPEED
+			look_at(Vector3(next_nav_point.x, global_position.y, next_nav_point.z), Vector3.UP)
+			move_and_slide()
 			animation_tree.set("parameters/conditions/Idle",!_target_in_range(0.0))
 		"Death01":
 			if !is_dead:
