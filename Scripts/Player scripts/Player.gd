@@ -200,6 +200,7 @@ func _play_swing_sound():
 	sword_swing.play()
 
 func _weapon_out(type:String):
+	save_data()
 	unarmed.hide()
 	dagger.hide()
 	short_sword.hide()
@@ -210,6 +211,7 @@ func _weapon_out(type:String):
 		"unarmed":
 			unarmed.show()
 			current_weapon = "unarmed"
+			player_data.current_weapon = current_weapon
 		"dagger":
 			if player_data.u_dagger:
 				dagger.show()
@@ -245,6 +247,7 @@ func _weapon_out(type:String):
 				player_data.current_weapon = current_weapon
 			else :
 				popup.show_with("lockedWeapon")
+
 func add_xp(amount:float):
 	if amount + player_data.xp < player_data.xp_to_next:
 		player_data.xp += amount
@@ -253,6 +256,7 @@ func add_xp(amount:float):
 		player_data.new_xp_to_next(amount)
 		lvl_up.play()
 		player_level_label.text = "Lvl: "+str(player_data.player_level)
+	save_data()
 	print("current xp: "+ str(player_data.xp))
 	xp_bar.value = player_data.xp
 	xp_bar.max_value = player_data.xp_to_next

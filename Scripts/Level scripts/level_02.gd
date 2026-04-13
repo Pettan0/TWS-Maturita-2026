@@ -4,7 +4,7 @@ extends Node3D
 @onready var popup: Label = $Player/Head/Camera3D/Popup
 
 var enemies_left = 0
-
+var next_lvl = 0
 
 var save_file_path = "user://save/"
 var save_file_name = "PlayerData.tres"
@@ -47,8 +47,12 @@ func save_data():
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and interact.visible:
 		if enemies_left == 0:
+			match next_lvl:
+				1:
+					player_data.update_level_stats(1,2)
+				3:
+					player_data.update_level_stats(3,1)
 			save_data()
-			player.save_data()
 			SoundManager.play_door_sfx()
 			$Player/Transition.visible = true
 			$Player/Transition/AnimationPlayer.play("Fade_in")
@@ -59,7 +63,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 func _on_exit_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.show_with("OpenDoor","")
-		player_data.update_level_stats(1,2)
+		next_lvl = 1
 
 func _on_exit_door_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
@@ -68,7 +72,7 @@ func _on_exit_door_body_exited(body: Node3D) -> void:
 func _on_lvl_3_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.show_with("OpenDoor","")
-		player_data.update_level_stats(3,1)
+		next_lvl = 3
 
 
 func _on_lvl_3_door_body_exited(body: Node3D) -> void:

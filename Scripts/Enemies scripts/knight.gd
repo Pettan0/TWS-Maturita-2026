@@ -5,24 +5,26 @@ signal died
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var animation_tree: AnimationTree = $AnimationTree
-@export var area : Area3D
 @onready var progress_bar: ProgressBar = $SubViewport/ProgressBar
 @onready var level: Node3D = $".."
 @onready var sfx: AudioStreamPlayer3D = $SFX
 @onready var hit_sfx: AudioStreamPlayer3D = $HitSFX
 
+@export var area : Area3D
+
 var state_machine
 
+var base_hp = 25.0
 var max_hp = 50.0
 var HP = max_hp
-var xp = max_hp / 2
+var xp = max_hp
 var ATTACK_RANGE = 2.0
 var DMG = 15.0
 const SPEED = 1.0
 var knockback = 4.0
 var knockedback = false
 var knockback_timer = 0.0
-
+var armor = 0.05
 var is_dead = false
 
 
@@ -30,7 +32,7 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 	if weapon_type == "mace" or weapon_type == "poleHammer":
 		HP -= damage_taken
 	elif weapon_type == "kick":
-		HP -= damage_taken / 2
+		HP -= damage_taken*(1 - armor)
 
 		var knock_dir = dir.normalized()
 		velocity = knock_dir * knockback
@@ -39,15 +41,20 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 		animation_tree.set("parameters/conditions/Hit",true)
 
 	else:
-		HP -= damage_taken/2
+		HP -= damage_taken*(1 - armor)
 	play_hit_sound()
 	progress_bar.update_hp(max_hp, HP)
 	if (HP <= 0):
 		animation_tree.set("parameters/conditions/Death"+str(randi_range(1,3)),true)
 
 func _ready() -> void:
+	armor = min((player.player_data.player_level) * 0.05,0.75)
+	max_hp = base_hp + (player.player_data.player_level - 1) * 10
+	HP = max_hp
 	progress_bar.update_hp(max_hp, HP)
 	state_machine = animation_tree.get("parameters/playback")
+	print("armor: "+str(armor))
+	print("hp: "+str(HP))
 func _physics_process(_delta):
 	if knockedback:
 		knockback_timer -= _delta

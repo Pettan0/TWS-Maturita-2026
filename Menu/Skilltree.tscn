@@ -240,9 +240,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -314.0
+offset_left = -340.0
 offset_top = -205.04645
-offset_right = 744.0
+offset_right = 770.0
 offset_bottom = 600.95355
 grow_horizontal = 2
 grow_vertical = 2
@@ -251,10 +251,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_2hq16")
 
 [node name="SkillO" parent="Skills" unique_id=1456845156 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = -33.0
-offset_top = 29.0
-offset_right = 27.0
-offset_bottom = 89.0
+offset_left = -75.0
+offset_top = 33.0
+offset_right = -15.0
+offset_bottom = 93.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_g6sfg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3lsyq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_16lbv")
@@ -273,10 +273,10 @@ skill_id = "dmgB"
 
 [node name="SkillO1" parent="Skills/SkillO/SkillO" unique_id=1519704840 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = -120.0
-offset_top = -105.0
-offset_right = -60.0
-offset_bottom = -45.0
+offset_left = -124.0
+offset_top = -74.0
+offset_right = -64.0
+offset_bottom = -14.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_yaw3s")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xs621")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ud1i8")
@@ -348,10 +348,10 @@ skill_id = "dmgA"
 
 [node name="SkillO3" parent="Skills/SkillO/SkillO" unique_id=1377979932 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = 60.0
-offset_top = -96.0
-offset_right = 120.0
-offset_bottom = -36.0
+offset_left = 50.0
+offset_top = -70.0
+offset_right = 110.0
+offset_bottom = -10.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_4m4o5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_rhnch")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6qqeq")
@@ -381,29 +381,15 @@ skill_id = "attackStaminaA"
 
 [node name="SkillD" parent="Skills" unique_id=798147783 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = -133.0
-offset_top = 111.0
-offset_right = -73.0
-offset_bottom = 171.0
+offset_left = -167.0
+offset_top = 129.0
+offset_right = -107.0
+offset_bottom = 189.0
 
 [node name="SkillD" parent="Skills/SkillD" unique_id=868067350 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
 offset_left = -130.0
 offset_right = -70.0
-
-[node name="SkillD2" parent="Skills/SkillD/SkillD" unique_id=286500777 instance=ExtResource("3_4q2vm")]
-layout_mode = 1
-offset_left = -4.0
-offset_top = 67.999985
-offset_right = 56.0
-offset_bottom = 128.00002
-
-[node name="SkillA" parent="Skills/SkillD/SkillD/SkillD2" unique_id=1758240980 instance=ExtResource("4_g6sfg")]
-layout_mode = 1
-offset_left = 34.0
-offset_top = 51.999985
-offset_right = 94.0
-offset_bottom = 112.000015
 
 [node name="SkillD3" parent="Skills/SkillD/SkillD" unique_id=1945919436 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -439,6 +425,7 @@ offset_left = -126.0
 offset_top = -4.0000153
 offset_right = -66.0
 offset_bottom = 56.000015
+skill_id = "uKick"
 
 [node name="Skill" parent="Skills/SkillD/SkillD/SkillA" unique_id=1464804668 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -463,10 +450,24 @@ offset_bottom = 90.000015
 
 [node name="Skill" parent="Skills/SkillD/SkillD/SkillA/Skill2" unique_id=733943780 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = -128.0
-offset_top = -14.000015
-offset_right = -68.0
-offset_bottom = 46.000015
+offset_left = -126.0
+offset_top = 3.9999847
+offset_right = -66.0
+offset_bottom = 64.000015
+
+[node name="SkillD2" parent="Skills/SkillD/SkillD" unique_id=286500777 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = -58.0
+offset_top = 71.999985
+offset_right = 2.0
+offset_bottom = 132.00002
+
+[node name="SkillA" parent="Skills/SkillD/SkillD/SkillD2" unique_id=1758240980 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = -98.0
+offset_top = 65.999985
+offset_right = -38.0
+offset_bottom = 126.000015
 
 [node name="SkillM" parent="Skills" unique_id=2120750755 instance=ExtResource("3_4q2vm")]
 visible = false
