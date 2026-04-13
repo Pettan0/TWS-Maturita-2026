@@ -19,13 +19,25 @@ var xp = max_hp / 2
 var ATTACK_RANGE = 2.0
 var DMG = 15.0
 const SPEED = 1.0
+var knockback = 4.0
+var knockedback = false
+var knockback_timer = 0.0
 
 var is_dead = false
 
 
-func hit (damage_taken:float, weapon_type:String, _dir:Vector3):
+func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 	if weapon_type == "mace" or weapon_type == "poleHammer":
 		HP -= damage_taken
+	elif weapon_type == "kick":
+		HP -= damage_taken / 2
+
+		var knock_dir = dir.normalized()
+		velocity = knock_dir * knockback
+		knockedback = true
+		knockback_timer = 0.25
+		animation_tree.set("parameters/conditions/Hit",true)
+
 	else:
 		HP -= damage_taken/2
 	play_hit_sound()
@@ -37,6 +49,12 @@ func _ready() -> void:
 	progress_bar.update_hp(max_hp, HP)
 	state_machine = animation_tree.get("parameters/playback")
 func _physics_process(_delta):
+	if knockedback:
+		knockback_timer -= _delta
+		move_and_slide()
+
+	if knockback_timer <= 0.0:
+		knockedback = false
 	match state_machine.get_current_node():
 		"Idle":
 			animation_tree.set("parameters/conditions/Move",area._is_player_in_area())
@@ -50,6 +68,9 @@ func _physics_process(_delta):
 			
 			move_and_slide()
 			animation_tree.set("parameters/conditions/Idle",!area._is_player_in_area())
+		"Hit":
+			animation_tree.set("parameters/conditions/Hit",false)
+
 		"Attack":
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 			animation_tree.set("parameters/conditions/Idle",!_target_in_range(0.0))

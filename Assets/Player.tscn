@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://c85kk8phg0pmy" path="res://Assets/Sounds/SFX/Player/Footstep1.wav" id="11_ed6nx"]
 [ext_resource type="PackedScene" uid="uid://biycn7hdoemmx" path="res://Menu/transition.tscn" id="11_y0rfj"]
 [ext_resource type="AudioStream" uid="uid://b5re4704c653c" path="res://Assets/Sounds/SFX/Player/DamageTaken1.wav" id="12_yengi"]
+[ext_resource type="PackedScene" uid="uid://v1mfdoa7u8oh" path="res://Assets/Modely/Player/leg.tscn" id="13_a8px6"]
 [ext_resource type="AudioStream" uid="uid://dxxaga4alx3l8" path="res://Assets/Sounds/SFX/Player/Hit1.wav" id="13_awmxi"]
 [ext_resource type="AudioStream" uid="uid://u0g5agdayd2h" path="res://Assets/Sounds/SFX/Player/SwordSwing1.wav" id="14_j6nj3"]
 [ext_resource type="AudioStream" uid="uid://c3do60t1sdwp5" path="res://Assets/Sounds/SFX/Ostatní/xpBubble.wav" id="19_8p2vv"]
@@ -475,6 +476,11 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.195, -0.4143725)
 visible = false
 damage = 50.0
 weapon_type = "poleHammer"
+
+[node name="Leg" parent="Head" unique_id=1642797897 instance=ExtResource("13_a8px6")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.5449138, -0.13948795)
+damage = 20.0
+weapon_type = "kick"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=365385100]
 visible = false

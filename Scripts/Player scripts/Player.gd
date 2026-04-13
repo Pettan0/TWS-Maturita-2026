@@ -46,6 +46,7 @@ extends CharacterBody3D
 @onready var mace_animations: AnimationPlayer = $Head/mace/AnimationPlayer
 @onready var long_sword_animations: AnimationPlayer = $Head/longsword/AnimationPlayer
 @onready var pole_hammer_animations: AnimationPlayer = $Head/poleHammer/AnimationPlayer
+@onready var leg_animation: AnimationPlayer = $Head/Leg/AnimationPlayer
 
 var save_file_path = "user://save/"
 var save_file_name = "PlayerData.tres"
@@ -53,6 +54,7 @@ var save_file_name = "PlayerData.tres"
 var player_data : PlayerData
 var skill_points = 0
 var base_dmg = 0.0
+
 
 var code_time = 0
 var code_progres = 0
@@ -375,6 +377,15 @@ func _unhandled_input(event: InputEvent) -> void:
 						pole_hammer_animations.play("Block")
 				await  get_tree().create_timer(1.5).timeout
 				blocking = false
+		if Input.is_action_just_pressed("kick"):
+			if !attacking and stamina.value > 20:
+				attacking = true
+				stamina.value -= 20
+				can_s_regen = false
+				stimer = 0
+				leg_animation.play("Kick")
+				await get_tree().create_timer(1.25).timeout
+				attacking = false
 		if Input.is_action_just_pressed("skillTree"):
 			_skill_tree()
 		if Input.is_action_just_pressed("pause"):

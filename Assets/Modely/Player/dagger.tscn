@@ -1727,7 +1727,7 @@ _data = {
 script = ExtResource("2_fg7io")
 damage = 5.0
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(2069660019) index="0" unique_id=1361322025]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(139983616) index="0" unique_id=139319408]
 bones/0/position = Vector3(-0.30483294, -0.21707916, 1.6394613)
 bones/0/rotation = Quaternion(-0.70663184, 0, 0, 0.70758146)
 bones/1/position = Vector3(-1.0766588, -1.7477765, 0.32571483)
@@ -1775,7 +1775,7 @@ bones/34/rotation = Quaternion(-0.54351294, 0.098481, -0.15614687, 0.8188489)
 bones/35/rotation = Quaternion(-0.4728395, 0.012248822, -0.14721969, 0.86867666)
 bones/36/rotation = Quaternion(-0.5280184, 0.06704382, -0.17645554, 0.8279887)
 
-[node name="arms" parent="Armature/Skeleton3D" index="0" unique_id=1664452757]
+[node name="arms" parent="Armature/Skeleton3D" index="0" unique_id=727920656]
 cast_shadow = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="1" unique_id=1483648745]
@@ -1789,7 +1789,7 @@ bone_idx = 21
 transform = Transform3D(0.2001495, -0.97864795, 0.046768397, 0.9417022, 0.2053329, 0.26651725, -0.2704304, -0.009301639, 0.9626948, -0.4775101, 0.61511505, -0.099659964)
 shape = SubResource("CapsuleShape3D_lgyfo")
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=1713555458]
+[node name="AnimationPlayer" parent="." index="1" unique_id=1261221791]
 libraries/ = SubResource("AnimationLibrary_lupa0")
 
 [connection signal="body_entered" from="Armature/Skeleton3D/BoneAttachment3D/Hitbox" to="." method="_on_hitbox_body_entered"]
