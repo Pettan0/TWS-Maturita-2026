@@ -242,8 +242,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -340.0
 offset_top = -205.04645
-offset_right = 770.0
-offset_bottom = 600.95355
+offset_right = 760.0
+offset_bottom = 594.95355
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
@@ -251,10 +251,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_2hq16")
 
 [node name="SkillO" parent="Skills" unique_id=1456845156 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = -75.0
-offset_top = 33.0
-offset_right = -15.0
-offset_bottom = 93.0
+offset_left = -68.0
+offset_top = 10.0
+offset_right = -8.0
+offset_bottom = 70.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_g6sfg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3lsyq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_16lbv")
@@ -379,47 +379,176 @@ offset_bottom = -67.99997
 desc = "Sníží staminu za útok o 4"
 skill_id = "attackStaminaA"
 
-[node name="SkillD" parent="Skills" unique_id=798147783 instance=ExtResource("3_4q2vm")]
+[node name="SkillM" parent="Skills" unique_id=2120750755 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = -167.0
-offset_top = 129.0
-offset_right = -107.0
-offset_bottom = 189.0
+offset_left = 10.0
+offset_top = 90.0
+offset_right = 70.0
+offset_bottom = 150.0
+skill_id = "staminaB"
 
-[node name="SkillD" parent="Skills/SkillD" unique_id=868067350 instance=ExtResource("3_4q2vm")]
+[node name="SkillM" parent="Skills/SkillM" unique_id=500817959 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 70.0
+offset_right = 130.0
+skill_id = "staminaB"
+
+[node name="SkillM2" parent="Skills/SkillM/SkillM" unique_id=2010372471 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 64.0
+offset_top = 1.9999847
+offset_right = 124.0
+offset_bottom = 62.000015
+skill_id = "staminaB"
+
+[node name="SkillM" parent="Skills/SkillM/SkillM/SkillM2" unique_id=801992245 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 48.0
+offset_top = 31.999985
+offset_right = 108.0
+offset_bottom = 92.000015
+skill_id = "staminaB"
+
+[node name="SkillA" parent="Skills/SkillM/SkillM/SkillM2/SkillM" unique_id=1167228400 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.517
+offset_left = 41.99994
+offset_top = -4.0000153
+offset_right = 101.99994
+offset_bottom = 54.98001
+grow_horizontal = 1
+grow_vertical = 1
+skill_id = "staminaA"
+
+[node name="SkillM3" parent="Skills/SkillM/SkillM" unique_id=1556500520 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = -50.00006
+offset_top = 64.0
+offset_right = 9.999939
+offset_bottom = 124.0
+skill_id = "staminaRegenB"
+
+[node name="SkillM2" parent="Skills/SkillM/SkillM/SkillM3" unique_id=1670274823 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 2.0
+offset_top = 64.0
+offset_right = 62.0
+offset_bottom = 124.0
+skill_id = "staminaRegenB"
+
+[node name="SkillM2" parent="Skills/SkillM/SkillM/SkillM3/SkillM2" unique_id=2144740535 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 70.0
+offset_top = -6.0
+offset_right = 130.0
+offset_bottom = 54.0
+skill_id = "staminaRegenB"
+
+[node name="SkillA" parent="Skills/SkillM/SkillM/SkillM3/SkillM2/SkillM2" unique_id=312740620 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = 62.0
+offset_top = -20.000015
+offset_right = 122.0
+offset_bottom = 40.000015
+skill_id = "staminaRegenA"
+
+[node name="SkillA" parent="Skills/SkillM/SkillM" unique_id=2125463853 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = 22.0
+offset_top = -122.000015
+offset_right = 82.0
+offset_bottom = -61.999985
+skill_id = "uRegen"
+
+[node name="Skill" parent="Skills/SkillM/SkillM/SkillA" unique_id=381883908 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 6.0
+offset_top = -112.000015
+offset_right = 66.0
+offset_bottom = -51.999985
+
+[node name="Skill" parent="Skills/SkillM/SkillM/SkillA/Skill" unique_id=1116635733 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 30.0
+offset_top = -106.000015
+offset_right = 90.0
+offset_bottom = -45.999985
+
+[node name="Skill" parent="Skills/SkillM/SkillM/SkillA/Skill/Skill" unique_id=1199876920 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = -12.0
+offset_top = -122.000015
+offset_right = 48.0
+offset_bottom = -61.999985
+
+[node name="Skill2" parent="Skills/SkillM/SkillM/SkillA" unique_id=2136503080 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 76.0
+offset_top = -4.0000153
+offset_right = 136.0
+offset_bottom = 56.000015
+
+[node name="Skill2" parent="Skills/SkillM/SkillM/SkillA/Skill2" unique_id=65517775 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 64.0
+offset_top = -58.000015
+offset_right = 124.0
+offset_bottom = 2.0000153
+
+[node name="Skill2" parent="Skills/SkillM/SkillM/SkillA/Skill2/Skill2" unique_id=134030969 instance=ExtResource("3_4q2vm")]
+layout_mode = 1
+offset_left = 4.0
+offset_top = -136.00002
+offset_right = 64.0
+offset_bottom = -75.999985
+
+[node name="SkillA" parent="Skills" unique_id=2127372614 instance=ExtResource("4_g6sfg")]
+layout_mode = 1
+offset_left = -132.0
+offset_top = 92.0
+offset_right = -72.0
+offset_bottom = 152.0
+skill_id = "uBlock"
+
+[node name="SkillD2" parent="Skills/SkillA" unique_id=1924636040 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
 offset_left = -130.0
 offset_right = -70.0
+skill_id = "hpB"
 
-[node name="SkillD3" parent="Skills/SkillD/SkillD" unique_id=1945919436 instance=ExtResource("3_4q2vm")]
+[node name="SkillD3" parent="Skills/SkillA/SkillD2" unique_id=1756099300 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
 offset_left = -54.0
 offset_top = -122.0
 offset_right = 6.0
 offset_bottom = -62.0
+skill_id = "hpB"
 
-[node name="SkillD" parent="Skills/SkillD/SkillD/SkillD3" unique_id=1369739503 instance=ExtResource("3_4q2vm")]
+[node name="SkillD" parent="Skills/SkillA/SkillD2/SkillD3" unique_id=501394 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
 offset_left = -108.0
 offset_top = -102.0
 offset_right = -48.0
 offset_bottom = -41.99997
+skill_id = "hpB"
 
-[node name="SkillA" parent="Skills/SkillD/SkillD/SkillD3/SkillD" unique_id=1133589 instance=ExtResource("4_g6sfg")]
+[node name="SkillA" parent="Skills/SkillA/SkillD2/SkillD3/SkillD" unique_id=1676302794 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
 offset_left = -118.0
 offset_top = -56.000015
 offset_right = -58.0
 offset_bottom = 4.0000153
+skill_id = "hpA"
 
-[node name="SkillA2" parent="Skills/SkillD/SkillD/SkillD3/SkillD" unique_id=951770543 instance=ExtResource("4_g6sfg")]
+[node name="SkillA2" parent="Skills/SkillA/SkillD2/SkillD3/SkillD" unique_id=877866222 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
 offset_left = 20.0
 offset_top = -110.0
 offset_right = 80.0
 offset_bottom = -49.99997
 
-[node name="SkillA" parent="Skills/SkillD/SkillD" unique_id=1022290802 instance=ExtResource("4_g6sfg")]
+[node name="SkillA" parent="Skills/SkillA/SkillD2" unique_id=1029076758 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
 offset_left = -126.0
 offset_top = -4.0000153
@@ -427,136 +556,61 @@ offset_right = -66.0
 offset_bottom = 56.000015
 skill_id = "uKick"
 
-[node name="Skill" parent="Skills/SkillD/SkillD/SkillA" unique_id=1464804668 instance=ExtResource("3_4q2vm")]
+[node name="Skill" parent="Skills/SkillA/SkillD2/SkillA" unique_id=914157274 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
 offset_left = -116.0
 offset_top = -74.000015
 offset_right = -56.0
 offset_bottom = -13.999985
+skill_id = "kickUp"
 
-[node name="Skill" parent="Skills/SkillD/SkillD/SkillA/Skill" unique_id=970102859 instance=ExtResource("3_4q2vm")]
+[node name="Skill" parent="Skills/SkillA/SkillD2/SkillA/Skill" unique_id=2040607091 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
 offset_left = -128.0
-offset_top = -50.000015
+offset_top = -38.000015
 offset_right = -68.0
-offset_bottom = 10.000015
+offset_bottom = 22.000015
+skill_id = "kickUp"
 
-[node name="Skill2" parent="Skills/SkillD/SkillD/SkillA" unique_id=73709547 instance=ExtResource("3_4q2vm")]
+[node name="Skill2" parent="Skills/SkillA/SkillD2/SkillA" unique_id=562131006 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
 offset_left = -118.0
 offset_top = 29.999985
 offset_right = -58.0
 offset_bottom = 90.000015
+skill_id = "kickDmg"
 
-[node name="Skill" parent="Skills/SkillD/SkillD/SkillA/Skill2" unique_id=733943780 instance=ExtResource("3_4q2vm")]
+[node name="Skill" parent="Skills/SkillA/SkillD2/SkillA/Skill2" unique_id=243327821 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = -126.0
-offset_top = 3.9999847
-offset_right = -66.0
-offset_bottom = 64.000015
+offset_left = -128.0
+offset_top = -22.000015
+offset_right = -68.0
+offset_bottom = 38.000015
+skill_id = "kickDmg"
 
-[node name="SkillD2" parent="Skills/SkillD/SkillD" unique_id=286500777 instance=ExtResource("3_4q2vm")]
+[node name="SkillD1" parent="Skills/SkillA" unique_id=1710508200 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = -58.0
-offset_top = 71.999985
-offset_right = 2.0
-offset_bottom = 132.00002
+offset_left = -82.0
+offset_top = 68.0
+offset_right = -22.0
+offset_bottom = 128.00003
+skill_id = "upBlockB"
 
-[node name="SkillA" parent="Skills/SkillD/SkillD/SkillD2" unique_id=1758240980 instance=ExtResource("4_g6sfg")]
+[node name="SkillD1" parent="Skills/SkillA/SkillD1" unique_id=1955236213 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = -98.0
-offset_top = 65.999985
-offset_right = -38.0
-offset_bottom = 126.000015
+offset_left = -112.0
+offset_top = 42.0
+offset_right = -52.0
+offset_bottom = 102.00003
+skill_id = "upBlockB"
 
-[node name="SkillM" parent="Skills" unique_id=2120750755 instance=ExtResource("3_4q2vm")]
-visible = false
+[node name="SkillA" parent="Skills/SkillA/SkillD1/SkillD1" unique_id=2145342328 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
-offset_left = 59.0
-offset_top = 80.0
-offset_right = 119.0
-offset_bottom = 140.0
-
-[node name="SkillM" parent="Skills/SkillM" unique_id=500817959 instance=ExtResource("3_4q2vm")]
-layout_mode = 1
-offset_left = 70.0
-offset_right = 130.0
-
-[node name="SkillM1" parent="Skills/SkillM/SkillM" unique_id=1516301568 instance=ExtResource("3_4q2vm")]
-layout_mode = 1
-offset_left = 60.0
-offset_top = -120.0
-offset_right = 120.0
-offset_bottom = -60.0
-
-[node name="SkillM2" parent="Skills/SkillM/SkillM/SkillM1" unique_id=327308221 instance=ExtResource("3_4q2vm")]
-layout_mode = 1
-offset_left = 60.0
-offset_top = -120.0
-offset_right = 120.0
-offset_bottom = -60.0
-
-[node name="SkillA" parent="Skills/SkillM/SkillM/SkillM1/SkillM2" unique_id=1446281610 instance=ExtResource("4_g6sfg")]
-layout_mode = 1
-offset_left = -60.00006
-offset_top = -130.00002
-offset_right = -6.1035156e-05
-offset_bottom = -69.999985
-
-[node name="SkillA2" parent="Skills/SkillM/SkillM/SkillM1/SkillM2" unique_id=1319572542 instance=ExtResource("4_g6sfg")]
-layout_mode = 1
-offset_left = 69.99994
-offset_top = 0.0
-offset_right = 129.99994
-offset_bottom = 60.00003
-
-[node name="SkillM2" parent="Skills/SkillM/SkillM" unique_id=2010372471 instance=ExtResource("3_4q2vm")]
-layout_mode = 1
-offset_left = 70.0
-offset_right = 130.0
-
-[node name="SkillM" parent="Skills/SkillM/SkillM/SkillM2" unique_id=801992245 instance=ExtResource("3_4q2vm")]
-layout_mode = 1
-offset_left = 70.0
-offset_right = 130.0
-
-[node name="SkillA" parent="Skills/SkillM/SkillM/SkillM2/SkillM" unique_id=1167228400 instance=ExtResource("4_g6sfg")]
-layout_mode = 1
-anchors_preset = -1
-anchor_bottom = 0.517
-offset_left = 69.99994
-offset_right = 129.99994
-offset_bottom = 28.980015
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="SkillM3" parent="Skills/SkillM/SkillM" unique_id=1556500520 instance=ExtResource("3_4q2vm")]
-layout_mode = 1
-offset_left = 59.99994
-offset_top = 60.0
-offset_right = 119.99994
-offset_bottom = 120.0
-
-[node name="SkillM2" parent="Skills/SkillM/SkillM/SkillM3" unique_id=1670274823 instance=ExtResource("3_4q2vm")]
-layout_mode = 1
-offset_left = 60.0
-offset_top = 60.0
-offset_right = 120.0
-offset_bottom = 120.0
-
-[node name="SkillA" parent="Skills/SkillM/SkillM/SkillM3/SkillM2" unique_id=1635270720 instance=ExtResource("4_g6sfg")]
-layout_mode = 1
-offset_left = 70.0
-offset_top = -60.000015
-offset_right = 130.0
-offset_bottom = 1.5258789e-05
-
-[node name="SkillA2" parent="Skills/SkillM/SkillM/SkillM3/SkillM2" unique_id=1867157142 instance=ExtResource("4_g6sfg")]
-layout_mode = 1
-offset_left = -60.0
-offset_top = 69.999985
-offset_right = 0.0
-offset_bottom = 130.00002
+offset_left = -146.0
+offset_top = 15.999985
+offset_right = -86.0
+offset_bottom = 76.000015
+skill_id = "upBlockA"
 
 [node name="SkillPoints" type="Label" parent="." unique_id=1484377236]
 layout_mode = 1

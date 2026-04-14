@@ -84,6 +84,7 @@ var can_start_stimer = true
 
 func _ready():
 	load_data()
+	
 	base_dmg = player_data.base_dmg
 	skill_points = player_data.skill_points
 	long_sword.position = Vector3(0, -0.414, -0.621) #forced value bcs its broken
@@ -120,12 +121,14 @@ func load_data():
 func save_data():
 	ResourceSaver.save(player_data, save_file_path + save_file_name)
 func _process(delta: float) -> void:
+	# code vec
 	if code_time > 0:
 		code_time  -=  delta
 		if code_time < 0:
 			print("Proggress lost :(")
 			code_progres = 0
 	
+	#udatne staty podle data hrace
 	hp_bar.value = player_data.hp
 	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
 	base_dmg = player_data.base_dmg
@@ -162,6 +165,8 @@ func _process(delta: float) -> void:
 		can_hp_regen = false
 		rtimer = 0
 
+
+#ukaže jednotlivé menu
 func _pauseMenu():
 	if paused:
 		pause_menu.hide()
@@ -180,6 +185,7 @@ func _skill_tree():
 		skill_tree.show()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	paused = !paused
+
 func _play_attack_sound():
 	attack.stream = load("res://Assets/Sounds/SFX/Player/Attack"+str(randi_range(1,3))+".wav")
 	attack.play()

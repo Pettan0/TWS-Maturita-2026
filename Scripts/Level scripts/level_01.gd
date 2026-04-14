@@ -3,6 +3,8 @@ extends Node3D
 @onready var area: Area3D = $Area
 @onready var npc: AnimationTree = $Npc/AnimationTree
 @onready var player: CharacterBody3D = $Player
+@onready var item: Node3D = $Item
+@onready var weapon_item: Node3D = $Item/dagger
 
 
 var save_file_path = "user://save/"
@@ -11,6 +13,8 @@ var save_file_name = "PlayerData.tres"
 var player_data : PlayerData
 var fire_tick = 1.0
 var on_fire = false
+
+var can_pick_up_item = false
 var near_door = false
 
 
@@ -19,11 +23,18 @@ func _ready():
 	$Funny/Label.text = "Ahoj\n"+OS.get_environment("USERNAME")+" :)"
 
 func _process(delta: float) -> void:
+	if item.visible and item.can_pick_up_item:
+		interact.show_with("PickUpItem",item.weapon_type)
 	if on_fire and fire_tick >= 1.0:
 		fire_tick = 0.0
 		player._hit(10)
 	else:
 		fire_tick += delta
+
+func spawn_item():
+	weapon_item.show()
+
+
 func load_data():
 	if not DirAccess.dir_exists_absolute(save_file_path):
 		DirAccess.make_dir_recursive_absolute(save_file_path)
@@ -44,14 +55,30 @@ func save_data():
 	ResourceSaver.save(player_data, save_file_path + save_file_name)
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("interact") and interact.visible and near_door:
-		save_data()
-		SoundManager.play_door_sfx()
-		$Player/Transition.visible = true
-		$Player/Transition/AnimationPlayer.play("Fade_in")
-		await  get_tree().create_timer(1.0).timeout
-		get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
-
+	if Input.is_action_just_pressed("interact"):
+		if near_door:
+			save_data()
+			SoundManager.play_door_sfx()
+			$Player/Transition.visible = true
+			$Player/Transition/AnimationPlayer.play("Fade_in")
+			await  get_tree().create_timer(1.0).timeout
+			get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
+		elif can_pick_up_item and item.visible:
+			match item.weapon_type:
+				"dagger":
+					player.player_data.u_dagger = true
+				"shortSword":
+					player.player_data.u_short_swort = true
+				"mace":
+					player.player_data.u_dmace = true
+				"longSword":
+					player.player_data.u_long_sword = true
+				"poleHammer":
+					player.player_data.u_pole_hammer = true
+			player._weapon_out(item.weapon_type)
+			item.hide()
+			item.can_pick_up_item = false
+		
 func _on_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.show_with("OpenDoor","")
@@ -63,18 +90,22 @@ func _on_door_body_exited(body: Node3D) -> void:
 		interact.hide()
 		near_door = false
 
-
 func _on_area_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		npc.set("parameters/conditions/Hello",true)
-
-
 
 func _on_fire_hitbox_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		on_fire = true
 
-
 func _on_fire_hitbox_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		on_fire = false
+
+func _on_item_area_body_entered(body: Node3D) -> void:
+	if body.name == "Player":
+		can_pick_up_item = true
+
+func _on_item_area_body_exited(body: Node3D) -> void:
+	if body.name == "Player":
+		can_pick_up_item = false

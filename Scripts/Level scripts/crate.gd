@@ -3,6 +3,7 @@ extends Node3D
 @onready var crate: Node3D = $".."
 @onready var crate_root: Node3D = $"../.."
 
+@export var is_item_crate : bool = false
 @export var hp : float
 
 func hit(damage, _a, _b):
@@ -14,6 +15,6 @@ func hit(damage, _a, _b):
 		sfx.play()
 	else :
 		SoundManager.play_crate_sfx()
-		if crate_root.has_method("spawn_item"):
-			crate_root.spawn_item()
+		if is_item_crate:
+			$"../../..".spawn_item()
 		crate.queue_free()
