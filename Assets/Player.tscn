@@ -478,7 +478,7 @@ damage = 50.0
 weapon_type = "poleHammer"
 
 [node name="Leg" parent="Head" unique_id=1642797897 instance=ExtResource("13_a8px6")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.5449138, -0.13948795)
+transform = Transform3D(0.29909933, 0, -0.023229746, 0, 0.30000004, 0, 0.023229746, 0, 0.29909933, -0.11775559, -0.5851705, -0.13948795)
 damage = 20.0
 weapon_type = "kick"
 
