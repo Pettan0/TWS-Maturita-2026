@@ -19,18 +19,19 @@ signal died
 @export var area : Area3D
 
 var state_machine
-
+#nastavitelné proměny
 var base_hp = 40
 var player_level_scale = 10
 var current_level_scale = 25
+var ATTACK_RANGE = 1.5
+var DMG = 10.0
+const SPEED = 2.0
+var knockback = 10.0
 
 var max_hp : float
 var HP : float
 var xp : float
-var ATTACK_RANGE = 1.5
-var DMG = 10.0
-const SPEED = 2.0
-var knockback = 4.0
+
 var knockedback = false
 var knockback_timer = 0.0
 
@@ -43,10 +44,10 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 		blood_particles.trigger(dir)
 	elif weapon_type == "kick":
 		var knock_dir = dir.normalized()
+		knock_dir.y = 0
 		velocity = knock_dir * knockback
 		knockedback = true
 		knockback_timer = 0.25
-		animation_tree.set("parameters/conditions/Hit",true)
 
 	HP -= damage_taken
 	
@@ -57,10 +58,18 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 		animation_tree.set("parameters/conditions/Hit",true)
 
 func _ready() -> void:
+	bes_1.hide()
+	bes_2.hide()
+	match randi_range(1,2):
+		1:
+			bes_1.show()
+		2:
+			bes_2.show()
 	
 	max_hp = base_hp + (player.player_data.level - 1) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale
 	HP = max_hp
 	xp = max_hp
+	
 	progress_bar.update_hp(max_hp, HP)
 	state_machine = animation_tree.get("parameters/playback")
 	print("hp: "+str(HP))

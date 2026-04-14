@@ -11,6 +11,7 @@ var save_file_name = "PlayerData.tres"
 var player_data : PlayerData
 var fire_tick = 1.0
 var on_fire = false
+var near_door = false
 
 
 func _ready():
@@ -43,7 +44,7 @@ func save_data():
 	ResourceSaver.save(player_data, save_file_path + save_file_name)
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("interact") and interact.visible:
+	if Input.is_action_just_pressed("interact") and interact.visible and near_door:
 		save_data()
 		SoundManager.play_door_sfx()
 		$Player/Transition.visible = true
@@ -55,10 +56,12 @@ func _on_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.show_with("OpenDoor","")
 		player_data.update_level_stats(2,1)
+		near_door = true
 
 func _on_door_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.hide()
+		near_door = false
 
 
 func _on_area_body_entered(body: Node3D) -> void:

@@ -36,7 +36,7 @@ class_name PlayerData
 @export var attack_speed : float = 1.0
 @export var attack_stamina : int = 15
 
-@export var u_dagger : bool = true
+@export var u_dagger : bool = false
 @export var u_short_swort : bool = true
 @export var u_mace : bool = true
 @export var u_long_sword : bool = true

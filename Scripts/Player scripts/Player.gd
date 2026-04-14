@@ -201,20 +201,24 @@ func _play_swing_sound():
 
 func _weapon_out(type:String):
 	save_data()
-	unarmed.hide()
-	dagger.hide()
-	short_sword.hide()
-	mace.hide()
-	long_sword.hide()
-	pole_hammer.hide()
 	match type:
 		"unarmed":
 			unarmed.show()
+			dagger.hide()
+			short_sword.hide()
+			mace.hide()
+			long_sword.hide()
+			pole_hammer.hide()
 			current_weapon = "unarmed"
 			player_data.current_weapon = current_weapon
 		"dagger":
 			if player_data.u_dagger:
 				dagger.show()
+				unarmed.hide()
+				short_sword.hide()
+				mace.hide()
+				long_sword.hide()
+				pole_hammer.hide()
 				current_weapon = "dagger"
 				player_data.current_weapon = current_weapon
 			else :
@@ -222,6 +226,11 @@ func _weapon_out(type:String):
 		"shortSword":
 			if player_data.u_short_swort:
 				short_sword.show()
+				unarmed.hide()
+				dagger.hide()
+				mace.hide()
+				long_sword.hide()
+				pole_hammer.hide()
 				current_weapon = "shortSword"
 				player_data.current_weapon = current_weapon
 			else :
@@ -229,6 +238,11 @@ func _weapon_out(type:String):
 		"mace":
 			if player_data.u_mace:
 				mace.show()
+				unarmed.hide()
+				dagger.hide()
+				short_sword.hide()
+				long_sword.hide()
+				pole_hammer.hide()
 				current_weapon = "mace"
 				player_data.current_weapon = current_weapon
 			else :
@@ -236,6 +250,11 @@ func _weapon_out(type:String):
 		"longSword":
 			if player_data.u_long_sword:
 				long_sword.show()
+				unarmed.hide()
+				dagger.hide()
+				short_sword.hide()
+				mace.hide()
+				pole_hammer.hide()
 				current_weapon = "longSword"
 				player_data.current_weapon = current_weapon
 			else :
@@ -243,6 +262,11 @@ func _weapon_out(type:String):
 		"poleHammer":
 			if player_data.u_pole_hammer:
 				pole_hammer.show()
+				unarmed.hide()
+				dagger.hide()
+				short_sword.hide()
+				mace.hide()
+				long_sword.hide()
 				current_weapon = "poleHammer"
 				player_data.current_weapon = current_weapon
 			else :
