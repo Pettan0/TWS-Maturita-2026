@@ -1,6 +1,7 @@
 extends Node3D
 @onready var sfx: AudioStreamPlayer3D = $SFX
 @onready var crate: Node3D = $".."
+@onready var crate_root: Node3D = $"../.."
 
 @export var hp : float
 
@@ -13,4 +14,6 @@ func hit(damage, _a, _b):
 		sfx.play()
 	else :
 		SoundManager.play_crate_sfx()
+		if crate_root.has_method("spawn_item"):
+			crate_root.spawn_item()
 		crate.queue_free()
