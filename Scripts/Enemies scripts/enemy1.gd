@@ -1,38 +1,76 @@
 extends CharacterBody3D
+signal died
 
 @onready var player: CharacterBody3D = $"../Player"
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var animation_tree: AnimationTree = $AnimationTree
-@export var area : Area3D
 @onready var progress_bar: ProgressBar = $SubViewport/ProgressBar
-@onready var blood_particles: GPUParticles3D = $Impact_Blood/BloodParticles
+
+@onready var level: Node3D = $".."
+
 @onready var sfx: AudioStreamPlayer3D = $SFX
+@onready var hit_sfx: AudioStreamPlayer3D = $HitSFX
+@onready var blood_particles: GPUParticles3D = $Impact_Blood/BloodParticles
+
 @onready var bes_1: MeshInstance3D = $Armature/Skeleton3D/Bes1
 @onready var bes_2: MeshInstance3D = $Armature/Skeleton3D/Bes2
 
+@export var area : Area3D
+
 var state_machine
 
-const max_hp = 100.0
-var HP = max_hp
+var base_hp = 40
+var player_level_scale = 10
+var current_level_scale = 25
+
+var max_hp : float
+var HP : float
+var xp : float
 var ATTACK_RANGE = 1.5
-var DMG = 2.0
+var DMG = 10.0
 const SPEED = 2.0
+var knockback = 4.0
+var knockedback = false
+var knockback_timer = 0.0
+
+
+var is_dead = false
 
 
 func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 	if weapon_type == "dagger" or weapon_type == "shortSword" or weapon_type == "longSword":
 		blood_particles.trigger(dir)
+	elif weapon_type == "kick":
+		var knock_dir = dir.normalized()
+		velocity = knock_dir * knockback
+		knockedback = true
+		knockback_timer = 0.25
+		animation_tree.set("parameters/conditions/Hit",true)
+
 	HP -= damage_taken
+	
 	progress_bar.update_hp(max_hp, HP)
-	play_hit_sound()
 	if (HP <= 0):
 		animation_tree.set("parameters/conditions/Death"+str(randi_range(1,3)),true)
+	else: 
+		animation_tree.set("parameters/conditions/Hit",true)
 
 func _ready() -> void:
+	
+	max_hp = base_hp + (player.player_data.level - 1) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale
+	HP = max_hp
+	xp = max_hp
 	progress_bar.update_hp(max_hp, HP)
 	state_machine = animation_tree.get("parameters/playback")
+	print("hp: "+str(HP))
 func _physics_process(_delta):
+	if knockedback:
+		knockback_timer -= _delta
+		move_and_slide()
+
+	if knockback_timer <= 0.0:
+		knockedback = false
 	match state_machine.get_current_node():
 		"Idle":
 			animation_tree.set("parameters/conditions/Move",area._is_player_in_area())
@@ -42,25 +80,34 @@ func _physics_process(_delta):
 			var next_nav_point = nav_agent.get_next_path_position()
 			velocity = (next_nav_point - global_position).normalized() * SPEED
 			look_at(Vector3(next_nav_point.x, global_position.y, next_nav_point.z), Vector3.UP)
-			animation_tree.set("parameters/conditions/Attack",_target_in_range())
+			animation_tree.set("parameters/conditions/Attack",_target_in_range(0.0))
 			
 			move_and_slide()
 			animation_tree.set("parameters/conditions/Idle",!area._is_player_in_area())
+		"Hit":
+			animation_tree.set("parameters/conditions/Hit",false)
 		"Attack":
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
-			animation_tree.set("parameters/conditions/Idle",!_target_in_range())
+			animation_tree.set("parameters/conditions/Idle",!_target_in_range(0.0))
 		"Death01":
-			$CollisionShape3D.disabled = true
-			await get_tree().create_timer(3.0).timeout
-			self.free()
+			if !is_dead:
+				is_dead = true
+				die(3.0)
 		"Death02":
-			$CollisionShape3D.disabled = true
-			await get_tree().create_timer(3.0).timeout
-			self.free()
+			if !is_dead:
+				is_dead = true
+				die(4.0)
 		"Death03":
-			$CollisionShape3D.disabled = true
-			await get_tree().create_timer(3.0).timeout
-			self.free()
+			if !is_dead:
+				is_dead = true
+				die(2.0)
+
+func die(delay: float):
+	player.add_xp(xp)
+	died.emit()
+	$CollisionShape3D.disabled = true
+	await get_tree().create_timer(delay).timeout
+	queue_free()
 
 func play_attack_sound():
 	sfx.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - attack "+str(randi_range(1,4))+".wav")
@@ -68,17 +115,17 @@ func play_attack_sound():
 	sfx.play()
 
 func play_hit_sound():
-	sfx.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - damaged "+str(randi_range(1,4))+".wav")
-	sfx.pitch_scale = randf_range(.8, 1.2)
-	sfx.play()
+	hit_sfx.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - damaged "+str(randi_range(1,4))+".wav")
+	hit_sfx.pitch_scale = randf_range(.8, 1.2)
+	hit_sfx.play()
 
 func play_death_sound():
-	sfx.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - death"+str(randi_range(1,4))+ ".wav")
-	sfx.pitch_scale = randf_range(.8, 1.2)
-	sfx.play()
+	hit_sfx.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - death"+str(randi_range(1,4))+ ".wav")
+	hit_sfx.pitch_scale = randf_range(.8, 1.2)
+	hit_sfx.play()
 
 func _hit_player():
-	if _target_in_range():
+	if _target_in_range(1.0):
 		player._hit(DMG)
-func _target_in_range() -> bool:
-	return global_position.distance_to(player.global_position) <= ATTACK_RANGE
+func _target_in_range(add : float) -> bool:
+	return global_position.distance_to(player.global_position) <= ATTACK_RANGE + add
