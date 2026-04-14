@@ -46,6 +46,8 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 	progress_bar.update_hp(max_hp, HP)
 	if (HP <= 0):
 		animation_tree.set("parameters/conditions/Death"+str(randi_range(1,3)),true)
+	else: 
+		animation_tree.set("parameters/conditions/Hit",true)
 
 func _ready() -> void:
 	armor = min((player.player_data.player_level) * 0.05,0.75)

@@ -8,6 +8,8 @@ extends CharacterBody3D
 @onready var progress_bar: ProgressBar = $SubViewport/ProgressBar
 @onready var blood_particles: GPUParticles3D = $Impact_Blood/BloodParticles
 @onready var sfx: AudioStreamPlayer3D = $SFX
+@onready var bes_1: MeshInstance3D = $Armature/Skeleton3D/Bes1
+@onready var bes_2: MeshInstance3D = $Armature/Skeleton3D/Bes2
 
 var state_machine
 
