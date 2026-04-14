@@ -102,7 +102,7 @@ func find_starter_position():
 
 func new_xp_to_next(amount:float):
 	var saved_value = amount + xp - xp_to_next
-	xp_to_next = round(100 * pow(1.25, player_level))
+	xp_to_next = round(100 * pow(1.5 , player_level))
 	xp = saved_value
 	player_level += 1
 	skill_points += 3

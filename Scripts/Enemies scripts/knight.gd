@@ -15,8 +15,8 @@ signal died
 var state_machine
 
 var base_hp = 30
-var player_level_scale = 10
-var current_level_scale = 25
+var player_level_scale = 5
+var current_level_scale = 15
 
 var ATTACK_RANGE = 2.0
 var DMG = 15.0
@@ -56,16 +56,16 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 
 func _ready() -> void:
 	armor = min((player.player_data.player_level) * 0.05,0.75)
-	max_hp = base_hp + (player.player_data.level - 1) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale
+	max_hp = base_hp + (player.player_data.level - 2) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale
 	HP = max_hp
 	xp = max_hp
 	progress_bar.update_hp(max_hp, HP)
 	state_machine = animation_tree.get("parameters/playback")
 	print("armor: "+str(armor))
 	print("hp: "+str(HP))
-func _physics_process(_delta):
+func _physics_process(delta):
 	if knockedback:
-		knockback_timer -= _delta
+		knockback_timer -= delta
 		move_and_slide()
 
 	if knockback_timer <= 0.0:

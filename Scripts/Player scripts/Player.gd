@@ -39,7 +39,6 @@ extends CharacterBody3D
 @onready var fov_animation: AnimationPlayer = $Head/FovAnimation
 @onready var transition_anim: AnimationPlayer = $Transition/AnimationPlayer
 
-
 @onready var unarmed_animations: AnimationPlayer = $Head/unarmed/AnimationPlayer
 @onready var dagger_animations:AnimationPlayer = $Head/dagger/AnimationPlayer
 @onready var short_sword_animations: AnimationPlayer = $Head/shortsword/AnimationPlayer
@@ -55,7 +54,6 @@ var player_data : PlayerData
 var skill_points = 0
 var base_dmg = 0.0
 
-
 var code_time = 0
 var code_progres = 0
 var super_secred = false
@@ -65,6 +63,8 @@ var attacking = false
 var paused = false
 var current_weapon = "unarmed"
 var blocking = false
+
+#maly vojta -> 🐒
 
 var speed = 3.0
 var jump_velocity = 3.1
@@ -84,11 +84,11 @@ var can_start_stimer = true
 
 func _ready():
 	load_data()
-	
-	base_dmg = player_data.base_dmg
-	skill_points = player_data.skill_points
 	long_sword.position = Vector3(0, -0.414, -0.621) #forced value bcs its broken
 	
+	#ziskavani promnen a nastavovani textu / progres baru
+	base_dmg = player_data.base_dmg
+	skill_points = player_data.skill_points
 	player_level_label.text = "Lvl: "+str(player_data.player_level)
 	xp_bar.value = player_data.xp
 	xp_bar.max_value = player_data.xp_to_next
@@ -101,12 +101,13 @@ func _ready():
 	headbob.play("Headbob")
 	_weapon_out(player_data.current_weapon)
 	
+	#zapne prechod
 	transition.visible = true
 	transition_anim.play("Fade_out")
 	await  get_tree().create_timer(1.0).timeout
 	transition.visible = false 
 
-
+#lodeni a ukladani player data
 func load_data():
 	if not DirAccess.dir_exists_absolute(save_file_path):
 		DirAccess.make_dir_recursive_absolute(save_file_path)
@@ -186,6 +187,7 @@ func _skill_tree():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	paused = !paused
 
+#hrani jednotlivich random sxf
 func _play_attack_sound():
 	attack.stream = load("res://Assets/Sounds/SFX/Player/Attack"+str(randi_range(1,3))+".wav")
 	attack.play()
@@ -205,6 +207,7 @@ func _play_swing_sound():
 	sword_swing.stream = load("res://Assets/Sounds/SFX/Player/SwordSwing"+str(randi_range(1,5))+".wav")
 	sword_swing.play()
 
+#funkce pro vytazeni zbrane + if je odemcena
 func _weapon_out(type:String):
 	save_data()
 	match type:
@@ -278,6 +281,7 @@ func _weapon_out(type:String):
 			else :
 				popup.show_with("lockedWeapon")
 
+#pridani xp a lvl up
 func add_xp(amount:float):
 	if amount + player_data.xp < player_data.xp_to_next:
 		player_data.xp += amount
@@ -291,7 +295,10 @@ func add_xp(amount:float):
 	xp_bar.value = player_data.xp
 	xp_bar.max_value = player_data.xp_to_next
 	save_data()
+
+#vsechny keybindy
 func _unhandled_input(event: InputEvent) -> void:
+	#easter egg
 	if super_secred:
 		if Input.is_action_pressed("w") and code_progres == 0:
 			code_time = 2.5
@@ -337,9 +344,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			print("You did it :D")
 			_hit(1000)
 	if !paused :
+		#zapnuti kodu
 		if Input.is_action_just_pressed("secred"):
 			super_secred = !super_secred
 			print("Super secret is "+str(super_secred))
+		#keybind na zbrane
 		if Input.is_action_just_pressed("wp1"):
 			_weapon_out("unarmed")
 		if Input.is_action_just_pressed("wp2"):
@@ -352,12 +361,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			_weapon_out("longSword")
 		if Input.is_action_just_pressed("wp6"):
 			_weapon_out("poleHammer")
+		#jednotlive bojove akce
 		if Input.is_action_just_pressed("attack"):
 			if !attacking and stamina.value > player_data.attack_stamina:
 				attacking = true
 				stamina.value -= player_data.attack_stamina
 				can_s_regen = false
 				stimer = 0
+				#vybrani jedne zbrane
 				match current_weapon:
 					"unarmed":
 						unarmed_animations.speed_scale = 1.0 * player_data.attack_speed
@@ -424,12 +435,14 @@ func _unhandled_input(event: InputEvent) -> void:
 			_skill_tree()
 		if Input.is_action_just_pressed("pause"):
 			_pauseMenu()
+		#otaceni kamery 
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			if event is InputEventMouseMotion:
 				rotate_y(-event.relative.x * 0.002)
 				head.rotate_x(-event.relative.y * 0.002)
 				head.rotation.x = clamp(head.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 	else:
+		#kdyz ne pozastaveno schova but skill tree nebo pause menu
 		if Input.is_action_just_pressed("pause"):
 			if pause_menu.visible:
 				pause_menu.hide()
@@ -437,6 +450,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				skill_tree.hide()
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			paused = !paused
+	#schovani ui
 	if Input.is_action_just_pressed("f1"):
 		if hp_bar.visible and stamina.visible:
 			hp_bar.hide()
@@ -444,8 +458,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			hp_bar.show()
 			stamina.show()
+	#debug tlacitko pro testovani ODSTANIT
 	if Input.is_action_just_pressed("debug"):
 		player_data.skill_points += 1
+
+#dostavani dmg
 func _hit(damage : float):
 	if !blocking:
 		if !dead:
@@ -467,19 +484,23 @@ func _hit(damage : float):
 		_play_hit_sound()
 
 func _physics_process(delta: float) -> void:
+	#gravitace lol 🍎
 	if not is_on_floor():
 			velocity += get_gravity() * delta
 	if !paused and !dead:
+			#skok 🤓
 			if Input.is_action_just_pressed("jump") and is_on_floor() and stamina.value > 15:
 				stamina.value -= 15.0
 				can_s_regen = false
 				stimer = 0
 				velocity.y = jump_velocity
 				jump.play()
-		
+			
+			#controls pohybu
 			var input_dir := Input.get_vector("a", "d", "w", "s")
 			var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 			if direction:
+				#beh 👨‍🦽
 				if Input.is_action_pressed("sprint") and stamina.value > 0:
 					stamina.value -= 0.5
 					can_s_regen = false

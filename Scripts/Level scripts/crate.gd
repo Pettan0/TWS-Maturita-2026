@@ -15,6 +15,6 @@ func hit(damage, _a, _b):
 		sfx.play()
 	else :
 		SoundManager.play_crate_sfx()
-		if is_item_crate:
+		if $"../../..".has_method("spawn_item"):
 			$"../../..".spawn_item()
 		crate.queue_free()

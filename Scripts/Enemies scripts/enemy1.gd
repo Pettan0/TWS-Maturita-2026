@@ -21,8 +21,8 @@ signal died
 var state_machine
 #nastavitelné proměny
 var base_hp = 40
-var player_level_scale = 10
-var current_level_scale = 25
+var player_level_scale = 5
+var current_level_scale = 20
 var ATTACK_RANGE = 1.5
 var DMG = 10.0
 const SPEED = 2.0
@@ -66,7 +66,7 @@ func _ready() -> void:
 		2:
 			bes_2.show()
 	
-	max_hp = base_hp + (player.player_data.level - 1) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale
+	max_hp = base_hp + (player.player_data.level - 2 ) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale
 	HP = max_hp
 	xp = max_hp
 	

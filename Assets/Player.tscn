@@ -22,6 +22,13 @@
 [ext_resource type="AudioStream" uid="uid://c3do60t1sdwp5" path="res://Assets/Sounds/SFX/Ostatní/xpBubble.wav" id="19_8p2vv"]
 [ext_resource type="AudioStream" uid="uid://bxvf2u60qrfq6" path="res://Assets/Sounds/SFX/Ostatní/lvlUp.wav" id="20_a8px6"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8id78"]
+bg_color = Color(0, 0, 0, 0.29411766)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8p2vv"]
 bg_color = Color(1, 0, 0, 0)
 
@@ -291,6 +298,7 @@ offset_bottom = 323.90707
 
 [node name="SkillTree" parent="Head/Camera3D" unique_id=2029093670 instance=ExtResource("3_j0vyv")]
 visible = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_8id78")
 
 [node name="Interact" type="Label" parent="Head/Camera3D" unique_id=470933215]
 visible = false

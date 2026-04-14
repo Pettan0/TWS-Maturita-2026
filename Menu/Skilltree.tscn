@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cxgd12oc2roep" path="res://Menu/skill.tscn" id="3_4q2vm"]
 [ext_resource type="Texture2D" uid="uid://cjwxty25dab8" path="res://Assets/2D/SkillTree/_placeholder/skill_square.png" id="4_e5ru6"]
 [ext_resource type="PackedScene" uid="uid://crb3p6vydq3a3" path="res://Menu/skillA.tscn" id="4_g6sfg"]
-[ext_resource type="Texture2D" path="res://Assets/2D/SkillTree/strength/skill_square.png" id="4_yaw3s"]
 [ext_resource type="Texture2D" uid="uid://dah10hayrlkn5" path="res://Assets/2D/SkillTree/_placeholder/skill_octagon.png" id="5_x46ny"]
 [ext_resource type="Texture2D" uid="uid://bwi85dst4cqmy" path="res://Assets/2D/SkillTree/strength/skill_strength_extra.png" id="5_yw0w2"]
 [ext_resource type="Texture2D" uid="uid://dugo2gjx82vgq" path="res://Assets/2D/SkillTree/speed/skill_speed.png" id="6_nhmm6"]
@@ -258,7 +257,7 @@ offset_bottom = 70.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_g6sfg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3lsyq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_16lbv")
-icon = ExtResource("4_yaw3s")
+icon = ExtResource("4_e5ru6")
 flat = true
 desc = "Zvíší základní poškození o 1"
 skill_id = "dmgB"

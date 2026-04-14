@@ -13,12 +13,21 @@ signal died
 
 var state_machine
 
-var max_hp = 150.0
-var HP = max_hp
-var xp = max_hp / 2
+var base_hp = 50
+var player_level_scale = 5
+var current_level_scale = 30
+
 var ATTACK_RANGE = 1.5
 var DMG = 15.0
 const SPEED = 3.1
+
+var knockback = 4.0
+var knockedback = false
+var knockback_timer = 0.0
+
+var max_hp
+var HP 
+var xp
 var attack_dir = Vector3.ZERO
 
 var is_dead = false
@@ -26,21 +35,31 @@ var is_dead = false
 
 func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 	if weapon_type == "kick":
-		HP -= damage_taken
-		velocity = dir * 20
-	else:
-		HP -= damage_taken
+
+		var knock_dir = dir.normalized()
+		velocity = knock_dir * knockback
+		knockedback = true
+		knockback_timer = 0.25
+	HP -= damage_taken
 	play_hit_sound()
 	progress_bar.update_hp(max_hp, HP)
 	if (HP <= 0):
 		animation_tree.set("parameters/conditions/Death"+str(randi_range(1,2)),true)
 
 func _ready() -> void:
+	max_hp = base_hp + (player.player_data.level - 2) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale
+	HP = max_hp
+	xp = max_hp
 	progress_bar.update_hp(max_hp, HP)
 	state_machine = animation_tree.get("parameters/playback")
 
-func _physics_process(_delta):
-	print(state_machine.get_current_node())
+func _physics_process(delta):
+	if knockedback:
+		knockback_timer -= delta
+		move_and_slide()
+
+	if knockback_timer <= 0.0:
+		knockedback = false
 	match state_machine.get_current_node():
 		"Idle":
 			animation_tree.set("parameters/conditions/Move",area._is_player_in_area())

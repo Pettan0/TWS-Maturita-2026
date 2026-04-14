@@ -23,8 +23,11 @@ func _ready():
 	$Funny/Label.text = "Ahoj\n"+OS.get_environment("USERNAME")+" :)"
 
 func _process(delta: float) -> void:
-	if item.visible and item.can_pick_up_item:
-		interact.show_with("PickUpItem",item.weapon_type)
+	if weapon_item.visible and can_pick_up_item:
+		interact.show_with("PickUpItem",weapon_item.name)
+	elif !can_pick_up_item and !near_door:
+		interact.hide()
+		
 	if on_fire and fire_tick >= 1.0:
 		fire_tick = 0.0
 		player._hit(10)
@@ -32,8 +35,12 @@ func _process(delta: float) -> void:
 		fire_tick += delta
 
 func spawn_item():
-	weapon_item.show()
-
+				#zmenit podle itemu
+	if player_data.u_dagger:
+		return
+	else:
+		weapon_item.show()
+	
 
 func load_data():
 	if not DirAccess.dir_exists_absolute(save_file_path):
@@ -63,21 +70,12 @@ func _unhandled_input(_event: InputEvent) -> void:
 			$Player/Transition/AnimationPlayer.play("Fade_in")
 			await  get_tree().create_timer(1.0).timeout
 			get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
-		elif can_pick_up_item and item.visible:
-			match item.weapon_type:
-				"dagger":
-					player.player_data.u_dagger = true
-				"shortSword":
-					player.player_data.u_short_swort = true
-				"mace":
-					player.player_data.u_dmace = true
-				"longSword":
-					player.player_data.u_long_sword = true
-				"poleHammer":
-					player.player_data.u_pole_hammer = true
-			player._weapon_out(item.weapon_type)
-			item.hide()
-			item.can_pick_up_item = false
+		elif can_pick_up_item and weapon_item.visible:
+						#zmenit podle zbrane
+			player.player_data.u_dagger = true
+			player._weapon_out("dagger")
+			weapon_item.hide()
+			can_pick_up_item = false
 		
 func _on_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
@@ -101,6 +99,7 @@ func _on_fire_hitbox_body_entered(body: Node3D) -> void:
 func _on_fire_hitbox_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		on_fire = false
+
 
 func _on_item_area_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
