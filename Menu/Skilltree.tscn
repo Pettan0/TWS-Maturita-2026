@@ -2,21 +2,21 @@
 
 [ext_resource type="Script" uid="uid://c350m4w7rdc00" path="res://Scripts/Menu scripts/skill_tree.gd" id="1_e261c"]
 [ext_resource type="Script" uid="uid://d1gfh7u42mtws" path="res://Scripts/Menu scripts/button_animation1.gd" id="1_k8lfr"]
+[ext_resource type="Texture2D" uid="uid://xbdb17if85vd" path="res://Assets/2D/SkillTree/_bg/STree_bg_back.png" id="1_nhmm6"]
+[ext_resource type="Texture2D" uid="uid://biub887eifjov" path="res://Assets/2D/SkillTree/_bg/STree_bg.png" id="2_16lbv"]
 [ext_resource type="PackedScene" uid="uid://cxgd12oc2roep" path="res://Menu/skill.tscn" id="3_4q2vm"]
+[ext_resource type="Texture2D" uid="uid://cjwxty25dab8" path="res://Assets/2D/SkillTree/_placeholder/skill_square.png" id="4_e5ru6"]
 [ext_resource type="PackedScene" uid="uid://crb3p6vydq3a3" path="res://Menu/skillA.tscn" id="4_g6sfg"]
+[ext_resource type="Texture2D" path="res://Assets/2D/SkillTree/strength/skill_square.png" id="4_yaw3s"]
+[ext_resource type="Texture2D" uid="uid://dah10hayrlkn5" path="res://Assets/2D/SkillTree/_placeholder/skill_octagon.png" id="5_x46ny"]
+[ext_resource type="Texture2D" uid="uid://bwi85dst4cqmy" path="res://Assets/2D/SkillTree/strength/skill_strength_extra.png" id="5_yw0w2"]
+[ext_resource type="Texture2D" uid="uid://dugo2gjx82vgq" path="res://Assets/2D/SkillTree/speed/skill_speed.png" id="6_nhmm6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8id78"]
-bg_color = Color(0, 0, 0, 0.29411766)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v144a"]
+texture = ExtResource("1_nhmm6")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2hq16"]
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x46ny"]
+texture = ExtResource("2_16lbv")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6sfg"]
 bg_color = Color(0.038397167, 0.038397167, 0.03839716, 0.5882353)
@@ -230,7 +230,7 @@ offset_right = 501.0
 offset_bottom = 273.0929
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_8id78")
+theme_override_styles/panel = SubResource("StyleBoxTexture_v144a")
 script = ExtResource("1_e261c")
 
 [node name="Skills" type="Panel" parent="." unique_id=1944203054]
@@ -240,14 +240,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -340.0
-offset_top = -205.04645
-offset_right = 760.0
-offset_bottom = 594.95355
+offset_left = -359.0
+offset_top = -215.04645
+offset_right = 799.0
+offset_bottom = 604.95355
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-theme_override_styles/panel = SubResource("StyleBoxFlat_2hq16")
+theme_override_styles/panel = SubResource("StyleBoxTexture_x46ny")
 
 [node name="SkillO" parent="Skills" unique_id=1456845156 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -258,6 +258,8 @@ offset_bottom = 70.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_g6sfg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3lsyq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_16lbv")
+icon = ExtResource("4_yaw3s")
+flat = true
 desc = "Zvíší základní poškození o 1"
 skill_id = "dmgB"
 
@@ -268,6 +270,8 @@ offset_bottom = -70.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_x46ny")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2q25n")
 theme_override_styles/hover = SubResource("StyleBoxFlat_e5ru6")
+icon = ExtResource("5_yw0w2")
+flat = true
 desc = "Zvíší základní poškození o 1"
 skill_id = "dmgB"
 
@@ -280,6 +284,8 @@ offset_bottom = -14.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_yaw3s")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xs621")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ud1i8")
+icon = ExtResource("6_nhmm6")
+flat = true
 desc = "Zvíší rychlost útoku o 10%"
 skill_id = "attackSpeedB"
 
@@ -292,6 +298,8 @@ offset_bottom = -65.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_yw0w2")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_i7owt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_nhmm6")
+icon = ExtResource("4_e5ru6")
+flat = true
 desc = "Zvíší rychlost útoku o 10%"
 skill_id = "attackSpeedB"
 
@@ -301,6 +309,8 @@ offset_left = -120.0
 offset_top = -90.0
 offset_right = -60.0
 offset_bottom = -29.99997
+icon = ExtResource("5_x46ny")
+flat = true
 desc = "Zvíší rychlost útoku o 30%"
 skill_id = "attackSpeedA"
 
@@ -310,6 +320,8 @@ offset_left = 30.0
 offset_top = -124.0
 offset_right = 90.0
 offset_bottom = -63.99997
+icon = ExtResource("5_x46ny")
+flat = true
 desc = "Zvíší rychlost útoku o 30%"
 skill_id = "attackSpeedA"
 
@@ -322,6 +334,8 @@ offset_bottom = -74.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_v144a")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_5oyx3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rt1ag")
+icon = ExtResource("4_e5ru6")
+flat = true
 desc = "Zvíší základní poškození o 1"
 skill_id = "dmgB"
 
@@ -334,6 +348,8 @@ offset_bottom = -68.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ufk6f")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7vgtt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rlumi")
+icon = ExtResource("4_e5ru6")
+flat = true
 desc = "Zvíší základní poškození o 1"
 skill_id = "dmgB"
 
@@ -343,6 +359,8 @@ offset_left = -8.0
 offset_top = -128.0
 offset_right = 52.0
 offset_bottom = -67.99997
+icon = ExtResource("5_x46ny")
+flat = true
 desc = "Zvíší základní poškození o 5"
 skill_id = "dmgA"
 
@@ -355,6 +373,8 @@ offset_bottom = -10.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_4m4o5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_rhnch")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6qqeq")
+icon = ExtResource("4_e5ru6")
+flat = true
 desc = "Sníží staminu za útok o 2"
 skill_id = "attackStaminaB"
 
@@ -367,6 +387,8 @@ offset_bottom = -44.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_6uo4b")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_p54ay")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wcoki")
+icon = ExtResource("4_e5ru6")
+flat = true
 desc = "Sníží staminu za útok o 2"
 skill_id = "attackStaminaB"
 
@@ -376,21 +398,27 @@ offset_left = -2.0
 offset_top = -128.0
 offset_right = 58.0
 offset_bottom = -67.99997
+icon = ExtResource("5_x46ny")
+flat = true
 desc = "Sníží staminu za útok o 4"
 skill_id = "attackStaminaA"
 
 [node name="SkillM" parent="Skills" unique_id=2120750755 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = 10.0
-offset_top = 90.0
-offset_right = 70.0
-offset_bottom = 150.0
+offset_left = 12.0
+offset_top = 76.0
+offset_right = 72.0
+offset_bottom = 136.0
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "staminaB"
 
 [node name="SkillM" parent="Skills/SkillM" unique_id=500817959 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
 offset_left = 70.0
 offset_right = 130.0
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "staminaB"
 
 [node name="SkillM2" parent="Skills/SkillM/SkillM" unique_id=2010372471 instance=ExtResource("3_4q2vm")]
@@ -399,6 +427,8 @@ offset_left = 64.0
 offset_top = 1.9999847
 offset_right = 124.0
 offset_bottom = 62.000015
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "staminaB"
 
 [node name="SkillM" parent="Skills/SkillM/SkillM/SkillM2" unique_id=801992245 instance=ExtResource("3_4q2vm")]
@@ -407,6 +437,8 @@ offset_left = 48.0
 offset_top = 31.999985
 offset_right = 108.0
 offset_bottom = 92.000015
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "staminaB"
 
 [node name="SkillA" parent="Skills/SkillM/SkillM/SkillM2/SkillM" unique_id=1167228400 instance=ExtResource("4_g6sfg")]
@@ -419,6 +451,8 @@ offset_right = 101.99994
 offset_bottom = 54.98001
 grow_horizontal = 1
 grow_vertical = 1
+icon = ExtResource("5_x46ny")
+flat = true
 skill_id = "staminaA"
 
 [node name="SkillM3" parent="Skills/SkillM/SkillM" unique_id=1556500520 instance=ExtResource("3_4q2vm")]
@@ -427,6 +461,8 @@ offset_left = -50.00006
 offset_top = 64.0
 offset_right = 9.999939
 offset_bottom = 124.0
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "staminaRegenB"
 
 [node name="SkillM2" parent="Skills/SkillM/SkillM/SkillM3" unique_id=1670274823 instance=ExtResource("3_4q2vm")]
@@ -435,6 +471,8 @@ offset_left = 2.0
 offset_top = 64.0
 offset_right = 62.0
 offset_bottom = 124.0
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "staminaRegenB"
 
 [node name="SkillM2" parent="Skills/SkillM/SkillM/SkillM3/SkillM2" unique_id=2144740535 instance=ExtResource("3_4q2vm")]
@@ -443,6 +481,8 @@ offset_left = 70.0
 offset_top = -6.0
 offset_right = 130.0
 offset_bottom = 54.0
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "staminaRegenB"
 
 [node name="SkillA" parent="Skills/SkillM/SkillM/SkillM3/SkillM2/SkillM2" unique_id=312740620 instance=ExtResource("4_g6sfg")]
@@ -451,6 +491,8 @@ offset_left = 62.0
 offset_top = -20.000015
 offset_right = 122.0
 offset_bottom = 40.000015
+icon = ExtResource("5_x46ny")
+flat = true
 skill_id = "staminaRegenA"
 
 [node name="SkillA" parent="Skills/SkillM/SkillM" unique_id=2125463853 instance=ExtResource("4_g6sfg")]
@@ -459,6 +501,8 @@ offset_left = 22.0
 offset_top = -122.000015
 offset_right = 82.0
 offset_bottom = -61.999985
+icon = ExtResource("5_x46ny")
+flat = true
 skill_id = "uRegen"
 
 [node name="Skill" parent="Skills/SkillM/SkillM/SkillA" unique_id=381883908 instance=ExtResource("3_4q2vm")]
@@ -467,6 +511,8 @@ offset_left = 6.0
 offset_top = -112.000015
 offset_right = 66.0
 offset_bottom = -51.999985
+icon = ExtResource("4_e5ru6")
+flat = true
 
 [node name="Skill" parent="Skills/SkillM/SkillM/SkillA/Skill" unique_id=1116635733 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -474,6 +520,8 @@ offset_left = 30.0
 offset_top = -106.000015
 offset_right = 90.0
 offset_bottom = -45.999985
+icon = ExtResource("4_e5ru6")
+flat = true
 
 [node name="Skill" parent="Skills/SkillM/SkillM/SkillA/Skill/Skill" unique_id=1199876920 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -481,6 +529,8 @@ offset_left = -12.0
 offset_top = -122.000015
 offset_right = 48.0
 offset_bottom = -61.999985
+icon = ExtResource("4_e5ru6")
+flat = true
 
 [node name="Skill2" parent="Skills/SkillM/SkillM/SkillA" unique_id=2136503080 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -488,6 +538,8 @@ offset_left = 76.0
 offset_top = -4.0000153
 offset_right = 136.0
 offset_bottom = 56.000015
+icon = ExtResource("4_e5ru6")
+flat = true
 
 [node name="Skill2" parent="Skills/SkillM/SkillM/SkillA/Skill2" unique_id=65517775 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -495,6 +547,8 @@ offset_left = 64.0
 offset_top = -58.000015
 offset_right = 124.0
 offset_bottom = 2.0000153
+icon = ExtResource("4_e5ru6")
+flat = true
 
 [node name="Skill2" parent="Skills/SkillM/SkillM/SkillA/Skill2/Skill2" unique_id=134030969 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -502,6 +556,8 @@ offset_left = 4.0
 offset_top = -136.00002
 offset_right = 64.0
 offset_bottom = -75.999985
+icon = ExtResource("4_e5ru6")
+flat = true
 
 [node name="SkillA" parent="Skills" unique_id=2127372614 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
@@ -509,12 +565,16 @@ offset_left = -132.0
 offset_top = 92.0
 offset_right = -72.0
 offset_bottom = 152.0
+icon = ExtResource("5_x46ny")
+flat = true
 skill_id = "uBlock"
 
 [node name="SkillD2" parent="Skills/SkillA" unique_id=1924636040 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
 offset_left = -130.0
 offset_right = -70.0
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "hpB"
 
 [node name="SkillD3" parent="Skills/SkillA/SkillD2" unique_id=1756099300 instance=ExtResource("3_4q2vm")]
@@ -523,6 +583,8 @@ offset_left = -54.0
 offset_top = -122.0
 offset_right = 6.0
 offset_bottom = -62.0
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "hpB"
 
 [node name="SkillD" parent="Skills/SkillA/SkillD2/SkillD3" unique_id=501394 instance=ExtResource("3_4q2vm")]
@@ -531,6 +593,8 @@ offset_left = -108.0
 offset_top = -102.0
 offset_right = -48.0
 offset_bottom = -41.99997
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "hpB"
 
 [node name="SkillA" parent="Skills/SkillA/SkillD2/SkillD3/SkillD" unique_id=1676302794 instance=ExtResource("4_g6sfg")]
@@ -539,6 +603,8 @@ offset_left = -118.0
 offset_top = -56.000015
 offset_right = -58.0
 offset_bottom = 4.0000153
+icon = ExtResource("5_x46ny")
+flat = true
 skill_id = "hpA"
 
 [node name="SkillA2" parent="Skills/SkillA/SkillD2/SkillD3/SkillD" unique_id=877866222 instance=ExtResource("4_g6sfg")]
@@ -547,6 +613,8 @@ offset_left = 20.0
 offset_top = -110.0
 offset_right = 80.0
 offset_bottom = -49.99997
+icon = ExtResource("5_x46ny")
+flat = true
 
 [node name="SkillA" parent="Skills/SkillA/SkillD2" unique_id=1029076758 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
@@ -554,6 +622,8 @@ offset_left = -126.0
 offset_top = -4.0000153
 offset_right = -66.0
 offset_bottom = 56.000015
+icon = ExtResource("5_x46ny")
+flat = true
 skill_id = "uKick"
 
 [node name="Skill" parent="Skills/SkillA/SkillD2/SkillA" unique_id=914157274 instance=ExtResource("3_4q2vm")]
@@ -562,6 +632,8 @@ offset_left = -116.0
 offset_top = -74.000015
 offset_right = -56.0
 offset_bottom = -13.999985
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "kickUp"
 
 [node name="Skill" parent="Skills/SkillA/SkillD2/SkillA/Skill" unique_id=2040607091 instance=ExtResource("3_4q2vm")]
@@ -570,6 +642,8 @@ offset_left = -128.0
 offset_top = -38.000015
 offset_right = -68.0
 offset_bottom = 22.000015
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "kickUp"
 
 [node name="Skill2" parent="Skills/SkillA/SkillD2/SkillA" unique_id=562131006 instance=ExtResource("3_4q2vm")]
@@ -578,6 +652,8 @@ offset_left = -118.0
 offset_top = 29.999985
 offset_right = -58.0
 offset_bottom = 90.000015
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "kickDmg"
 
 [node name="Skill" parent="Skills/SkillA/SkillD2/SkillA/Skill2" unique_id=243327821 instance=ExtResource("3_4q2vm")]
@@ -586,6 +662,8 @@ offset_left = -128.0
 offset_top = -22.000015
 offset_right = -68.0
 offset_bottom = 38.000015
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "kickDmg"
 
 [node name="SkillD1" parent="Skills/SkillA" unique_id=1710508200 instance=ExtResource("3_4q2vm")]
@@ -594,6 +672,8 @@ offset_left = -82.0
 offset_top = 68.0
 offset_right = -22.0
 offset_bottom = 128.00003
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "upBlockB"
 
 [node name="SkillD1" parent="Skills/SkillA/SkillD1" unique_id=1955236213 instance=ExtResource("3_4q2vm")]
@@ -602,6 +682,8 @@ offset_left = -112.0
 offset_top = 42.0
 offset_right = -52.0
 offset_bottom = 102.00003
+icon = ExtResource("4_e5ru6")
+flat = true
 skill_id = "upBlockB"
 
 [node name="SkillA" parent="Skills/SkillA/SkillD1/SkillD1" unique_id=2145342328 instance=ExtResource("4_g6sfg")]
@@ -610,6 +692,8 @@ offset_left = -146.0
 offset_top = 15.999985
 offset_right = -86.0
 offset_bottom = 76.000015
+icon = ExtResource("5_x46ny")
+flat = true
 skill_id = "upBlockA"
 
 [node name="SkillPoints" type="Label" parent="." unique_id=1484377236]
