@@ -44,6 +44,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ck4ef")
 script = ExtResource("1_ck4ef")
 
 [node name="Label" type="Label" parent="." unique_id=1914070456]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 8
@@ -53,7 +54,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 41.0
 offset_top = 4.0
-offset_right = 195.0
+offset_right = 212.0
 offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2

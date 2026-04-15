@@ -50,8 +50,9 @@ class_name PlayerData
 @export var u_long_sword : bool = true
 @export var u_pole_hammer : bool = true
 
+#skill tree veci
 @export var unlocked_nodes : Array[Dictionary] = []
-
+@export var skill_tree_changed : bool = false
 func upgrade_skill(id:String):
 
 	match id:
@@ -100,6 +101,7 @@ func upgrade_skill(id:String):
 			rtimer_to_wait -= 2.5
 		"regenUp":
 			r_per_time += 0.5
+	
 func update_level_stats(lvl:int, point:int):
 	level = lvl
 	starter_point = point

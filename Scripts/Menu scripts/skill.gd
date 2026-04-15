@@ -63,7 +63,7 @@ func _on_pressed():
 	unlocked = true
 	save_data()
 	disabled = true
-
+	player_data.skill_tree_changed = true
 
 func _on_mouse_entered() -> void:
 	desc_label.visible = true

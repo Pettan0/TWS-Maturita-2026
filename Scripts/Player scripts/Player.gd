@@ -132,6 +132,10 @@ func _process(delta: float) -> void:
 	
 	stamina.max_value = player_data.max_stamina
 	
+	if ktimer > 0:
+		ktimer -= delta
+	
+	
 	#udatne staty podle data hrace
 	hp_bar.value = player_data.hp
 	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
@@ -308,43 +312,43 @@ func _unhandled_input(event: InputEvent) -> void:
 	#easter egg
 	if super_secred:
 		if Input.is_action_pressed("w") and code_progres == 0:
-			code_time = 2.5
+			code_time = 5.0
 			code_progres += 1
 			print("Proggress...")
 		if Input.is_action_pressed("s") and code_progres == 1:
-			code_time = 2.5
+			code_time = 5.0
 			code_progres += 1
 			print("Proggress...")
 		if Input.is_action_pressed("w") and code_progres == 2:
-			code_time = 2.5
+			code_time = 5.0
 			code_progres += 1
 			print("Proggress...")
 		if Input.is_action_pressed("s") and code_progres == 3:
-			code_time = 2.5
+			code_time = 5.0
 			code_progres += 1
 			print("Proggress...")
 		if Input.is_action_pressed("a") and code_progres == 4:
-			code_time = 2.5
+			code_time = 5.0
 			code_progres += 1
 			print("Proggress...")
 		if Input.is_action_pressed("d") and code_progres == 5:
-			code_time = 2.5
+			code_time = 5.0
 			code_progres += 1
 			print("Proggress...")
 		if Input.is_action_pressed("a") and code_progres == 6:
-			code_time = 2.5
+			code_time = 5.0
 			code_progres += 1
 			print("Proggress...")
 		if Input.is_action_pressed("d") and code_progres == 7:
-			code_time = 2.5
+			code_time = 5.0
 			code_progres += 1
 			print("Proggress...")
 		if Input.is_action_pressed("b") and code_progres == 8:
-			code_time = 2.5
+			code_time = 5.0
 			code_progres += 1
 			print("Proggress...")
 		if Input.is_action_pressed("a") and code_progres == 9:
-			code_time = 2.5
+			code_time = 5.0
 			code_progres += 1
 			print("Proggress...")
 		if Input.is_action_pressed("pause") and code_progres == 10:
@@ -355,6 +359,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		#zapnuti kodu
 		if Input.is_action_just_pressed("secred"):
 			super_secred = !super_secred
+			if super_secred:
+				popup.show_custom("Zapnul jsi super tajné nastavení na zadávání kodů :)")
+			else:
+				popup.show_custom("Vypnul jsi super tajné nastavení.")
 			print("Super secret is "+str(super_secred))
 		#keybind na zbrane
 		if Input.is_action_just_pressed("wp1"):
@@ -430,7 +438,7 @@ func _unhandled_input(event: InputEvent) -> void:
 						pole_hammer_animations.play("Block")
 				await  get_tree().create_timer(1.5).timeout
 				blocking = false
-			else:
+			elif !player_data.can_block:
 				popup.show_with("lockedAbility")
 		if Input.is_action_just_pressed("kick"):
 			if player_data.can_kick and player_data.kick_cooldown <= 0 and !attacking and stamina.value > 20:
@@ -478,18 +486,17 @@ func _unhandled_input(event: InputEvent) -> void:
 
 #dostavani dmg
 func _hit(damage : float):
-	if !blocking:
-		if !dead:
+	if !dead:
+		if !blocking:
 			_play_damage_sound()
 			player_data.hp -= damage
 			$Head/HitAnimation.play("Hit")
 			save_data()
-	else:
-		_play_hit_sound()
-		if !dead:
+		else:
+			_play_hit_sound()
 			if player_data.block_dmg != 1.0:
 				_play_damage_sound()
-			player_data.hp -= damage
+			player_data.hp -= damage * (player_data.block_dmg - 1)
 			$Head/HitAnimation.play("Hit")
 			save_data()
 	if player_data.hp <= 0:

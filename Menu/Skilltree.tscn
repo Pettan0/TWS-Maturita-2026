@@ -650,7 +650,7 @@ offset_right = -66.0
 offset_bottom = 56.000015
 icon = ExtResource("5_x46ny")
 flat = true
-desc = "Odemkne se funkce kopnutí ( F ) které odhodí enemáky"
+desc = "Odemkne se funkce kopnutí ( F ) odhodí enemáky"
 skill_id = "uKick"
 
 [node name="Skill" parent="Skills/SkillA/SkillD2/SkillA" unique_id=914157274 instance=ExtResource("3_4q2vm")]
