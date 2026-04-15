@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://crb3p6vydq3a3"]
 
 [ext_resource type="Script" uid="uid://d0cxpgj6omgo2" path="res://Scripts/Menu scripts/skill.gd" id="1_ck4ef"]
+[ext_resource type="FontFile" uid="uid://e01tyk5jn3jc" path="res://Assets/Font/Cinzel-VariableFont_wght.ttf" id="2_rgmia"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgmia"]
 bg_color = Color(0.038397167, 0.038397167, 0.03839716, 0.5882353)
@@ -42,9 +43,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_rgmia")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6vqsi")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ck4ef")
 script = ExtResource("1_ck4ef")
+type = "A"
 
-[node name="Label" type="Label" parent="." unique_id=1914070456]
-visible = false
+[node name="Label" type="Label" parent="." unique_id=987190807]
 z_index = 2
 layout_mode = 1
 anchors_preset = 8
@@ -54,10 +55,12 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 41.0
 offset_top = 4.0
-offset_right = 212.0
-offset_bottom = 55.0
+offset_right = 280.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_rgmia")
+theme_override_font_sizes/font_size = 22
 text = "(desc)"
 autowrap_mode = 3
 

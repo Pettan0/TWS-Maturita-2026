@@ -20,7 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://dxxaga4alx3l8" path="res://Assets/Sounds/SFX/Player/Hit1.wav" id="13_awmxi"]
 [ext_resource type="AudioStream" uid="uid://u0g5agdayd2h" path="res://Assets/Sounds/SFX/Player/SwordSwing1.wav" id="14_j6nj3"]
 [ext_resource type="AudioStream" uid="uid://c3do60t1sdwp5" path="res://Assets/Sounds/SFX/Ostatní/xpBubble.wav" id="19_8p2vv"]
-[ext_resource type="AudioStream" uid="uid://bxvf2u60qrfq6" path="res://Assets/Sounds/SFX/Ostatní/lvlUp.wav" id="20_a8px6"]
+[ext_resource type="AudioStream" uid="uid://cl6bnatrue8ia" path="res://Assets/Sounds/SFX/Skill Tree/lvlup.wav" id="21_a8px6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8p2vv"]
 bg_color = Color(1, 0, 0, 0)
@@ -335,7 +335,6 @@ horizontal_alignment = 1
 script = ExtResource("6_j6nj3")
 
 [node name="HitFlash" type="Panel" parent="Head/Camera3D" unique_id=687500878]
-visible = false
 z_as_relative = false
 y_sort_enabled = true
 anchors_preset = 8
@@ -525,5 +524,5 @@ stream = ExtResource("19_8p2vv")
 bus = &"SFX"
 
 [node name="LvlUp" type="AudioStreamPlayer" parent="." unique_id=10229193]
-stream = ExtResource("20_a8px6")
+stream = ExtResource("21_a8px6")
 bus = &"SFX"

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cxgd12oc2roep"]
 
 [ext_resource type="Script" uid="uid://d0cxpgj6omgo2" path="res://Scripts/Menu scripts/skill.gd" id="1_nris3"]
+[ext_resource type="FontFile" uid="uid://e01tyk5jn3jc" path="res://Assets/Font/Cinzel-VariableFont_wght.ttf" id="2_kd2d1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nris3"]
 bg_color = Color(0.038397167, 0.038397167, 0.03839716, 0.5882353)
@@ -40,8 +41,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_bfpum")
 theme_override_styles/hover = SubResource("StyleBoxFlat_kd2d1")
 script = ExtResource("1_nris3")
 
-[node name="Label" type="Label" parent="." unique_id=822354017]
-visible = false
+[node name="Label" type="Label" parent="." unique_id=961977907]
 z_index = 2
 layout_mode = 1
 anchors_preset = 8
@@ -51,10 +51,12 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 41.0
 offset_top = 4.0
-offset_right = 195.0
-offset_bottom = 55.0
+offset_right = 280.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_kd2d1")
+theme_override_font_sizes/font_size = 22
 text = "(desc)"
 autowrap_mode = 3
 

@@ -18,7 +18,7 @@ class_name PlayerData
 @export var hp : float = max_hp
 
 #hp regen veci
-@export var u_hp_regen : bool = true
+@export var u_hp_regen : bool = false
 @export var rtimer_to_wait : float = 10.0
 @export var r_per_time  : float = 0.5
 
@@ -38,7 +38,6 @@ class_name PlayerData
 
 @export var can_kick : bool = false
 @export var kick_dmg : float = 10.0
-@export var kick_stamina : int = 20
 @export var kick_cooldown : int = 20
 
 #weapons
@@ -68,6 +67,7 @@ func upgrade_skill(id:String):
 			attack_stamina -= 2
 		"attackStaminaA":
 			attack_stamina -= 4
+		
 		"uBlock":
 			can_block = true
 		"upBlockB":
@@ -84,7 +84,6 @@ func upgrade_skill(id:String):
 			can_kick = true
 		"kickUp":
 			kick_cooldown -= 5
-			kick_stamina -= 5
 		"kickDmg":
 			kick_dmg += 10
 		"staminaB":

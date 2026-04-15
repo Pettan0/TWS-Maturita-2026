@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cglmk4tu786ar"
+path="res://.godot/imported/combat05.mp3-3d41f1b7e9c54206816328453fc89fe4.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player/New SFX/combat05.mp3"
+dest_files=["res://.godot/imported/combat05.mp3-3d41f1b7e9c54206816328453fc89fe4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

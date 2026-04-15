@@ -305,6 +305,7 @@ func add_xp(amount:float):
 	print("current xp: "+ str(player_data.xp))
 	xp_bar.value = player_data.xp
 	xp_bar.max_value = player_data.xp_to_next
+	
 	save_data()
 
 #vsechny keybindy
@@ -355,7 +356,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_pauseMenu()
 			print("You did it :D")
 			_hit(1000)
-	if !paused :
+	if !paused and !dead:
 		#zapnuti kodu
 		if Input.is_action_just_pressed("secred"):
 			super_secred = !super_secred
@@ -441,11 +442,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			elif !player_data.can_block:
 				popup.show_with("lockedAbility")
 		if Input.is_action_just_pressed("kick"):
-			if player_data.can_kick and player_data.kick_cooldown <= 0 and !attacking and stamina.value > 20:
+			if player_data.can_kick and ktimer <= 0 and !attacking and stamina.value > 20:
 				attacking = true
 				stamina.value -= 20
 				can_s_regen = false
 				stimer = 0
+				ktimer = player_data.kick_cooldown
 				leg_animation.play("Kick")
 				await get_tree().create_timer(1.25).timeout
 				attacking = false
@@ -482,7 +484,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			stamina.show()
 	#debug tlacitko pro testovani ODSTANIT
 	if Input.is_action_just_pressed("debug"):
-		player_data.skill_points += 1
+		add_xp(100)
 
 #dostavani dmg
 func _hit(damage : float):
@@ -496,7 +498,7 @@ func _hit(damage : float):
 			_play_hit_sound()
 			if player_data.block_dmg != 1.0:
 				_play_damage_sound()
-			player_data.hp -= damage * (player_data.block_dmg - 1)
+			player_data.hp -= damage * (player_data.block_dmg - 1 + 1)
 			$Head/HitAnimation.play("Hit")
 			save_data()
 	if player_data.hp <= 0:

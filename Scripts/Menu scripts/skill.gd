@@ -5,6 +5,7 @@ class_name SkillNode
 var unlocked = false
 var node_id : String
 @export var skill_id : String = ""
+@export var type : String = "B"
 
 @onready var desc_label: Label = $Label
 
@@ -18,7 +19,9 @@ var save_file_name = "PlayerData.tres"
 func _ready() -> void:
 	node_id = str(get_path())
 	desc_label.text = desc
+	desc_label.hide()
 	player_data = load_data()
+	player_data.skill_tree_changed = true
 	for entry in player_data.unlocked_nodes:
 		if entry["node_id"] == node_id:
 			unlocked = true
@@ -28,6 +31,7 @@ func _ready() -> void:
 		var skills = get_children()
 		for skill in skills:
 			skill.hide()
+	save_data()
 
 func save_data():
 	ResourceSaver.save(player_data, save_file_path + save_file_name)
@@ -59,7 +63,8 @@ func _on_pressed():
 	var skills = get_children()
 	for skill in skills:
 		skill.show()
-
+	
+	SoundManager.upgrade_sfx(type)
 	unlocked = true
 	save_data()
 	disabled = true
