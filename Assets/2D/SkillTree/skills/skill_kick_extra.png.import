@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dugo2gjx82vgq"
-path="res://.godot/imported/skill_speed.png-3418081c7164741afc2f1426949b0fe3.ctex"
+uid="uid://cbgha5qoj7n47"
+path="res://.godot/imported/skill_kick_extra.png-e84d9e9df6964a4f6e5fb6c8600eab49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/2D/SkillTree/speed/skill_speed.png"
-dest_files=["res://.godot/imported/skill_speed.png-3418081c7164741afc2f1426949b0fe3.ctex"]
+source_file="res://Assets/2D/SkillTree/skills/skill_kick_extra.png"
+dest_files=["res://.godot/imported/skill_kick_extra.png-e84d9e9df6964a4f6e5fb6c8600eab49.ctex"]
 
 [params]
 

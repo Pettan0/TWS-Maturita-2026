@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://d1gfh7u42mtws" path="res://Scripts/Menu scripts/button_animation1.gd" id="3_xuoke"]
 [ext_resource type="PackedScene" uid="uid://ce40thh88laj0" path="res://Menu/Settings menu.tscn" id="4_0uh4n"]
 [ext_resource type="FontFile" uid="uid://e01tyk5jn3jc" path="res://Assets/Font/Cinzel-VariableFont_wght.ttf" id="4_804u5"]
+[ext_resource type="Texture2D" uid="uid://cvl6rcqux7fev" path="res://Assets/2D/Png/btn_large.png" id="7_x5pm2"]
 [ext_resource type="PackedScene" uid="uid://biycn7hdoemmx" path="res://Menu/transition.tscn" id="8_804u5"]
+[ext_resource type="Texture2D" uid="uid://cgryl1dkh43fh" path="res://Assets/2D/Png/title.png" id="10_pjk5d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xuoke"]
 
@@ -40,6 +42,21 @@ shadow_size = 2
 shadow_offset = Vector2(3, 3)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbtgn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_igkek"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_60bym"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_047qv"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5nbr"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v8dls"]
+texture = ExtResource("7_x5pm2")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuoke"]
 bg_color = Color(1, 1, 1, 1)
@@ -138,6 +155,7 @@ autoplay = true
 bus = &"Music"
 
 [node name="Label2" type="Label" parent="." unique_id=81057637]
+visible = false
 layout_mode = 0
 offset_left = -568.0
 offset_top = -309.0
@@ -152,6 +170,7 @@ text = "Vykoupení"
 vertical_alignment = 1
 
 [node name="Label" type="Label" parent="." unique_id=1526234739]
+visible = false
 layout_mode = 0
 offset_left = -568.0
 offset_top = -261.0
@@ -166,7 +185,8 @@ text = "rytíře  Hynka "
 vertical_alignment = 1
 
 [node name="Buttons" type="Node2D" parent="." unique_id=2119668891]
-position = Vector2(-92.6, 18.075)
+position = Vector2(-51.999992, 49.99999)
+scale = Vector2(1.09, 1.09)
 
 [node name="ButtonNewStart" type="Button" parent="Buttons" unique_id=866935258]
 visible = false
@@ -190,18 +210,18 @@ text = "Začit novou hru
 script = ExtResource("3_xuoke")
 
 [node name="ButtonContinue" type="Button" parent="Buttons" unique_id=65752028]
-offset_left = -460.0
-offset_top = -185.0
-offset_right = -284.4
-offset_bottom = -118.0
+offset_left = -425.68805
+offset_top = -163.30275
+offset_right = -250.08804
+offset_bottom = -96.30275
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_igkek")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
@@ -209,18 +229,18 @@ text = "Pokračovat"
 script = ExtResource("3_xuoke")
 
 [node name="ButtonRestart" type="Button" parent="Buttons" unique_id=963933716]
-offset_left = -265.4
-offset_top = -185.0
-offset_right = -100.399994
-offset_bottom = -118.0
+offset_left = -231.08806
+offset_top = -163.30275
+offset_right = -66.08806
+offset_bottom = -96.30275
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_60bym")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
@@ -233,20 +253,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -460.0
-offset_top = -102.0
-offset_right = -100.0
-offset_bottom = -35.0
+offset_left = -425.68805
+offset_top = -80.30274
+offset_right = -65.68805
+offset_bottom = -13.302742
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_047qv")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
@@ -260,20 +280,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -460.0
-offset_top = -20.0
-offset_right = -100.0
-offset_bottom = 47.0
+offset_left = -425.68805
+offset_top = 1.697254
+offset_right = -65.68805
+offset_bottom = 68.69725
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_g5nbr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
@@ -281,18 +301,18 @@ text = "Závěrečné titulky"
 script = ExtResource("3_xuoke")
 
 [node name="ButtonExit" type="Button" parent="Buttons" unique_id=382090916]
-offset_left = -460.0
-offset_top = 63.0
-offset_right = -100.0
-offset_bottom = 130.0
+offset_left = -425.68805
+offset_top = 84.69726
+offset_right = -65.68805
+offset_bottom = 151.69727
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_v8dls")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
@@ -710,6 +730,11 @@ vertical_alignment = 1
 [node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("8_804u5")]
 visible = false
 layout_mode = 1
+
+[node name="Title" type="Sprite2D" parent="." unique_id=1229652638]
+position = Vector2(-322.625, -238.00002)
+scale = Vector2(0.51325, 0.525125)
+texture = ExtResource("10_pjk5d")
 
 [connection signal="pressed" from="Buttons/ButtonNewStart" to="." method="_on_button_new_start_pressed"]
 [connection signal="pressed" from="Buttons/ButtonContinue" to="." method="_on_button_continue_pressed"]
