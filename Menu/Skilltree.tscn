@@ -304,10 +304,10 @@ skill_id = "attackSpeedB"
 
 [node name="SkillA" parent="Skills/SkillO/SkillO/SkillO1/SkillO" unique_id=349689746 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
-offset_left = -120.0
-offset_top = -90.0
-offset_right = -60.0
-offset_bottom = -29.99997
+offset_left = -117.0
+offset_top = -87.0
+offset_right = -57.0
+offset_bottom = -26.99997
 icon = ExtResource("5_x46ny")
 flat = true
 desc = "Zvíší rychlost útoku o 30%"
@@ -410,14 +410,16 @@ offset_right = 72.0
 offset_bottom = 136.0
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Zvíší maximální staminu o 10"
 skill_id = "staminaB"
 
 [node name="SkillM" parent="Skills/SkillM" unique_id=500817959 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
-offset_left = 70.0
-offset_right = 130.0
+offset_left = 69.0
+offset_right = 129.0
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Zvíší maximální staminu o 10"
 skill_id = "staminaB"
 
 [node name="SkillM2" parent="Skills/SkillM/SkillM" unique_id=2010372471 instance=ExtResource("3_4q2vm")]
@@ -428,6 +430,7 @@ offset_right = 124.0
 offset_bottom = 62.000015
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Zvíší maximální staminu o 10"
 skill_id = "staminaB"
 
 [node name="SkillM" parent="Skills/SkillM/SkillM/SkillM2" unique_id=801992245 instance=ExtResource("3_4q2vm")]
@@ -438,6 +441,7 @@ offset_right = 108.0
 offset_bottom = 92.000015
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Zvíší maximální staminu o 10"
 skill_id = "staminaB"
 
 [node name="SkillA" parent="Skills/SkillM/SkillM/SkillM2/SkillM" unique_id=1167228400 instance=ExtResource("4_g6sfg")]
@@ -452,6 +456,7 @@ grow_horizontal = 1
 grow_vertical = 1
 icon = ExtResource("5_x46ny")
 flat = true
+desc = "Zvíší maximální staminu o 30"
 skill_id = "staminaA"
 
 [node name="SkillM3" parent="Skills/SkillM/SkillM" unique_id=1556500520 instance=ExtResource("3_4q2vm")]
@@ -462,6 +467,7 @@ offset_right = 9.999939
 offset_bottom = 124.0
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "O trocho zvíší regeneraci stamini"
 skill_id = "staminaRegenB"
 
 [node name="SkillM2" parent="Skills/SkillM/SkillM/SkillM3" unique_id=1670274823 instance=ExtResource("3_4q2vm")]
@@ -472,6 +478,7 @@ offset_right = 62.0
 offset_bottom = 124.0
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "O trocho zvíší regeneraci stamini"
 skill_id = "staminaRegenB"
 
 [node name="SkillM2" parent="Skills/SkillM/SkillM/SkillM3/SkillM2" unique_id=2144740535 instance=ExtResource("3_4q2vm")]
@@ -482,6 +489,7 @@ offset_right = 130.0
 offset_bottom = 54.0
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "O trocho zvíší regeneraci stamini"
 skill_id = "staminaRegenB"
 
 [node name="SkillA" parent="Skills/SkillM/SkillM/SkillM3/SkillM2/SkillM2" unique_id=312740620 instance=ExtResource("4_g6sfg")]
@@ -492,6 +500,7 @@ offset_right = 122.0
 offset_bottom = 40.000015
 icon = ExtResource("5_x46ny")
 flat = true
+desc = "Zvíší regeneraci stamini"
 skill_id = "staminaRegenA"
 
 [node name="SkillA" parent="Skills/SkillM/SkillM" unique_id=2125463853 instance=ExtResource("4_g6sfg")]
@@ -502,6 +511,7 @@ offset_right = 82.0
 offset_bottom = -61.999985
 icon = ExtResource("5_x46ny")
 flat = true
+desc = "Odemkne se pasivní regenerace životů"
 skill_id = "uRegen"
 
 [node name="Skill" parent="Skills/SkillM/SkillM/SkillA" unique_id=381883908 instance=ExtResource("3_4q2vm")]
@@ -512,6 +522,8 @@ offset_right = 66.0
 offset_bottom = -51.999985
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Sníží dobu mezi regenerací o čtvrtinu"
+skill_id = "regenTime"
 
 [node name="Skill" parent="Skills/SkillM/SkillM/SkillA/Skill" unique_id=1116635733 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -521,6 +533,7 @@ offset_right = 90.0
 offset_bottom = -45.999985
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Sníží dobu mezi regenerací o čtvrtinu"
 
 [node name="Skill" parent="Skills/SkillM/SkillM/SkillA/Skill/Skill" unique_id=1199876920 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -530,6 +543,8 @@ offset_right = 48.0
 offset_bottom = -61.999985
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Sníží dobu mezi regenerací o čtvrtinu"
+skill_id = "regenTime"
 
 [node name="Skill2" parent="Skills/SkillM/SkillM/SkillA" unique_id=2136503080 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -566,6 +581,7 @@ offset_right = -72.0
 offset_bottom = 152.0
 icon = ExtResource("5_x46ny")
 flat = true
+desc = "Odemkne se funkce blokování ( LMB ) blokuje 20% poškození"
 skill_id = "uBlock"
 
 [node name="SkillD2" parent="Skills/SkillA" unique_id=1924636040 instance=ExtResource("3_4q2vm")]
@@ -574,6 +590,7 @@ offset_left = -130.0
 offset_right = -70.0
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Zvíší maximální zívoty o 10"
 skill_id = "hpB"
 
 [node name="SkillD3" parent="Skills/SkillA/SkillD2" unique_id=1756099300 instance=ExtResource("3_4q2vm")]
@@ -584,6 +601,7 @@ offset_right = 6.0
 offset_bottom = -62.0
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Zvíší maximální zívoty o 10"
 skill_id = "hpB"
 
 [node name="SkillD" parent="Skills/SkillA/SkillD2/SkillD3" unique_id=501394 instance=ExtResource("3_4q2vm")]
@@ -594,6 +612,7 @@ offset_right = -48.0
 offset_bottom = -41.99997
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Zvíší maximální zívoty o 10"
 skill_id = "hpB"
 
 [node name="SkillA" parent="Skills/SkillA/SkillD2/SkillD3/SkillD" unique_id=1676302794 instance=ExtResource("4_g6sfg")]
@@ -604,6 +623,7 @@ offset_right = -58.0
 offset_bottom = 4.0000153
 icon = ExtResource("5_x46ny")
 flat = true
+desc = "Zvíší maximální zívoty o 30"
 skill_id = "hpA"
 
 [node name="SkillA2" parent="Skills/SkillA/SkillD2/SkillD3/SkillD" unique_id=877866222 instance=ExtResource("4_g6sfg")]
@@ -623,6 +643,7 @@ offset_right = -66.0
 offset_bottom = 56.000015
 icon = ExtResource("5_x46ny")
 flat = true
+desc = "Odemkne se funkce kopnutí ( F ) které odhodí enemáky"
 skill_id = "uKick"
 
 [node name="Skill" parent="Skills/SkillA/SkillD2/SkillA" unique_id=914157274 instance=ExtResource("3_4q2vm")]
@@ -633,6 +654,7 @@ offset_right = -56.0
 offset_bottom = -13.999985
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Sníží únavu po kopnují o 5"
 skill_id = "kickUp"
 
 [node name="Skill" parent="Skills/SkillA/SkillD2/SkillA/Skill" unique_id=2040607091 instance=ExtResource("3_4q2vm")]
@@ -643,6 +665,7 @@ offset_right = -68.0
 offset_bottom = 22.000015
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Sníží únavu po kopnují o 5"
 skill_id = "kickUp"
 
 [node name="Skill2" parent="Skills/SkillA/SkillD2/SkillA" unique_id=562131006 instance=ExtResource("3_4q2vm")]
@@ -653,6 +676,7 @@ offset_right = -58.0
 offset_bottom = 90.000015
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Zvíší poškození kopnutí o 10"
 skill_id = "kickDmg"
 
 [node name="Skill" parent="Skills/SkillA/SkillD2/SkillA/Skill2" unique_id=243327821 instance=ExtResource("3_4q2vm")]
@@ -663,6 +687,7 @@ offset_right = -68.0
 offset_bottom = 38.000015
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Zvíší poškození kopnutí o 10"
 skill_id = "kickDmg"
 
 [node name="SkillD1" parent="Skills/SkillA" unique_id=1710508200 instance=ExtResource("3_4q2vm")]
@@ -673,6 +698,7 @@ offset_right = -22.0
 offset_bottom = 128.00003
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Zvíší blokované poškození o 15%"
 skill_id = "upBlockB"
 
 [node name="SkillD1" parent="Skills/SkillA/SkillD1" unique_id=1955236213 instance=ExtResource("3_4q2vm")]
@@ -683,6 +709,7 @@ offset_right = -52.0
 offset_bottom = 102.00003
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Zvíší blokované poškození o 15%"
 skill_id = "upBlockB"
 
 [node name="SkillA" parent="Skills/SkillA/SkillD1/SkillD1" unique_id=2145342328 instance=ExtResource("4_g6sfg")]
@@ -693,23 +720,24 @@ offset_right = -86.0
 offset_bottom = 76.000015
 icon = ExtResource("5_x46ny")
 flat = true
+desc = "Blokuje 100% poškození"
 skill_id = "upBlockA"
 
 [node name="SkillPoints" type="Label" parent="." unique_id=1484377236]
 layout_mode = 1
-offset_left = 5.0
-offset_top = 48.0
-offset_right = 192.0
-offset_bottom = 97.0
+offset_left = 17.0
+offset_top = 52.0
+offset_right = 204.0
+offset_bottom = 101.0
 theme_override_font_sizes/font_size = 35
 text = "sp:"
 
 [node name="Label" type="Label" parent="." unique_id=662231379]
 layout_mode = 1
-offset_left = 5.0
-offset_top = 1.0
-offset_right = 192.0
-offset_bottom = 56.0
+offset_left = 17.0
+offset_top = 5.0
+offset_right = 204.0
+offset_bottom = 60.0
 theme_override_font_sizes/font_size = 40
 text = "Skill tree"
 
@@ -738,10 +766,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -491.0
-offset_top = -73.04645
-offset_right = -340.0
-offset_bottom = -15.046448
+offset_left = -486.0
+offset_top = -73.092896
+offset_right = -335.0
+offset_bottom = -15.0928955
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 3
