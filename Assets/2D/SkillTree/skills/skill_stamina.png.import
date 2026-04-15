@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwi85dst4cqmy"
-path="res://.godot/imported/skill_strength_extra.png-fa128fa7ecb63770d0acf7b5c6c905ce.ctex"
+uid="uid://cg6t24ydgm4ws"
+path="res://.godot/imported/skill_stamina.png-0149b070776bbd4ff36a4c06e988015a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/2D/SkillTree/strength/skill_strength_extra.png"
-dest_files=["res://.godot/imported/skill_strength_extra.png-fa128fa7ecb63770d0acf7b5c6c905ce.ctex"]
+source_file="res://Assets/2D/SkillTree/skills/skill_stamina.png"
+dest_files=["res://.godot/imported/skill_stamina.png-0149b070776bbd4ff36a4c06e988015a.ctex"]
 
 [params]
 
