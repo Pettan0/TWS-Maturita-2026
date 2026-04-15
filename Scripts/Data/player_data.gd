@@ -28,13 +28,22 @@ class_name PlayerData
 @export var stime_to_wait : float = 1.8
 @export var sregen : float = 0.3
 
-#weapons
-@export var current_weapon : String = "unarmed"
-
+#boj veci
 @export var base_dmg : float = 0
 
 @export var attack_speed : float = 1.0
 @export var attack_stamina : int = 15
+
+@export var can_block : bool = false
+@export var block_dmg : float = 0.2
+
+@export var can_kick : bool = false
+@export var kick_dmg : float = 10.0
+@export var kick_stamina : int = 20
+@export var kick_cooldown : int = 20
+
+#weapons
+@export var current_weapon : String = "unarmed"
 
 @export var u_dagger : bool = false
 @export var u_short_swort : bool = true
@@ -59,8 +68,30 @@ func upgrade_skill(id:String):
 			attack_stamina -= 2
 		"attackStaminaA":
 			attack_stamina -= 4
+		"uBlock":
+			can_block = true
+		"upBlockB":
+			block_dmg += 0.15
+		"upBlockA":
+			block_dmg = 1.0
+		"hpB":
+			max_hp += 10
+			hp += 10
+		"hpA":
+			max_hp += 30
+			hp += 30
+		"uKick":
+			can_kick = true
+		"kickUp":
+			kick_cooldown -= 5
+			kick_stamina -= 5
+		"kickDmg":
+			kick_dmg += 10
+		"staminaB":
+			max_stamina += 10
+		"staminaA":
+			max_stamina += 30
 		
-	print("base dmg: "+str(base_dmg)+"\nattack speed: "+str(attack_speed)+"\nattack stamina: "+str(attack_stamina))
 func update_level_stats(lvl:int, point:int):
 	level = lvl
 	starter_point = point

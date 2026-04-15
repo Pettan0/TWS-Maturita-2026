@@ -7,8 +7,14 @@ func show_with(msg: String):
 			text = "Nevlastníš tuto zbraň."
 		"cantEnter":
 			text = "Nezabil jsi všechny nepřátelé."
-		"lockedDoor":
-			text = "Dveře jsou zamčené."
+		"blockedDoor":
+			match randi_range(1,3):
+				1:
+					text = "Dveře jsou zablokované."
+				2:
+					text = "Dveře nejdou otevřít."
+				3:
+					text = "Namáš dost síly na otevření dveří."
 	show()
 	await get_tree().create_timer(2.0).timeout
 	hide()

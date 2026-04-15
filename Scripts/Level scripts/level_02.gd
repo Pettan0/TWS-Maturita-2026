@@ -82,4 +82,4 @@ func _on_lvl_3_door_body_exited(body: Node3D) -> void:
 
 func _locked_door_entered(body: Node3D) -> void:
 	if body.name == "Player":
-		popup.show_with("lockedDoor")
+		popup.show_with("blockedDoor")

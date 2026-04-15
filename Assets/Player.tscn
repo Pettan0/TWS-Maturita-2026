@@ -22,13 +22,6 @@
 [ext_resource type="AudioStream" uid="uid://c3do60t1sdwp5" path="res://Assets/Sounds/SFX/Ostatní/xpBubble.wav" id="19_8p2vv"]
 [ext_resource type="AudioStream" uid="uid://bxvf2u60qrfq6" path="res://Assets/Sounds/SFX/Ostatní/lvlUp.wav" id="20_a8px6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8id78"]
-bg_color = Color(0, 0, 0, 0.29411766)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8p2vv"]
 bg_color = Color(1, 0, 0, 0)
 
@@ -296,9 +289,10 @@ offset_top = -323.90707
 offset_right = 575.5
 offset_bottom = 323.90707
 
-[node name="SkillTree" parent="Head/Camera3D" unique_id=2029093670 instance=ExtResource("3_j0vyv")]
+[node name="SkillTree" parent="Head/Camera3D" unique_id=1776935584 instance=ExtResource("3_j0vyv")]
 visible = false
-theme_override_styles/panel = SubResource("StyleBoxFlat_8id78")
+offset_top = -296.0
+offset_bottom = 227.0
 
 [node name="Interact" type="Label" parent="Head/Camera3D" unique_id=470933215]
 visible = false
@@ -341,6 +335,7 @@ horizontal_alignment = 1
 script = ExtResource("6_j6nj3")
 
 [node name="HitFlash" type="Panel" parent="Head/Camera3D" unique_id=687500878]
+visible = false
 z_as_relative = false
 y_sort_enabled = true
 anchors_preset = 8
@@ -361,9 +356,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8p2vv")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 24.0
+offset_left = 11.0
 offset_top = -100.0
-offset_right = 64.0
+offset_right = 106.0
 offset_bottom = -77.0
 grow_vertical = 0
 text = "Level: (level)"

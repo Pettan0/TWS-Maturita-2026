@@ -534,6 +534,7 @@ offset_bottom = -45.999985
 icon = ExtResource("4_e5ru6")
 flat = true
 desc = "Sníží dobu mezi regenerací o čtvrtinu"
+skill_id = "regenTime"
 
 [node name="Skill" parent="Skills/SkillM/SkillM/SkillA/Skill/Skill" unique_id=1199876920 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -554,6 +555,8 @@ offset_right = 136.0
 offset_bottom = 56.000015
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Zvíší regeneraci o 0,5 za čas"
+skill_id = "regenUp"
 
 [node name="Skill2" parent="Skills/SkillM/SkillM/SkillA/Skill2" unique_id=65517775 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -563,6 +566,8 @@ offset_right = 124.0
 offset_bottom = 2.0000153
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Zvíší regeneraci o 0,5 za čas"
+skill_id = "regenUp"
 
 [node name="Skill2" parent="Skills/SkillM/SkillM/SkillA/Skill2/Skill2" unique_id=134030969 instance=ExtResource("3_4q2vm")]
 layout_mode = 1
@@ -572,6 +577,8 @@ offset_right = 64.0
 offset_bottom = -75.999985
 icon = ExtResource("4_e5ru6")
 flat = true
+desc = "Zvíší regeneraci o 0,5 za čas"
+skill_id = "regenUp"
 
 [node name="SkillA" parent="Skills" unique_id=2127372614 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
