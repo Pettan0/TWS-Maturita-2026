@@ -6,8 +6,7 @@ var unlocked = false
 var node_id : String
 @export var skill_id : String = ""
 
-@onready var desc_box: Panel = $Panel
-@onready var desc_label: Label = $Panel/Label
+@onready var desc_label: Label = $Label
 
 
 var player_data : PlayerData
@@ -47,9 +46,7 @@ func load_data():
 	return player_data
 
 func _on_pressed():
-
 	if player_data.skill_points <= 0:
-		print("Not enough skill points")
 		return
 
 	player_data.upgrade_skill(skill_id)
@@ -69,7 +66,7 @@ func _on_pressed():
 
 
 func _on_mouse_entered() -> void:
-	desc_box.visible = true
+	desc_label.visible = true
 
 func _on_mouse_exited() -> void:
-	desc_box.visible = false
+	desc_label.visible = false

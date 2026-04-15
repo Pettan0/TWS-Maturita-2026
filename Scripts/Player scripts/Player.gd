@@ -80,7 +80,7 @@ var can_s_regen = false
 var stimer = 0
 var can_start_stimer = true
 
-
+var ktimer = 0
 
 func _ready():
 	load_data()
@@ -121,6 +121,7 @@ func load_data():
 
 func save_data():
 	ResourceSaver.save(player_data, save_file_path + save_file_name)
+
 func _process(delta: float) -> void:
 	# code vec
 	if code_time > 0:
@@ -128,6 +129,8 @@ func _process(delta: float) -> void:
 		if code_time < 0:
 			print("Proggress lost :(")
 			code_progres = 0
+	
+	stamina.max_value = player_data.max_stamina
 	
 	#udatne staty podle data hrace
 	hp_bar.value = player_data.hp
@@ -169,6 +172,8 @@ func _process(delta: float) -> void:
 
 #ukaže jednotlivé menu
 func _pauseMenu():
+	velocity = Vector3.ZERO
+	headbob.stop()
 	if paused:
 		pause_menu.hide()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -179,6 +184,8 @@ func _pauseMenu():
 	paused = !paused
 
 func _skill_tree():
+	velocity = Vector3.ZERO
+	headbob.stop()
 	if paused:
 		skill_tree.hide()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -341,6 +348,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			code_progres += 1
 			print("Proggress...")
 		if Input.is_action_pressed("pause") and code_progres == 10:
+			_pauseMenu()
 			print("You did it :D")
 			_hit(1000)
 	if !paused :
@@ -395,8 +403,8 @@ func _unhandled_input(event: InputEvent) -> void:
 						pole_hammer_animations.play("Attack")
 						await  get_tree().create_timer(2.2 / player_data.attack_speed).timeout
 				attacking = false
-		if Input.is_action_just_pressed("block"):
-			if !blocking and !attacking and stamina.value > 15:
+		if Input.is_action_just_pressed("block") :
+			if player_data.can_block and !blocking and !attacking and stamina.value > 15:
 				blocking = true
 				stamina.value -= 15
 				can_s_regen = false
@@ -422,8 +430,10 @@ func _unhandled_input(event: InputEvent) -> void:
 						pole_hammer_animations.play("Block")
 				await  get_tree().create_timer(1.5).timeout
 				blocking = false
+			else:
+				popup.show_with("lockedAbility")
 		if Input.is_action_just_pressed("kick"):
-			if !attacking and stamina.value > 20:
+			if player_data.can_kick and player_data.kick_cooldown <= 0 and !attacking and stamina.value > 20:
 				attacking = true
 				stamina.value -= 20
 				can_s_regen = false
@@ -431,6 +441,10 @@ func _unhandled_input(event: InputEvent) -> void:
 				leg_animation.play("Kick")
 				await get_tree().create_timer(1.25).timeout
 				attacking = false
+			elif player_data.can_kick and !attacking:
+				popup.show_with("abilityOnCooldown")
+			elif !attacking:
+				popup.show_with("lockedAbility")
 		if Input.is_action_just_pressed("skillTree"):
 			_skill_tree()
 		if Input.is_action_just_pressed("pause"):
@@ -470,18 +484,26 @@ func _hit(damage : float):
 			player_data.hp -= damage
 			$Head/HitAnimation.play("Hit")
 			save_data()
-			if player_data.hp <= 0:
-				dead = true
-				headbob.stop()
-				fov_animation.stop()
-				$Head/HitAnimation.play("Death")
-				await get_tree().create_timer(2.3).timeout
-				player_data.hp = player_data.max_hp
-				player_data.update_level_stats(1,1)
-				save_data()
-				get_tree().change_scene_to_file("res://Levels/Level01.scn")
 	else:
 		_play_hit_sound()
+		if !dead:
+			if player_data.block_dmg != 1.0:
+				_play_damage_sound()
+			player_data.hp -= damage
+			$Head/HitAnimation.play("Hit")
+			save_data()
+	if player_data.hp <= 0:
+		dead = true
+		headbob.stop()
+		fov_animation.stop()
+		velocity = Vector3.ZERO
+		$Head/HitAnimation.play("Death")
+		await get_tree().create_timer(2.3).timeout
+		player_data.hp = player_data.max_hp
+		player_data.update_level_stats(1,1)
+		save_data()
+		get_tree().change_scene_to_file("res://Levels/Level01.scn")
+		
 
 func _physics_process(delta: float) -> void:
 	#gravitace lol 🍎

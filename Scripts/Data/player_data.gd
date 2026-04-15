@@ -19,7 +19,6 @@ class_name PlayerData
 
 #hp regen veci
 @export var u_hp_regen : bool = true
-
 @export var rtimer_to_wait : float = 10.0
 @export var r_per_time  : float = 0.5
 
@@ -91,7 +90,16 @@ func upgrade_skill(id:String):
 			max_stamina += 10
 		"staminaA":
 			max_stamina += 30
-		
+		"staminaRegenB":
+			sregen += 0.05
+		"staminaRegenA":
+			sregen += 0.15
+		"uRegen":
+			u_hp_regen = true
+		"regenTime":
+			rtimer_to_wait -= 2.5
+		"regenUp":
+			r_per_time += 0.5
 func update_level_stats(lvl:int, point:int):
 	level = lvl
 	starter_point = point
