@@ -43,6 +43,8 @@ bus = &"SFX"
 
 [node name="STUpgrade1" type="AudioStreamPlayer" parent="." unique_id=1777093943]
 stream = ExtResource("6_h42hm")
+bus = &"SFX"
 
 [node name="STUpgrade2" type="AudioStreamPlayer" parent="." unique_id=42766116]
 stream = ExtResource("7_lxsk3")
+bus = &"SFX"

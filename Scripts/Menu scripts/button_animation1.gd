@@ -13,6 +13,7 @@ func _init_pivot():
 
 func _button_enter():
 	create_tween().tween_property(self, "scale", hover_scale, 0.1).set_trans(Tween.TRANS_SINE)
+	
 	SoundManager.play_btn_hover_sfx()
 
 func _button_exit():

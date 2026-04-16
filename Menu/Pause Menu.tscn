@@ -3,38 +3,17 @@
 [ext_resource type="Script" uid="uid://bjdyqrsyqvnje" path="res://Scripts/Menu scripts/pause_menu.gd" id="1_uh3q3"]
 [ext_resource type="Script" uid="uid://cv22gx0jbq68o" path="res://Scripts/Menu scripts/button_animation2.gd" id="2_f4htx"]
 [ext_resource type="FontFile" uid="uid://e01tyk5jn3jc" path="res://Assets/Font/Cinzel-VariableFont_wght.ttf" id="2_x4nas"]
+[ext_resource type="Texture2D" uid="uid://cvl6rcqux7fev" path="res://Assets/2D/Png/btn_large.png" id="3_a3nar"]
 [ext_resource type="PackedScene" uid="uid://ce40thh88laj0" path="res://Menu/Settings menu.tscn" id="3_x4nas"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbtgn"]
-bg_color = Color(1, 1, 1, 1)
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_size = 2
-shadow_offset = Vector2(3, 3)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nqxby"]
+texture = ExtResource("3_a3nar")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jlr6"]
-bg_color = Color(0.542318, 0.542318, 0.542318, 1)
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_size = 2
-shadow_offset = Vector2(3, 3)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ftd8j"]
+texture = ExtResource("3_a3nar")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enwfr"]
-bg_color = Color(0.6941206, 0.6941206, 0.6941205, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_size = 2
-shadow_offset = Vector2(3, 3)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbtgn"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6sjqo"]
+texture = ExtResource("3_a3nar")
 
 [node name="pause Menu" type="Control" unique_id=841548941]
 layout_mode = 3
@@ -87,21 +66,16 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.351
 anchor_bottom = 0.351
-offset_left = -9.0
+offset_left = -19.0
 offset_top = -35.382767
 offset_right = 231.0
 offset_bottom = 35.617233
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_x4nas")
 theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_nqxby")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ftd8j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6sjqo")
 text = "       Zpět do hry
 "
 alignment = 0
@@ -112,21 +86,16 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.499
 anchor_bottom = 0.499
-offset_left = -9.0
+offset_left = -19.0
 offset_top = -35.259277
 offset_right = 231.0
 offset_bottom = 35.740723
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_x4nas")
 theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_nqxby")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ftd8j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6sjqo")
 text = "       Nastavení"
 alignment = 0
 script = ExtResource("2_f4htx")
@@ -136,21 +105,16 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.648
 anchor_bottom = 0.648
-offset_left = -9.0
+offset_left = -19.0
 offset_top = -35.78357
 offset_right = 231.0
 offset_bottom = 36.21643
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_x4nas")
 theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_nqxby")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ftd8j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6sjqo")
 text = "       Vrátit se do menu"
 alignment = 0
 script = ExtResource("2_f4htx")

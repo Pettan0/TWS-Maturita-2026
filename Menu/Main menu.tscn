@@ -12,6 +12,51 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xuoke"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uh4n"]
+bg_color = Color(0, 0, 0, 0.5882353)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x5pm2"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fcseu"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pjk5d"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_igkek"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l70e7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_60bym"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3m5sl"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_047qv"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nw2mi"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5nbr"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xjn3g"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v8dls"]
+texture = ExtResource("7_x5pm2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i4voj"]
+texture = ExtResource("7_x5pm2")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbtgn"]
 bg_color = Color(1, 1, 1, 1)
 border_color = Color(0, 0, 0, 1)
@@ -43,21 +88,6 @@ shadow_offset = Vector2(3, 3)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbtgn"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_igkek"]
-texture = ExtResource("7_x5pm2")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_60bym"]
-texture = ExtResource("7_x5pm2")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_047qv"]
-texture = ExtResource("7_x5pm2")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5nbr"]
-texture = ExtResource("7_x5pm2")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v8dls"]
-texture = ExtResource("7_x5pm2")
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuoke"]
 bg_color = Color(1, 1, 1, 1)
 border_color = Color(0, 0, 0, 1)
@@ -88,13 +118,6 @@ shadow_size = 2
 shadow_offset = Vector2(3, 3)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_igkek"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uh4n"]
-bg_color = Color(0, 0, 0, 0.5882353)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_804u5"]
 bg_color = Color(1, 1, 1, 1)
@@ -184,27 +207,117 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_xuoke")
 text = "rytíře  Hynka "
 vertical_alignment = 1
 
+[node name="Title" type="Sprite2D" parent="." unique_id=1229652638]
+position = Vector2(-322.625, -238.00002)
+scale = Vector2(0.51325, 0.525125)
+texture = ExtResource("10_pjk5d")
+
+[node name="Dificulty" type="Panel" parent="." unique_id=945907344]
+visible = false
+layout_mode = 0
+offset_left = -64.0
+offset_top = -200.0
+offset_right = 294.0
+offset_bottom = 159.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0uh4n")
+
+[node name="ButtonEasy" type="Button" parent="Dificulty" unique_id=681456744]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -121.0
+offset_top = 84.0
+offset_right = 121.0
+offset_bottom = 151.0
+grow_horizontal = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_x5pm2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fcseu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pjk5d")
+text = "Lehká"
+script = ExtResource("3_xuoke")
+
+[node name="ButtonNormal" type="Button" parent="Dificulty" unique_id=1535220256]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -4.5
+offset_right = 121.0
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_x5pm2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fcseu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pjk5d")
+text = "Normální"
+script = ExtResource("3_xuoke")
+
+[node name="ButtonHard" type="Button" parent="Dificulty" unique_id=1584189885]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -121.0
+offset_top = -91.0
+offset_right = 121.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_x5pm2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fcseu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pjk5d")
+text = "Těžká"
+script = ExtResource("3_xuoke")
+
+[node name="Label" type="Label" parent="Dificulty" unique_id=59336418]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -171.0
+offset_top = 3.9999962
+offset_right = 48.0
+offset_bottom = 59.0
+grow_horizontal = 2
+scale = Vector2(0.805, 0.805)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xuoke")
+text = "Obtížnost"
+vertical_alignment = 1
+
 [node name="Buttons" type="Node2D" parent="." unique_id=2119668891]
 position = Vector2(-51.999992, 49.99999)
 scale = Vector2(1.09, 1.09)
 
 [node name="ButtonNewStart" type="Button" parent="Buttons" unique_id=866935258]
 visible = false
-offset_left = -460.0
-offset_top = -185.0
-offset_right = -100.0
-offset_bottom = -118.0
+offset_left = -425.68805
+offset_top = -159.63303
+offset_right = -65.68805
+offset_bottom = -92.633026
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_pbtgn")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_x5pm2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fcseu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pjk5d")
 text = "Začit novou hru
 "
 script = ExtResource("3_xuoke")
@@ -215,16 +328,11 @@ offset_top = -163.30275
 offset_right = -250.08804
 offset_bottom = -96.30275
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_igkek")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_l70e7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pjk5d")
 text = "Pokračovat"
 script = ExtResource("3_xuoke")
 
@@ -234,16 +342,11 @@ offset_top = -163.30275
 offset_right = -66.08806
 offset_bottom = -96.30275
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxTexture_60bym")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3m5sl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pjk5d")
 text = "Začít znovu"
 script = ExtResource("3_xuoke")
 
@@ -260,16 +363,11 @@ offset_bottom = -13.302742
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_047qv")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nw2mi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pjk5d")
 text = "Nastavení
 "
 script = ExtResource("3_xuoke")
@@ -287,16 +385,11 @@ offset_bottom = 68.69725
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_g5nbr")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xjn3g")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pjk5d")
 text = "Závěrečné titulky"
 script = ExtResource("3_xuoke")
 
@@ -306,16 +399,11 @@ offset_top = 84.69726
 offset_right = -65.68805
 offset_bottom = 151.69727
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_v8dls")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_7jlr6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_enwfr")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_pbtgn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_i4voj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_pjk5d")
 text = "Vypnout hru"
 script = ExtResource("3_xuoke")
 
@@ -646,7 +734,7 @@ text = "Grafika - Jan Martínek
 Zbraně - Jan Martínek
 Nepřátelé - Jan Martínek
 Prostředí - Daniel Roček, Jan Martínek
-UI desing - ???
+UI desing - Jan Martínek
 Vizualní efekty - Daniel Roček"
 vertical_alignment = 1
 
@@ -731,11 +819,9 @@ vertical_alignment = 1
 visible = false
 layout_mode = 1
 
-[node name="Title" type="Sprite2D" parent="." unique_id=1229652638]
-position = Vector2(-322.625, -238.00002)
-scale = Vector2(0.51325, 0.525125)
-texture = ExtResource("10_pjk5d")
-
+[connection signal="pressed" from="Dificulty/ButtonEasy" to="." method="_on_button_easy_pressed"]
+[connection signal="pressed" from="Dificulty/ButtonNormal" to="." method="_on_button_normal_pressed"]
+[connection signal="pressed" from="Dificulty/ButtonHard" to="." method="_on_button_hard_pressed"]
 [connection signal="pressed" from="Buttons/ButtonNewStart" to="." method="_on_button_new_start_pressed"]
 [connection signal="pressed" from="Buttons/ButtonContinue" to="." method="_on_button_continue_pressed"]
 [connection signal="pressed" from="Buttons/ButtonRestart" to="." method="_on_button_restart_pressed"]

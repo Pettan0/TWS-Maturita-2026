@@ -7,6 +7,7 @@ extends Control
 @onready var button_continue: Button = $Buttons/ButtonContinue
 @onready var button_restart: Button = $Buttons/ButtonRestart
 @onready var debug: Panel = $Debug
+@onready var dificulty: Panel = $Dificulty
 
 var menu_show = false
 
@@ -52,23 +53,11 @@ func _on_button_continue_pressed() -> void:
 		get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
 
 func _on_button_restart_pressed() -> void:
-	if !settings.visible and !credits.visible and !debug.visible:
-		player_data = PlayerData.new()
-		save_data()
-		$Transition.visible = true
-		$Transition/AnimationPlayer.play("Fade_in")
-		await  get_tree().create_timer(1.0).timeout
-		get_tree().change_scene_to_file("res://Levels/Level01.scn")
+	dificulty.show()
 
 
 func _on_button_new_start_pressed() -> void:
-	if !settings.visible and !credits.visible and !debug.visible:
-		player_data = PlayerData.new()
-		save_data()
-		$Transition.visible = true
-		$Transition/AnimationPlayer.play("Fade_in")
-		await  get_tree().create_timer(1.0).timeout
-		get_tree().change_scene_to_file("res://Levels/Level01.scn")
+	dificulty.show()
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
@@ -121,3 +110,35 @@ func _on_button_level_5_pressed() -> void:
 
 func _on_button_level_test_pressed() -> void:
 	get_tree().change_scene_to_file("res://Levels/LevelTest.tscn")
+
+
+func _on_button_easy_pressed() -> void:
+	player_data = PlayerData.new()
+	player_data.difficulty_scale = 0.8
+	save_data()
+	settings.save_data()
+	$Transition.visible = true
+	$Transition/AnimationPlayer.play("Fade_in")
+	await  get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_file("res://Levels/Level01.scn")
+
+
+func _on_button_normal_pressed() -> void:
+	player_data = PlayerData.new()
+	player_data.difficulty_scale = 1.0
+	save_data()
+	settings.save_data()
+	$Transition.visible = true
+	$Transition/AnimationPlayer.play("Fade_in")
+	await  get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_file("res://Levels/Level01.scn")
+
+func _on_button_hard_pressed() -> void:
+	player_data = PlayerData.new()
+	player_data.difficulty_scale = 1.2
+	save_data()
+	settings.save_data()
+	$Transition.visible = true
+	$Transition/AnimationPlayer.play("Fade_in")
+	await  get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_file("res://Levels/Level01.scn")

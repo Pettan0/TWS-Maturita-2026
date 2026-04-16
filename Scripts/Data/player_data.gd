@@ -6,11 +6,12 @@ class_name PlayerData
 @export var starter_position : Vector3
 @export var starter_rotation : Vector3
 @export var starter_point : int = 1
+@export var difficulty_scale : float = 1.0
 
 #level a xp veci
 @export var player_level : int = 1
-@export var xp :float = 0
-@export var xp_to_next : float = 75
+@export var xp : float = 0
+@export var xp_to_next : float = 150
 @export var skill_points : int = 0
 
 #player hp stats
@@ -52,8 +53,8 @@ class_name PlayerData
 #skill tree veci
 @export var unlocked_nodes : Array[Dictionary] = []
 @export var skill_tree_changed : bool = false
-func upgrade_skill(id:String):
 
+func upgrade_skill(id:String):
 	match id:
 		"dmgB":
 			base_dmg += 1.0
@@ -91,9 +92,9 @@ func upgrade_skill(id:String):
 		"staminaA":
 			max_stamina += 30
 		"staminaRegenB":
-			sregen += 0.05
+			sregen += 0.075
 		"staminaRegenA":
-			sregen += 0.15
+			sregen += 0.2
 		"uRegen":
 			u_hp_regen = true
 		"regenTime":
@@ -142,7 +143,7 @@ func find_starter_position():
 
 func new_xp_to_next(amount:float):
 	var saved_value = amount + xp - xp_to_next
-	xp_to_next = round(100 * pow(1.5 , player_level))
+	xp_to_next = round(100 * pow(1.4 , player_level))
 	xp = saved_value
 	player_level += 1
 	skill_points += 3

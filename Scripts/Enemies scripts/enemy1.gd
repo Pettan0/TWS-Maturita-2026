@@ -66,7 +66,8 @@ func _ready() -> void:
 		2:
 			bes_2.show()
 	
-	max_hp = base_hp + (player.player_data.level - 2 ) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale
+	max_hp = player.player_data.difficulty_scale * (base_hp + (player.player_data.level - 2) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale)
+	DMG = DMG * player.player_data.difficulty_scale
 	HP = max_hp
 	xp = max_hp
 	

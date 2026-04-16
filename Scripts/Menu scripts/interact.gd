@@ -1,23 +1,24 @@
 extends Label
 
 func show_with(about : String, type : String):
-	text = "Zmačkní ( E ) pro "
+
 	match about:
 		"OpenDoor":
-			text += "otevření dveří."
+			text = "Otevřít dveře "
 		"UnlockDoor":
-			text += "udemknutí dveří."
+			text = "Odemknout dveře "
 		"PickUpItem":
-			text += "sebrání "
+			text = "Sebrat "
 			match type:
 				"dagger":
-					text += "dýky."
+					text += "dýku "
 				"shortSword":
-					text += "meče."
+					text += "meč "
 				"mace":
-					text += "palcátu."
+					text += "palcát "
 				"longSword":
-					text += "dlouhého meče."
+					text += "dlouhéhý meče "
 				"poleHammer":
-					text += "kladiva."
+					text += "kladivo "
+	text += "( E )"
 	show()

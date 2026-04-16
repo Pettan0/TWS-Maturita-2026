@@ -47,7 +47,8 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 		animation_tree.set("parameters/conditions/Death"+str(randi_range(1,2)),true)
 
 func _ready() -> void:
-	max_hp = base_hp + (player.player_data.level - 2) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale
+	max_hp = player.player_data.difficulty_scale * (base_hp + (player.player_data.level - 2) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale)
+	DMG = DMG * player.player_data.difficulty_scale
 	HP = max_hp
 	xp = max_hp
 	progress_bar.update_hp(max_hp, HP)

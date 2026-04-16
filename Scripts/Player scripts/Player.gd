@@ -82,6 +82,7 @@ var can_start_stimer = true
 
 var ktimer = 0
 
+
 func _ready():
 	load_data()
 	long_sword.position = Vector3(0, -0.414, -0.621) #forced value bcs its broken
@@ -123,6 +124,11 @@ func save_data():
 	ResourceSaver.save(player_data, save_file_path + save_file_name)
 
 func _process(delta: float) -> void:
+	
+	#if stamina.value < 10:
+		
+	
+	
 	# code vec
 	if code_time > 0:
 		code_time  -=  delta
@@ -159,7 +165,7 @@ func _process(delta: float) -> void:
 		stimer = 0
 	
 	#hp regen
-	if !can_hp_regen and player_data.hp != player_data.max_hp:
+	if !can_hp_regen and player_data.hp <= player_data.max_hp:
 		can_start_rtimer =  true
 		if can_start_rtimer:
 			rtimer += delta
@@ -167,8 +173,11 @@ func _process(delta: float) -> void:
 				can_hp_regen = true
 				can_start_rtimer = false
 				rtimer = 0
-	if can_hp_regen:
-		player_data.hp += player_data.r_per_time
+	if can_hp_regen and player_data.u_hp_regen:
+		if player_data.hp + player_data.r_per_time < player_data.max_hp:
+			player_data.hp += player_data.r_per_time
+		else:
+			player_data.hp = player_data.max_hp
 		can_start_rtimer = true
 		can_hp_regen = false
 		rtimer = 0
@@ -186,7 +195,6 @@ func _pauseMenu():
 		settings_menu.hide()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	paused = !paused
-
 func _skill_tree():
 	velocity = Vector3.ZERO
 	headbob.stop()
@@ -200,7 +208,7 @@ func _skill_tree():
 
 #hrani jednotlivich random sxf
 func _play_attack_sound():
-	attack.stream = load("res://Assets/Sounds/SFX/Player/Attack"+str(randi_range(1,3))+".wav")
+	$Attack.stream = load("res://Assets/Sounds/SFX/Player/New SFX/combat0"+str(randi_range(1,7))+".mp3")
 	attack.play()
 func _play_damage_sound():
 	damaga_taken.stream = load("res://Assets/Sounds/SFX/Player/DamageTaken"+str(randi_range(1,4))+".wav")
@@ -314,8 +322,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if super_secred:
 		if Input.is_action_pressed("w") and code_progres == 0:
 			code_time = 5.0
-			code_progres += 1
-			print("Proggress...")
+			code_progres += 1 
 		if Input.is_action_pressed("s") and code_progres == 1:
 			code_time = 5.0
 			code_progres += 1
@@ -354,7 +361,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			print("Proggress...")
 		if Input.is_action_pressed("pause") and code_progres == 10:
 			_pauseMenu()
-			print("You did it :D")
+			popup.show_custom("Dokázal jsi to :D")
 			_hit(1000)
 	if !paused and !dead:
 		#zapnuti kodu
@@ -412,6 +419,8 @@ func _unhandled_input(event: InputEvent) -> void:
 						pole_hammer_animations.play("Attack")
 						await  get_tree().create_timer(2.2 / player_data.attack_speed).timeout
 				attacking = false
+			elif stamina.value < player_data.attack_stamina and !attacking:
+				popup.show_with("outOfStamina")
 		if Input.is_action_just_pressed("block") :
 			if player_data.can_block and !blocking and !attacking and stamina.value > 15:
 				blocking = true
@@ -441,8 +450,10 @@ func _unhandled_input(event: InputEvent) -> void:
 				blocking = false
 			elif !player_data.can_block:
 				popup.show_with("lockedAbility")
+			elif stamina.value < 15 and !attacking and !blocking:
+				popup.show_with("outOfStamina")
 		if Input.is_action_just_pressed("kick"):
-			if player_data.can_kick and ktimer <= 0 and !attacking and stamina.value > 20:
+			if player_data.can_kick and ktimer <= 0 and !attacking and stamina.value >= 20:
 				attacking = true
 				stamina.value -= 20
 				can_s_regen = false
@@ -455,6 +466,8 @@ func _unhandled_input(event: InputEvent) -> void:
 				popup.show_with("abilityOnCooldown")
 			elif !attacking:
 				popup.show_with("lockedAbility")
+			elif stamina.value < 20 and !attacking:
+				popup.show_with("outOfStamina")
 		if Input.is_action_just_pressed("skillTree"):
 			_skill_tree()
 		if Input.is_action_just_pressed("pause"):

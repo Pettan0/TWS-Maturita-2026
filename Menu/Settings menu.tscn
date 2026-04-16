@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b4amqssmjsccb" path="res://Scripts/Menu scripts/settings_menu.gd" id="1_8tqco"]
 [ext_resource type="FontFile" uid="uid://e01tyk5jn3jc" path="res://Assets/Font/Cinzel-VariableFont_wght.ttf" id="2_2ei4k"]
 [ext_resource type="Script" uid="uid://d1gfh7u42mtws" path="res://Scripts/Menu scripts/button_animation1.gd" id="2_paf8r"]
+[ext_resource type="Texture2D" uid="uid://cvl6rcqux7fev" path="res://Assets/2D/Png/btn_large.png" id="3_6ji8p"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_r8nd2"]
 color = Color(1, 1, 1, 1)
@@ -12,34 +13,8 @@ thickness = 6
 color = Color(0.35714206, 0.55610263, 1, 1)
 thickness = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3hjuq"]
-bg_color = Color(1, 1, 1, 1)
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_size = 2
-shadow_offset = Vector2(3, 3)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dkdp"]
-bg_color = Color(0.542318, 0.542318, 0.542318, 1)
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_size = 2
-shadow_offset = Vector2(3, 3)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_508j2"]
-bg_color = Color(0.6941206, 0.6941206, 0.6941205, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_size = 2
-shadow_offset = Vector2(3, 3)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rglxn"]
+texture = ExtResource("3_6ji8p")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tfpea"]
 
@@ -418,7 +393,8 @@ theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 25
 text = "Útok
-Blokování"
+Blokování
+Kopnutí"
 
 [node name="Keys" type="Label" parent="TabContainer/Ovládání/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1513632141]
 layout_mode = 2
@@ -428,7 +404,8 @@ theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 25
 text = "( Levé tlačítko )
-( Pravé tlačítko )"
+( Pravé tlačítko )
+( F )"
 horizontal_alignment = 1
 
 [node name="Weapons" type="Label" parent="TabContainer/Ovládání/ScrollContainer/VBoxContainer" unique_id=1674505789]
@@ -491,7 +468,8 @@ theme_override_constants/line_spacing = -5
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 25
-text = "Skill tree"
+text = "Skill tree
+Skrýt ui"
 
 [node name="Keys" type="Label" parent="TabContainer/Ovládání/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1135498913]
 layout_mode = 2
@@ -500,7 +478,8 @@ theme_override_constants/line_spacing = -5
 theme_override_constants/shadow_outline_size = 1
 theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 25
-text = "( k )"
+text = "( k )
+( F1 )"
 horizontal_alignment = 1
 
 [node name="ButtonBack" type="Button" parent="." unique_id=764194297]
@@ -517,15 +496,11 @@ offset_bottom = 197.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_3hjuq")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_3dkdp")
-theme_override_styles/hover = SubResource("StyleBoxFlat_508j2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rglxn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_rglxn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_rglxn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tfpea")
 text = "Zpět"
 script = ExtResource("2_paf8r")
