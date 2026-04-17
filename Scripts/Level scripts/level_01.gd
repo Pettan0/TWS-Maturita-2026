@@ -66,9 +66,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 		if near_door:
 			save_data()
 			SoundManager.play_door_sfx()
-			$Player/Transition.visible = true
-			$Player/Transition/AnimationPlayer.play("Fade_in")
-			await  get_tree().create_timer(1.0).timeout
+			await get_tree().create_timer(0.5).timeout
+			player.transition.fade_in()
 			get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
 		elif can_pick_up_item and weapon_item.visible:
 						#zmenit podle zbrane

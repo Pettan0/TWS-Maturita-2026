@@ -14,7 +14,7 @@ extends CharacterBody3D
 @onready var popup: Label = $Head/Camera3D/Popup
 @onready var player_level_label: Label = $Head/Camera3D/Label
 @onready var stamina_overlay: Panel = $Head/Camera3D/StaminaOverlay
-
+@onready var game_over: TextureRect = $Head/Camera3D/GameOver
 
 #sxf
 @onready var jump: AudioStreamPlayer = $Jump
@@ -25,6 +25,7 @@ extends CharacterBody3D
 @onready var sword_swing: AudioStreamPlayer = $SwordSwing
 @onready var lvl_up: AudioStreamPlayer = $LvlUp
 @onready var xp_bubble: AudioStreamPlayer = $XpBubble
+@onready var death_sfx: AudioStreamPlayer = $Death
 
 #weapons
 @onready var unarmed:= $Head/unarmed
@@ -36,7 +37,6 @@ extends CharacterBody3D
 
 @onready var headbob: AnimationPlayer = $Head/Headbob
 @onready var fov_animation: AnimationPlayer = $Head/FovAnimation
-@onready var transition_anim: AnimationPlayer = $Transition/AnimationPlayer
 
 @onready var unarmed_animations: AnimationPlayer = $Head/unarmed/AnimationPlayer
 @onready var dagger_animations:AnimationPlayer = $Head/dagger/AnimationPlayer
@@ -84,6 +84,7 @@ var ktimer = 0
 
 func _ready():
 	load_data()
+	create_tween().tween_property(game_over, "modulate:a", 0.0, 0.0).set_trans(Tween.TRANS_SINE)
 	long_sword.position = Vector3(0, -0.414, -0.621) #forced value bcs its broken
 	
 	#ziskavani promnen a nastavovani textu / progres baru
@@ -101,10 +102,10 @@ func _ready():
 	_weapon_out(player_data.current_weapon)
 	
 	#zapne prechod
-	transition.visible = true
-	transition_anim.play("Fade_out")
-	await  get_tree().create_timer(1.0).timeout
-	transition.visible = false 
+	transition.fade_out()
+
+func died():
+	create_tween().tween_property(game_over, "modulate:a", 0.9, 0.5).set_trans(Tween.TRANS_SINE)
 
 #lodeni a ukladani player data
 func load_data():
@@ -123,14 +124,7 @@ func save_data():
 
 func _process(delta: float) -> void:
 	
-	var alpha = clamp((20.0 - stamina.value) / 20.0, 0.0, 1.0)
-
-	create_tween().tween_property(
-		stamina_overlay, 
-		"modulate:a", 
-		alpha, 
-		0.1
-	).set_trans(Tween.TRANS_SINE)
+	create_tween().tween_property(stamina_overlay, "modulate:a", clamp((20.0 - stamina.value) / 20.0, 0.0, 1.0), 0.1).set_trans(Tween.TRANS_SINE)
 	
 	# code vec
 	if code_time > 0:
@@ -504,7 +498,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			stamina.show()
 	#debug tlacitko pro testovani ODSTANIT
 	if Input.is_action_just_pressed("debug"):
-		add_xp(100)
+		_hit(100)
 
 #dostavani dmg
 func _hit(damage : float):
@@ -523,16 +517,16 @@ func _hit(damage : float):
 			save_data()
 	if player_data.hp <= 0:
 		dead = true
-		player_data.deaths += 1
 		headbob.stop()
 		fov_animation.stop()
 		velocity = Vector3.ZERO
+		death_sfx.play()
 		$Head/HitAnimation.play("Death")
-		await get_tree().create_timer(2.3).timeout
+		await get_tree().create_timer(2.5).timeout
 		player_data.hp = player_data.max_hp
 		player_data.update_level_stats(1,1)
 		save_data()
-		get_tree().change_scene_to_file("res://Menu/Game Over.tscn")
+		get_tree().change_scene_to_file("res://Levels/Level01.scn")
 
 func _physics_process(delta: float) -> void:
 	#gravitace lol 🍎

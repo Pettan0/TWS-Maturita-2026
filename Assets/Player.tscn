@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://btqemfn0kg4i2"]
+[gd_scene format=3 uid="uid://dugxcqulgnm7o"]
 
 [ext_resource type="Script" uid="uid://s87k2qfp0jqw" path="res://Scripts/Player scripts/Player.gd" id="1_kpjcp"]
 [ext_resource type="PackedScene" uid="uid://co4givesqwyy5" path="res://Menu/Pause Menu.tscn" id="2_kne1u"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bu0ikpag18fi2" path="res://Assets/Modely/Player/dagger.tscn" id="6_05608"]
 [ext_resource type="Script" uid="uid://c84lcydaje2do" path="res://Scripts/Menu scripts/popup.gd" id="6_j6nj3"]
 [ext_resource type="PackedScene" uid="uid://wwa5rmnw87ac" path="res://Assets/Modely/Player/longsword.tscn" id="7_05608"]
+[ext_resource type="Texture2D" uid="uid://cvl6rcqux7fev" path="res://Assets/2D/Png/btn_large.png" id="7_bc47u"]
 [ext_resource type="AudioStream" uid="uid://camgera07b6x3" path="res://Assets/Sounds/SFX/Player/Attack1.wav" id="10_uqnxr"]
 [ext_resource type="PackedScene" uid="uid://ijvw7h6weq43" path="res://Assets/Modely/Player/pole_hammer.tscn" id="11_awmxi"]
 [ext_resource type="AudioStream" uid="uid://c85kk8phg0pmy" path="res://Assets/Sounds/SFX/Player/Footstep1.wav" id="11_ed6nx"]
@@ -22,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://c3yt2r3tc0ooi" path="res://Assets/Sounds/SFX/Player/New SFX/combat06.mp3" id="15_r0pwu"]
 [ext_resource type="AudioStream" uid="uid://c3do60t1sdwp5" path="res://Assets/Sounds/SFX/Ostatní/xpBubble.wav" id="19_8p2vv"]
 [ext_resource type="AudioStream" uid="uid://cl6bnatrue8ia" path="res://Assets/Sounds/SFX/Skill Tree/lvlup.wav" id="21_a8px6"]
+[ext_resource type="AudioStream" uid="uid://cxseqqaflyete" path="res://Assets/Sounds/SFX/Player/New SFX/death.mp3" id="24_i157g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8p2vv"]
 bg_color = Color(1, 0, 0, 0)
@@ -62,7 +64,7 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0pwu"]
-bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.22352941)
+bg_color = Color(0, 0, 0, 0.43137255)
 
 [sub_resource type="Animation" id="Animation_a8px6"]
 resource_name = "Death"
@@ -90,6 +92,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-1.1711159, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"died"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_r0pwu"]
@@ -428,6 +444,41 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r0pwu")
 
+[node name="GameOver" type="TextureRect" parent="Head/Camera3D" unique_id=397663102]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -601.0
+offset_top = -42.25
+offset_right = 601.0
+offset_bottom = 42.25
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_bc47u")
+
+[node name="Title" type="Label" parent="Head/Camera3D/GameOver" unique_id=109098328]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.5
+offset_top = -48.0
+offset_right = 198.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.6039216, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_ed6nx")
+theme_override_font_sizes/font_size = 70
+text = "Zemřel jsi"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="HitAnimation" type="AnimationPlayer" parent="Head" unique_id=1647927035]
 root_node = NodePath("../Camera3D")
 libraries/ = SubResource("AnimationLibrary_i157g")
@@ -487,7 +538,6 @@ mesh = SubResource("CapsuleMesh_e80uo")
 shape = SubResource("CapsuleShape3D_jqnu1")
 
 [node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("11_y0rfj")]
-visible = false
 mouse_filter = 2
 
 [node name="Jump" type="AudioStreamPlayer" parent="." unique_id=803344209]
@@ -521,3 +571,6 @@ bus = &"SFX"
 [node name="LvlUp" type="AudioStreamPlayer" parent="." unique_id=10229193]
 stream = ExtResource("21_a8px6")
 bus = &"SFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="." unique_id=1744209195]
+stream = ExtResource("24_i157g")

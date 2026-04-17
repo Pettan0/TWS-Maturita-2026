@@ -8,6 +8,7 @@ extends Control
 @onready var button_restart: Button = $Buttons/ButtonRestart
 @onready var debug: Panel = $Debug
 @onready var dificulty: Panel = $Dificulty
+@onready var transition: Control = $Transition
 
 var menu_show = false
 
@@ -39,17 +40,13 @@ func _ready() -> void:
 	$Credits/ScrollContainer/VBoxContainer/Names7.text = OS.get_environment("USERNAME") + " - za hraní této hry :D"
 	settings.hide()
 	credits.hide()
+	transition.show()
 	debug.hide()
-	$Transition.visible = true
-	$Transition/AnimationPlayer.play("Fade_out")
-	await  get_tree().create_timer(1.0).timeout
-	$Transition.visible = false
+	transition.fade_out()
 
 func _on_button_continue_pressed() -> void:
 	if !settings.visible and !credits.visible and !debug.visible:
-		$Transition.visible = true
-		$Transition/AnimationPlayer.play("Fade_in")
-		await  get_tree().create_timer(1.0).timeout
+		transition.fade_in()
 		get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
 
 func _on_button_restart_pressed() -> void:
@@ -117,9 +114,8 @@ func _on_button_easy_pressed() -> void:
 	player_data.difficulty_scale = 0.8
 	save_data()
 	settings.save_data()
-	$Transition.visible = true
-	$Transition/AnimationPlayer.play("Fade_in")
-	await  get_tree().create_timer(1.0).timeout
+	transition.fade_in()
+	await get_tree().create_timer(2.0).timeout
 	get_tree().change_scene_to_file("res://Levels/Level01.scn")
 
 
@@ -128,9 +124,8 @@ func _on_button_normal_pressed() -> void:
 	player_data.difficulty_scale = 1.0
 	save_data()
 	settings.save_data()
-	$Transition.visible = true
-	$Transition/AnimationPlayer.play("Fade_in")
-	await  get_tree().create_timer(1.0).timeout
+	transition.fade_in()
+	await get_tree().create_timer(2.0).timeout
 	get_tree().change_scene_to_file("res://Levels/Level01.scn")
 
 func _on_button_hard_pressed() -> void:
@@ -138,7 +133,6 @@ func _on_button_hard_pressed() -> void:
 	player_data.difficulty_scale = 1.2
 	save_data()
 	settings.save_data()
-	$Transition.visible = true
-	$Transition/AnimationPlayer.play("Fade_in")
-	await  get_tree().create_timer(1.0).timeout
+	transition.fade_in()
+	await get_tree().create_timer(2.0).timeout
 	get_tree().change_scene_to_file("res://Levels/Level01.scn")

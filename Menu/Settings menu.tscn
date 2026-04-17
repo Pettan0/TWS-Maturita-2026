@@ -44,10 +44,9 @@ offset_right = 313.0
 offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 
 [node name="Audio" type="Control" parent="TabContainer" unique_id=894766518]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -72,6 +71,7 @@ offset_top = 102.0
 offset_right = 225.16101
 offset_bottom = 118.0
 grow_horizontal = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/slider = SubResource("StyleBoxLine_r8nd2")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_8awf2")
 max_value = 1.0
@@ -88,6 +88,7 @@ offset_top = 155.0
 offset_right = 225.16089
 offset_bottom = 171.0
 grow_horizontal = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/slider = SubResource("StyleBoxLine_r8nd2")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_8awf2")
 max_value = 1.0
@@ -104,6 +105,7 @@ offset_top = 206.0
 offset_right = 225.16089
 offset_bottom = 222.0
 grow_horizontal = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/slider = SubResource("StyleBoxLine_r8nd2")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_8awf2")
 max_value = 1.0
@@ -120,6 +122,7 @@ offset_top = 257.0
 offset_right = 225.16089
 offset_bottom = 273.0
 grow_horizontal = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/slider = SubResource("StyleBoxLine_r8nd2")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_8awf2")
 max_value = 1.0
@@ -195,6 +198,7 @@ text = "Dabing ???"
 horizontal_alignment = 1
 
 [node name="Video" type="Control" parent="TabContainer" unique_id=861729659]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -227,6 +231,7 @@ offset_left = 25.0
 offset_top = 89.0
 offset_right = 152.0
 offset_bottom = 120.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_2ei4k")
 selected = 1
 item_count = 3
@@ -255,6 +260,7 @@ offset_left = 27.0
 offset_top = 169.0
 offset_right = 213.0
 offset_bottom = 200.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_2ei4k")
 selected = 0
 item_count = 4
@@ -285,6 +291,7 @@ offset_left = 27.0
 offset_top = 253.0
 offset_right = 213.0
 offset_bottom = 284.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_2ei4k")
 selected = 0
 item_count = 5
@@ -317,6 +324,7 @@ offset_left = 309.0
 offset_top = 89.0
 offset_right = 436.0
 offset_bottom = 120.0
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_2ei4k")
 selected = 0
 item_count = 2
@@ -522,6 +530,7 @@ offset_bottom = 197.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxTexture_rglxn")
@@ -538,5 +547,5 @@ script = ExtResource("2_paf8r")
 [connection signal="item_selected" from="TabContainer/Video/WindowedMode" to="." method="_windowed_mode"]
 [connection signal="item_selected" from="TabContainer/Video/RenderScale" to="." method="_render_scale"]
 [connection signal="item_selected" from="TabContainer/Video/AntiAliasing" to="." method="_anti_aliasing"]
-[connection signal="pressed" from="TabContainer/Video/EnemieHpBar" to="." method="enemie_hp_bar"]
+[connection signal="item_selected" from="TabContainer/Video/EnemieHpBar" to="." method="hp_bar"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

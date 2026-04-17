@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://e01tyk5jn3jc" path="res://Assets/Font/Cinzel-VariableFont_wght.ttf" id="4_804u5"]
 [ext_resource type="Texture2D" uid="uid://cvl6rcqux7fev" path="res://Assets/2D/Png/btn_large.png" id="7_x5pm2"]
 [ext_resource type="PackedScene" uid="uid://biycn7hdoemmx" path="res://Menu/transition.tscn" id="8_804u5"]
+[ext_resource type="Texture2D" uid="uid://dglplxeeany1j" path="res://Assets/2D/🤓/Snímek obrazovky 2026-04-17 163158.png" id="9_v8dls"]
 [ext_resource type="Texture2D" uid="uid://cgryl1dkh43fh" path="res://Assets/2D/Png/title.png" id="10_pjk5d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xuoke"]
@@ -313,6 +314,7 @@ offset_top = -159.63303
 offset_right = -65.68805
 offset_bottom = -92.633026
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_x5pm2")
@@ -328,6 +330,7 @@ offset_top = -163.30275
 offset_right = -250.08804
 offset_bottom = -96.30275
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_igkek")
@@ -342,6 +345,7 @@ offset_top = -163.30275
 offset_right = -66.08806
 offset_bottom = -96.30275
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxTexture_60bym")
@@ -363,6 +367,7 @@ offset_bottom = -13.302742
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_047qv")
@@ -385,6 +390,7 @@ offset_bottom = 68.69725
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_g5nbr")
@@ -399,6 +405,7 @@ offset_top = 84.69726
 offset_right = -65.68805
 offset_bottom = 151.69727
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_v8dls")
@@ -670,6 +677,7 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -713,10 +721,14 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 17
-text = "Ovládání - Petr Klimt
-Combat systém - Petr Klimt
-Ui systém - Petr Klimt
-Ukládání - Petr Klimt"
+text = "Ovládání:
+     Petr Klimt
+Combat systém:
+     Petr Klimt
+Ui systém:
+     Petr Klimt
+Ukládání:
+     Petr Klimt"
 vertical_alignment = 1
 
 [node name="TitleArt" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=344703006]
@@ -730,12 +742,19 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 17
-text = "Grafika - Jan Martínek
-Zbraně - Jan Martínek
-Nepřátelé - Jan Martínek
-Prostředí - Daniel Roček, Jan Martínek
-UI desing - Jan Martínek
-Vizualní efekty - Daniel Roček"
+text = "Grafika:
+     Jan Martínek
+Zbraně:
+     Jan Martínek
+Nepřátelé:
+     Jan Martínek
+Prostředí:
+     Daniel Roček
+     Jan Martínek
+UI desing:
+     Jan Martínek
+Vizualní efekty:
+     Daniel Roček"
 vertical_alignment = 1
 
 [node name="TitleAnim" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1138633936]
@@ -749,9 +768,13 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 17
-text = "Animace hráče - Jan Martínek, Petr Klimt
-Animace nepřátel - Jan Martínek
-Přechody - Petr Klimt"
+text = "Animace hráče:
+     Jan Martínek
+     Petr Klimt
+Animace nepřátel:
+     Jan Martínek
+Přechody:
+     Petr Klimt"
 vertical_alignment = 1
 
 [node name="TitleSound" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1667057225]
@@ -765,11 +788,14 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 17
-text = "Hudba - Daniel Roček
-Sound efekty - Daniel Roček
-Dubing - Daniel Roček, 
-                   Vojtěch Buřil, 
-                   Děda Martínek"
+text = "Hudba:
+     Daniel Roček
+Sound efekty:
+     Daniel Roček
+Dubing
+     Daniel Roček,
+     Vojtěch Buřil,
+     Honzův děda"
 vertical_alignment = 1
 
 [node name="TitleLvl" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1592075359]
@@ -783,7 +809,8 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 17
-text = "Layout levlů - Jan Martínek"
+text = "Layout levlů:
+     Jan Martínek"
 vertical_alignment = 1
 
 [node name="TitleTest" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1509191404]
@@ -797,11 +824,25 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 17
-text = "David Chalupka
-Ondra Karlíček
-Milan Vodička
-Tomáš Balaš"
+text = "     David Chalupka
+     Ondra Karlíček
+     Milan Vodička
+     Tomáš Balaš"
 vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1586325662]
+layout_mode = 2
+
+[node name="label" type="Label" parent="Credits/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1265563550]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_804u5")
+theme_override_font_sizes/font_size = 17
+text = "     Vít Hofman"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Credits/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1041511343]
+layout_mode = 2
+texture = ExtResource("9_v8dls")
 
 [node name="TitleSpecial" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1290675881]
 layout_mode = 2

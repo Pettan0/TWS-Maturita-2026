@@ -8,13 +8,6 @@ class_name SettingsData
 @export var windowed_mode_id = 0
 @export var render_scale_id = 0
 @export var aa_id = 0
-@export var enemy_hp_bar = 0
+@export var enemy_hp_bar = true
 
 @export var first_load = true
-
-func hp_bar():
-	match enemy_hp_bar:
-		0:
-			return true
-		1:
-			return false

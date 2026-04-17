@@ -259,7 +259,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_3lsyq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_16lbv")
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Zvíší základní poškození o 1"
+desc = "Zvýší základní poškození o 1"
 skill_id = "dmgB"
 node_id = "dmgB1"
 
@@ -272,7 +272,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_2q25n")
 theme_override_styles/hover = SubResource("StyleBoxFlat_e5ru6")
 icon = ExtResource("6_yw0w2")
 flat = true
-desc = "Zvíší základní poškození o 1"
+desc = "Zvýší základní poškození o 1"
 skill_id = "dmgB"
 node_id = "dmgB2"
 
@@ -287,7 +287,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_xs621")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ud1i8")
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Zvíší rychlost útoku o 10%"
+desc = "Zvýší rychlost útoku o 10%"
 skill_id = "attackSpeedB"
 node_id = "attackSpeedB1"
 
@@ -302,7 +302,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_i7owt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_nhmm6")
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Zvíší rychlost útoku o 10%"
+desc = "Zvýší rychlost útoku o 10%"
 skill_id = "attackSpeedB"
 node_id = "attackSpeedB2"
 
@@ -314,7 +314,7 @@ offset_right = -57.0
 offset_bottom = -26.99997
 icon = ExtResource("5_x46ny")
 flat = true
-desc = "Zvíší rychlost útoku o 30%"
+desc = "Zvýší rychlost útoku o 30%"
 skill_id = "attackSpeedA"
 node_id = "attackSpeedA1"
 
@@ -326,7 +326,7 @@ offset_right = 90.0
 offset_bottom = -63.99997
 icon = ExtResource("5_x46ny")
 flat = true
-desc = "Zvíší rychlost útoku o 30%"
+desc = "Zvýší rychlost útoku o 30%"
 skill_id = "attackSpeedA"
 node_id = "attackSpeedA2"
 
@@ -341,7 +341,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_5oyx3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rt1ag")
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Zvíší základní poškození o 1"
+desc = "Zvýší základní poškození o 1"
 skill_id = "dmgB"
 node_id = "dmgB3"
 
@@ -356,7 +356,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_7vgtt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rlumi")
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Zvíší základní poškození o 1"
+desc = "Zvýší základní poškození o 1"
 skill_id = "dmgB"
 node_id = "dmgB4"
 
@@ -368,7 +368,7 @@ offset_right = 52.0
 offset_bottom = -67.99997
 icon = ExtResource("5_x46ny")
 flat = true
-desc = "Zvíší základní poškození o 5"
+desc = "Zvýší základní poškození o 5"
 skill_id = "dmgA"
 node_id = "dmgA"
 
@@ -383,7 +383,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_rhnch")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6qqeq")
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Sníží staminu za útok o 2"
+desc = "Sníží staminu za útok o 20%"
 skill_id = "attackStaminaB"
 node_id = "attackStaminaB1"
 
@@ -398,7 +398,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_p54ay")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wcoki")
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Sníží staminu za útok o 2"
+desc = "Sníží staminu za útok o 20%"
 skill_id = "attackStaminaB"
 node_id = "attackStaminaB2"
 
@@ -626,7 +626,7 @@ offset_left = -130.0
 offset_right = -70.0
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Zvíší maximální zívoty o 10"
+desc = "Zvýší maximální zívoty o 10"
 skill_id = "hpB"
 node_id = "hpB1"
 
@@ -638,7 +638,7 @@ offset_right = 6.0
 offset_bottom = -62.0
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Zvíší maximální zívoty o 10"
+desc = "Zvýší maximální životy o 10"
 skill_id = "hpB"
 node_id = "hpB2"
 
@@ -650,7 +650,7 @@ offset_right = -48.0
 offset_bottom = -41.99997
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Zvíší maximální zívoty o 10"
+desc = "Zvýší maximální životy o 10"
 skill_id = "hpB"
 node_id = "hpB3"
 
@@ -662,7 +662,7 @@ offset_right = -58.0
 offset_bottom = 4.0000153
 icon = ExtResource("5_x46ny")
 flat = true
-desc = "Zvíší maximální zívoty o 30"
+desc = "Zvýší maximální životy o 30"
 skill_id = "hpA"
 node_id = "hpA"
 
@@ -674,7 +674,7 @@ offset_right = -66.0
 offset_bottom = 56.000015
 icon = ExtResource("5_x46ny")
 flat = true
-desc = "Odemkne se funkce kopnutí ( F ) odhodí enemáky"
+desc = "Odemkne se funkce kopnutí ( F ), odhodí enemáky"
 skill_id = "uKick"
 node_id = "uKick"
 
@@ -698,7 +698,7 @@ offset_right = -68.0
 offset_bottom = 22.000015
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Sníží únavu po kopnují o 5"
+desc = "Sníží únavu po kopnují o 5%"
 skill_id = "kickUp"
 node_id = "kickUp2"
 
@@ -710,7 +710,7 @@ offset_right = -58.0
 offset_bottom = 90.000015
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Zvíší poškození kopnutí o 10"
+desc = "Zvýší poškození kopnutí o 10"
 skill_id = "kickDmg"
 node_id = "kickDmg1"
 
@@ -722,7 +722,7 @@ offset_right = -68.0
 offset_bottom = 38.000015
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Zvíší poškození kopnutí o 10"
+desc = "Zvýší poškození kopnutí o 10"
 skill_id = "kickDmg"
 node_id = "kickDmg1"
 
@@ -734,7 +734,7 @@ offset_right = -22.0
 offset_bottom = 128.00003
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Zvíší blokované poškození o 15%"
+desc = "Sníží blokované poškození o 15%"
 skill_id = "upBlockB"
 node_id = "upBlockB1"
 
@@ -746,7 +746,7 @@ offset_right = -52.0
 offset_bottom = 102.00003
 icon = ExtResource("4_e5ru6")
 flat = true
-desc = "Zvíší blokované poškození o 15%"
+desc = "Sníží blokované poškození o 15%"
 skill_id = "upBlockB"
 node_id = "upBlockB2"
 

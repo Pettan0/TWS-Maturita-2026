@@ -6,6 +6,7 @@ signal died
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var progress_bar: ProgressBar = $SubViewport/ProgressBar
+@onready var hp_bar: Sprite3D = $Sprite3D
 
 @onready var level: Node3D = $".."
 
@@ -66,9 +67,9 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 		velocity = knock_dir * knockback
 		knockedback = true
 		knockback_timer = 0.25
-
+	
 	HP -= damage_taken
-
+	play_hit_sound()
 	progress_bar.update_hp(max_hp, HP)
 	if (HP <= 0):
 		animation_tree.set("parameters/conditions/Death"+str(randi_range(1,3)),true)
@@ -77,7 +78,7 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 
 func _ready() -> void:
 	load_data()
-	progress_bar.visible = settingsData.enemy_hp_bar
+	hp_bar.visible = settingsData.enemy_hp_bar
 	bes_1.hide()
 	bes_2.hide()
 	match randi_range(1,2):
@@ -96,6 +97,7 @@ func _ready() -> void:
 	print("hp: "+str(HP))
 
 func _physics_process(_delta):
+
 	if knockedback:
 		knockback_timer -= _delta
 		move_and_slide()
@@ -151,7 +153,7 @@ func play_hit_sound():
 	hit_sfx.play()
 
 func play_death_sound():
-	hit_sfx.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - death"+str(randi_range(1,4))+ ".wav")
+	hit_sfx.stream = load("res://Assets/Sounds/SFX/Enemies/bes/Bes - death "+str(randi_range(1,4))+ ".wav")
 	hit_sfx.pitch_scale = randf_range(.8, 1.2)
 	hit_sfx.play()
 

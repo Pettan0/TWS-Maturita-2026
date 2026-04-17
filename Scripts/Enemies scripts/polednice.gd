@@ -14,22 +14,21 @@ signal died
 
 var state_machine
 
-var base_hp = 50
-var player_level_scale = 5
-var current_level_scale = 30
+var base_hp = 670
+var player_level_scale = 10
 
 var ATTACK_RANGE = 1.5
 var DMG = 15.0
-const SPEED = 3.1
+const SPEED = 5.0
 
-var knockback = 4.0
-var knockedback = false
-var knockback_timer = 0.0
+var attack_cooldown := 2.0
+var can_attack := true
 
 var max_hp
-var HP 
-var xp
-var attack_dir = Vector3.ZERO
+var HP
+
+var desired_distance := 20.0
+var distance_tolerance := 2.0
 
 var is_dead = false
 
@@ -52,90 +51,68 @@ func load_data():
 func save_data():
 	ResourceSaver.save(settingsData, save_file_path + save_file_name)
 
-func hit (damage_taken:float, weapon_type:String, dir:Vector3):
-	if weapon_type == "kick":
-
-		var knock_dir = dir.normalized()
-		velocity = knock_dir * knockback
-		knockedback = true
-		knockback_timer = 0.25
+func hit (damage_taken:float, _weapon_type:String, _dir:Vector3):
 	HP -= damage_taken
 	play_hit_sound()
 	progress_bar.update_hp(max_hp, HP)
 	if (HP <= 0):
-		animation_tree.set("parameters/conditions/Death"+str(randi_range(1,2)),true)
+		animation_tree.set("parameters/conditions/Death",true)
 	else:
 		animation_tree.set("parameters/conditions/Hit", true)
 
 func _ready() -> void:
 	load_data()
 	hp_bar.visible = settingsData.enemy_hp_bar
-	max_hp = player.player_data.difficulty_scale * (base_hp + (player.player_data.level - 2) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale)
+	max_hp = player.player_data.difficulty_scale * (base_hp + (player.player_data.player_level - 1) * player_level_scale)
 	DMG = DMG * player.player_data.difficulty_scale
 	HP = max_hp
-	xp = max_hp
 	progress_bar.update_hp(max_hp, HP)
 	state_machine = animation_tree.get("parameters/playback")
 
-func _physics_process(delta):
-	match settingsData.enemy_hp_bar:
-		true:
-			progress_bar.show()
-		false:
-			progress_bar.hide()
-	if knockedback:
-		knockback_timer -= delta
-		move_and_slide()
-
-	if knockback_timer <= 0.0:
-		knockedback = false
+func _physics_process(_delta):
 	match state_machine.get_current_node():
 		"Idle":
-			animation_tree.set("parameters/conditions/Move",area._is_player_in_area())
+			pass
 		"Move":
-			var next_nav_point = nav_agent.get_next_path_position()
-			nav_agent.set_target_position(player.global_position)
-			attack_dir = (player.global_position - global_position)
-			attack_dir.y = 0
-
-			velocity = (next_nav_point - global_position).normalized() * SPEED
-
-			look_at(Vector3(next_nav_point.x, global_position.y, next_nav_point.z), Vector3.UP)
-			move_and_slide()
-			animation_tree.set("parameters/conditions/Attack0" + str(randi_range(1,2)), _target_in_range(0))
-
-			animation_tree.set("parameters/conditions/Idle", !area._is_player_in_area())
-		"Attack01":
-			if !_target_in_range(1):
-				state_machine.travel("Move")
-				return
-
-			velocity = attack_dir * SPEED
-			move_and_slide()
-			animation_tree.set("parameters/conditions/Attack01", true)
-			animation_tree.set("parameters/conditions/Attack0" + str(randi_range(1,2)), _target_in_range(0))
-		"Attack02":
-			if !_target_in_range(1):
-				state_machine.travel("Move")
-				return
-
-			velocity = attack_dir * SPEED
-			move_and_slide()
-			animation_tree.set("parameters/conditions/Attack02", true)
-			animation_tree.set("parameters/conditions/Attack0" + str(randi_range(1,2)), _target_in_range(0))
+			pass
+		"Melee01":
+			pass
 		"Hit":
-			animation_tree.set("parameters/conditions/Hit",false)
-		"Death01":
-			if !is_dead:
-				is_dead = true
-				die(3.0)
-		"Death02":
-			if !is_dead:
-				is_dead = true
-				die(4.0)
+			pass
+		"Death":
+			pass
+
+func handle_positioning(_delta):
+	var distance = global_position.distance_to(player.global_position)
+	
+	var direction = (player.global_position - global_position).normalized()
+	
+	if distance < desired_distance - distance_tolerance:
+		velocity = -direction * SPEED
+	
+	elif distance > desired_distance + distance_tolerance:
+		velocity = direction * SPEED
+	
+	else:
+		velocity = Vector3.ZERO
+	
+	move_and_slide()
+	look_at(player.global_position)
+
+#func try_attack():
+	#var distance = global_position.distance_to(player.global_position)
+	
+	#if distance <= desired_distance + distance_tolerance and can_attack:
+		#can_attack = false
+		
+		
+		#shoot_projectile()
+		
+		#await get_tree().create_timer(attack_cooldown).timeout
+		#can_attack = true
+		#current_state = State.POSITIONING
 
 func die(delay: float):
-	player.add_xp(xp)
 	died.emit()
 	$CollisionShape3D.disabled = true
 	await get_tree().create_timer(delay).timeout
@@ -156,5 +133,6 @@ func play_death_sound():
 func _hit_player():
 	if _target_in_range(1):
 		player._hit(DMG)
+		
 func _target_in_range(value: int) -> bool:
 	return global_position.distance_to(player.global_position) <= ATTACK_RANGE + value

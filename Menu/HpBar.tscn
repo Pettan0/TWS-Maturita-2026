@@ -48,23 +48,3 @@ step = 0.1
 value = 50.0
 show_percentage = false
 script = ExtResource("1_cv08h")
-
-[node name="Label" type="Label" parent="." unique_id=1804381475]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -202.47073
-offset_top = -18.78125
-offset_right = 202.47073
-offset_bottom = 18.78125
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_baxly")
-theme_override_font_sizes/font_size = 25
-text = "(Hp) / (maxHp)"
-horizontal_alignment = 1
-vertical_alignment = 1

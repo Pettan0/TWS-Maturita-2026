@@ -54,9 +54,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 					player_data.update_level_stats(5,1)
 			save_data()
 			SoundManager.play_door_sfx()
-			$Player/Transition.visible = true
-			$Player/Transition/AnimationPlayer.play("Fade_in")
-			await get_tree().create_timer(1.0).timeout
+			await get_tree().create_timer(0.5).timeout
+			player.transition.fade_in()
 			get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
 		else:
 			popup.show_with("cantEnter")

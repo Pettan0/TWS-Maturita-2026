@@ -10,7 +10,7 @@ extends Node
 @onready var windowed_mode: OptionButton = $TabContainer/Video/WindowedMode
 @onready var render_scale: OptionButton = $TabContainer/Video/RenderScale
 @onready var anti_aliasing: OptionButton = $TabContainer/Video/AntiAliasing
-@onready var hp_bar: OptionButton = $TabContainer/Video/EnemieHpBar
+@onready var enemy_bar: OptionButton = $TabContainer/Video/EnemieHpBar
 
 var save_file_path = "user://save/"
 var save_file_name = "SettingsData.tres"
@@ -50,9 +50,7 @@ func load_data():
 	render_scale.select(settingsData.render_scale_id)
 	_anti_aliasing(settingsData.aa_id)
 	anti_aliasing.select(settingsData.aa_id)
-	enemie_hp_bar(settingsData.enemy_hp_bar)
-	hp_bar.select(settingsData.enemy_hp_bar)
-	
+
 func save_data():
 	ResourceSaver.save(settingsData, save_file_path + save_file_name)
 
@@ -113,9 +111,14 @@ func _anti_aliasing(index: int) -> void:
 			get_viewport().msaa_3d = Viewport.MSAA_4X
 			get_viewport().use_taa = false
 			get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
-func enemie_hp_bar(index:int):
-	settingsData.enemy_hp_bar = index
 
 func _on_button_back_pressed() -> void:
 	save_data()
 	$".".hide()
+
+func hp_bar(index: int) -> void:
+	match index:
+		0:
+			settingsData.enemy_hp_bar = true
+		1:
+			settingsData.enemy_hp_bar = false

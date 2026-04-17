@@ -48,7 +48,7 @@ func load_data():
 	if settingsData == null:
 		settingsData = SettingsData.new()
 		save_data()
-	hp_bar.visible = settingsData.hp_bar()
+
 func save_data():
 	ResourceSaver.save(settingsData, save_file_path + save_file_name)
 
@@ -75,6 +75,7 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 
 func _ready() -> void:
 	load_data()
+	hp_bar.visible = settingsData.enemy_hp_bar
 	armor = min((player.player_data.player_level) * 0.05,0.75)
 	max_hp = player.player_data.difficulty_scale * (base_hp + (player.player_data.level - 2) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale)
 	DMG = DMG * player.player_data.difficulty_scale
@@ -84,6 +85,7 @@ func _ready() -> void:
 	state_machine = animation_tree.get("parameters/playback")
 	print("armor: "+str(armor))
 	print("hp: "+str(HP))
+
 func _physics_process(delta):
 	if knockedback:
 		knockback_timer -= delta
