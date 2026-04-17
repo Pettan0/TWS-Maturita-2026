@@ -18,6 +18,8 @@ class_name PlayerData
 @export var max_hp : float = 100
 @export var hp : float = max_hp
 
+@export var deaths : int = 0
+
 #hp regen veci
 @export var u_hp_regen : bool = false
 @export var rtimer_to_wait : float = 10.0

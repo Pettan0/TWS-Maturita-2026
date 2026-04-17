@@ -27,7 +27,6 @@ extends CharacterBody3D
 @onready var lvl_up: AudioStreamPlayer = $LvlUp
 @onready var xp_bubble: AudioStreamPlayer = $XpBubble
 
-
 #weapons
 @onready var unarmed:= $Head/unarmed
 @onready var dagger:= $Head/dagger
@@ -520,6 +519,7 @@ func _hit(damage : float):
 			save_data()
 	if player_data.hp <= 0:
 		dead = true
+		player_data.deaths += 1
 		headbob.stop()
 		fov_animation.stop()
 		velocity = Vector3.ZERO
@@ -528,8 +528,7 @@ func _hit(damage : float):
 		player_data.hp = player_data.max_hp
 		player_data.update_level_stats(1,1)
 		save_data()
-		get_tree().change_scene_to_file("res://Levels/Level01.scn")
-		
+		get_tree().change_scene_to_file("res://Menu/Game Over.tscn")
 
 func _physics_process(delta: float) -> void:
 	#gravitace lol 🍎
