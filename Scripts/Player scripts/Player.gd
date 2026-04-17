@@ -14,6 +14,7 @@ extends CharacterBody3D
 @onready var stamina: ProgressBar = $Head/Camera3D/Stamina
 @onready var popup: Label = $Head/Camera3D/Popup
 @onready var player_level_label: Label = $Head/Camera3D/Label
+@onready var stamina_overlay: Panel = $Head/Camera3D/StaminaOverlay
 
 
 #sxf
@@ -95,7 +96,6 @@ func _ready():
 	xp_bar.max_value = player_data.xp_to_next
 	hp_bar.max_value = player_data.max_hp
 	hp_bar.value = player_data.hp
-	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
 	stamina.value = stamina.max_value
 	fov_animation.speed_scale = 3
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -125,9 +125,14 @@ func save_data():
 
 func _process(delta: float) -> void:
 	
-	#if stamina.value < 10:
-		
-	
+	var alpha = clamp((20.0 - stamina.value) / 20.0, 0.0, 1.0)
+
+	create_tween().tween_property(
+		stamina_overlay, 
+		"modulate:a", 
+		alpha, 
+		0.1
+	).set_trans(Tween.TRANS_SINE)
 	
 	# code vec
 	if code_time > 0:
@@ -144,7 +149,6 @@ func _process(delta: float) -> void:
 	
 	#udatne staty podle data hrace
 	hp_bar.value = player_data.hp
-	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
 	base_dmg = player_data.base_dmg
 	skill_points = player_data.skill_points
 	
