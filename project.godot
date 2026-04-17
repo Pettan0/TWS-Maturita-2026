@@ -24,6 +24,10 @@ SoundManager="*uid://d4g1cicnu0ujk"
 window/size/mode=2
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+player=""
+
 [input]
 
 w={

@@ -32,6 +32,25 @@ var attack_dir = Vector3.ZERO
 
 var is_dead = false
 
+var save_file_path = "user://save/"
+var save_file_name = "SettingsData.tres"
+
+var settingsData : SettingsData
+
+func load_data():
+	if not DirAccess.dir_exists_absolute(save_file_path):
+		DirAccess.make_dir_recursive_absolute(save_file_path)
+	
+	if FileAccess.file_exists(save_file_path + save_file_name):
+		settingsData = ResourceLoader.load(save_file_path + save_file_name)
+	
+	if settingsData == null:
+		settingsData = SettingsData.new()
+		save_data()
+	progress_bar.visible = settingsData.enemy_hp_bar
+
+func save_data():
+	ResourceSaver.save(settingsData, save_file_path + save_file_name)
 
 func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 	if weapon_type == "kick":
@@ -47,6 +66,7 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 		animation_tree.set("parameters/conditions/Death"+str(randi_range(1,2)),true)
 
 func _ready() -> void:
+	load_data()
 	max_hp = player.player_data.difficulty_scale * (base_hp + (player.player_data.level - 2) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale)
 	DMG = DMG * player.player_data.difficulty_scale
 	HP = max_hp
@@ -55,6 +75,11 @@ func _ready() -> void:
 	state_machine = animation_tree.get("parameters/playback")
 
 func _physics_process(delta):
+	match settingsData.enemy_hp_bar:
+		true:
+			progress_bar.show()
+		false:
+			progress_bar.hide()
 	if knockedback:
 		knockback_timer -= delta
 		move_and_slide()

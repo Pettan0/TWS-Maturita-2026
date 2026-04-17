@@ -38,6 +38,24 @@ var knockback_timer = 0.0
 
 var is_dead = false
 
+var save_file_path = "user://save/"
+var save_file_name = "SettingsData.tres"
+
+var settingsData : SettingsData
+
+func load_data():
+	if not DirAccess.dir_exists_absolute(save_file_path):
+		DirAccess.make_dir_recursive_absolute(save_file_path)
+	
+	if FileAccess.file_exists(save_file_path + save_file_name):
+		settingsData = ResourceLoader.load(save_file_path + save_file_name)
+	
+	if settingsData == null:
+		settingsData = SettingsData.new()
+		save_data()
+
+func save_data():
+	ResourceSaver.save(settingsData, save_file_path + save_file_name)
 
 func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 	if weapon_type == "dagger" or weapon_type == "shortSword" or weapon_type == "longSword":
@@ -50,7 +68,7 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 		knockback_timer = 0.25
 
 	HP -= damage_taken
-	
+
 	progress_bar.update_hp(max_hp, HP)
 	if (HP <= 0):
 		animation_tree.set("parameters/conditions/Death"+str(randi_range(1,3)),true)
@@ -58,6 +76,8 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 		animation_tree.set("parameters/conditions/Hit",true)
 
 func _ready() -> void:
+	load_data()
+	progress_bar.visible = settingsData.enemy_hp_bar
 	bes_1.hide()
 	bes_2.hide()
 	match randi_range(1,2):
@@ -74,6 +94,7 @@ func _ready() -> void:
 	progress_bar.update_hp(max_hp, HP)
 	state_machine = animation_tree.get("parameters/playback")
 	print("hp: "+str(HP))
+
 func _physics_process(_delta):
 	if knockedback:
 		knockback_timer -= _delta

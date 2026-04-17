@@ -44,9 +44,10 @@ offset_right = 313.0
 offset_bottom = 210.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 1
 
 [node name="Audio" type="Control" parent="TabContainer" unique_id=894766518]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -194,7 +195,6 @@ text = "Dabing ???"
 horizontal_alignment = 1
 
 [node name="Video" type="Control" parent="TabContainer" unique_id=861729659]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -209,7 +209,7 @@ theme_override_fonts/font = ExtResource("2_2ei4k")
 theme_override_font_sizes/font_size = 40
 text = "Video"
 
-[node name="Label5" type="Label" parent="TabContainer/Video" unique_id=64144048]
+[node name="Label1" type="Label" parent="TabContainer/Video" unique_id=64144048]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 54.0
@@ -228,7 +228,7 @@ offset_top = 89.0
 offset_right = 152.0
 offset_bottom = 120.0
 theme_override_fonts/font = ExtResource("2_2ei4k")
-selected = 0
+selected = 1
 item_count = 3
 popup/item_0/text = "Windowed"
 popup/item_0/id = 0
@@ -237,7 +237,7 @@ popup/item_1/id = 1
 popup/item_2/text = "Fullscreen"
 popup/item_2/id = 2
 
-[node name="Label6" type="Label" parent="TabContainer/Video" unique_id=2086374501]
+[node name="Label2" type="Label" parent="TabContainer/Video" unique_id=2086374501]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 134.0
@@ -267,7 +267,7 @@ popup/item_2/id = 2
 popup/item_3/text = "Brambora"
 popup/item_3/id = 3
 
-[node name="Label7" type="Label" parent="TabContainer/Video" unique_id=148314930]
+[node name="Label3" type="Label" parent="TabContainer/Video" unique_id=148314930]
 layout_mode = 0
 offset_left = 27.0
 offset_top = 218.0
@@ -298,6 +298,32 @@ popup/item_3/text = "MSAA 2X"
 popup/item_3/id = 3
 popup/item_4/text = "MSAA 4X"
 popup/item_4/id = 4
+
+[node name="Label4" type="Label" parent="TabContainer/Video" unique_id=1913292857]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 54.0
+offset_right = 599.0
+offset_bottom = 89.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("2_2ei4k")
+theme_override_font_sizes/font_size = 25
+text = "Životy nad nepřátely"
+
+[node name="EnemieHpBar" type="OptionButton" parent="TabContainer/Video" unique_id=1687955336]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 89.0
+offset_right = 436.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("2_2ei4k")
+selected = 0
+item_count = 2
+popup/item_0/text = "Zapnout"
+popup/item_0/id = 0
+popup/item_1/text = "Vypnou"
+popup/item_1/id = 1
 
 [node name="Ovládání" type="Control" parent="TabContainer" unique_id=1882011872]
 visible = false
@@ -512,4 +538,5 @@ script = ExtResource("2_paf8r")
 [connection signal="item_selected" from="TabContainer/Video/WindowedMode" to="." method="_windowed_mode"]
 [connection signal="item_selected" from="TabContainer/Video/RenderScale" to="." method="_render_scale"]
 [connection signal="item_selected" from="TabContainer/Video/AntiAliasing" to="." method="_anti_aliasing"]
+[connection signal="pressed" from="TabContainer/Video/EnemieHpBar" to="." method="enemie_hp_bar"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

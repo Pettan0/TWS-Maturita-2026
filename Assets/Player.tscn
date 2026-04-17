@@ -395,26 +395,6 @@ max_value = 30.0
 value = 30.0
 show_percentage = false
 
-[node name="Label" type="Label" parent="Head/Camera3D/HpBar" unique_id=489184461]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -139.0
-offset_top = -15.0
-offset_right = 139.0
-offset_bottom = 15.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_ed6nx")
-theme_override_font_sizes/font_size = 18
-text = "Hp / MaxHp"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Stamina" type="ProgressBar" parent="Head/Camera3D" unique_id=1598281620]
 anchors_preset = 7
 anchor_left = 0.5
@@ -478,7 +458,7 @@ weapon_type = "shortSword"
 [node name="mace" parent="Head" unique_id=1898199321 instance=ExtResource("5_y0rfj")]
 transform = Transform3D(0.3, 0, 0, 0, 0.29905248, -0.023824813, 0, 0.023824813, 0.29905248, 0, -0.15602988, -0.5)
 visible = false
-damage = 25.0
+damage = 35.0
 weapon_type = "mace"
 
 [node name="longsword" parent="Head" unique_id=1615498181 instance=ExtResource("7_05608")]
@@ -490,7 +470,7 @@ weapon_type = "longSword"
 [node name="poleHammer" parent="Head" unique_id=2058561798 instance=ExtResource("11_awmxi")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.195, -0.4143725)
 visible = false
-damage = 50.0
+damage = 60.0
 weapon_type = "poleHammer"
 
 [node name="Leg" parent="Head" unique_id=1642797897 instance=ExtResource("13_a8px6")]

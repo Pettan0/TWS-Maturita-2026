@@ -2,6 +2,11 @@ extends Node3D
 @onready var interact: Label = $Player/Head/Camera3D/Interact
 @onready var player: CharacterBody3D = $Player
 @onready var popup: Label = $Player/Head/Camera3D/Popup
+@onready var item: Node3D = $Excalibur/wp_shortsword
+
+var near_door = false
+var near_item = false
+var sword_stage = 0
 
 var enemies_left = 0
 var next_lvl = 0
@@ -11,10 +16,11 @@ var save_file_name = "PlayerData.tres"
 
 var player_data : PlayerData
 
-
 func _ready():
 	print("Enemies at start:", enemies_left)
 	load_data()
+	if player_data.u_short_sword:
+		item.hide()
 	print(player_data.starter_position)
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	enemies_left = enemies.size()
@@ -40,41 +46,67 @@ func load_data():
 	player.position = player_data.starter_position
 	player.rotation_degrees = player_data.starter_rotation
 
-
 func save_data():
 	ResourceSaver.save(player_data, save_file_path + save_file_name)
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and interact.visible:
-		if enemies_left == 0:
-			match next_lvl:
-				2:
-					player_data.update_level_stats(2,2)
-				4:
-					player_data.update_level_stats(4,1)
-			save_data()
-			SoundManager.play_door_sfx()
-			$Player/Transition.visible = true
-			$Player/Transition/AnimationPlayer.play("Fade_in")
-			await get_tree().create_timer(1.0).timeout
-			get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
-		else:
-			popup.show_with("cantEnter")
+		if near_door:
+			if enemies_left == 0:
+				match next_lvl:
+					2:
+						player_data.update_level_stats(2,2)
+					4:
+						player_data.update_level_stats(4,1)
+				save_data()
+				SoundManager.play_door_sfx()
+				$Player/Transition.visible = true
+				$Player/Transition/AnimationPlayer.play("Fade_in")
+				await get_tree().create_timer(1.0).timeout
+				get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
+			else:
+				popup.show_with("cantEnter")
+		elif near_item:
+			if randi_range(1,4) > 3:
+				if sword_stage != 4:
+					sword_stage += 1
+					item.global_position.y += .125
+				else:
+					item.hide()
+					player_data.u_short_sword = true
+					player._weapon_out("shortSword")
+					near_item = false
+					interact.hide()
+			else:
+				player._hit(5)
 func _on_exit_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.show_with("OpenDoor","")
 		next_lvl = 2 
+		near_door = true
 
 func _on_exit_door_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.hide()
+		near_door = false
 
 func _on_lvl_4_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.show_with("OpenDoor","")
 		next_lvl = 4
-
+		near_door = true
 
 func _on_lvl_4_door_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.hide()
+		near_door = false
+
+func _on_item_area_body_entered(body: Node3D) -> void:
+	if body.name == "Player" and item.visible:
+		interact.show_with("PullSword","")
+		near_item = true
+
+func _on_item_area_body_exited(body: Node3D) -> void:
+	if body.name == "Player":
+		interact.hide()
+		near_item = false

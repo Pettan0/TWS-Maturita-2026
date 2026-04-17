@@ -4,9 +4,29 @@ extends Panel
 @onready var skill_points: Label = $SkillPoints
 @onready var stats: Label = $Stats
 
+
+var save_file_path = "user://save/"
+var save_file_name = "PlayerData.tres"
 var player_data : PlayerData
 
+func save_data():
+	ResourceSaver.save(player.player_data, save_file_path + save_file_name)
+
+func load_data():
+	if FileAccess.file_exists(save_file_path + save_file_name):
+		var data = ResourceLoader.load(save_file_path + save_file_name)
+
+		if data:
+			player_data = data
+	else:
+		player_data = PlayerData.new()
+
 func _ready() -> void:
+	load_data()
+	player_data.skill_tree_changed = true
+	if player_data:
+		player.player_data = player_data
+
 	skill_points.text = "sp: " + str(player.skill_points)
 
 func _on_button_back_pressed() -> void:
@@ -43,4 +63,4 @@ func _process(_delta: float) -> void:
 		if player.player_data.u_hp_regen:
 			stats.text += "Čas mezi regenerací: "+str(player.player_data.rtimer_to_wait)+"\n"
 			stats.text += "Hodnoda regenerace: "+str(player.player_data.r_per_time)+"\n"
-			
+		save_data()

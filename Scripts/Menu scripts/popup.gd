@@ -14,6 +14,8 @@ func show_with(msg: String):
 				text = "Jsi příliš unavený, odpočiň si."
 			"cantEnter":
 				text = "Nezabil jsi všechny nepřátelé."
+			"lockdDoor":
+				text = "Dveře jsou zamčené."
 			"blockedDoor":
 				match randi_range(1,3):
 					1:

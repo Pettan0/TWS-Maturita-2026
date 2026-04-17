@@ -10,7 +10,6 @@ extends CharacterBody3D
 @onready var transition: Control = $Transition
 @onready var xp_bar: ProgressBar = $Head/Camera3D/xp_bar
 @onready var hp_bar: ProgressBar = $Head/Camera3D/HpBar
-@onready var hp_label: Label = $Head/Camera3D/HpBar/Label
 @onready var stamina: ProgressBar = $Head/Camera3D/Stamina
 @onready var popup: Label = $Head/Camera3D/Popup
 @onready var player_level_label: Label = $Head/Camera3D/Label
@@ -95,7 +94,6 @@ func _ready():
 	xp_bar.max_value = player_data.xp_to_next
 	hp_bar.max_value = player_data.max_hp
 	hp_bar.value = player_data.hp
-	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
 	stamina.value = stamina.max_value
 	fov_animation.speed_scale = 3
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -144,7 +142,6 @@ func _process(delta: float) -> void:
 	
 	#udatne staty podle data hrace
 	hp_bar.value = player_data.hp
-	hp_label.text = str(player_data.hp)+" / "+ str(player_data.max_hp)
 	base_dmg = player_data.base_dmg
 	skill_points = player_data.skill_points
 	
@@ -252,7 +249,7 @@ func _weapon_out(type:String):
 			else :
 				popup.show_with("lockedWeapon")
 		"shortSword":
-			if player_data.u_short_swort:
+			if player_data.u_short_sword:
 				short_sword.show()
 				unarmed.hide()
 				dagger.hide()
@@ -309,6 +306,7 @@ func add_xp(amount:float):
 		player_data.new_xp_to_next(amount)
 		lvl_up.play()
 		player_level_label.text = "Lvl: "+str(player_data.player_level)
+		player_data.hp = player_data.max_hp
 	save_data()
 	print("current xp: "+ str(player_data.xp))
 	xp_bar.value = player_data.xp
@@ -490,9 +488,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	#schovani ui
 	if Input.is_action_just_pressed("f1"):
 		if hp_bar.visible and stamina.visible:
+			xp_bar.hide()
 			hp_bar.hide()
 			stamina.hide()
+			player_level_label.hide()
 		else:
+			xp_bar.show()
+			player_level_label.show()
 			hp_bar.show()
 			stamina.show()
 	#debug tlacitko pro testovani ODSTANIT
@@ -533,12 +535,15 @@ func _physics_process(delta: float) -> void:
 			velocity += get_gravity() * delta
 	if !paused and !dead:
 			#skok 🤓
-			if Input.is_action_just_pressed("jump") and is_on_floor() and stamina.value > 15:
-				stamina.value -= 15.0
-				can_s_regen = false
-				stimer = 0
-				velocity.y = jump_velocity
-				jump.play()
+			if Input.is_action_just_pressed("jump") and is_on_floor():
+				if stamina.value > 15:
+					stamina.value -= 15.0
+					can_s_regen = false
+					stimer = 0
+					velocity.y = jump_velocity
+					jump.play()
+				elif stamina.value < 15:
+					popup.show_with("outOfStamina")
 			
 			#controls pohybu
 			var input_dir := Input.get_vector("a", "d", "w", "s")
@@ -575,6 +580,8 @@ func _physics_process(delta: float) -> void:
 						headbob.speed_scale = 2.0
 					velocity.x = direction.x * 1.2 * speed
 					velocity.z = direction.z * 1.2 * speed
+					if stamina.value <= 0:
+						popup.show_with("outOfStamina")
 				else: 
 					if !attacking and !blocking:
 						match current_weapon:

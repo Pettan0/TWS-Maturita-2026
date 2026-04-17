@@ -11,7 +11,7 @@ class_name PlayerData
 #level a xp veci
 @export var player_level : int = 1
 @export var xp : float = 0
-@export var xp_to_next : float = 150
+@export var xp_to_next : float = 75
 @export var skill_points : int = 0
 
 #player hp stats
@@ -45,7 +45,7 @@ class_name PlayerData
 @export var current_weapon : String = "unarmed"
 
 @export var u_dagger : bool = false
-@export var u_short_swort : bool = true
+@export var u_short_sword : bool = false
 @export var u_mace : bool = true
 @export var u_long_sword : bool = true
 @export var u_pole_hammer : bool = true
@@ -143,8 +143,8 @@ func find_starter_position():
 
 func new_xp_to_next(amount:float):
 	var saved_value = amount + xp - xp_to_next
-	xp_to_next = round(100 * pow(1.4 , player_level))
+	xp_to_next = round(75 * pow(1.4 , player_level))
 	xp = saved_value
 	player_level += 1
-	skill_points += 3
+	skill_points += 2
 	print("new xp needed: "+str(xp_to_next)+"\nlevel: "+str(player_level))
