@@ -1,9 +1,111 @@
 [gd_scene format=3 uid="uid://dij664347uvvr"]
 
-[node name="Control" type="Control" unique_id=910711537]
+[ext_resource type="Script" uid="uid://cgovbky08ybi3" path="res://Scripts/Menu scripts/game_over.gd" id="1_dwcdg"]
+[ext_resource type="FontFile" uid="uid://e01tyk5jn3jc" path="res://Assets/Font/Cinzel-VariableFont_wght.ttf" id="2_lg74n"]
+[ext_resource type="Texture2D" uid="uid://cvl6rcqux7fev" path="res://Assets/2D/Png/btn_large.png" id="3_7vlj7"]
+[ext_resource type="Script" uid="uid://d1gfh7u42mtws" path="res://Scripts/Menu scripts/button_animation1.gd" id="4_eopmb"]
+[ext_resource type="PackedScene" uid="uid://biycn7hdoemmx" path="res://Menu/transition.tscn" id="5_lg74n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f0ln5"]
+texture = ExtResource("3_7vlj7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kh4co"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h2e1s"]
+texture = ExtResource("3_7vlj7")
+
+[node name="GameOver" type="Control" unique_id=910711537]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dwcdg")
+
+[node name="Panel" type="Panel" parent="." unique_id=973000169]
+layout_mode = 0
+offset_left = -34.0
+offset_top = -31.0
+offset_right = 1195.0
+offset_bottom = 680.0
+
+[node name="ButtonContinue" type="Button" parent="Panel" unique_id=1882319888]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 182.0
+offset_top = -309.0
+offset_right = 538.0
+offset_bottom = -219.0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_lg74n")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_f0ln5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kh4co")
+theme_override_styles/hover = SubResource("StyleBoxTexture_h2e1s")
+text = "Pokračovat"
+script = ExtResource("4_eopmb")
+
+[node name="ButtonMenu" type="Button" parent="Panel" unique_id=766624771]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 668.0
+offset_top = -309.0
+offset_right = 1024.0
+offset_bottom = -219.0
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_lg74n")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_f0ln5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kh4co")
+theme_override_styles/hover = SubResource("StyleBoxTexture_h2e1s")
+text = "Vrátit se do menu"
+script = ExtResource("4_eopmb")
+
+[node name="Title" type="Label" parent="Panel" unique_id=511581724]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 179.0
+offset_right = 197.0
+offset_bottom = 275.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_lg74n")
+theme_override_font_sizes/font_size = 70
+text = "Zemřel jsi..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tip" type="Label" parent="Panel" unique_id=338476205]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -143.0
+offset_right = 576.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "TIP: můžeš otevřít skill tree pro vylepšení ( K )
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("5_lg74n")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Panel/ButtonContinue" to="." method="_on_button_continue_pressed"]
+[connection signal="pressed" from="Panel/ButtonMenu" to="." method="_on_button_menu_pressed"]

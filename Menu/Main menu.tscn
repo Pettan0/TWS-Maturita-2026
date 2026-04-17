@@ -767,7 +767,9 @@ theme_override_fonts/font = ExtResource("4_804u5")
 theme_override_font_sizes/font_size = 17
 text = "Hudba - Daniel Roček
 Sound efekty - Daniel Roček
-Dubing - ???"
+Dubing - Daniel Roček, 
+                   Vojtěch Buřil, 
+                   Děda Martínek"
 vertical_alignment = 1
 
 [node name="TitleLvl" type="Label" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1592075359]

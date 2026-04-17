@@ -13,6 +13,7 @@ extends CharacterBody3D
 @onready var stamina: ProgressBar = $Head/Camera3D/Stamina
 @onready var popup: Label = $Head/Camera3D/Popup
 @onready var player_level_label: Label = $Head/Camera3D/Label
+@onready var stamina_overlay: Panel = $Head/Camera3D/StaminaOverlay
 
 
 #sxf
@@ -24,7 +25,6 @@ extends CharacterBody3D
 @onready var sword_swing: AudioStreamPlayer = $SwordSwing
 @onready var lvl_up: AudioStreamPlayer = $LvlUp
 @onready var xp_bubble: AudioStreamPlayer = $XpBubble
-
 
 #weapons
 @onready var unarmed:= $Head/unarmed
@@ -123,9 +123,14 @@ func save_data():
 
 func _process(delta: float) -> void:
 	
-	#if stamina.value < 10:
-		
-	
+	var alpha = clamp((20.0 - stamina.value) / 20.0, 0.0, 1.0)
+
+	create_tween().tween_property(
+		stamina_overlay, 
+		"modulate:a", 
+		alpha, 
+		0.1
+	).set_trans(Tween.TRANS_SINE)
 	
 	# code vec
 	if code_time > 0:
@@ -518,6 +523,7 @@ func _hit(damage : float):
 			save_data()
 	if player_data.hp <= 0:
 		dead = true
+		player_data.deaths += 1
 		headbob.stop()
 		fov_animation.stop()
 		velocity = Vector3.ZERO
@@ -526,8 +532,7 @@ func _hit(damage : float):
 		player_data.hp = player_data.max_hp
 		player_data.update_level_stats(1,1)
 		save_data()
-		get_tree().change_scene_to_file("res://Levels/Level01.scn")
-		
+		get_tree().change_scene_to_file("res://Menu/Game Over.tscn")
 
 func _physics_process(delta: float) -> void:
 	#gravitace lol 🍎
