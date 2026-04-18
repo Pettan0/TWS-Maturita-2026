@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://e01tyk5jn3jc" path="res://Assets/Font/Cinzel-VariableFont_wght.ttf" id="2_rrx5o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stmgf"]
-bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
+bg_color = Color(0.103743605, 0.103743516, 0.103743516, 1)
 
 [node name="Transition" type="Control" unique_id=1531325717]
 layout_mode = 3

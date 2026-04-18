@@ -22,3 +22,7 @@ func _ready() -> void:
 	create_tween().tween_property(slide_2, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE)
 	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://Menu/Main menu.tscn")
+
+func _unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("pause") or Input.is_action_just_pressed("block") or Input.is_action_just_pressed("attack"):
+		get_tree().change_scene_to_file("res://Menu/Main menu.tscn")

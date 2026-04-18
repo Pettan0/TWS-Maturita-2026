@@ -15,5 +15,8 @@ func _on_hitbox_body_entered(body: Node3D) -> void:
 	if body.has_method("hit") and visible:
 		var hitbox_pos = $Armature/Skeleton3D/BoneAttachment3D/Hitbox.global_transform.origin
 		var dir = (body.global_transform.origin - hitbox_pos).normalized()
-		body.hit(damage+player.base_dmg, weapon_type, dir)
-		print("dmg: "+str(damage + player.base_dmg))
+		if weapon_type != "kick":
+			body.hit(damage * player.base_dmg, weapon_type, dir)
+		else:
+			body.hit(damage * player.base_kick_dmg, weapon_type, dir)
+		print("dmg: "+str(damage * player.base_dmg))

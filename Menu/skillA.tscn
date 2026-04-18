@@ -46,6 +46,7 @@ script = ExtResource("1_ck4ef")
 type = "A"
 
 [node name="Label" type="Label" parent="." unique_id=987190807]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 8

@@ -42,8 +42,8 @@ func _process(delta: float) -> void:
 		tip.text = "TIP: "
 		match randi_range(1,3):
 			1:
-				tip.text += "můžeš otevřít skill tree pro vylepšení ( K )"
+				tip.text += "Můžeš otevřít skill tree pro vylepšení ( K )"
 			2:
-				tip.text += "v krabicích se mohou nacházet zbraně"
+				tip.text += "V krabicích se mohou nacházet zbraně"
 			3:
-				tip.text += "můžeš změnit zbrane ( 1-6 )"
+				tip.text += "Můžeš změnit zbraně ( 1-6 )"

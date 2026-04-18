@@ -16,7 +16,6 @@ signal died
 var state_machine
 
 var base_hp = 30
-var player_level_scale = 5
 var current_level_scale = 15
 
 var ATTACK_RANGE = 2.0
@@ -77,7 +76,7 @@ func _ready() -> void:
 	load_data()
 	hp_bar.visible = settingsData.enemy_hp_bar
 	armor = min((player.player_data.player_level) * 0.05,0.75)
-	max_hp = player.player_data.difficulty_scale * (base_hp + (player.player_data.level - 2) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale)
+	max_hp = player.player_data.difficulty_scale * (base_hp + (player.player_data.level - 2) * current_level_scale)
 	DMG = DMG * player.player_data.difficulty_scale
 	HP = max_hp
 	xp = max_hp
@@ -95,8 +94,10 @@ func _physics_process(delta):
 		knockedback = false
 	match state_machine.get_current_node():
 		"Idle":
+			collision_shape_3d.disabled = false
 			animation_tree.set("parameters/conditions/Move",area._is_player_in_area())
 		"Move":
+			collision_shape_3d.disabled = false
 			velocity = Vector3.ZERO
 			nav_agent.set_target_position(player.global_position)
 			var next_nav_point = nav_agent.get_next_path_position()
@@ -107,9 +108,12 @@ func _physics_process(delta):
 			move_and_slide()
 			animation_tree.set("parameters/conditions/Idle",!area._is_player_in_area())
 		"Hit":
+			collision_shape_3d.disabled = true
 			animation_tree.set("parameters/conditions/Hit",false)
 
 		"Attack":
+			if HP <= 0:
+				state_machine.travel("Death0"+str(randi_range(1,3)))
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 			animation_tree.set("parameters/conditions/Idle",!_target_in_range(0.0))
 		"Death01":

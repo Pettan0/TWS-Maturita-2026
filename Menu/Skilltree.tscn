@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dltdier5q3lec" path="res://Assets/2D/SkillTree/skills/skill_kick.png" id="16_w3pf2"]
 [ext_resource type="Texture2D" uid="uid://cbgha5qoj7n47" path="res://Assets/2D/SkillTree/skills/skill_kick_extra.png" id="17_22ybe"]
 [ext_resource type="Texture2D" uid="uid://cdkdtfada20i8" path="res://Assets/2D/SkillTree/skills/skill_shield_extra.png" id="18_8w3oe"]
+[ext_resource type="Texture2D" uid="uid://cvl6rcqux7fev" path="res://Assets/2D/Png/btn_large.png" id="20_2q25n"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v144a"]
 texture = ExtResource("1_nhmm6")
@@ -195,34 +196,8 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3qtl"]
-bg_color = Color(1, 1, 1, 1)
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_size = 2
-shadow_offset = Vector2(3, 3)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wnh8"]
-bg_color = Color(0.542318, 0.542318, 0.542318, 1)
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_size = 2
-shadow_offset = Vector2(3, 3)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n70ox"]
-bg_color = Color(0.6941206, 0.6941206, 0.6941205, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-shadow_size = 2
-shadow_offset = Vector2(3, 3)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xs621"]
+texture = ExtResource("20_2q25n")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhtiu"]
 
@@ -269,7 +244,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_3lsyq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_16lbv")
 icon = ExtResource("6_yw0w2")
 flat = true
-desc = "Zvýší základní poškození o 1"
+desc = "Zvýší základní poškození o 10%"
 skill_id = "dmgB"
 node_id = "dmgB1"
 
@@ -282,7 +257,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_2q25n")
 theme_override_styles/hover = SubResource("StyleBoxFlat_e5ru6")
 icon = ExtResource("6_3lsyq")
 flat = true
-desc = "Zvýší základní poškození o 1"
+desc = "Zvýší základní poškození o 10%"
 skill_id = "dmgB"
 node_id = "dmgB2"
 
@@ -351,7 +326,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_5oyx3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rt1ag")
 icon = ExtResource("6_3lsyq")
 flat = true
-desc = "Zvýší základní poškození o 1"
+desc = "Zvýší základní poškození o 10%"
 skill_id = "dmgB"
 node_id = "dmgB3"
 
@@ -366,7 +341,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_7vgtt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rlumi")
 icon = ExtResource("6_3lsyq")
 flat = true
-desc = "Zvýší základní poškození o 1"
+desc = "Zvýší základní poškození o 10%"
 skill_id = "dmgB"
 node_id = "dmgB4"
 
@@ -378,7 +353,7 @@ offset_right = 52.0
 offset_bottom = -67.99997
 icon = ExtResource("10_i7owt")
 flat = true
-desc = "Zvýší základní poškození o 5"
+desc = "Zvýší základní poškození o 35%"
 skill_id = "dmgA"
 node_id = "dmgA"
 
@@ -393,7 +368,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_rhnch")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6qqeq")
 icon = ExtResource("7_2q25n")
 flat = true
-desc = "Sníží staminu za útok o 20%"
+desc = "Sníží staminu za útok o 15%"
 skill_id = "attackStaminaB"
 node_id = "attackStaminaB1"
 
@@ -408,7 +383,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_p54ay")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wcoki")
 icon = ExtResource("8_xs621")
 flat = true
-desc = "Sníží staminu za útok o 20%"
+desc = "Sníží staminu za útok o 15%"
 skill_id = "attackStaminaB"
 node_id = "attackStaminaB2"
 
@@ -420,7 +395,7 @@ offset_right = 58.0
 offset_bottom = -67.99997
 icon = ExtResource("10_i7owt")
 flat = true
-desc = "Sníží staminu za útok o 4"
+desc = "Sníží staminu za útok o 50%"
 skill_id = "attackStaminaA"
 node_id = "attackStaminaA"
 
@@ -432,7 +407,7 @@ offset_right = 72.0
 offset_bottom = 136.0
 icon = ExtResource("11_5oyx3")
 flat = true
-desc = "Zvíší maximální staminu o 10"
+desc = "Zvýší maximální staminu o 10%"
 skill_id = "staminaB"
 node_id = "staminaB1"
 
@@ -442,7 +417,7 @@ offset_left = 69.0
 offset_right = 129.0
 icon = ExtResource("12_7vgtt")
 flat = true
-desc = "Zvíší maximální staminu o 10"
+desc = "Zvýší maximální staminu o 10%"
 skill_id = "staminaB"
 node_id = "staminaB2"
 
@@ -454,7 +429,7 @@ offset_right = 124.0
 offset_bottom = 62.000015
 icon = ExtResource("12_7vgtt")
 flat = true
-desc = "Zvíší maximální staminu o 10"
+desc = "Zvýší maximální staminu o 10%"
 skill_id = "staminaB"
 node_id = "staminaB3"
 
@@ -466,23 +441,22 @@ offset_right = 108.0
 offset_bottom = 92.000015
 icon = ExtResource("12_7vgtt")
 flat = true
-desc = "Zvíší maximální staminu o 10"
+desc = "Zvýší maximální staminu o 10%"
 skill_id = "staminaB"
 node_id = "staminaB4"
 
 [node name="SkillA" parent="Skills/SkillM/SkillM/SkillM2/SkillM" unique_id=1167228400 instance=ExtResource("4_g6sfg")]
 layout_mode = 1
 anchors_preset = -1
-anchor_bottom = 0.517
 offset_left = 41.99994
 offset_top = -4.0000153
 offset_right = 101.99994
-offset_bottom = 54.98001
+offset_bottom = 56.000015
 grow_horizontal = 1
 grow_vertical = 1
 icon = ExtResource("10_i7owt")
 flat = true
-desc = "Zvíší maximální staminu o 30"
+desc = "Zvýší maximální staminu o 30%"
 skill_id = "staminaA"
 node_id = "staminaA"
 
@@ -494,7 +468,7 @@ offset_right = 9.999939
 offset_bottom = 124.0
 icon = ExtResource("12_7vgtt")
 flat = true
-desc = "O trocho zvíší regeneraci stamini"
+desc = "O 25% zvýší regeneraci staminy"
 skill_id = "staminaRegenB"
 node_id = "staminaRegenB1"
 
@@ -506,7 +480,7 @@ offset_right = 62.0
 offset_bottom = 124.0
 icon = ExtResource("12_7vgtt")
 flat = true
-desc = "O trocho zvíší regeneraci stamini"
+desc = "O 25% zvýší regeneraci staminy"
 skill_id = "staminaRegenB"
 node_id = "staminaRegenB2"
 
@@ -518,7 +492,7 @@ offset_right = 130.0
 offset_bottom = 54.0
 icon = ExtResource("12_7vgtt")
 flat = true
-desc = "O trocho zvíší regeneraci stamini"
+desc = "O 25% zvýší regeneraci staminy"
 skill_id = "staminaRegenB"
 node_id = "staminaRegenB3"
 
@@ -530,7 +504,7 @@ offset_right = 122.0
 offset_bottom = 40.000015
 icon = ExtResource("10_i7owt")
 flat = true
-desc = "Zvíší regeneraci stamini"
+desc = "O 75% zvýší regeneraci staminy"
 skill_id = "staminaRegenA"
 node_id = "staminaRegenA"
 
@@ -554,7 +528,7 @@ offset_right = 66.0
 offset_bottom = -51.999985
 icon = ExtResource("14_p54ay")
 flat = true
-desc = "Sníží dobu mezi regenerací o čtvrtinu"
+desc = "Sníží dobu mezi regenerací o 25%"
 skill_id = "regenTime"
 node_id = "regenTime1"
 
@@ -566,7 +540,7 @@ offset_right = 90.0
 offset_bottom = -45.999985
 icon = ExtResource("14_p54ay")
 flat = true
-desc = "Sníží dobu mezi regenerací o čtvrtinu"
+desc = "Sníží dobu mezi regenerací o 25%"
 skill_id = "regenTime"
 node_id = "regenTime2"
 
@@ -578,7 +552,7 @@ offset_right = 48.0
 offset_bottom = -61.999985
 icon = ExtResource("14_p54ay")
 flat = true
-desc = "Sníží dobu mezi regenerací o čtvrtinu"
+desc = "Sníží dobu mezi regenerací o 25%"
 skill_id = "regenTime"
 node_id = "regenTime3"
 
@@ -590,7 +564,7 @@ offset_right = 136.0
 offset_bottom = 56.000015
 icon = ExtResource("14_p54ay")
 flat = true
-desc = "Zvíší regeneraci o 0,5 za čas"
+desc = "Zvýší regeneraci o 100% za čas"
 skill_id = "regenUp"
 node_id = "regenUp1"
 
@@ -602,7 +576,7 @@ offset_right = 124.0
 offset_bottom = 2.0000153
 icon = ExtResource("14_p54ay")
 flat = true
-desc = "Zvíší regeneraci o 0,5 za čas"
+desc = "Zvýší regeneraci o 100% za čas"
 skill_id = "regenUp"
 node_id = "regenUp2"
 
@@ -614,7 +588,7 @@ offset_right = 64.0
 offset_bottom = -75.999985
 icon = ExtResource("14_p54ay")
 flat = true
-desc = "Zvíší regeneraci o 0,5 za čas"
+desc = "Zvýší regeneraci o 100% za čas"
 skill_id = "regenUp"
 node_id = "regenUp3"
 
@@ -626,7 +600,7 @@ offset_right = -72.0
 offset_bottom = 152.0
 icon = ExtResource("15_2hq16")
 flat = true
-desc = "Odemkne se funkce blokování ( LMB ) blokuje 20% poškození"
+desc = "Odemkne se funkce blokování ( RMB ) blokuje 20% poškození"
 skill_id = "uBlock"
 node_id = "uBlock"
 
@@ -636,7 +610,7 @@ offset_left = -130.0
 offset_right = -70.0
 icon = ExtResource("13_rhnch")
 flat = true
-desc = "Zvýší maximální zívoty o 10"
+desc = "Zvýší maximální životy o 10%"
 skill_id = "hpB"
 node_id = "hpB1"
 
@@ -648,7 +622,7 @@ offset_right = 6.0
 offset_bottom = -62.0
 icon = ExtResource("14_p54ay")
 flat = true
-desc = "Zvýší maximální životy o 10"
+desc = "Zvýší maximální životy o 10%"
 skill_id = "hpB"
 node_id = "hpB2"
 
@@ -660,7 +634,7 @@ offset_right = -48.0
 offset_bottom = -41.99997
 icon = ExtResource("14_p54ay")
 flat = true
-desc = "Zvýší maximální životy o 10"
+desc = "Zvýší maximální životy o 10%"
 skill_id = "hpB"
 node_id = "hpB3"
 
@@ -672,7 +646,7 @@ offset_right = -58.0
 offset_bottom = 4.0000153
 icon = ExtResource("10_i7owt")
 flat = true
-desc = "Zvýší maximální životy o 30"
+desc = "Zvýší maximální životy o 30%"
 skill_id = "hpA"
 node_id = "hpA"
 
@@ -696,7 +670,7 @@ offset_right = -56.0
 offset_bottom = -13.999985
 icon = ExtResource("17_22ybe")
 flat = true
-desc = "Sníží únavu po kopnují o 5"
+desc = "Sníží únavu po kopnují o 10%"
 skill_id = "kickUp"
 node_id = "kickUp1"
 
@@ -708,7 +682,7 @@ offset_right = -68.0
 offset_bottom = 22.000015
 icon = ExtResource("17_22ybe")
 flat = true
-desc = "Sníží únavu po kopnují o 5%"
+desc = "Sníží únavu po kopnují o 10%"
 skill_id = "kickUp"
 node_id = "kickUp2"
 
@@ -720,7 +694,7 @@ offset_right = -58.0
 offset_bottom = 90.000015
 icon = ExtResource("17_22ybe")
 flat = true
-desc = "Zvýší poškození kopnutí o 10"
+desc = "Zvýší poškození kopnutí o 100%"
 skill_id = "kickDmg"
 node_id = "kickDmg1"
 
@@ -732,7 +706,7 @@ offset_right = -68.0
 offset_bottom = 38.000015
 icon = ExtResource("17_22ybe")
 flat = true
-desc = "Zvýší poškození kopnutí o 10"
+desc = "Zvýší poškození kopnutí o 100%"
 skill_id = "kickDmg"
 node_id = "kickDmg1"
 
@@ -744,7 +718,7 @@ offset_right = -22.0
 offset_bottom = 128.00003
 icon = ExtResource("18_8w3oe")
 flat = true
-desc = "Sníží blokované poškození o 15%"
+desc = "Blokuje o 15% více poškození"
 skill_id = "upBlockB"
 node_id = "upBlockB1"
 
@@ -756,7 +730,7 @@ offset_right = -52.0
 offset_bottom = 102.00003
 icon = ExtResource("18_8w3oe")
 flat = true
-desc = "Sníží blokované poškození o 15%"
+desc = "Blokuje o 15% více poškození"
 skill_id = "upBlockB"
 node_id = "upBlockB2"
 
@@ -825,15 +799,11 @@ offset_bottom = -26.092896
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("10_nhmm6")
 theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_v3qtl")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_8wnh8")
-theme_override_styles/hover = SubResource("StyleBoxFlat_n70ox")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xs621")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xs621")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xs621")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bhtiu")
 text = "Zpět"
 script = ExtResource("1_k8lfr")

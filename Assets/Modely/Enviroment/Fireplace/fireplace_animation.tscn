@@ -39,6 +39,7 @@ scale_curve = SubResource("CurveTexture_xtwl8")
 color_ramp = SubResource("GradientTexture1D_xtwl8")
 
 [sub_resource type="QuadMesh" id="QuadMesh_7jors"]
+size = Vector2(0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_epnja"]
 render_priority = 1
@@ -111,10 +112,10 @@ _data = {
 [node name="Fireplace Animation" type="Node3D" unique_id=1382511505]
 
 [node name="Fire" type="GPUParticles3D" parent="." unique_id=152295140]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5024658, 0.113245055)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34926587, 0.113245055)
 material_override = SubResource("StandardMaterial3D_xtwl8")
 amount = 12
-lifetime = 2.46
+lifetime = 1.5
 process_material = SubResource("ParticleProcessMaterial_epnja")
 draw_pass_1 = SubResource("QuadMesh_7jors")
 

@@ -29,10 +29,11 @@ class_name PlayerData
 @export var sregen : float = 0.3
 
 #boj veci
-@export var base_dmg : float = 0
+@export var base_dmg : float = 1.0
 
 @export var attack_speed : float = 1.0
-@export var attack_stamina : int = 15
+@export var attack_stamina : int = 15.0
+@export var stamina_reduction :float = 1.0
 
 @export var can_block : bool = false
 @export var block_dmg : float = 0.2
@@ -57,17 +58,18 @@ class_name PlayerData
 func upgrade_skill(id:String):
 	match id:
 		"dmgB":
-			base_dmg += 1.0
+			base_dmg += 0.10
 		"dmgA":
-			base_dmg += 5.0
+			base_dmg += 0.35
 		"attackSpeedB":
 			attack_speed += 0.1
 		"attackSpeedA":
 			attack_speed += 0.3
 		"attackStaminaB":
-			attack_stamina -= 2
+			attack_stamina *= 0.85
+			
 		"attackStaminaA":
-			attack_stamina -= 4
+			attack_stamina *= 0.50
 		
 		"uBlock":
 			can_block = true
@@ -86,21 +88,21 @@ func upgrade_skill(id:String):
 		"kickUp":
 			kick_cooldown -= 5
 		"kickDmg":
-			kick_dmg += 10
+			kick_dmg *= 2
 		"staminaB":
-			max_stamina += 10
+			max_stamina = round(max_stamina * 1.1)
 		"staminaA":
-			max_stamina += 30
+			max_stamina = round(max_stamina * 1.3) 
 		"staminaRegenB":
 			sregen += 0.075
 		"staminaRegenA":
-			sregen += 0.2
+			sregen += 0.075 * 3
 		"uRegen":
 			u_hp_regen = true
 		"regenTime":
 			rtimer_to_wait -= 2.5
 		"regenUp":
-			r_per_time += 0.5
+			r_per_time *= 2
 	
 func update_level_stats(lvl:int, point:int):
 	level = lvl
@@ -143,7 +145,7 @@ func find_starter_position():
 
 func new_xp_to_next(amount:float):
 	var saved_value = amount + xp - xp_to_next
-	xp_to_next = round(75 * pow(1.4 , player_level))
+	xp_to_next = round(75 * pow(1.3 , player_level))
 	xp = saved_value
 	player_level += 1
 	skill_points += 2

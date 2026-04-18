@@ -15,7 +15,6 @@ signal died
 var state_machine
 
 var base_hp = 50
-var player_level_scale = 5
 var current_level_scale = 30
 
 var ATTACK_RANGE = 1.5
@@ -70,7 +69,7 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 func _ready() -> void:
 	load_data()
 	hp_bar.visible = settingsData.enemy_hp_bar
-	max_hp = player.player_data.difficulty_scale * (base_hp + (player.player_data.level - 2) * current_level_scale + (player.player_data.player_level - 1) * player_level_scale)
+	max_hp = player.player_data.difficulty_scale * (base_hp + (player.player_data.level - 2) * current_level_scale)
 	DMG = DMG * player.player_data.difficulty_scale
 	HP = max_hp
 	xp = max_hp
@@ -105,24 +104,15 @@ func _physics_process(delta):
 			animation_tree.set("parameters/conditions/Attack0" + str(randi_range(1,2)), _target_in_range(0))
 
 			animation_tree.set("parameters/conditions/Idle", !area._is_player_in_area())
-		"Attack01":
+		"Attack01", "Attack02":
+			if HP <= 0:
+				state_machine.travel("Death0"+str(randi_range(1,2)))
 			if !_target_in_range(1):
 				state_machine.travel("Move")
 				return
 
 			velocity = attack_dir * SPEED
 			move_and_slide()
-			animation_tree.set("parameters/conditions/Attack01", true)
-			animation_tree.set("parameters/conditions/Attack0" + str(randi_range(1,2)), _target_in_range(0))
-		"Attack02":
-			if !_target_in_range(1):
-				state_machine.travel("Move")
-				return
-
-			velocity = attack_dir * SPEED
-			move_and_slide()
-			animation_tree.set("parameters/conditions/Attack02", true)
-			animation_tree.set("parameters/conditions/Attack0" + str(randi_range(1,2)), _target_in_range(0))
 		"Hit":
 			animation_tree.set("parameters/conditions/Hit",false)
 		"Death01":

@@ -636,7 +636,6 @@ text = "Zpět
 "
 
 [node name="Credits" type="Panel" parent="." unique_id=353508816]
-visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -792,7 +791,7 @@ text = "Hudba:
      Daniel Roček
 Sound efekty:
      Daniel Roček
-Dubing
+Dabing
      Daniel Roček,
      Vojtěch Buřil,
      Honzův děda"
@@ -841,6 +840,7 @@ text = "     Vít Hofman"
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Credits/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1041511343]
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 texture = ExtResource("9_v8dls")
 
@@ -859,7 +859,6 @@ text = "(user) - za hraní této hry :D"
 vertical_alignment = 1
 
 [node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("8_804u5")]
-visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="Dificulty/ButtonEasy" to="." method="_on_button_easy_pressed"]

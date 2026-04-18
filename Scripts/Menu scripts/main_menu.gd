@@ -45,35 +45,54 @@ func _ready() -> void:
 	transition.fade_out()
 
 func _on_button_continue_pressed() -> void:
-	if !settings.visible and !credits.visible and !debug.visible:
-		transition.fade_in()
-		get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
+	settings.save_data()
+	transition.fade_in()
+	await get_tree().create_timer(2.0).timeout
+	get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
 
 func _on_button_restart_pressed() -> void:
-	dificulty.show()
+	if !dificulty.visible:
+		dificulty.show()
+		settings.hide()
+		debug.hide()
+		credits.hide()
+	else:
+		dificulty.hide()
 
 
 func _on_button_new_start_pressed() -> void:
-	dificulty.show()
+	if !dificulty.visible:
+		dificulty.show()
+	else:
+		dificulty.hide()
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
 
 func _settings_show() -> void:
-	if !settings.visible and !credits.visible and !debug.visible:
+	if !settings.visible:
 		settings.show()
+		debug.hide()
+		dificulty.hide()
+		credits.hide()
 	else:
 		settings.hide()
 
 func _on_credits_pressed() -> void:
-	if !settings.visible and !credits.visible and !debug.visible:
+	if !credits.visible:
 		credits.show()
+		debug.hide()
+		dificulty.hide()
+		settings.hide()
 	else:
 		credits.hide()
 
 func _on_button_debug_pressed() -> void:
-	if !settings.visible and !credits.visible and !debug.visible:
+	if !debug.visible:
 		debug.show()
+		dificulty.hide()
+		settings.hide()
+		credits.hide()
 	else: 
 		debug.hide()
 

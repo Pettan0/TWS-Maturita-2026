@@ -120,6 +120,7 @@ alignment = 0
 script = ExtResource("2_f4htx")
 
 [node name="Settings" parent="." unique_id=652143609 instance=ExtResource("3_x4nas")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -1,5 +1,4 @@
 extends CharacterBody3D
-
 @onready var head:= $Head
 @onready var camera:= $Head/Camera3D
 
@@ -15,6 +14,7 @@ extends CharacterBody3D
 @onready var player_level_label: Label = $Head/Camera3D/Label
 @onready var stamina_overlay: Panel = $Head/Camera3D/StaminaOverlay
 @onready var game_over: TextureRect = $Head/Camera3D/GameOver
+@onready var hit_flash: Panel = $Head/Camera3D/HitFlash
 
 #sxf
 @onready var jump: AudioStreamPlayer = $Jump
@@ -52,6 +52,7 @@ var save_file_name = "PlayerData.tres"
 var player_data : PlayerData
 var skill_points = 0
 var base_dmg = 0.0
+var base_kick_dmg = 0.0
 
 var code_time = 0
 var code_progres = 0
@@ -85,10 +86,12 @@ var ktimer = 0
 func _ready():
 	load_data()
 	create_tween().tween_property(game_over, "modulate:a", 0.0, 0.0).set_trans(Tween.TRANS_SINE)
+	create_tween().tween_property(hit_flash, "modulate:a", 0.0, 0.0).set_trans(Tween.TRANS_SINE)
 	long_sword.position = Vector3(0, -0.414, -0.621) #forced value bcs its broken
 	
 	#ziskavani promnen a nastavovani textu / progres baru
 	base_dmg = player_data.base_dmg
+	base_kick_dmg = player_data.kick_dmg
 	skill_points = player_data.skill_points
 	player_level_label.text = "Lvl: "+str(player_data.player_level)
 	xp_bar.value = player_data.xp
@@ -124,7 +127,7 @@ func save_data():
 
 func _process(delta: float) -> void:
 	
-	create_tween().tween_property(stamina_overlay, "modulate:a", clamp((20.0 - stamina.value) / 20.0, 0.0, 1.0), 0.1).set_trans(Tween.TRANS_SINE)
+	create_tween().tween_property(stamina_overlay, "modulate:a", clamp((20.0 - stamina.value) / 20.0, 0.0, 0.8), 0.1).set_trans(Tween.TRANS_SINE)
 	
 	# code vec
 	if code_time > 0:
@@ -498,7 +501,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			stamina.show()
 	#debug tlacitko pro testovani ODSTANIT
 	if Input.is_action_just_pressed("debug"):
-		_hit(100)
+		add_xp(100)
+
+func hit_animation():
+	create_tween().tween_property(hit_flash, "modulate:a", 1.0, 0.1).set_trans(Tween.TRANS_SINE)
+	await get_tree().create_timer(0.1).timeout
+	create_tween().tween_property(hit_flash, "modulate:a", 0.0, 0.5).set_trans(Tween.TRANS_SINE)
 
 #dostavani dmg
 func _hit(damage : float):
@@ -506,14 +514,14 @@ func _hit(damage : float):
 		if !blocking:
 			_play_damage_sound()
 			player_data.hp -= damage
-			$Head/HitAnimation.play("Hit")
 			save_data()
+			hit_animation()
 		else:
 			_play_hit_sound()
+			hit_animation()
 			if player_data.block_dmg != 1.0:
 				_play_damage_sound()
 			player_data.hp -= damage * (player_data.block_dmg - 1 + 1)
-			$Head/HitAnimation.play("Hit")
 			save_data()
 	if player_data.hp <= 0:
 		dead = true

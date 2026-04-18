@@ -42,6 +42,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_kd2d1")
 script = ExtResource("1_nris3")
 
 [node name="Label" type="Label" parent="." unique_id=961977907]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 8

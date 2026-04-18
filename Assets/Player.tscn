@@ -10,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://biskonugwqlv5" path="res://Assets/Modely/Player/shortsword.tscn" id="6_2syo8"]
 [ext_resource type="PackedScene" uid="uid://bu0ikpag18fi2" path="res://Assets/Modely/Player/dagger.tscn" id="6_05608"]
 [ext_resource type="Script" uid="uid://c84lcydaje2do" path="res://Scripts/Menu scripts/popup.gd" id="6_j6nj3"]
+[ext_resource type="Texture2D" uid="uid://cfng6h05tn622" path="res://Assets/2D/🤓/hurt_flash.png" id="7_6xbt5"]
 [ext_resource type="PackedScene" uid="uid://wwa5rmnw87ac" path="res://Assets/Modely/Player/longsword.tscn" id="7_05608"]
 [ext_resource type="Texture2D" uid="uid://cvl6rcqux7fev" path="res://Assets/2D/Png/btn_large.png" id="7_bc47u"]
+[ext_resource type="Texture2D" uid="uid://bulu5yvhycnkd" path="res://Assets/2D/🤓/Stamita_overlay.png" id="8_21f7q"]
 [ext_resource type="AudioStream" uid="uid://camgera07b6x3" path="res://Assets/Sounds/SFX/Player/Attack1.wav" id="10_uqnxr"]
 [ext_resource type="PackedScene" uid="uid://ijvw7h6weq43" path="res://Assets/Modely/Player/pole_hammer.tscn" id="11_awmxi"]
 [ext_resource type="AudioStream" uid="uid://c85kk8phg0pmy" path="res://Assets/Sounds/SFX/Player/Footstep1.wav" id="11_ed6nx"]
@@ -25,8 +27,8 @@
 [ext_resource type="AudioStream" uid="uid://cl6bnatrue8ia" path="res://Assets/Sounds/SFX/Skill Tree/lvlup.wav" id="21_a8px6"]
 [ext_resource type="AudioStream" uid="uid://cxseqqaflyete" path="res://Assets/Sounds/SFX/Player/New SFX/death.mp3" id="24_i157g"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8p2vv"]
-bg_color = Color(1, 0, 0, 0)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_shd4d"]
+texture = ExtResource("7_6xbt5")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0rfj"]
 bg_color = Color(1, 0.35732567, 0.29020837, 1)
@@ -63,8 +65,8 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0pwu"]
-bg_color = Color(0, 0, 0, 0.43137255)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_idl2c"]
+texture = ExtResource("8_21f7q")
 
 [sub_resource type="Animation" id="Animation_a8px6"]
 resource_name = "Death"
@@ -365,7 +367,7 @@ offset_bottom = 351.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_8p2vv")
+theme_override_styles/panel = SubResource("StyleBoxTexture_shd4d")
 
 [node name="Label" type="Label" parent="Head/Camera3D" unique_id=1116104221]
 anchors_preset = 2
@@ -442,7 +444,7 @@ offset_bottom = 348.25
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_r0pwu")
+theme_override_styles/panel = SubResource("StyleBoxTexture_idl2c")
 
 [node name="GameOver" type="TextureRect" parent="Head/Camera3D" unique_id=397663102]
 anchors_preset = 8

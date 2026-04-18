@@ -47,10 +47,10 @@ func _process(_delta: float) -> void:
 			stats.text += "Cooldown kopnutí: "+str(player.player_data.kick_cooldown)+"\n"
 			
 		#offence skills
-		if player.player_data.base_dmg > 0.0:
-			stats.text += "Bonusové poškození: "+str(player.player_data.base_dmg)+"\n"
+		if player.player_data.base_dmg > 1.0:
+			stats.text += "Bonusové poškození: "+str(player.player_data.base_dmg*100)+"%\n"
 		if player.player_data.attack_speed > 1.0:
-			stats.text += "Rychlost útoku: "+str(player.player_data.attack_speed)+"\n"
+			stats.text += "Rychlost útoku: "+str(player.player_data.attack_speed*100)+"%\n"
 		if player.player_data.attack_stamina < 15:
 			stats.text += "Stamina na útok: "+str(player.player_data.attack_stamina)+"\n"
 		player.player_data.skill_tree_changed = false

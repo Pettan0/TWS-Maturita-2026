@@ -65,14 +65,14 @@ func _unhandled_input(_event: InputEvent) -> void:
 						player_data.update_level_stats(4,1)
 				save_data()
 				SoundManager.play_door_sfx()
-				await get_tree().create_timer(0.5).timeout
 				player.transition.fade_in()
+				await get_tree().create_timer(1.5).timeout
 				get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
 			else:
 				popup.show_with("cantEnter")
 		elif near_item and itimer <= 0:
-			itimer = 2.5
-			if randi_range(1,4) > 3:
+			itimer = 1.0
+			if randi_range(1,5) >= 4:
 				if sword_stage != 4:
 					sword_stage += 1
 					item.global_position.y += .125
