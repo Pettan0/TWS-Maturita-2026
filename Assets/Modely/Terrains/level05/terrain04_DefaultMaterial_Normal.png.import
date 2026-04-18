@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://p6wnagvu61t3"
-path.s3tc="res://.godot/imported/terrain04_DefaultMaterial_Normal.png-3ac026b0a3e07d07f514a0c8868ca3c9.s3tc.ctex"
+path.s3tc="res://.godot/imported/terrain04_DefaultMaterial_Normal.png-7f8d9f5bc70832159965cd745549b1bd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Modely/Terrains/level05/terrain04_DefaultMaterial_Normal.png"
-dest_files=["res://.godot/imported/terrain04_DefaultMaterial_Normal.png-3ac026b0a3e07d07f514a0c8868ca3c9.s3tc.ctex"]
+source_file="res://Assets/Modely/Terrains/Level05/terrain04_DefaultMaterial_Normal.png"
+dest_files=["res://.godot/imported/terrain04_DefaultMaterial_Normal.png-7f8d9f5bc70832159965cd745549b1bd.s3tc.ctex"]
 
 [params]
 
