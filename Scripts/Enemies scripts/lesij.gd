@@ -14,8 +14,8 @@ signal died
 
 var state_machine
 
-var base_hp = 50
-var current_level_scale = 30
+var base_hp = 40
+var current_level_scale = 25
 
 var ATTACK_RANGE = 1.5
 var DMG = 15.0

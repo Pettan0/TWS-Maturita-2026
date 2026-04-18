@@ -21,7 +21,6 @@ func save_data():
 func load_data():
 	if FileAccess.file_exists(save_file_path + save_file_name):
 		var data = ResourceLoader.load(save_file_path + save_file_name)
-
 		if data:
 			player_data = data
 	else:
@@ -40,10 +39,10 @@ func _ready() -> void:
 	
 	load_data()
 	desc_label.text = desc
-	desc_label.hide()
 	for child in get_children():
 		child.hide()
 	sync_from_data()
+	desc_label.hide()
 
 func _on_pressed():
 	if player_data.skill_points <= 0:

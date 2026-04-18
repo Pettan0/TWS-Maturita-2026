@@ -21,8 +21,8 @@ signal died
 
 var state_machine
 #nastavitelné proměny
-var base_hp = 40
-var current_level_scale = 20
+var base_hp = 50
+var current_level_scale = 25
 var ATTACK_RANGE = 1.5
 var DMG = 10.0
 const SPEED = 2.0

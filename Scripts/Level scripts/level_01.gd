@@ -77,7 +77,7 @@ func handle_npc_talk():
 	player.look_at(npc.global_position)
 	await npc.start_talk()
 	player.paused = false
-	player.toggle_move()
+	talking = false
 	talked = true
 	
 

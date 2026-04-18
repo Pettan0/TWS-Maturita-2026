@@ -16,7 +16,7 @@ signal died
 var state_machine
 
 var base_hp = 30
-var current_level_scale = 15
+var current_level_scale = 20
 
 var ATTACK_RANGE = 2.0
 var DMG = 15.0
@@ -82,8 +82,6 @@ func _ready() -> void:
 	xp = max_hp
 	progress_bar.update_hp(max_hp, HP)
 	state_machine = animation_tree.get("parameters/playback")
-	print("armor: "+str(armor))
-	print("hp: "+str(HP))
 
 func _physics_process(delta):
 	if knockedback:

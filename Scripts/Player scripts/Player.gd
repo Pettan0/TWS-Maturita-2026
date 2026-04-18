@@ -499,11 +499,17 @@ func _unhandled_input(event: InputEvent) -> void:
 			hp_bar.hide()
 			stamina.hide()
 			player_level_label.hide()
+			$HpBar.hide()
+			$StaminaBar.hide()
+			$XpBar.hide()
 		else:
 			xp_bar.show()
 			player_level_label.show()
 			hp_bar.show()
 			stamina.show()
+			$HpBar.show()
+			$StaminaBar.show()
+			$XpBar.show()
 	#debug tlacitko pro testovani ODSTANIT
 	if Input.is_action_just_pressed("debug"):
 		add_xp(100)

@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://e01tyk5jn3jc" path="res://Assets/Font/Cinzel-VariableFont_wght.ttf" id="4_804u5"]
 [ext_resource type="Texture2D" uid="uid://cvl6rcqux7fev" path="res://Assets/2D/Png/btn_large.png" id="7_x5pm2"]
 [ext_resource type="PackedScene" uid="uid://biycn7hdoemmx" path="res://Menu/transition.tscn" id="8_804u5"]
-[ext_resource type="Texture2D" uid="uid://dglplxeeany1j" path="res://Assets/2D/🤓/Snímek obrazovky 2026-04-17 163158.png" id="9_v8dls"]
+[ext_resource type="Texture2D" uid="uid://dpwbh1tk0vjo4" path="res://Assets/2D/🤓/Bez názvu.png" id="9_v8dls"]
 [ext_resource type="Texture2D" uid="uid://cgryl1dkh43fh" path="res://Assets/2D/Png/title.png" id="10_pjk5d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xuoke"]
@@ -831,6 +831,7 @@ vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Credits/ScrollContainer/VBoxContainer" unique_id=1586325662]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="label" type="Label" parent="Credits/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1265563550]
 layout_mode = 2
@@ -840,7 +841,7 @@ text = "     Vít Hofman"
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Credits/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1041511343]
-custom_minimum_size = Vector2(10, 10)
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 texture = ExtResource("9_v8dls")
 
@@ -859,6 +860,7 @@ text = "(user) - za hraní této hry :D"
 vertical_alignment = 1
 
 [node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("8_804u5")]
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="Dificulty/ButtonEasy" to="." method="_on_button_easy_pressed"]
