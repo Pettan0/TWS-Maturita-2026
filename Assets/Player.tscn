@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://wwa5rmnw87ac" path="res://Assets/Modely/Player/longsword.tscn" id="7_05608"]
 [ext_resource type="Texture2D" uid="uid://cvl6rcqux7fev" path="res://Assets/2D/Png/btn_large.png" id="7_bc47u"]
 [ext_resource type="Texture2D" uid="uid://bulu5yvhycnkd" path="res://Assets/2D/🤓/Stamita_overlay.png" id="8_21f7q"]
+[ext_resource type="Texture2D" uid="uid://dydt2gw4phuih" path="res://Assets/2D/ui/HP_bar.png" id="10_21f7q"]
 [ext_resource type="AudioStream" uid="uid://camgera07b6x3" path="res://Assets/Sounds/SFX/Player/Attack1.wav" id="10_uqnxr"]
 [ext_resource type="PackedScene" uid="uid://ijvw7h6weq43" path="res://Assets/Modely/Player/pole_hammer.tscn" id="11_awmxi"]
 [ext_resource type="AudioStream" uid="uid://c85kk8phg0pmy" path="res://Assets/Sounds/SFX/Player/Footstep1.wav" id="11_ed6nx"]
@@ -26,26 +27,28 @@
 [ext_resource type="AudioStream" uid="uid://c3do60t1sdwp5" path="res://Assets/Sounds/SFX/Ostatní/xpBubble.wav" id="19_8p2vv"]
 [ext_resource type="AudioStream" uid="uid://cl6bnatrue8ia" path="res://Assets/Sounds/SFX/Skill Tree/lvlup.wav" id="21_a8px6"]
 [ext_resource type="AudioStream" uid="uid://cxseqqaflyete" path="res://Assets/Sounds/SFX/Player/New SFX/death.mp3" id="24_i157g"]
+[ext_resource type="Texture2D" uid="uid://yu0o30gvd80s" path="res://Assets/2D/ui/Stamina_bar.png" id="28_shd4d"]
+[ext_resource type="Texture2D" uid="uid://tn1ukuwptv1y" path="res://Assets/2D/ui/XP_bar.png" id="29_idl2c"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_shd4d"]
 texture = ExtResource("7_6xbt5")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0rfj"]
-bg_color = Color(1, 0.35732567, 0.29020837, 1)
+bg_color = Color(0.38537776, 0.11203351, 0.10379029, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05608"]
-bg_color = Color(0.35686275, 0.78431374, 0.32941177, 1)
+bg_color = Color(0.26658812, 0.47718906, 0.082036056, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqnxr"]
-bg_color = Color(5.1018596e-06, 0.68008393, 0.77347547, 1)
+bg_color = Color(0.2800711, 0.51511836, 0.7633623, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -59,7 +62,7 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvkfu"]
-bg_color = Color(0.6734902, 0.4929396, 0.94815654, 1)
+bg_color = Color(0.5327482, 0.28023005, 0.8062428, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -374,11 +377,16 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_shd4d")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 11.0
+offset_left = 10.0
 offset_top = -100.0
-offset_right = 106.0
+offset_right = 118.0
 offset_bottom = -77.0
 grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.49019608)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("4_ed6nx")
 text = "Level: (level)"
 
 [node name="HpBar" type="ProgressBar" parent="Head/Camera3D" unique_id=25985971]
@@ -387,10 +395,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -568.0
+offset_left = -561.5
 offset_top = -71.0
-offset_right = -274.0
-offset_bottom = -36.0
+offset_right = -209.0
+offset_bottom = -43.864563
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1, 0.92)
@@ -406,10 +414,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -560.0
+offset_left = -566.0
 offset_top = -32.0
-offset_right = -282.0
-offset_bottom = -20.960144
+offset_right = -272.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/fill = SubResource("StyleBoxFlat_uqnxr")
@@ -422,10 +430,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -570.0
-offset_top = -11.0
-offset_right = 570.0
-offset_bottom = -5.9140625
+offset_left = -567.0
+offset_top = -12.0
+offset_right = 568.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_j6nj3")
@@ -580,3 +588,17 @@ bus = &"SFX"
 
 [node name="Death" type="AudioStreamPlayer" parent="." unique_id=1744209195]
 stream = ExtResource("24_i157g")
+
+[node name="HpBar" type="Sprite2D" parent="." unique_id=1130382995]
+position = Vector2(196.24995, 590.5)
+scale = Vector2(1.0513886, 0.8200005)
+texture = ExtResource("10_21f7q")
+
+[node name="StaminaBar" type="Sprite2D" parent="." unique_id=1502752302]
+position = Vector2(157, 622)
+texture = ExtResource("28_shd4d")
+
+[node name="XpBar" type="Sprite2D" parent="." unique_id=2105493794]
+position = Vector2(577.5, 640)
+scale = Vector2(0.44960934, 0.5600006)
+texture = ExtResource("29_idl2c")
