@@ -8,6 +8,8 @@ signal died
 @onready var hp_bar: Sprite3D = $Sprite3D
 
 @export var area : Area3D
+@export var TARGET_RADIUS = 10.0
+@export var RADIUS_TOLERANCE = 1.0
 
 var state_machine
 var base_hp = 670
@@ -39,59 +41,52 @@ func _ready() -> void:
 	progress_bar.update_hp(max_hp, HP)
 	state_machine = animation_tree.get("parameters/playback")
 
-func _physics_process(delta):
-	if is_dead: return # Stop logic if dead
-
-	var current_node = state_machine.get_current_node()
-	
-	match current_node:
+func _physics_process(_delta):
+	if is_dead: return
+	var dist_to_player = global_position.distance_to(player.global_position)
+	match state_machine.get_current_node():
 		"Idle":
-			velocity = Vector3.ZERO
-			if area and area._is_player_in_area():
-				animation_tree.set("parameters/conditions/Move", true)
-				
+			animation_tree.set("parameters/conditions/Move", area._is_player_in_area())
+
 		"Move":
-			_handle_movement(delta)
+			# 1. Calculate the point on the circle around the player
+			var dir_from_player = (global_position - player.global_position).normalized()
+			var target_pos = player.global_position + (dir_from_player * TARGET_RADIUS)
+			
+			nav_agent.set_target_position(target_pos)
+			
+			# 2. Check if we are already "close enough" to that radius
+			var dist_to_target = global_position.distance_to(target_pos)
+			
+			if dist_to_target <= RADIUS_TOLERANCE:
+				velocity = Vector3.ZERO
+				animation_tree.set("parameters/conditions/Move", false)
+				animation_tree.set("parameters/conditions/Range", true)
+			else:
+				# Standard Movement
+				var next_pos = nav_agent.get_next_path_position()
+				var direction = (next_pos - global_position).normalized()
+				velocity = direction * SPEED
+				transform.looking_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+
+
+			# Emergency Melee Transition
+			if dist_to_player <= ATTACK_RANGE:
+				animation_tree.set("parameters/conditions/Melee", true)
 			
 		"Melee01":
-			_face_target(delta)
-			# The animation player should call _hit_player via an Animation Track (Call Method)
-			# instead of checking every frame in physics_process.
-			
+			transform.looking_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 		"Range":
-			_face_target(delta)
-			if _target_in_range():
+			velocity = Vector3.ZERO # Stay still while shooting
+			transform.looking_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+			
+			if abs(dist_to_player - TARGET_RADIUS) > 3.0: 
+				animation_tree.set("parameters/conditions/Range", false)
+				animation_tree.set("parameters/conditions/Move", true)
+				
+			if dist_to_player <= ATTACK_RANGE:
 				animation_tree.set("parameters/conditions/Melee", true)
-				animation_tree.set("parameters/conditions/Range", false) # Reset Range
-
-	move_and_slide()
-
-func _handle_movement(_delta):
-	if not player: return
-	
-	# Determine target position (keep distance or close in)
-	var dist = global_position.distance_to(player.global_position)
-	nav_agent.set_target_position(player.global_position)
-
-	var next_pos = nav_agent.get_next_path_position()
-	var direction = (next_pos - global_position).normalized()
-	
-	velocity = direction * SPEED
-	_face_target(_delta)
-
-	# State Transitions
-	if dist <= ATTACK_RANGE:
-		animation_tree.set("parameters/conditions/Melee", true)
-		animation_tree.set("parameters/conditions/Move", false)
-	elif dist <= 25.0:
-		# If you want them to shoot while moving, don't set Move to false
-		animation_tree.set("parameters/conditions/Range", true)
-
-func _face_target(delta):
-	if player:
-		var look_target = Vector3(player.global_position.x, global_position.y, player.global_position.z)
-		var new_transform = transform.looking_at(look_target, Vector3.UP)
-		transform = transform.interpolate_with(new_transform, TURN_SPEED * delta)
+				animation_tree.set("parameters/conditions/Range", false)
 
 func hit(damage_taken: float, _weapon_type: String, _dir: Vector3):
 	if is_dead: return
@@ -123,7 +118,6 @@ func _hit_player():
 func _target_in_range():
 	return global_position.distance_to(player.global_position) <= ATTACK_RANGE
 
-# --- Data Handling ---
 func load_data():
 	if not DirAccess.dir_exists_absolute(save_file_path):
 		DirAccess.make_dir_recursive_absolute(save_file_path)

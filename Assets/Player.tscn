@@ -353,6 +353,7 @@ horizontal_alignment = 1
 script = ExtResource("6_j6nj3")
 
 [node name="HitFlash" type="Panel" parent="Head/Camera3D" unique_id=687500878]
+visible = false
 z_as_relative = false
 y_sort_enabled = true
 anchors_preset = 8
@@ -432,6 +433,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_pvkfu")
 show_percentage = false
 
 [node name="StaminaOverlay" type="Panel" parent="Head/Camera3D" unique_id=1181296173]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -447,6 +449,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_idl2c")
 
 [node name="GameOver" type="TextureRect" parent="Head/Camera3D" unique_id=397663102]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -540,6 +543,7 @@ mesh = SubResource("CapsuleMesh_e80uo")
 shape = SubResource("CapsuleShape3D_jqnu1")
 
 [node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("11_y0rfj")]
+visible = false
 mouse_filter = 2
 
 [node name="Jump" type="AudioStreamPlayer" parent="." unique_id=803344209]
