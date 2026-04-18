@@ -55,7 +55,7 @@ size = Vector3(20, 1, 20)
 data = PackedVector3Array(-10, 0.5, 10, 10, 0.5, 10, -10, -0.5, 10, 10, 0.5, 10, 10, -0.5, 10, -10, -0.5, 10, 10, 0.5, -10, -10, 0.5, -10, 10, -0.5, -10, -10, 0.5, -10, -10, -0.5, -10, 10, -0.5, -10, 10, 0.5, 10, 10, 0.5, -10, 10, -0.5, 10, 10, 0.5, -10, 10, -0.5, -10, 10, -0.5, 10, -10, 0.5, -10, -10, 0.5, 10, -10, -0.5, -10, -10, 0.5, 10, -10, -0.5, 10, -10, -0.5, -10, 10, 0.5, 10, -10, 0.5, 10, 10, 0.5, -10, -10, 0.5, 10, -10, 0.5, -10, 10, 0.5, -10, -10, -0.5, 10, 10, -0.5, 10, -10, -0.5, -10, 10, -0.5, 10, 10, -0.5, -10, -10, -0.5, -10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iotdp"]
-size = Vector3(20, 10, 20)
+size = Vector3(35.90857, 10, 40.706543)
 
 [node name="Node3D" type="Node3D" unique_id=258377406]
 
@@ -142,8 +142,9 @@ shape = SubResource("ConcavePolygonShape3D_05pb0")
 script = ExtResource("3_sbrn2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1759184315]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3528366, 3.4595108, 0.63510704)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8027267, 3.4595108, -0.4144535)
 shape = SubResource("BoxShape3D_iotdp")
 
-[node name="Polednice" parent="Area3D" unique_id=1995277811 instance=ExtResource("3_7b0me")]
+[node name="Polednice" parent="." unique_id=1995277811 node_paths=PackedStringArray("area") instance=ExtResource("3_7b0me")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38769913, 3.9999797, 0.6790576)
+area = NodePath("../Area3D")
