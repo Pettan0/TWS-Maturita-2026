@@ -1,12 +1,11 @@
 extends Node3D
 @onready var interact:= $Player/Head/Camera3D/Interact
 @onready var area: Area3D = $Area
-@onready var npc: AnimationTree = $Npc/AnimationTree
+@onready var npc: Node3D = $Npc
 @onready var player: CharacterBody3D = $Player
 @onready var item: Node3D = $Item
 @onready var weapon_item: Node3D = $Item/dagger
 @onready var dialog_hynek_npc: AudioStreamPlayer = $DialogHynekNpc
-
 
 var save_file_path = "user://save/"
 var save_file_name = "PlayerData.tres"
@@ -20,15 +19,17 @@ var near_door = false
 var near_npc = false
 var talking = false
 var talked = false
+var can_welcome = true
+
+
+
 
 func _ready():
 	load_data()
 	$Funny/Label.text = "Ahoj\n"+OS.get_environment("USERNAME")+" :)"
 
 func _process(delta: float) -> void:
-	if near_npc and player.player_data.deaths == 0 and !talked:
-		interact.show_with("Talk","")
-	elif weapon_item.visible and can_pick_up_item:
+	if weapon_item.visible and can_pick_up_item:
 		interact.show_with("PickUpItem",weapon_item.name)
 	elif !can_pick_up_item and !near_door and !near_npc:
 		interact.hide()
@@ -60,30 +61,40 @@ func load_data():
 	player.rotation_degrees = player_data.starter_rotation
 func save_data():
 	ResourceSaver.save(player_data, save_file_path + save_file_name)
-func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("interact"):
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("interact"): # Use the event passed to the function
 		if near_door:
-			save_data()
-			SoundManager.play_door_sfx()
-			player.transition.fade_in()
-			await get_tree().create_timer(1.5).timeout
-			get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
+			handle_door_transition()
 		elif can_pick_up_item and weapon_item.visible:
-			player.player_data.u_dagger = true
-			player._weapon_out("dagger")
-			weapon_item.hide()
-			can_pick_up_item = false
-		elif near_npc and !talking:
-			dialog_hynek_npc.play()
-			talking = true
-			player.talking = true
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			await get_tree().create_timer(10.0).timeout
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			talked = true
+			handle_item_pickup()
+		elif near_npc and !talking and player.player_data.deaths <= 0:
+			handle_npc_talk()
 
+func handle_npc_talk():
+	interact.hide()
+	talking = true
+	player.paused = true
+	player.look_at(npc.global_position)
+	await npc.start_talk()
+	player.paused = false
+	player.toggle_move()
+	talked = true
+	
 
-		
+func handle_item_pickup():
+	player.player_data.u_dagger = true
+	player._weapon_out("dagger")
+	weapon_item.hide()
+	can_pick_up_item = false
+
+func handle_door_transition():
+	save_data()
+	SoundManager.play_door_sfx()
+	player.transition.fade_in()
+	await get_tree().create_timer(1.5).timeout
+	# Ensure the level string is padded if necessary (e.g., Level01)
+	var level_path = "res://Levels/Level0" + str(player_data.level) + ".scn"
+	get_tree().change_scene_to_file(level_path)
 func _on_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.show_with("OpenDoor","")
@@ -94,8 +105,9 @@ func _on_door_body_exited(body: Node3D) -> void:
 		interact.hide()
 		near_door = false
 func _on_area_body_entered(body: Node3D) -> void:
-	if body.name == "Player":
-		npc.set("parameters/conditions/Hello",true)
+	if body.name == "Player" and can_welcome:
+		npc.say_hi()
+		can_welcome = false
 func _on_fire_hitbox_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		on_fire = true
@@ -109,8 +121,9 @@ func _on_item_area_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		can_pick_up_item = false
 func _on_near_npc_hitbox_body_entered(body: Node3D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and not talked and player.player_data.deaths <= 0:
 		near_npc = true
+		interact.show_with("TalkToNpc","")
 func _on_near_npc_hitbox_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		near_npc = false

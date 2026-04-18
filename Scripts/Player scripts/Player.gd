@@ -68,7 +68,6 @@ var blocking = false
 
 var speed = 3.0
 var jump_velocity = 3.1
-var dead = false
 
 #hp regen?
 var can_hp_regen = false
@@ -81,7 +80,7 @@ var stimer = 0
 var can_start_stimer = true
 
 var ktimer = 0
-var talking = false
+var dead = false
 
 func _ready():
 	game_over.show()
@@ -368,7 +367,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_pauseMenu()
 			popup.show_custom("Dokázal jsi to :D")
 			_hit(1000)
-	if !paused and !dead and !talking:
+	if !paused:
 		#zapnuti kodu
 		if Input.is_action_just_pressed("secred"):
 			super_secred = !super_secred
@@ -478,11 +477,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Input.is_action_just_pressed("pause"):
 			_pauseMenu()
 		#otaceni kamery 
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			if event is InputEventMouseMotion:
-				rotate_y(-event.relative.x * 0.002)
-				head.rotate_x(-event.relative.y * 0.002)
-				head.rotation.x = clamp(head.rotation.x, deg_to_rad(-60), deg_to_rad(60))
+		
 	else:
 		#kdyz ne pozastaveno schova but skill tree nebo pause menu
 		if Input.is_action_just_pressed("pause"):
@@ -493,6 +488,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			paused = !paused
 	#schovani ui
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion:
+			rotate_y(-event.relative.x * 0.002)
+			head.rotate_x(-event.relative.y * 0.002)
+			head.rotation.x = clamp(head.rotation.x, deg_to_rad(-60), deg_to_rad(60))
 	if Input.is_action_just_pressed("f1"):
 		if hp_bar.visible and stamina.visible:
 			xp_bar.hide()
@@ -528,24 +528,25 @@ func _hit(damage : float):
 				_play_damage_sound()
 			player_data.hp -= damage * (player_data.block_dmg - 1 + 1)
 			save_data()
-	if player_data.hp <= 0:
-		dead = true
-		headbob.stop()
-		fov_animation.stop()
-		velocity = Vector3.ZERO
-		death_sfx.play()
-		$Head/HitAnimation.play("Death")
-		await get_tree().create_timer(2.5).timeout
-		player_data.hp = player_data.max_hp
-		player_data.update_level_stats(1,1)
-		save_data()
-		get_tree().change_scene_to_file("res://Levels/Level01.scn")
+		if player_data.hp <= 0:
+			dead = true
+			player_data.deaths += 1
+			headbob.stop()
+			fov_animation.stop()
+			velocity = Vector3.ZERO
+			death_sfx.play()
+			$Head/HitAnimation.play("Death")
+			await get_tree().create_timer(2.5).timeout
+			player_data.hp = player_data.max_hp
+			player_data.update_level_stats(1,1)
+			save_data()
+			get_tree().change_scene_to_file("res://Levels/Level01.scn")
 
 func _physics_process(delta: float) -> void:
 	#gravitace lol 🍎
 	if not is_on_floor():
 			velocity += get_gravity() * delta
-	if !paused and !dead and !talking:
+	if !paused:
 			#skok 🤓
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				if stamina.value > 15:
