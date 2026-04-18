@@ -5,6 +5,7 @@ extends Node3D
 @onready var player: CharacterBody3D = $Player
 @onready var item: Node3D = $Item
 @onready var weapon_item: Node3D = $Item/dagger
+@onready var dialog_hynek_npc: AudioStreamPlayer = $DialogHynekNpc
 
 
 var save_file_path = "user://save/"
@@ -16,16 +17,20 @@ var on_fire = false
 
 var can_pick_up_item = false
 var near_door = false
-
+var near_npc = false
+var talking = false
+var talked = false
 
 func _ready():
 	load_data()
 	$Funny/Label.text = "Ahoj\n"+OS.get_environment("USERNAME")+" :)"
 
 func _process(delta: float) -> void:
-	if weapon_item.visible and can_pick_up_item:
+	if near_npc and player.player_data.deaths == 0 and !talked:
+		interact.show_with("Talk","")
+	elif weapon_item.visible and can_pick_up_item:
 		interact.show_with("PickUpItem",weapon_item.name)
-	elif !can_pick_up_item and !near_door:
+	elif !can_pick_up_item and !near_door and !near_npc:
 		interact.hide()
 		
 	if on_fire and fire_tick >= 1.0:
@@ -33,15 +38,12 @@ func _process(delta: float) -> void:
 		player._hit(10)
 	else:
 		fire_tick += delta
-
 func spawn_item():
 				#zmenit podle itemu
 	if player_data.u_dagger:
 		return
 	else:
 		weapon_item.show()
-	
-
 func load_data():
 	if not DirAccess.dir_exists_absolute(save_file_path):
 		DirAccess.make_dir_recursive_absolute(save_file_path)
@@ -56,11 +58,8 @@ func load_data():
 	player_data.find_starter_position()
 	player.position = player_data.starter_position
 	player.rotation_degrees = player_data.starter_rotation
-
-
 func save_data():
 	ResourceSaver.save(player_data, save_file_path + save_file_name)
-
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 		if near_door:
@@ -70,40 +69,49 @@ func _unhandled_input(_event: InputEvent) -> void:
 			await get_tree().create_timer(1.5).timeout
 			get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
 		elif can_pick_up_item and weapon_item.visible:
-						#zmenit podle zbrane
 			player.player_data.u_dagger = true
 			player._weapon_out("dagger")
 			weapon_item.hide()
 			can_pick_up_item = false
+		elif near_npc and !talking:
+			dialog_hynek_npc.play()
+			talking = true
+			player.talking = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			await get_tree().create_timer(10.0).timeout
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			talked = true
+
+
 		
 func _on_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.show_with("OpenDoor","")
 		player_data.update_level_stats(2,1)
 		near_door = true
-
 func _on_door_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.hide()
 		near_door = false
-
 func _on_area_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		npc.set("parameters/conditions/Hello",true)
-
 func _on_fire_hitbox_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		on_fire = true
-
 func _on_fire_hitbox_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		on_fire = false
-
-
 func _on_item_area_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		can_pick_up_item = true
-
 func _on_item_area_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		can_pick_up_item = false
+func _on_near_npc_hitbox_body_entered(body: Node3D) -> void:
+	if body.name == "Player":
+		near_npc = true
+func _on_near_npc_hitbox_body_exited(body: Node3D) -> void:
+	if body.name == "Player":
+		near_npc = false
+		interact.hide()

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cxseqqaflyete"
+path="res://.godot/imported/honzaDedaUmira4.mp3-d4e38267d207097dbc294924e303792a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player/New SFX/honzaDedaUmira4.mp3"
+dest_files=["res://.godot/imported/honzaDedaUmira4.mp3-d4e38267d207097dbc294924e303792a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

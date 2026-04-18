@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://suudy51ysgwb"
+path="res://.godot/imported/honzaDedaUmira3.wav-ebc7bfc54049c999bd3870220345358f.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/SFX/Player/New SFX/honzaDedaUmira3.wav"
+dest_files=["res://.godot/imported/honzaDedaUmira3.wav-ebc7bfc54049c999bd3870220345358f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

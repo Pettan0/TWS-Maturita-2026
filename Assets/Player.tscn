@@ -26,7 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://c3yt2r3tc0ooi" path="res://Assets/Sounds/SFX/Player/New SFX/combat06.mp3" id="15_r0pwu"]
 [ext_resource type="AudioStream" uid="uid://c3do60t1sdwp5" path="res://Assets/Sounds/SFX/Ostatní/xpBubble.wav" id="19_8p2vv"]
 [ext_resource type="AudioStream" uid="uid://cl6bnatrue8ia" path="res://Assets/Sounds/SFX/Skill Tree/lvlup.wav" id="21_a8px6"]
-[ext_resource type="AudioStream" uid="uid://cxseqqaflyete" path="res://Assets/Sounds/SFX/Player/New SFX/death.mp3" id="24_i157g"]
+[ext_resource type="AudioStream" uid="uid://cxseqqaflyete" path="res://Assets/Sounds/SFX/Player/New SFX/honzaDedaUmira4.mp3" id="24_i157g"]
 [ext_resource type="Texture2D" uid="uid://yu0o30gvd80s" path="res://Assets/2D/ui/Stamina_bar.png" id="28_shd4d"]
 [ext_resource type="Texture2D" uid="uid://tn1ukuwptv1y" path="res://Assets/2D/ui/XP_bar.png" id="29_idl2c"]
 
@@ -550,10 +550,6 @@ mesh = SubResource("CapsuleMesh_e80uo")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=380355213]
 shape = SubResource("CapsuleShape3D_jqnu1")
 
-[node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("11_y0rfj")]
-visible = false
-mouse_filter = 2
-
 [node name="Jump" type="AudioStreamPlayer" parent="." unique_id=803344209]
 stream = ExtResource("15_r0pwu")
 bus = &"SFX"
@@ -602,3 +598,7 @@ texture = ExtResource("28_shd4d")
 position = Vector2(577.5, 640)
 scale = Vector2(0.44960934, 0.5600006)
 texture = ExtResource("29_idl2c")
+
+[node name="Transition" parent="." unique_id=1531325717 instance=ExtResource("11_y0rfj")]
+visible = false
+mouse_filter = 2

@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://diliuatd0ym53"]
 
 [ext_resource type="Script" uid="uid://dpsbbv2pie6y5" path="res://Scripts/Menu scripts/starting_sceen.gd" id="1_4shaj"]
-[ext_resource type="Texture2D" uid="uid://dglplxeeany1j" path="res://Assets/2D/🤓/Snímek obrazovky 2026-04-17 163158.png" id="2_wwexg"]
+[ext_resource type="Texture2D" uid="uid://c5dj5vlyy1aa2" path="res://Assets/2D/🤓/fuck_ai.png" id="2_wwexg"]
 [ext_resource type="FontFile" uid="uid://e01tyk5jn3jc" path="res://Assets/Font/Cinzel-VariableFont_wght.ttf" id="3_wwexg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4shaj"]
 bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 
-[node name="Control" type="Control" unique_id=1911490251]
+[node name="Control2" type="Control" unique_id=1911490251]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,9 +27,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4shaj")
 [node name="Slide2" type="Panel" parent="." unique_id=1161233104]
 layout_mode = 0
 offset_left = -34.0
-offset_top = -31.0
+offset_top = -32.0
 offset_right = 1195.0
-offset_bottom = 680.0
+offset_bottom = 679.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4shaj")
 
 [node name="krocky" type="TextureRect" parent="Slide2" unique_id=848460069]

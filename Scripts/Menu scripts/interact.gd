@@ -22,5 +22,7 @@ func show_with(about : String, type : String):
 					text += "kladivo "
 		"PullSword":
 			text = "Pokusit se vytáhnout meč "
+		"TalkToNpc":
+			text = "Promluvit si "
 	text += "( E )"
 	show()

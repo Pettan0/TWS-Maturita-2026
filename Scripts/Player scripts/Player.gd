@@ -81,9 +81,14 @@ var stimer = 0
 var can_start_stimer = true
 
 var ktimer = 0
-
+var talking = false
 
 func _ready():
+	game_over.show()
+	stamina_overlay.show()
+	hit_flash.show()
+	transition.show()
+	
 	load_data()
 	create_tween().tween_property(game_over, "modulate:a", 0.0, 0.0).set_trans(Tween.TRANS_SINE)
 	create_tween().tween_property(hit_flash, "modulate:a", 0.0, 0.0).set_trans(Tween.TRANS_SINE)
@@ -227,7 +232,7 @@ func _play_swing_sound():
 
 #funkce pro vytazeni zbrane + if je odemcena
 func _weapon_out(type:String):
-	save_data()
+	
 	match type:
 		"unarmed":
 			unarmed.show()
@@ -298,7 +303,7 @@ func _weapon_out(type:String):
 				player_data.current_weapon = current_weapon
 			else :
 				popup.show_with("lockedWeapon")
-
+	save_data()
 #pridani xp a lvl up
 func add_xp(amount:float):
 	if amount + player_data.xp < player_data.xp_to_next:
@@ -363,7 +368,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_pauseMenu()
 			popup.show_custom("Dokázal jsi to :D")
 			_hit(1000)
-	if !paused and !dead:
+	if !paused and !dead and !talking:
 		#zapnuti kodu
 		if Input.is_action_just_pressed("secred"):
 			super_secred = !super_secred
@@ -540,7 +545,7 @@ func _physics_process(delta: float) -> void:
 	#gravitace lol 🍎
 	if not is_on_floor():
 			velocity += get_gravity() * delta
-	if !paused and !dead:
+	if !paused and !dead and !talking:
 			#skok 🤓
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				if stamina.value > 15:
