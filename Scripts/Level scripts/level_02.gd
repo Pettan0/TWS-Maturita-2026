@@ -46,7 +46,7 @@ func save_data():
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and interact.visible:
-		if enemies_left == 0:
+		if enemies_left <= 0:
 			match next_lvl:
 				1:
 					player_data.update_level_stats(1,2)

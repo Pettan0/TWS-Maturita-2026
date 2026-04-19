@@ -68,10 +68,10 @@ func upgrade_skill(id:String):
 		"attackSpeedA":
 			attack_speed += 0.3
 		"attackStaminaB":
-			attack_stamina *= 0.85
+			attack_stamina = attack_stamina * 0.85
 			
 		"attackStaminaA":
-			attack_stamina *= 0.50
+			attack_stamina = attack_stamina * 0.50
 		
 		"uBlock":
 			can_block = true
@@ -144,6 +144,7 @@ func find_starter_position():
 				2:
 					starter_position = Vector3(0, 0, 0)
 					starter_rotation = Vector3(0, -57.0, 0)
+					
 
 func new_xp_to_next(amount:float):
 	var saved_value = amount + xp - xp_to_next

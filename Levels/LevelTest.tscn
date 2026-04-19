@@ -90,5 +90,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8027267, 3.4595108, -0.4144
 shape = SubResource("BoxShape3D_iotdp")
 
 [node name="Polednice" parent="." unique_id=1995277811 node_paths=PackedStringArray("area") instance=ExtResource("3_7b0me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38769913, 2.3533652, 0.6790576)
+transform = Transform3D(0.14692907, 0, 0.989147, 0, 1, 0, -0.989147, 0, 0.14692907, 0.38769913, 2.3533657, 0.6790576)
 area = NodePath("../Area3D")

@@ -146,6 +146,8 @@ _data = {
 [node name="Leg" type="Node3D" unique_id=1642797897]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 script = ExtResource("1_gn4e7")
+damage = null
+weapon_type = null
 
 [node name="Armature" type="Node3D" parent="." unique_id=1130886182]
 transform = Transform3D(4.3634444e-08, -2.59236e-09, 1.0000001, -0.05930628, -0.99823993, 0, 0.99823976, -0.05930629, -4.3711392e-08, 0, 0, 0)
