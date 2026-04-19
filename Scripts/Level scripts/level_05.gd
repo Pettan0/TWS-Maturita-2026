@@ -31,8 +31,6 @@ func _ready():
 	print("Enemies at start:", enemies_left)
 	load_data()
 	
-	if player_data.u_short_sword:
-		item.hide()
 	print(player_data.starter_position)
 	var enemies = get_tree().get_nodes_in_group("Enemies")
 	enemies_left = enemies.size()
@@ -112,9 +110,6 @@ func load_data():
 	player.rotation_degrees = player_data.starter_rotation
 	if player_data.have_key:
 		$key.hide()
-	if player_data.u_long_sword:
-		item.hide()
-		
 
 func save_data():
 	ResourceSaver.save(player_data, save_file_path + save_file_name)

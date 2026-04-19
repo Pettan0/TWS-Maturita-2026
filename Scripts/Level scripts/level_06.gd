@@ -70,3 +70,7 @@ func _on_boss_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		$WaaaghdrumD115.stream = load("res://Assets/Sounds/Music/Boss music.wav")
 		$WaaaghdrumD115.play()
+
+
+func _on_boss_enemy_died() -> void:
+	get_tree().change_scene_to_file("res://Menu/Main menu.tscn")

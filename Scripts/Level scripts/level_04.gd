@@ -114,7 +114,7 @@ func _on_lvl_6_door_body_entered(body: Node3D) -> void:
 
 func _on_item_area_body_entered(body: Node3D) -> void:
 	if body.name == "Player" and item.visible:
-		interact.show_with("PickUpItem","shortSword")
+		interact.show_with("PickUpItem","mace")
 		near_item = true
 
 func _on_item_area_body_exited(body: Node3D) -> void:

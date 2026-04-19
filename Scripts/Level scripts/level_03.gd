@@ -2,7 +2,7 @@ extends Node3D
 @onready var interact: Label = $Player/Head/Camera3D/Interact
 @onready var player: CharacterBody3D = $Player
 @onready var popup: Label = $Player/Head/Camera3D/Popup
-@onready var item: Node3D = $Excalibur/wp_shortsword
+@onready var item: Node3D = $wp_shortsword
 
 var near_door = false
 var near_item = false

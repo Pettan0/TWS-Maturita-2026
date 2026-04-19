@@ -66,7 +66,7 @@ var blocking = false
 
 #maly vojta -> 🐒
 
-var speed = 10.0
+var speed = 3.0
 var jump_velocity = 3.1
 
 #hp regen?

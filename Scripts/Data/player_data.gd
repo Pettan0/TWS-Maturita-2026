@@ -144,12 +144,12 @@ func find_starter_position():
 					starter_position = Vector3(13.57, 1.742, -4.638)
 					starter_rotation = Vector3(0, 96.6, 0)
 				2:
-					starter_position = Vector3(0, 0, 0)
-					starter_rotation = Vector3(0, -57.0, 0)
+					starter_position = Vector3(1.772, 2.284, 8.594)
+					starter_rotation = Vector3(0, 14.2, 0)
 		5:
 			match starter_point:
 				1:
-					starter_position = Vector3(13.57, 1.376, -4.638)
+					starter_position = Vector3(13.57, 2.376, -4.638)
 					starter_rotation = Vector3(0, 96.6, 0)
 				2:
 					starter_position = Vector3(13.57, 1.376, -4.638)
