@@ -20,7 +20,7 @@ var current_level_scale = 20
 
 var ATTACK_RANGE = 2.0
 var DMG = 15.0
-const SPEED = 1.0
+const SPEED = 1.2
 var knockback = 4.0
 
 var max_hp : float
