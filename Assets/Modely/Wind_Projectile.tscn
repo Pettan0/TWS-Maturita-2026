@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dmaivjb15fipw"]
+
+[ext_resource type="ArrayMesh" uid="uid://dtdr5dr8xoayk" path="res://Assets/Modely/Wind_Projectile.obj" id="1_kwgaw"]
+[ext_resource type="Script" uid="uid://df2prebs820bo" path="res://Assets/Modely/wind_projectile.gd" id="1_mkb60"]
+
+[sub_resource type="Shader" id="Shader_gfjx1"]
+code = "shader_type spatial;
+render_mode unshaded, blend_add;
+
+// This is the line the error was asking for!
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D noise_img;
+uniform float distortion_strength : hint_range(0, 0.1) = 0.02;
+uniform float speed : hint_range(0, 10) = 2.0;
+
+void fragment() {
+    // 1. We calculate the offset (uv_movement)
+    vec2 uv_movement = UV + vec2(TIME * speed, TIME * speed * 0.5);
+    
+    // 2. We get the noise value using that offset
+    float noise_value = texture(noise_img, uv_movement).r;
+    
+    // 3. We warp the background pixels
+    vec2 screen_uv = SCREEN_UV + (noise_value * distortion_strength);
+    vec3 screen_color = texture(SCREEN_TEXTURE, screen_uv).rgb;
+    
+    ALBEDO = screen_color;
+    
+    // 4. FIX: Use the moving noise_value for ALPHA instead of a static texture call
+    ALPHA = noise_value * 0.95; 
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kwgaw"]
+noise_type = 3
+frequency = 0.0642
+offset = Vector3(0, 45.11, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gfjx1"]
+noise = SubResource("FastNoiseLite_kwgaw")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rs3ju"]
+render_priority = 0
+shader = SubResource("Shader_gfjx1")
+shader_parameter/noise_img = SubResource("NoiseTexture2D_gfjx1")
+shader_parameter/distortion_strength = 0.018000000855
+shader_parameter/speed = 0.68800003268
+
+[sub_resource type="TorusMesh" id="TorusMesh_kwgaw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_icnv6"]
+radius = 0.9243164
+height = 2.828125
+
+[node name="WindProjectile" type="Node3D" unique_id=952120100]
+script = ExtResource("1_mkb60")
+
+[node name="WindProjectile" type="MeshInstance3D" parent="." unique_id=734495462]
+cast_shadow = 0
+mesh = ExtResource("1_kwgaw")
+surface_material_override/0 = SubResource("ShaderMaterial_rs3ju")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1232671956]
+visible = false
+draw_pass_1 = SubResource("TorusMesh_kwgaw")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=151334669]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1484650598]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 8.323946e-09, -0.19042966)
+shape = SubResource("CapsuleShape3D_icnv6")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]

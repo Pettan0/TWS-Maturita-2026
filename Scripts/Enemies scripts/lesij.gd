@@ -60,6 +60,7 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 		knockback_timer = 0.25
 	HP -= damage_taken
 	play_hit_sound()
+	SoundManager.zoomer_play()
 	progress_bar.update_hp(max_hp, HP)
 	if (HP <= 0):
 		animation_tree.set("parameters/conditions/Death"+str(randi_range(1,2)),true)

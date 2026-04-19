@@ -17,12 +17,15 @@ func show_with(about : String, type : String):
 				"mace":
 					text += "palcát "
 				"longSword":
-					text += "dlouhéhý meče "
+					text += "dlouhý meč "
 				"poleHammer":
 					text += "kladivo "
+				"key":
+					text += "klíč "
 		"PullSword":
 			text = "Pokusit se vytáhnout meč "
 		"TalkToNpc":
 			text = "Promluvit si "
+		
 	text += "( E )"
 	show()

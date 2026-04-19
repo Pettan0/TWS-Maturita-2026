@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cddg4qemo24qd" path="res://Assets/Sounds/SFX/Button/click1.wav" id="5_7jwsb"]
 [ext_resource type="AudioStream" uid="uid://kb3c025kgsvj" path="res://Assets/Sounds/SFX/Skill Tree/abilityLearnt2.wav" id="6_h42hm"]
 [ext_resource type="AudioStream" uid="uid://hf57es3k1k1v" path="res://Assets/Sounds/SFX/Skill Tree/abilityLearnt1.wav" id="7_lxsk3"]
+[ext_resource type="AudioStream" uid="uid://dxra8r40w8gsn" path="res://Assets/Sounds/SFX/Ostatní/zoomer1.wav" id="8_lxsk3"]
 
 [node name="SoundManager" type="Control" unique_id=400160604]
 visible = false
@@ -47,4 +48,9 @@ bus = &"SFX"
 
 [node name="STUpgrade2" type="AudioStreamPlayer" parent="." unique_id=42766116]
 stream = ExtResource("7_lxsk3")
+bus = &"SFX"
+
+[node name="Zoomer" type="AudioStreamPlayer" parent="." unique_id=1831629462]
+stream = ExtResource("8_lxsk3")
+volume_db = -5.0
 bus = &"SFX"

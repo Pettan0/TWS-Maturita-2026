@@ -102,10 +102,10 @@ tracks/5/path = NodePath("Armature/Skeleton3D/BoneAttachment3D/Hitbox/CollisionS
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.69),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.69, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [true, false, true]
+"values": [true, false, true, true]
 }
 tracks/6/type = "method"
 tracks/6/imported = false
@@ -165,7 +165,7 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(0.99912125, 0.04191339, 2.0108372e-08, -0.04191339, 0.99912125, 1.3257004e-07, -1.4534242e-08, -1.3329635e-07, 1, 4.4237822e-09, 1.2280899, -4.423545e-17)
 bones/1/enabled = true
 bones/1/position = Vector3(4.4237822e-09, 1.2280899, -4.423545e-17)
-bones/1/rotation = Quaternion(-9.420963e-08, -5.452716e-09, -0.019391535, 0.99981195)
+bones/1/rotation = Quaternion(-9.4209646e-08, -5.452716e-09, -0.019391539, 0.999812)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "Shin"
 bones/2/parent = 1
@@ -189,7 +189,7 @@ skin = SubResource("Skin_phfqe")
 skeleton = NodePath("..")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" unique_id=81680018]
-transform = Transform3D(0.37756678, -0.92598224, 3.421195e-08, 0.92598224, 0.37756678, 2.4093265e-07, -2.3601673e-07, -5.928854e-08, 1, 0.12776244, 1.9385233, -1.3104483e-07)
+transform = Transform3D(0.37756678, -0.92598224, 3.421195e-08, 0.92598224, 0.37756678, 2.4093265e-07, -2.3601673e-07, -5.928854e-08, 1, 0.12776247, 1.9385233, -1.3104483e-07)
 bone_name = "Foot"
 bone_idx = 3
 

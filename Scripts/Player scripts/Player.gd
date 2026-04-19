@@ -20,7 +20,6 @@ extends CharacterBody3D
 @onready var jump: AudioStreamPlayer = $Jump
 @onready var attack: AudioStreamPlayer = $Attack
 @onready var footstep: AudioStreamPlayer = $Footstep
-@onready var damaga_taken: AudioStreamPlayer = $DamagaTaken
 @onready var hit: AudioStreamPlayer = $Hit
 @onready var sword_swing: AudioStreamPlayer = $SwordSwing
 @onready var lvl_up: AudioStreamPlayer = $LvlUp
@@ -64,9 +63,10 @@ var paused = false
 var current_weapon = "unarmed"
 var blocking = false
 
+
 #maly vojta -> 🐒
 
-var speed = 3.0
+var speed = 10.0
 var jump_velocity = 3.1
 
 #hp regen?
@@ -210,12 +210,13 @@ func _skill_tree():
 	paused = !paused
 
 #hrani jednotlivich random sxf
+func death_sfx_play():
+	death_sfx.stream = load("res://Assets/Sounds/SFX/Player/New SFX/honzaDedaUmira"+str(randi_range(1,3))+".wav")
+	attack.play()
+
 func _play_attack_sound():
 	$Attack.stream = load("res://Assets/Sounds/SFX/Player/New SFX/combat0"+str(randi_range(1,7))+".mp3")
 	attack.play()
-func _play_damage_sound():
-	damaga_taken.stream = load("res://Assets/Sounds/SFX/Player/DamageTaken"+str(randi_range(1,4))+".wav")
-	damaga_taken.play()
 func _play_footstep_sound():
 	if is_on_floor():
 		footstep.stream = load("res://Assets/Sounds/SFX/Player/Footstep"+str(randi_range(1,3))+".wav")
@@ -367,7 +368,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_pauseMenu()
 			popup.show_custom("Dokázal jsi to :D")
 			_hit(1000)
-	if !paused:
+	if !paused and not dead:
 		#zapnuti kodu
 		if Input.is_action_just_pressed("secred"):
 			super_secred = !super_secred
@@ -463,9 +464,11 @@ func _unhandled_input(event: InputEvent) -> void:
 				can_s_regen = false
 				stimer = 0
 				ktimer = player_data.kick_cooldown
+				$Head/Leg.show()
 				leg_animation.play("Kick")
 				await get_tree().create_timer(1.25).timeout
 				attacking = false
+				$Head/Leg.hide()
 			elif player_data.can_kick and !attacking:
 				popup.show_with("abilityOnCooldown")
 			elif !attacking:
@@ -488,7 +491,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			paused = !paused
 	#schovani ui
-	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED and not dead:
 		if event is InputEventMouseMotion:
 			rotate_y(-event.relative.x * 0.002)
 			head.rotate_x(-event.relative.y * 0.002)
@@ -510,9 +513,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			$HpBar.show()
 			$StaminaBar.show()
 			$XpBar.show()
-	#debug tlacitko pro testovani ODSTANIT
-	if Input.is_action_just_pressed("debug"):
-		add_xp(100)
+
 
 func hit_animation():
 	create_tween().tween_property(hit_flash, "modulate:a", 1.0, 0.1).set_trans(Tween.TRANS_SINE)
@@ -523,15 +524,12 @@ func hit_animation():
 func _hit(damage : float):
 	if !dead:
 		if !blocking:
-			_play_damage_sound()
 			player_data.hp -= damage
 			save_data()
 			hit_animation()
 		else:
 			_play_hit_sound()
 			hit_animation()
-			if player_data.block_dmg != 1.0:
-				_play_damage_sound()
 			player_data.hp -= damage * (player_data.block_dmg - 1 + 1)
 			save_data()
 		if player_data.hp <= 0:
@@ -540,7 +538,7 @@ func _hit(damage : float):
 			headbob.stop()
 			fov_animation.stop()
 			velocity = Vector3.ZERO
-			death_sfx.play()
+			death_sfx_play()
 			$Head/HitAnimation.play("Death")
 			await get_tree().create_timer(2.5).timeout
 			player_data.hp = player_data.max_hp
@@ -552,7 +550,7 @@ func _physics_process(delta: float) -> void:
 	#gravitace lol 🍎
 	if not is_on_floor():
 			velocity += get_gravity() * delta
-	if !paused:
+	if !paused and not dead:
 			#skok 🤓
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				if stamina.value > 15:

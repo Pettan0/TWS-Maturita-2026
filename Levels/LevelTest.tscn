@@ -55,7 +55,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1036790582]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114715576, 0, 0)
+transform = Transform3D(0.99997175, -0.0007720702, 0.007473271, 0.00066918466, 0.9999051, 0.013757019, -0.0074831857, -0.013751628, 0.9998774, 0.038121223, -0.15627813, 0.15982568)
 navigation_mesh = SubResource("NavigationMesh_iotdp")
 
 [node name="MainPlatform" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1601564016]
@@ -69,7 +69,7 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MainPlatform/StaticBody3D" unique_id=1087017926]
 shape = SubResource("ConcavePolygonShape3D_0i0qx")
 
-[node name="Player" parent="." unique_id=1891402900 instance=ExtResource("1_p2k11")]
+[node name="Player" parent="." unique_id=1891402900 groups=["player"] instance=ExtResource("1_p2k11")]
 transform = Transform3D(-0.012810401, 0, -0.9999179, 0, 1, 0, 0.9999179, 0, -0.012810401, -36.15552, 2.569203, 4.383604)
 
 [node name="MainPlatform" type="MeshInstance3D" parent="." unique_id=1592953024]
@@ -90,5 +90,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8027267, 3.4595108, -0.4144
 shape = SubResource("BoxShape3D_iotdp")
 
 [node name="Polednice" parent="." unique_id=1995277811 node_paths=PackedStringArray("area") instance=ExtResource("3_7b0me")]
-transform = Transform3D(0.14692907, 0, 0.989147, 0, 1, 0, -0.989147, 0, 0.14692907, 0.38769913, 2.3533657, 0.6790576)
+transform = Transform3D(0.14692907, 0, 0.989147, 0, 1, 0, -0.989147, 0, 0.14692907, 0.38769913, 3.8572571, 0.6790576)
 area = NodePath("../Area3D")

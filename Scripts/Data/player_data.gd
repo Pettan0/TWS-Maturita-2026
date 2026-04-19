@@ -44,14 +44,16 @@ class_name PlayerData
 @export var kick_dmg : float = 10.0
 @export var kick_cooldown : int = 20
 
+@export var have_key : bool = false
+
 #weapons
 @export var current_weapon : String = "unarmed"
 
 @export var u_dagger : bool = false
 @export var u_short_sword : bool = false
-@export var u_mace : bool = true
-@export var u_long_sword : bool = true
-@export var u_pole_hammer : bool = true
+@export var u_mace : bool = false
+@export var u_long_sword : bool = false
+@export var u_pole_hammer : bool = false
 
 #skill tree veci
 @export var unlocked_nodes : Array[Dictionary] = []
@@ -144,8 +146,19 @@ func find_starter_position():
 				2:
 					starter_position = Vector3(0, 0, 0)
 					starter_rotation = Vector3(0, -57.0, 0)
-					
-
+		5:
+			match starter_point:
+				1:
+					starter_position = Vector3(13.57, 1.376, -4.638)
+					starter_rotation = Vector3(0, 96.6, 0)
+				2:
+					starter_position = Vector3(13.57, 1.376, -4.638)
+					starter_rotation = Vector3(0, 96.6, 0)
+		6:
+			match starter_point:
+				1:
+					starter_position = Vector3(13.011, 1.3, -4.905)
+					starter_rotation = Vector3(0, 86.8, 0)
 func new_xp_to_next(amount:float):
 	var saved_value = amount + xp - xp_to_next
 	xp_to_next = round(75 * pow(1.3 , player_level))

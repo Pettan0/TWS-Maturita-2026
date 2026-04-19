@@ -7,8 +7,9 @@
 size = Vector3(2, 2, 2)
 
 [node name="Crate3B" unique_id=1566532268 instance=ExtResource("1_4tebr")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Crate3" parent_id_path=PackedInt32Array(563593892) index="0" unique_id=1833650240]
+[node name="StaticBody3D" type="StaticBody3D" parent="Crate3" parent_id_path=PackedInt32Array(1586516973) index="0" unique_id=1833650240]
 script = ExtResource("2_d5ou2")
 hp = 30.0
 

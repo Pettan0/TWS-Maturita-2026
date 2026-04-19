@@ -67,6 +67,7 @@ func hit (damage_taken:float, weapon_type:String, dir:Vector3):
 		knockedback = true
 		knockback_timer = 0.25
 	
+	SoundManager.zoomer_play()
 	HP -= damage_taken
 	play_hit_sound()
 	progress_bar.update_hp(max_hp, HP)

@@ -8,6 +8,8 @@ extends Node3D
 
 var near_door = false
 var near_item = false
+var near_key = false
+
 var sword_stage = 0
 
 var enemies_left = 0
@@ -24,9 +26,11 @@ func _process(delta: float) -> void:
 		itimer -= delta
 
 func _ready():
+	
 	lol.text = "192.168."+str(randi_range(1,255))+"."+str(randi_range(1,255))
 	print("Enemies at start:", enemies_left)
 	load_data()
+	
 	if player_data.u_short_sword:
 		item.hide()
 	print(player_data.starter_position)
@@ -44,11 +48,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and interact.visible:
 		if near_door:
 			if enemies_left == 0:
-				match next_lvl:
-					2:
-						player_data.update_level_stats(2,2)
-					4:
-						player_data.update_level_stats(4,1)
+				player_data.update_level_stats(4,2)
 				save_data()
 				SoundManager.play_door_sfx()
 				player.transition.fade_in()
@@ -65,12 +65,16 @@ func _unhandled_input(_event: InputEvent) -> void:
 					
 				else:
 					item.hide()
-					player_data.u_short_sword = true
-					player._weapon_out("shortSword")
+					player_data.u_long_sword = true
+					player._weapon_out("longSword")
 					near_item = false
 					interact.hide()
 			else:
 				player._hit(5)
+		elif near_key:
+			player_data.have_key = true
+			$key.hide()
+			interact.hide()
 func _on_exit_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.show_with("OpenDoor","")
@@ -92,8 +96,6 @@ func _on_item_area_body_exited(body: Node3D) -> void:
 		interact.hide()
 		near_item = false
 		
-
-
 func load_data():
 	if not DirAccess.dir_exists_absolute(save_file_path):
 		DirAccess.make_dir_recursive_absolute(save_file_path)
@@ -108,6 +110,23 @@ func load_data():
 	player_data.find_starter_position()
 	player.position = player_data.starter_position
 	player.rotation_degrees = player_data.starter_rotation
+	if player_data.have_key:
+		$key.hide()
+	if player_data.u_long_sword:
+		item.hide()
+		
 
 func save_data():
 	ResourceSaver.save(player_data, save_file_path + save_file_name)
+
+
+func _on_key_area_body_entered(body: Node3D) -> void:
+	if body.name == "Player" and $key.visible:
+		interact.show_with("PickUpItem","key")
+		near_key = true
+
+
+func _on_key_area_body_exited(body: Node3D) -> void:
+	if body.name == "Player" and $key.visible:
+		interact.hide()
+		near_key = false

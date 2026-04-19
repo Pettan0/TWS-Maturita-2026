@@ -5,6 +5,7 @@ extends Control
 @onready var btn_click: AudioStreamPlayer = $BtnClick
 @onready var upgrade_1: AudioStreamPlayer = $STUpgrade1
 @onready var upgrade_2: AudioStreamPlayer = $STUpgrade2
+@onready var zoomer: AudioStreamPlayer = $Zoomer
 
 func play_crate_sfx():
 	crate_sfx.stream = load("res://Assets/Sounds/SFX/Ostatní/CrateBreak"+str(randi_range(1,3))+".wav")
@@ -27,3 +28,7 @@ func upgrade_sfx(type:String):
 			upgrade_1.play()
 		"A":
 			upgrade_2.play()
+
+func zoomer_play():
+	zoomer.pitch_scale = randf_range(.8, 1.2)
+	zoomer.play()

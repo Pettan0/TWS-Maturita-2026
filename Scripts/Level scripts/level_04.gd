@@ -2,9 +2,12 @@ extends Node3D
 @onready var interact: Label = $Player/Head/Camera3D/Interact
 @onready var player: CharacterBody3D = $Player
 @onready var popup: Label = $Player/Head/Camera3D/Popup
+@onready var item: Node3D = $wp_mace
 
 var enemies_left = 0
 var next_lvl = 0
+var near_item = false
+var near_door = false
 
 var save_file_path = "user://save/"
 var save_file_name = "PlayerData.tres"
@@ -46,37 +49,75 @@ func save_data():
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and interact.visible:
-		if enemies_left == 0:
-			match next_lvl:
-				3:
-					player_data.update_level_stats(3,2)
-				5:
-					player_data.update_level_stats(5,1)
-			save_data()
-			SoundManager.play_door_sfx()
-			player.transition.fade_in()
-			await get_tree().create_timer(1.5).timeout
-			get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
-		else:
-			popup.show_with("cantEnter")
+		if near_door:
+			if enemies_left == 0:
+				match next_lvl:
+					3:
+						player_data.update_level_stats(3,2)
+					5:
+						player_data.update_level_stats(5,1)
+					6:
+						player_data.update_level_stats(6,1)
+				save_data()
+				SoundManager.play_door_sfx()
+				player.transition.fade_in()
+				await get_tree().create_timer(1.5).timeout
+				get_tree().change_scene_to_file("res://Levels/Level0"+str(player_data.level)+".scn")
+			else:
+				popup.show_with("cantEnter")
+		elif near_item:
+			item.hide()
+			player_data.u_mace = true
+			player._weapon_out("mace")
+			interact.hide()
 func _on_exit_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.show_with("OpenDoor","")
 		next_lvl = 3
-
+		near_door = true
 func _on_exit_door_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.hide()
+		near_door = false
+		
 
 func _on_lvl_5_door_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.show_with("OpenDoor","")
 		next_lvl = 5
+		near_door = true
 
 func _on_lvl_5_door_body_exited(body: Node3D) -> void:
 	if body.name == "Player":
 		interact.hide()
+		near_door = false
 
 func _locked_door_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		popup.show_with("blockedDoor")
+
+
+func _on_lvl_6_door_body_exited(body: Node3D) -> void:
+	if body.name == "Player":
+		interact.hide()
+		near_door = false
+
+
+func _on_lvl_6_door_body_entered(body: Node3D) -> void:
+	if body.name == "Player":
+		if player_data.have_key:
+			interact.show_with("OpenDoor","")
+			next_lvl = 6
+			near_door = true
+		else:
+			popup.show_custom("Zveře jsou zamčené")
+
+func _on_item_area_body_entered(body: Node3D) -> void:
+	if body.name == "Player" and item.visible:
+		interact.show_with("PickUpItem","shortSword")
+		near_item = true
+
+func _on_item_area_body_exited(body: Node3D) -> void:
+	if body.name == "Player":
+		interact.hide()
+		near_item = false
