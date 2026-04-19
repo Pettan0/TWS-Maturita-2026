@@ -133,9 +133,7 @@ func _on_button_easy_pressed() -> void:
 	player_data.difficulty_scale = 0.8
 	save_data()
 	settings.save_data()
-	transition.fade_in()
-	await get_tree().create_timer(2.0).timeout
-	get_tree().change_scene_to_file("res://Levels/Level01.scn")
+	new_game()
 
 
 func _on_button_normal_pressed() -> void:
@@ -143,15 +141,17 @@ func _on_button_normal_pressed() -> void:
 	player_data.difficulty_scale = 1.0
 	save_data()
 	settings.save_data()
-	transition.fade_in()
-	await get_tree().create_timer(2.0).timeout
-	get_tree().change_scene_to_file("res://Levels/Level01.scn")
+	new_game()
 
 func _on_button_hard_pressed() -> void:
 	player_data = PlayerData.new()
 	player_data.difficulty_scale = 1.2
 	save_data()
 	settings.save_data()
+	new_game()
+
+func new_game():
+	settings.save_data()
 	transition.fade_in()
 	await get_tree().create_timer(2.0).timeout
-	get_tree().change_scene_to_file("res://Levels/Level01.scn")
+	get_tree().change_scene_to_file("res://Menu/intro.tscn")
