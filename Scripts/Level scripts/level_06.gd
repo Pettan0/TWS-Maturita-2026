@@ -41,6 +41,8 @@ func load_data():
 	player_data.find_starter_position()
 	player.position = player_data.starter_position
 	player.rotation_degrees = player_data.starter_rotation
+	if player_data.u_pole_hammer:
+		item.hide()
 
 
 func save_data():
@@ -48,7 +50,6 @@ func save_data():
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and interact.visible:
-			
 		if near_item:
 			item.hide()
 			player_data.u_pole_hammer = true
@@ -73,4 +74,5 @@ func _on_boss_body_entered(body: Node3D) -> void:
 
 
 func _on_boss_enemy_died() -> void:
+	await get_tree().create_timer(5.0).timeout
 	get_tree().change_scene_to_file("res://Menu/Main menu.tscn")

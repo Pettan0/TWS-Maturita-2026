@@ -96,10 +96,12 @@ func _ready():
 	#ziskavani promnen a nastavovani textu / progres baru
 	base_dmg = player_data.base_dmg
 	base_kick_dmg = player_data.kick_dmg
+	
 	skill_points = player_data.skill_points
 	player_level_label.text = "Lvl: "+str(player_data.player_level)
 	xp_bar.value = player_data.xp
 	xp_bar.max_value = player_data.xp_to_next
+	
 	hp_bar.max_value = player_data.max_hp
 	hp_bar.value = player_data.hp
 	stamina.value = stamina.max_value

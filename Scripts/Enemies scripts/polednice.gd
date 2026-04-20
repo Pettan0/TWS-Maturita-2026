@@ -61,7 +61,7 @@ func _physics_process(delta):
 	match current_node:
 		"idle":
 			velocity = Vector3.ZERO
-			if area and area._is_player_in_area():
+			if area._is_player_in_area():
 				_change_state("Move")
 
 		"Move":
